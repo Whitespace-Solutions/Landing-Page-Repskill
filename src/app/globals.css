@@ -79,17 +79,6 @@
   }
 }
 
-@layer utilities {
-  /* Grid tipis khas hero Repskill */
-  .bg-grid {
-    background-image:
-      linear-gradient(rgb(232 234 235 / 0.7) 1px, transparent 1px),
-      linear-gradient(90deg, rgb(232 234 235 / 0.7) 1px, transparent 1px);
-    background-size: 48px 48px;
-    background-position: center top;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

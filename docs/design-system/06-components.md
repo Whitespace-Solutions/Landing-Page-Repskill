@@ -64,17 +64,17 @@ State dalam list/progress: **done** = teal · **now/sedang berjalan** = oranye (
 
 Semua section mengikuti kerangka: **Eyebrow → Judul → Lead → Konten → (link/CTA)**.
 
-| Pola                     | Deskripsi                                                                    | Komponen / contoh                              |
-| ------------------------ | ---------------------------------------------------------------------------- | ---------------------------------------------- |
-| **Hero Home**            | `bg-grid`, eyebrow + accent, `text-display`, 2 tombol, panel mockup di bawah | `home/hero.tsx`                                |
-| **Page hero**            | Teks kiri, mockup kanan                                                      | `PageHero`                                     |
-| **Our Clients**          | Baris logo/wordmark klien di antara border tipis                             | `ClientLogos`                                  |
-| **Split**                | Teks + poin di satu sisi, mockup di sisi lain; berselang-seling              | `FeatureSplit`                                 |
-| **Heading + grid kartu** | `SectionHeader` (+ tombol outline) lalu grid 3–4 kartu                       | Platform Overview, What's Included             |
-| **Timeline**             | 5 langkah dengan garis atas + dot, langkah terakhir oranye                   | `StepsTimeline` (How it works, Implementation) |
-| **Tabel perbandingan**   | Kolom Repskill disorot oranye muda, ✓ oranye                                 | Pricing › Feature Comparison                   |
-| **Metrik hasil**         | 3 tile angka oranye + label; "—" bila belum terverifikasi                    | `MetricTiles` (success stories)                |
-| **CTA penutup**          | `FinalCta` di atas footer pada hampir setiap halaman                         | `shared/final-cta.tsx`                         |
+| Pola                     | Deskripsi                                                                      | Komponen / contoh                              |
+| ------------------------ | ------------------------------------------------------------------------------ | ---------------------------------------------- |
+| **Hero Home**            | Putih polos, eyebrow + accent, `text-display`, 2 tombol, panel mockup di bawah | `home/hero.tsx`                                |
+| **Page hero**            | Teks kiri, mockup kanan                                                        | `PageHero`                                     |
+| **Our Clients**          | Baris logo/wordmark klien di antara border tipis                               | `ClientLogos`                                  |
+| **Split**                | Teks + poin di satu sisi, mockup di sisi lain; berselang-seling                | `FeatureSplit`                                 |
+| **Heading + grid kartu** | `SectionHeader` (+ tombol outline) lalu grid 3–4 kartu                         | Platform Overview, What's Included             |
+| **Timeline**             | 5 langkah dengan garis atas + dot, langkah terakhir oranye                     | `StepsTimeline` (How it works, Implementation) |
+| **Tabel perbandingan**   | Kolom Repskill disorot oranye muda, ✓ oranye                                   | Pricing › Feature Comparison                   |
+| **Metrik hasil**         | 3 tile angka oranye + label; "—" bila belum terverifikasi                      | `MetricTiles` (success stories)                |
+| **CTA penutup**          | `FinalCta` di atas footer pada hampir setiap halaman                           | `shared/final-cta.tsx`                         |
 
 **Ritme gelap/terang:** jangan menaruh dua section gelap berdempetan. Contohnya, timeline tepat di atas `FinalCta` harus
 memakai `tone="light"`.

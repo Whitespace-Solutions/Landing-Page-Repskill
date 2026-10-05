@@ -10,11 +10,7 @@ import { cn } from "@/lib/cn";
 /** Hero untuk halaman turunan: teks kiri, mockup kanan (atau teks saja bila tanpa visual). */
 export function PageHero({ eyebrow, title, highlight, lead, primary, secondary, visual }: PageHeroData) {
   return (
-    <section className="bg-grid relative overflow-hidden bg-white">
-      <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/0 from-40% to-white"
-        aria-hidden
-      />
+    <section className="relative overflow-hidden bg-white">
       <Container
         className={cn(
           "relative grid items-center gap-12 pt-14 pb-16 sm:pt-20 lg:gap-16 lg:pt-24 lg:pb-24",

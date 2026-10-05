@@ -55,6 +55,7 @@ Shadow dipakai **hemat**. Sebagian besar kartu cukup memakai `border border-line
 | `shadow-pop`   | Dropdown, popover                         |
 | `shadow-glow`  | Hover kartu fitur (bernuansa teal)        |
 
-## Background khusus
+## Background hero
 
-- `bg-grid`: grid tipis 48px, dipakai di hero (dengan fade ke putih di bawah).
+Hero memakai background **putih polos**, tanpa pola grid atau tekstur. Kedalaman cukup datang dari panel mockup
+(`shadow-float`).

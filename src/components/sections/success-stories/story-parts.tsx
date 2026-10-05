@@ -109,11 +109,7 @@ export function StoryTeaser({
 /** About Company — hero halaman detail. */
 export function StoryAbout({ story }: { story: SuccessStory }) {
   return (
-    <section className="bg-grid relative overflow-hidden bg-white">
-      <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/0 from-40% to-white"
-        aria-hidden
-      />
+    <section className="relative overflow-hidden bg-white">
       <Container className="relative grid items-center gap-12 pt-12 pb-16 sm:pt-16 lg:grid-cols-[1.2fr_1fr] lg:gap-16 lg:pb-24">
         <Stagger className="flex flex-col gap-6" stagger={0.1}>
           <StaggerItem className="flex flex-wrap items-center gap-3 text-sm font-semibold">

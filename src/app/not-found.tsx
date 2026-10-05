@@ -10,7 +10,7 @@ export default function NotFound() {
   return (
     <>
       <SiteHeader />
-      <main className="bg-grid">
+      <main>
         <Container className="flex min-h-[60vh] flex-col items-start justify-center gap-6 py-24">
           <Eyebrow accent>404</Eyebrow>
           <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">

@@ -31,12 +31,7 @@ const team = ["AR", "BK", "CL", "DM", "EN", "FS", "GT", "HW", "IR", "JP", "KL", 
 
 export function Hero() {
   return (
-    <section className="bg-grid relative overflow-hidden bg-white">
-      <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/0 from-40% to-white"
-        aria-hidden
-      />
-
+    <section className="relative overflow-hidden bg-white">
       <Container className="relative pt-14 pb-14 sm:pt-20 lg:pt-26 lg:pb-24">
         <motion.div
           variants={intro}

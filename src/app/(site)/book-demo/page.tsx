@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function BookDemoPage() {
   return (
-    <section className="bg-grid relative overflow-hidden bg-white">
+    <section className="relative overflow-hidden bg-white">
       <div
         className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/0 from-30% to-surface"
         aria-hidden
