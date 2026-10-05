@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style>body{margin:0;font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#212121;-webkit-font-smoothing:antialiased}a{color:#087C8C;text-decoration:none}a:hover{color:#3B494C}</style></helmet>
+<header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.94);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid #E8EAEB;font-family:'Plus Jakarta Sans',system-ui,sans-serif">
+  <div style="max-width:1366px;margin:0 auto;padding:0 clamp(20px,4.5vw,64px);height:72px;display:flex;align-items:center;gap:24px">
+    <a href="Home.dc.html" style="display:flex;align-items:center;flex:none" aria-label="Repskill home"><img src="{{ logoSrc }}" alt="Repskill" style="width:126px;height:auto;display:block"></a>
+    <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+      <nav style="display:flex;align-items:center;gap:2px;margin-left:16px;flex:1">
+        <a href="Case Studies.dc.html" style="position:relative;font-size:17px;font-weight:500;color:#3B494C;padding:10px 12px;white-space:nowrap;border-radius:8px" style-hover="background:#F3F4F4;color:#212121">Case Studies<sc-if value="{{ isCases }}"><span style="position:absolute;left:14px;right:14px;bottom:-15px;height:2px;background:#FF6D00"></span></sc-if></a>
+        <div style="position:relative" onMouseEnter="{{ openSol }}" onMouseLeave="{{ closeMenu }}">
+          <button onClick="{{ toggleSol }}" style="position:relative;display:flex;align-items:center;gap:6px;font:inherit;font-size:17px;font-weight:500;color:#3B494C;padding:10px 12px;white-space:nowrap;border-radius:8px;border:0;background:transparent;cursor:pointer" style-hover="background:#F3F4F4;color:#212121">Solutions<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg><sc-if value="{{ isSolutions }}"><span style="position:absolute;left:14px;right:14px;bottom:-15px;height:2px;background:#FF6D00"></span></sc-if></button>
+          <sc-if value="{{ solOpen }}">
+            <div style="position:absolute;top:100%;left:-12px;padding-top:14px;z-index:60">
+              <div style="width:580px;background:#FFFFFF;border:1px solid #E8EAEB;border-radius:16px;box-shadow:0 24px 48px -20px rgba(33,33,33,0.22);padding:10px">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px">
+                  <a href="Solutions - Sales Teams.dc.html" style="display:flex;flex-direction:column;gap:4px;padding:14px 16px;border-radius:12px" style-hover="background:#EEF9FB"><span style="font-size:15px;font-weight:600;color:#212121">Sales Teams</span><span style="font-size:13.5px;line-height:1.45;color:#3B494C">Learn, practice, and improve.</span></a>
+                  <a href="Solutions - Sales Managers.dc.html" style="display:flex;flex-direction:column;gap:4px;padding:14px 16px;border-radius:12px" style-hover="background:#EEF9FB"><span style="font-size:15px;font-weight:600;color:#212121">Sales Managers</span><span style="font-size:13.5px;line-height:1.45;color:#3B494C">Coach with greater consistency and insight.</span></a>
+                  <a href="Solutions - Head of Sales.dc.html" style="display:flex;flex-direction:column;gap:4px;padding:14px 16px;border-radius:12px" style-hover="background:#EEF9FB"><span style="font-size:15px;font-weight:600;color:#212121">Head of Sales</span><span style="font-size:13.5px;line-height:1.45;color:#3B494C">Scale expertise across the organization.</span></a>
+                  <a href="Solutions - LD Teams.dc.html" style="display:flex;flex-direction:column;gap:4px;padding:14px 16px;border-radius:12px" style-hover="background:#EEF9FB"><span style="font-size:15px;font-weight:600;color:#212121">L&amp;D Teams</span><span style="font-size:13.5px;line-height:1.45;color:#3B494C">Turn organizational knowledge into continuous development.</span></a>
+                </div>
+                <a href="Solutions.dc.html" style="display:flex;align-items:center;justify-content:space-between;margin-top:6px;padding:14px 16px;border-radius:12px;background:#F6F7F7;font-size:14px;font-weight:600;color:#3B494C" style-hover="background:#E8EAEB;color:#212121"><span>Solutions overview</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+        <div style="position:relative" onMouseEnter="{{ openFeat }}" onMouseLeave="{{ closeMenu }}">
+          <button onClick="{{ toggleFeat }}" style="position:relative;display:flex;align-items:center;gap:6px;font:inherit;font-size:17px;font-weight:500;color:#3B494C;padding:10px 12px;white-space:nowrap;border-radius:8px;border:0;background:transparent;cursor:pointer" style-hover="background:#F3F4F4;color:#212121">Features<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg><sc-if value="{{ isFeatures }}"><span style="position:absolute;left:14px;right:14px;bottom:-15px;height:2px;background:#FF6D00"></span></sc-if></button>
+          <sc-if value="{{ featOpen }}">
+            <div style="position:absolute;top:100%;left:-12px;padding-top:14px;z-index:60">
+              <div style="width:580px;background:#FFFFFF;border:1px solid #E8EAEB;border-radius:16px;box-shadow:0 24px 48px -20px rgba(33,33,33,0.22);padding:10px">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px">
+                  <a href="Features - Extraction Studio.dc.html" style="display:flex;flex-direction:column;gap:4px;padding:14px 16px;border-radius:12px" style-hover="background:#EEF9FB"><span style="font-size:11px;font-weight:700;letter-spacing:0.12em;color:#087C8C">CAPTURE</span><span style="font-size:15px;font-weight:600;color:#212121">Extraction Studio</span><span style="font-size:13.5px;line-height:1.45;color:#3B494C">Capture and structure the expertise of your best people.</span></a>
+                  <a href="Features - Learning Path.dc.html" style="display:flex;flex-direction:column;gap:4px;padding:14px 16px;border-radius:12px" style-hover="background:#EEF9FB"><span style="font-size:11px;font-weight:700;letter-spacing:0.12em;color:#087C8C">LEARN</span><span style="font-size:15px;font-weight:600;color:#212121">Learning Path</span><span style="font-size:13.5px;line-height:1.45;color:#3B494C">Turn company knowledge into structured learning.</span></a>
+                  <a href="Features - Scenario Studio.dc.html" style="display:flex;flex-direction:column;gap:4px;padding:14px 16px;border-radius:12px" style-hover="background:#EEF9FB"><span style="font-size:11px;font-weight:700;letter-spacing:0.12em;color:#087C8C">PRACTICE</span><span style="font-size:15px;font-weight:600;color:#212121">Scenario Studio</span><span style="font-size:13.5px;line-height:1.45;color:#3B494C">Practice realistic sales situations with AI.</span></a>
+                  <a href="Features - Reflection Studio.dc.html" style="display:flex;flex-direction:column;gap:4px;padding:14px 16px;border-radius:12px" style-hover="background:#EEF9FB"><span style="font-size:11px;font-weight:700;letter-spacing:0.12em;color:#087C8C">REFLECT</span><span style="font-size:15px;font-weight:600;color:#212121">Reflection Studio</span><span style="font-size:13.5px;line-height:1.45;color:#3B494C">Turn sales experiences into actionable improvement.</span></a>
+                </div>
+                <a href="Features.dc.html" style="display:flex;align-items:center;justify-content:space-between;margin-top:6px;padding:14px 16px;border-radius:12px;background:#F6F7F7;font-size:14px;font-weight:600;color:#3B494C" style-hover="background:#E8EAEB;color:#212121"><span>Capture → Learn → Practice → Reflect → Improve</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+        <a href="Pricing.dc.html" style="position:relative;font-size:17px;font-weight:500;color:#3B494C;padding:10px 12px;white-space:nowrap;border-radius:8px" style-hover="background:#F3F4F4;color:#212121">Pricing<sc-if value="{{ isPricing }}"><span style="position:absolute;left:14px;right:14px;bottom:-15px;height:2px;background:#FF6D00"></span></sc-if></a>
+        <a href="About.dc.html" style="position:relative;font-size:17px;font-weight:500;color:#3B494C;padding:10px 12px;white-space:nowrap;border-radius:8px" style-hover="background:#F3F4F4;color:#212121">About<sc-if value="{{ isAbout }}"><span style="position:absolute;left:14px;right:14px;bottom:-15px;height:2px;background:#FF6D00"></span></sc-if></a>
+      </nav>
+      <sc-if value="{{ showCta }}" hint-placeholder-val="{{ true }}">
+        <a href="Request Demo.dc.html" style="flex:none;display:inline-flex;align-items:center;gap:8px;background:#FF6D00;color:#FFFFFF;font-size:15px;font-weight:600;padding:12px 20px;border-radius:10px" style-hover="background:#E86300;color:#FFFFFF" style-active="transform:translateY(1px)">Request Demo</a>
+      </sc-if>
+    </sc-if>
+    <sc-if value="{{ mobile }}">
+      <div style="flex:1"></div>
+      <sc-if value="{{ showCta }}"><a href="Request Demo.dc.html" style="display:inline-flex;align-items:center;background:#FF6D00;color:#FFFFFF;font-size:14px;font-weight:600;padding:0 14px;height:44px;border-radius:10px" style-hover="color:#FFFFFF">Request Demo</a></sc-if>
+      <button onClick="{{ toggleMob }}" aria-label="Menu" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:1px solid #E8EAEB;border-radius:10px;background:#FFFFFF;color:#212121;cursor:pointer">
+        <sc-if value="{{ mobClosed }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></sc-if>
+        <sc-if value="{{ mobOpen }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></sc-if>
+      </button>
+    </sc-if>
+  </div>
+  <sc-if value="{{ mobOpen }}">
+    <div style="position:fixed;top:73px;left:0;right:0;bottom:0;background:#FFFFFF;overflow:auto;padding:12px 20px 32px;display:flex;flex-direction:column;z-index:70">
+      <a href="Case Studies.dc.html" style="display:flex;align-items:center;min-height:56px;border-bottom:1px solid #E8EAEB;font-size:18px;font-weight:600;color:#212121">Case Studies</a>
+      <button onClick="{{ accSol }}" style="display:flex;align-items:center;justify-content:space-between;min-height:56px;border:0;border-bottom:1px solid #E8EAEB;background:none;padding:0;font:inherit;font-size:18px;font-weight:600;color:#212121;cursor:pointer">Solutions<span style="font-size:22px;font-weight:400;color:#087C8C">{{ solSign }}</span></button>
+      <sc-if value="{{ solAcc }}">
+        <div style="display:flex;flex-direction:column;padding:6px 0 10px;border-bottom:1px solid #E8EAEB">
+          <a href="Solutions.dc.html" style="padding:12px 0 12px 14px;font-size:16px;font-weight:600;color:#087C8C">Overview</a>
+          <a href="Solutions - Sales Teams.dc.html" style="padding:12px 0 12px 14px;font-size:16px;color:#3B494C">Sales Teams</a>
+          <a href="Solutions - Sales Managers.dc.html" style="padding:12px 0 12px 14px;font-size:16px;color:#3B494C">Sales Managers</a>
+          <a href="Solutions - Head of Sales.dc.html" style="padding:12px 0 12px 14px;font-size:16px;color:#3B494C">Head of Sales</a>
+          <a href="Solutions - LD Teams.dc.html" style="padding:12px 0 12px 14px;font-size:16px;color:#3B494C">L&amp;D Teams</a>
+        </div>
+      </sc-if>
+      <button onClick="{{ accFeat }}" style="display:flex;align-items:center;justify-content:space-between;min-height:56px;border:0;border-bottom:1px solid #E8EAEB;background:none;padding:0;font:inherit;font-size:18px;font-weight:600;color:#212121;cursor:pointer">Features<span style="font-size:22px;font-weight:400;color:#087C8C">{{ featSign }}</span></button>
+      <sc-if value="{{ featAcc }}">
+        <div style="display:flex;flex-direction:column;padding:6px 0 10px;border-bottom:1px solid #E8EAEB">
+          <a href="Features.dc.html" style="padding:12px 0 12px 14px;font-size:16px;font-weight:600;color:#087C8C">Overview</a>
+          <a href="Features - Extraction Studio.dc.html" style="padding:12px 0 12px 14px;font-size:16px;color:#3B494C">Extraction Studio</a>
+          <a href="Features - Learning Path.dc.html" style="padding:12px 0 12px 14px;font-size:16px;color:#3B494C">Learning Path</a>
+          <a href="Features - Scenario Studio.dc.html" style="padding:12px 0 12px 14px;font-size:16px;color:#3B494C">Scenario Studio</a>
+          <a href="Features - Reflection Studio.dc.html" style="padding:12px 0 12px 14px;font-size:16px;color:#3B494C">Reflection Studio</a>
+        </div>
+      </sc-if>
+      <a href="Pricing.dc.html" style="display:flex;align-items:center;min-height:56px;border-bottom:1px solid #E8EAEB;font-size:18px;font-weight:600;color:#212121">Pricing</a>
+      <a href="About.dc.html" style="display:flex;align-items:center;min-height:56px;border-bottom:1px solid #E8EAEB;font-size:18px;font-weight:600;color:#212121">About</a>
+      <a href="Request Demo.dc.html" style="margin-top:28px;display:flex;align-items:center;justify-content:center;height:52px;border-radius:10px;background:#FF6D00;color:#FFFFFF;font-size:16px;font-weight:600" style-hover="color:#FFFFFF">Request Demo</a>
+    </div>
+  </sc-if>
+</header>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:480},&quot;active&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;cases&quot;,&quot;solutions&quot;,&quot;features&quot;,&quot;pricing&quot;,&quot;about&quot;,&quot;demo&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;forceMobile&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, open: this.props.openMenu || null, mob: !!this.props.openMobile, acc: this.props.openMobile ? 'sol' : null };
+  componentDidMount() { this.onR = () => this.setState({ w: window.innerWidth }); window.addEventListener('resize', this.onR); }
+  componentWillUnmount() { window.removeEventListener('resize', this.onR); }
+  renderVals() {
+    const a = this.props.active || '';
+    const forced = this.props.forceMobile;
+    const mobile = forced || this.state.w < 920;
+    const s = this.state;
+    return {
+      desktop: !mobile, mobile, logoSrc: (window.__resources && window.__resources.logo) || 'assets/repskill-logo.png',
+      isCases: a === 'cases', isSolutions: a === 'solutions', isFeatures: a === 'features', isPricing: a === 'pricing', isAbout: a === 'about',
+      showCta: a !== 'demo',
+      solOpen: s.open === 'sol', featOpen: s.open === 'feat',
+      openSol: () => this.setState({ open: 'sol' }), openFeat: () => this.setState({ open: 'feat' }),
+      closeMenu: () => this.setState({ open: null }),
+      toggleSol: () => this.setState(p => ({ open: p.open === 'sol' ? null : 'sol' })),
+      toggleFeat: () => this.setState(p => ({ open: p.open === 'feat' ? null : 'feat' })),
+      mobOpen: mobile && s.mob, mobClosed: !s.mob,
+      toggleMob: () => this.setState(p => ({ mob: !p.mob })),
+      solAcc: s.acc === 'sol', featAcc: s.acc === 'feat',
+      solSign: s.acc === 'sol' ? '–' : '+', featSign: s.acc === 'feat' ? '–' : '+',
+      accSol: () => this.setState(p => ({ acc: p.acc === 'sol' ? null : 'sol' })),
+      accFeat: () => this.setState(p => ({ acc: p.acc === 'feat' ? null : 'feat' })),
+    };
+  }
+}
+</script>
+</body>
+</html>

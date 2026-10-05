@@ -1,0 +1,59 @@
+# Deploy otomatis: setiap push ke `main` -> build static site -> publish ke GitHub Pages.
+# Setup sekali: GitHub repo > Settings > Pages > Build and deployment > Source: "GitHub Actions".
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # tombol "Run workflow" manual di tab Actions
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Hanya satu deploy berjalan; deploy yang sedang jalan tidak dibatalkan.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - id: pages
+        uses: actions/configure-pages@v5
+
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+
+      - name: Build static site
+        run: npm run build
+        env:
+          # "/nama-repo" saat memakai URL <user>.github.io/<repo>; kosong bila memakai custom domain.
+          NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
+          NEXT_PUBLIC_SITE_URL: ${{ vars.SITE_URL || steps.pages.outputs.base_url }}
+          # Endpoint penerima formulir Book Demo (Settings → Secrets and variables → Actions → Variables)
+          NEXT_PUBLIC_FORM_ENDPOINT: ${{ vars.FORM_ENDPOINT }}
+
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

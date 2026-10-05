@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><title>About Repskill — Make Great Sales Expertise Scalable</title><meta name="description" content="Repskill helps organizations capture their best sales knowledge and turn it into continuous learning, practice, and coaching."><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style>body{margin:0;font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#212121;background:#FFFFFF;-webkit-font-smoothing:antialiased}a{color:#087C8C;text-decoration:none}a:hover{color:#3B494C}*{box-sizing:border-box}</style></helmet>
+<div style="font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:#FFFFFF">
+<dc-import name="SiteHeader" active="about" hint-size="100%,72px"></dc-import>
+
+<section data-screen-label="01 Hero" style="background-color:#FFFFFF;background-image:linear-gradient(rgba(232,234,235,0.6) 1px,transparent 1px),linear-gradient(90deg,rgba(232,234,235,0.6) 1px,transparent 1px);background-size:48px 48px">
+  <div style="max-width:1366px;margin:0 auto;padding:clamp(64px,10vw,136px) clamp(20px,4.5vw,64px)">
+    <div style="max-width:900px;display:flex;flex-direction:column;gap:24px">
+      <span style="font-size:13px;font-weight:700;letter-spacing:0.14em;color:#087C8C">ABOUT REPSKILL</span>
+      <h1 style="margin:0;font-size:clamp(42px,6vw,64px);line-height:1.02;font-weight:800;letter-spacing:-0.035em;color:#212121;text-wrap:balance">Make Great Sales Expertise <span style="color:#FF6D00">Scalable.</span></h1>
+      <p style="margin:0;max-width:620px;font-size:clamp(18px,1.6vw,20px);line-height:1.6;color:#3B494C;text-wrap:pretty">Repskill turns the knowledge of your best people into skills your whole sales team can build.</p>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="02 Why Repskill Exists" style="background:#3B494C">
+  <div style="max-width:1366px;margin:0 auto;padding:clamp(72px,10vw,120px) clamp(20px,4.5vw,64px);display:flex;flex-wrap:wrap;gap:48px 88px;align-items:center">
+    <div style="flex:1 1 440px;display:flex;flex-direction:column;gap:20px">
+      <span style="font-size:13px;font-weight:700;letter-spacing:0.14em;color:#49B8D1">WHY REPSKILL EXISTS</span>
+      <p style="margin:0;font-size:clamp(24px,2.6vw,32px);line-height:1.35;font-weight:700;color:#FFFFFF;text-wrap:pretty">Great sales expertise should not remain locked inside a few top performers.</p>
+      <p style="margin:0;font-size:18px;line-height:1.6;color:#E8EAEB;text-wrap:pretty">Repskill helps organizations capture, structure, practice, and scale that expertise across the team.</p>
+    </div>
+    <div style="flex:1 1 320px;display:flex;flex-direction:column;gap:6px">
+      <span style="font-size:clamp(34px,4.4vw,56px);font-weight:800;letter-spacing:-0.03em;color:#FFFFFF">Expertise</span>
+      <span style="font-size:24px;color:#49B8D1;padding-left:6px">↓</span>
+      <span style="font-size:clamp(34px,4.4vw,56px);font-weight:800;letter-spacing:-0.03em;color:#49B8D1">Capability</span>
+      <span style="font-size:24px;color:#49B8D1;padding-left:6px">↓</span>
+      <span style="font-size:clamp(34px,4.4vw,56px);font-weight:800;letter-spacing:-0.03em;color:#FF6D00">Performance</span>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="03-05 Purpose / Vision / Mission" style="background:#FFFFFF">
+  <div style="max-width:1366px;margin:0 auto;padding:clamp(72px,10vw,120px) clamp(20px,4.5vw,64px);display:flex;flex-direction:column">
+    <sc-for list="{{ pvm }}" as="p" hint-placeholder-count="3">
+      <div style="display:flex;flex-wrap:wrap;gap:12px 48px;padding:clamp(28px,4vw,44px) 0;border-top:1px solid #E8EAEB">
+        <span style="flex:0 0 200px;font-size:13px;font-weight:700;letter-spacing:0.14em;color:#087C8C;padding-top:10px">{{ p.n }} · {{ p.k }}</span>
+        <p style="flex:1 1 480px;margin:0;font-size:clamp(24px,3vw,38px);line-height:1.25;font-weight:700;letter-spacing:-0.02em;color:#212121;text-wrap:balance">{{ p.t }}</p>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section data-screen-label="06 Our Philosophy" style="background:#F6F7F7">
+  <div style="max-width:1366px;margin:0 auto;padding:clamp(72px,10vw,120px) clamp(20px,4.5vw,64px)">
+    <div style="display:flex;flex-direction:column;gap:16px;max-width:720px"><span style="font-size:13px;font-weight:700;letter-spacing:0.14em;color:#087C8C">OUR PHILOSOPHY</span><h2 style="margin:0;font-size:clamp(28px,3vw,36px);line-height:1.12;font-weight:700;letter-spacing:-0.02em;color:#212121">Mentor × Builder</h2><p style="margin:0;font-size:18px;line-height:1.6;color:#3B494C;text-wrap:pretty">Repskill should feel like a knowledgeable mentor that helps organizations systematically build sales capability at scale.</p></div>
+    <div style="margin-top:clamp(32px,4vw,48px);display:grid;grid-template-columns:{{ g2 }};gap:16px;position:relative">
+      <div style="padding:clamp(24px,3vw,36px);border-radius:20px;background:#FFFFFF;display:flex;flex-direction:column;gap:16px">
+        <span style="font-size:13px;font-weight:700;letter-spacing:0.14em;color:#087C8C">THE MENTOR</span>
+        <span style="font-size:clamp(22px,2.2vw,28px);line-height:1.25;font-weight:700;color:#212121">Guide people to become better at what they do.</span>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px"><sc-for list="{{ mentor }}" as="t"><span style="font-size:13px;font-weight:600;color:#087C8C;background:#EEF9FB;border-radius:6px;padding:6px 10px">{{ t }}</span></sc-for></div>
+      </div>
+      <div style="padding:clamp(24px,3vw,36px);border-radius:20px;background:#3B494C;display:flex;flex-direction:column;gap:16px">
+        <span style="font-size:13px;font-weight:700;letter-spacing:0.14em;color:#FF6D00">THE BUILDER</span>
+        <span style="font-size:clamp(22px,2.2vw,28px);line-height:1.25;font-weight:700;color:#FFFFFF">Build sales capability systematically at scale.</span>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px"><sc-for list="{{ builder }}" as="t"><span style="font-size:13px;font-weight:600;color:#FFFFFF;background:rgba(255,255,255,0.1);border-radius:6px;padding:6px 10px">{{ t }}</span></sc-for></div>
+      </div>
+    </div>
+    <div style="margin-top:16px;display:grid;grid-template-columns:{{ g6 }};gap:10px">
+      <sc-for list="{{ personality }}" as="p" hint-placeholder-count="6"><div style="padding:18px;border-radius:14px;background:#FFFFFF;display:flex;flex-direction:column;gap:6px"><span style="font-size:13px;font-weight:800;letter-spacing:0.1em;color:#212121">{{ p.t }}</span><span style="font-size:13.5px;line-height:1.45;color:#3B494C">{{ p.d }}</span></div></sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="07 How We Think About Sales Capability" style="background:#FFFFFF">
+  <div style="max-width:1366px;margin:0 auto;padding:clamp(72px,10vw,120px) clamp(20px,4.5vw,64px)">
+    <div style="display:flex;flex-direction:column;gap:16px;max-width:760px"><span style="font-size:13px;font-weight:700;letter-spacing:0.14em;color:#087C8C">HOW WE THINK ABOUT SALES CAPABILITY</span><h2 style="margin:0;font-size:clamp(28px,3vw,36px);line-height:1.12;font-weight:700;letter-spacing:-0.02em;color:#212121">Capture expertise. Build skills. Scale capability.</h2></div>
+    <div style="margin-top:clamp(32px,4vw,48px);display:grid;grid-template-columns:{{ g5 }};gap:12px">
+      <sc-for list="{{ stages }}" as="s" hint-placeholder-count="5">
+        <div style="padding:22px;border-radius:14px;border:1px solid #E8EAEB;border-top:3px solid {{ s.c }};display:flex;flex-direction:column;gap:10px"><span style="font-size:13px;font-weight:700;color:#3B494C">{{ s.n }}</span><span style="font-size:20px;font-weight:800;letter-spacing:0.02em;color:{{ s.tc }}">{{ s.t }}</span><span style="font-size:14px;line-height:1.5;color:#3B494C">{{ s.d }}</span></div>
+      </sc-for>
+    </div>
+    <div style="margin-top:32px;display:flex;flex-wrap:wrap;gap:12px 24px">
+      <a href="Features.dc.html" style="display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:600;color:#087C8C" style-hover="color:#3B494C">How Repskill works<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+      <a href="Case Studies.dc.html" style="display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:600;color:#087C8C" style-hover="color:#3B494C">View Case Studies<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+    </div>
+  </div>
+</section>
+
+<dc-import name="FinalCTA" hint-size="100%,380px"></dc-import>
+<dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280 };
+  componentDidMount() { this.onR = () => this.setState({ w: window.innerWidth }); window.addEventListener('resize', this.onR); }
+  componentWillUnmount() { window.removeEventListener('resize', this.onR); }
+  renderVals() {
+    const w = this.state.w, c = n => `repeat(${n},minmax(0,1fr))`;
+    return {
+      pvm: [{ n: '03', k: 'PURPOSE', t: 'Make great sales expertise scalable.' }, { n: '04', k: 'VISION', t: 'A world where great sales expertise can be learned, practiced, and scaled.' }, { n: '05', k: 'MISSION', t: 'Help organizations capture their best sales knowledge and turn it into continuous learning, practice, and coaching.' }],
+      mentor: ['Knowledgeable', 'Supportive', 'Experienced', 'Guiding'],
+      builder: ['Structured', 'Scalable', 'Practical', 'Performance-oriented'],
+      personality: [['SMART', 'Intelligent, knowledgeable, credible.'], ['PRACTICAL', 'Focused on real-world application.'], ['HUMAN', 'Supportive technology, not robotic.'], ['CONFIDENT', 'Professional, clear, and credible.'], ['ENCOURAGING', 'Improves without judgment.'], ['ACTION-ORIENTED', 'Always moves users toward the next step.']].map(([t, d]) => ({ t, d })),
+      stages: [['CAPTURE', 'Extract company & top-performer knowledge'], ['LEARN', 'Turn knowledge into structured learning'], ['PRACTICE', 'Simulate realistic sales situations'], ['REFLECT', 'Understand what happened and why'], ['IMPROVE', 'Build capability across the team']].map(([t, d], i) => ({ t, d, n: '0' + (i + 1), c: i === 4 ? '#FF6D00' : '#087C8C', tc: i === 4 ? '#FF6D00' : '#212121' })),
+      g2: c(w >= 760 ? 2 : 1), g5: c(w >= 1000 ? 5 : w >= 600 ? 2 : 1), g6: c(w >= 1000 ? 6 : w >= 600 ? 3 : 2),
+    };
+  }
+}
+</script>
+</body>
+</html>

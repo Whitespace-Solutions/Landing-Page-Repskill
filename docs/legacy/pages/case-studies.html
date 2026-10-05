@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><title>Repskill Case Studies — See Expertise Become Capability</title><meta name="description" content="See how organizations use Repskill to capture knowledge, build skills, and improve sales capability."><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style>body{margin:0;font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#212121;background:#FFFFFF;-webkit-font-smoothing:antialiased}a{color:#087C8C;text-decoration:none}a:hover{color:#3B494C}*{box-sizing:border-box}</style></helmet>
+<div style="font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:#FFFFFF">
+<dc-import name="SiteHeader" active="cases" hint-size="100%,72px"></dc-import>
+
+<section data-screen-label="01 Hero" style="background-color:#FFFFFF;background-image:linear-gradient(rgba(232,234,235,0.6) 1px,transparent 1px),linear-gradient(90deg,rgba(232,234,235,0.6) 1px,transparent 1px);background-size:48px 48px">
+  <div style="max-width:1366px;margin:0 auto;padding:clamp(56px,8vw,104px) clamp(20px,4.5vw,64px) clamp(40px,5vw,64px)">
+    <div style="max-width:800px;display:flex;flex-direction:column;gap:22px">
+      <span style="font-size:13px;font-weight:700;letter-spacing:0.14em;color:#087C8C">CASE STUDIES</span>
+      <h1 style="margin:0;font-size:clamp(40px,5.6vw,64px);line-height:1.04;font-weight:800;letter-spacing:-0.035em;color:#212121;text-wrap:balance">See Expertise Become Capability.</h1>
+      <p style="margin:0;max-width:600px;font-size:18px;line-height:1.6;color:#3B494C;text-wrap:pretty">See how organizations turn expertise into capability with Repskill.</p>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="02 Featured Case Study" style="background:#FFFFFF">
+  <div style="max-width:1366px;margin:0 auto;padding:0 clamp(20px,4.5vw,64px) clamp(72px,9vw,112px)">
+    <div style="border-radius:24px;border:1px solid #E8EAEB;overflow:hidden;display:flex;flex-wrap:wrap;box-shadow:0 30px 60px -44px rgba(33,33,33,0.35)">
+      <div style="flex:1 1 380px;min-height:320px;background:#3B494C;position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(24px,3vw,36px);overflow:hidden">
+        <div style="position:absolute;right:-40px;top:-30px;bottom:-30px;width:200px" aria-hidden="true"><div style="position:absolute;right:90px;top:0;bottom:0;width:40px;background:#FF6D00;transform:skewX(-38deg)"></div><div style="position:absolute;right:20px;top:0;bottom:0;width:40px;background:#49B8D1;opacity:0.35;transform:skewX(-38deg)"></div></div>
+        <div style="position:relative;display:flex;align-items:center;gap:10px"><span style="font-size:12px;font-weight:700;letter-spacing:0.14em;color:#FFFFFF;background:#FF6D00;border-radius:6px;padding:5px 9px">FEATURED</span><span style="font-size:12px;font-weight:600;color:#E8EAEB">Industry · Team size</span></div>
+        <div style="position:relative;display:flex;flex-direction:column;gap:16px">
+          <span style="height:40px;width:150px;border-radius:8px;border:1.5px dashed rgba(232,234,235,0.5);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:#E8EAEB">Customer logo</span>
+          <span style="font-size:clamp(22px,2.4vw,30px);line-height:1.25;font-weight:700;color:#FFFFFF;max-width:420px;text-wrap:balance">Customer story headline: how the team turned expertise into capability.</span>
+        </div>
+      </div>
+      <div style="flex:1.3 1 440px;padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:6px">
+        <sc-for list="{{ framework }}" as="f" hint-placeholder-count="6">
+          <div style="display:grid;grid-template-columns:28px minmax(0,1fr);gap:14px;padding:12px 0;border-bottom:1px solid #F0F1F2">
+            <span style="width:28px;height:28px;border-radius:50%;background:{{ f.bg }};color:{{ f.fg }};font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center">{{ f.n }}</span>
+            <div style="display:flex;flex-direction:column;gap:6px;padding-top:4px"><span style="font-size:12px;font-weight:700;letter-spacing:0.12em;color:{{ f.tc }}">{{ f.t }}</span><span style="font-size:14.5px;line-height:1.5;color:#3B494C">{{ f.d }}</span></div>
+          </div>
+        </sc-for>
+        <div style="margin-top:14px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px">
+          <sc-for list="{{ metrics }}" as="m" hint-placeholder-count="3"><div style="border-radius:12px;border:1.5px dashed #E8EAEB;padding:14px;display:flex;flex-direction:column;gap:4px"><span style="font-size:26px;font-weight:800;color:#212121">—</span><span style="font-size:12px;line-height:1.4;color:#3B494C">{{ m }}</span></div></sc-for>
+        </div>
+        <a href="#" style="margin-top:16px;align-self:flex-start;display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:600;color:#087C8C" style-hover="color:#3B494C">Read the full story<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="03 Case Study Library" style="background:#F6F7F7">
+  <div style="max-width:1366px;margin:0 auto;padding:clamp(72px,9vw,112px) clamp(20px,4.5vw,64px)">
+    <div style="display:flex;flex-wrap:wrap;gap:20px 40px;align-items:flex-end;justify-content:space-between">
+      <div style="display:flex;flex-direction:column;gap:16px"><span style="font-size:13px;font-weight:700;letter-spacing:0.14em;color:#087C8C">CASE STUDY LIBRARY</span><h2 style="margin:0;font-size:clamp(28px,3vw,36px);line-height:1.15;font-weight:700;letter-spacing:-0.02em;color:#212121">Customer stories</h2></div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <sc-for list="{{ filters }}" as="f" hint-placeholder-count="4"><button onClick="{{ f.on }}" style="font:inherit;font-size:14px;font-weight:600;padding:9px 14px;border-radius:99px;cursor:pointer;background:{{ f.bg }};color:{{ f.fg }};border:1.5px solid {{ f.bd }}">{{ f.t }}</button></sc-for>
+      </div>
+    </div>
+    <div style="margin-top:clamp(28px,4vw,40px);display:grid;grid-template-columns:{{ g3 }};gap:16px">
+      <sc-for list="{{ library }}" as="c" hint-placeholder-count="6">
+        <a href="#" style="display:flex;flex-direction:column;gap:18px;padding:24px;border-radius:16px;background:#FFFFFF;border:1px solid transparent;color:#212121;transition:border-color .2s,transform .2s" style-hover="border-color:#3B494C;transform:translateY(-2px);color:#212121">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span style="height:28px;width:100px;border-radius:6px;background:#E8EAEB;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#3B494C">Logo</span><span style="font-size:12px;font-weight:600;color:#3B494C;border:1px solid #E8EAEB;border-radius:99px;padding:4px 10px">{{ c.ind }}</span></div>
+          <span style="font-size:19px;line-height:1.35;font-weight:700;color:#212121">Customer story title</span>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;gap:10px;align-items:baseline"><span style="width:84px;flex:none;font-size:11px;font-weight:700;letter-spacing:0.1em;color:#3B494C">CHALLENGE</span><span style="flex:1;height:6px;border-radius:3px;background:#E8EAEB"></span></div>
+            <div style="display:flex;gap:10px;align-items:baseline"><span style="width:84px;flex:none;font-size:11px;font-weight:700;letter-spacing:0.1em;color:#087C8C">SOLUTION</span><span style="font-size:13px;font-weight:600;color:#087C8C">{{ c.sol }}</span></div>
+            <div style="display:flex;gap:10px;align-items:baseline"><span style="width:84px;flex:none;font-size:11px;font-weight:700;letter-spacing:0.1em;color:#C25200">OUTCOME</span><span style="flex:1;height:6px;border-radius:3px;background:#E8EAEB"></span></div>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="04 Results / Outcomes" style="background:#FFFFFF">
+  <div style="max-width:1366px;margin:0 auto;padding:clamp(72px,9vw,112px) clamp(20px,4.5vw,64px)">
+    <div style="display:flex;flex-direction:column;gap:16px;max-width:720px"><span style="font-size:13px;font-weight:700;letter-spacing:0.14em;color:#087C8C">RESULTS / OUTCOMES</span><h2 style="margin:0;font-size:clamp(28px,3vw,36px);line-height:1.15;font-weight:700;letter-spacing:-0.02em;color:#212121">Outcomes we report, verified.</h2></div>
+    <div style="margin-top:clamp(28px,4vw,40px);display:grid;grid-template-columns:{{ g5 }};gap:12px">
+      <sc-for list="{{ outcomes }}" as="o" hint-placeholder-count="5">
+        <div style="display:flex;flex-direction:column;gap:14px;padding:22px;border-radius:14px;border:1px solid #E8EAEB;min-height:170px"><span style="font-size:32px;font-weight:800;color:#212121">—</span><span style="margin-top:auto;font-size:15px;font-weight:700;color:#212121">{{ o }}</span><span style="font-size:12px;font-weight:600;color:#087C8C">Verified result</span></div>
+      </sc-for>
+    </div>
+    <p style="margin:16px 0 0;font-size:13px;color:#3B494C">Placeholder values. Publish verified outcomes only.</p>
+  </div>
+</section>
+
+<dc-import name="FinalCTA" title="See What Repskill Could Do for Your Organization." body="Tell us a little about your organization and what you'd like to improve." cta="Request Demo" hint-size="100%,380px"></dc-import>
+<dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, f: 'All' };
+  componentDidMount() { this.onR = () => this.setState({ w: window.innerWidth }); window.addEventListener('resize', this.onR); }
+  componentWillUnmount() { window.removeEventListener('resize', this.onR); }
+  renderVals() {
+    const w = this.state.w, c = n => `repeat(${n},minmax(0,1fr))`;
+    const framework = [['Context', 'Company, team, and sales motion.'], ['Expertise challenge', 'Where expertise was concentrated.'], ['Capability gap', 'What the wider team needed to build.'], ['Repskill approach', 'Which Repskill capabilities were used.'], ['Implementation', 'How the rollout worked.'], ['Outcome', 'Verified results only.']]
+      .map(([t, d], i) => ({ t: t.toUpperCase(), d, n: i + 1, bg: i === 5 ? '#FF6D00' : i === 3 ? '#087C8C' : '#E8EAEB', fg: i === 5 || i === 3 ? '#FFFFFF' : '#3B494C', tc: i === 5 ? '#C25200' : i === 3 ? '#087C8C' : '#3B494C' }));
+    const all = [{ ind: 'Industry A', sol: 'Scenario Studio' }, { ind: 'Industry B', sol: 'Extraction Studio' }, { ind: 'Industry A', sol: 'Learning Path' }, { ind: 'Industry C', sol: 'Reflection Studio' }, { ind: 'Industry B', sol: 'Scenario Studio' }, { ind: 'Industry C', sol: 'Learning Path' }];
+    const f = this.state.f;
+    const filters = ['All', 'Industry A', 'Industry B', 'Industry C'].map(t => ({ t, on: () => this.setState({ f: t }), bg: f === t ? '#3B494C' : '#FFFFFF', fg: f === t ? '#FFFFFF' : '#3B494C', bd: f === t ? '#3B494C' : '#E8EAEB' }));
+    return {
+      framework, filters, library: f === 'All' ? all : all.filter(x => x.ind === f),
+      metrics: ['Capability outcome', 'Practice outcome', 'Business outcome'],
+      outcomes: ['Capability improvement', 'Learning engagement', 'Practice activity', 'Coaching impact', 'Business / operational outcomes'],
+      g3: c(w >= 960 ? 3 : w >= 640 ? 2 : 1), g5: c(w >= 1000 ? 5 : w >= 600 ? 2 : 1),
+    };
+  }
+}
+</script>
+</body>
+</html>

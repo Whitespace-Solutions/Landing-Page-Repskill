@@ -1,0 +1,60 @@
+import { Mockup } from "@/components/mockups/mockup";
+import { Reveal, Stagger, StaggerItem } from "@/components/motion/reveal";
+import { ButtonLink } from "@/components/ui/button";
+import { Container } from "@/components/ui/container";
+import { Eyebrow } from "@/components/ui/eyebrow";
+import { HighlightText } from "@/components/ui/highlight-text";
+import type { PageHeroData } from "@/content/types";
+import { cn } from "@/lib/cn";
+
+/** Hero untuk halaman turunan: teks kiri, mockup kanan (atau teks saja bila tanpa visual). */
+export function PageHero({ eyebrow, title, highlight, lead, primary, secondary, visual }: PageHeroData) {
+  return (
+    <section className="bg-grid relative overflow-hidden bg-white">
+      <div
+        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/0 from-40% to-white"
+        aria-hidden
+      />
+      <Container
+        className={cn(
+          "relative grid items-center gap-12 pt-14 pb-16 sm:pt-20 lg:gap-16 lg:pt-24 lg:pb-24",
+          visual && "lg:grid-cols-[1.05fr_1fr]",
+        )}
+      >
+        <Stagger className="flex max-w-[720px] flex-col gap-6" stagger={0.1}>
+          <StaggerItem>
+            <Eyebrow accent>{eyebrow}</Eyebrow>
+          </StaggerItem>
+          <StaggerItem>
+            <h1 className="text-display text-balance">
+              <HighlightText text={title} highlight={highlight} />
+            </h1>
+          </StaggerItem>
+          <StaggerItem>
+            <p className="max-w-[620px] text-lead text-pretty text-brand-slate">{lead}</p>
+          </StaggerItem>
+          {(primary || secondary) && (
+            <StaggerItem className="mt-2 flex flex-wrap gap-3">
+              {primary && (
+                <ButtonLink href={primary.href} size="lg" withArrow>
+                  {primary.label}
+                </ButtonLink>
+              )}
+              {secondary && (
+                <ButtonLink href={secondary.href} size="lg" variant="outline">
+                  {secondary.label}
+                </ButtonLink>
+              )}
+            </StaggerItem>
+          )}
+        </Stagger>
+
+        {visual && (
+          <Reveal delay={0.35} className="w-full">
+            <Mockup data={visual} />
+          </Reveal>
+        )}
+      </Container>
+    </section>
+  );
+}

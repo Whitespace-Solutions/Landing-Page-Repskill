@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style>body{margin:0;font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#212121;background:#FFFFFF;-webkit-font-smoothing:antialiased}a{color:#087C8C;text-decoration:none}a:hover{color:#3B494C}*{box-sizing:border-box}</style></helmet>
+<div style="font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:#FFFFFF">
+<dc-import name="SiteHeader" active="{{ active }}" hint-size="100%,72px"></dc-import>
+
+<sc-for list="{{ sections }}" as="s" hint-placeholder-count="3">
+<section id="{{ s.id }}" data-screen-label="{{ s.label }}" style="background-color:{{ s.bg }};background-image:{{ s.bgImg }};background-size:48px 48px;scroll-margin-top:72px">
+  <div style="max-width:1366px;margin:0 auto;padding:{{ s.pad }} clamp(20px,4.5vw,64px)">
+
+    <sc-if value="{{ s.isSplit }}">
+      <div style="display:flex;flex-wrap:wrap;flex-direction:{{ s.dir }};gap:clamp(40px,6vw,80px);align-items:center">
+        <div style="flex:1 1 400px;min-width:0;display:flex;flex-direction:column;gap:20px">
+          <sc-if value="{{ s.isHero }}"><a href="{{ s.parentHref }}" style="align-self:flex-start;display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#3B494C" style-hover="color:#087C8C"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg>{{ s.parent }}</a></sc-if>
+          <span style="display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:0.14em;color:#087C8C">{{ s.kicker }}</span>
+          <sc-if value="{{ s.isHero }}"><h1 style="margin:0;font-size:clamp(34px,4.2vw,48px);line-height:1.08;font-weight:800;letter-spacing:-0.03em;color:#212121;text-wrap:balance">{{ s.title }}</h1></sc-if>
+          <sc-if value="{{ s.notHero }}"><h2 style="margin:0;font-size:clamp(28px,3vw,36px);line-height:1.15;font-weight:700;letter-spacing:-0.02em;color:#212121;text-wrap:balance">{{ s.title }}</h2></sc-if>
+          <p style="margin:0;font-size:18px;line-height:1.6;color:#3B494C;text-wrap:pretty;max-width:560px">{{ s.body }}</p>
+          <sc-if value="{{ s.micro }}"><p style="margin:0;font-size:20px;font-weight:700;color:#087C8C">{{ s.micro }}</p></sc-if>
+          <sc-if value="{{ s.points }}"><div style="display:flex;flex-direction:column;gap:10px"><sc-for list="{{ s.points }}" as="pt"><div style="display:flex;gap:10px;align-items:flex-start;font-size:15.5px;line-height:1.5;color:#212121"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#087C8C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:2px"><path d="M5 12l5 5L20 7"></path></svg>{{ pt }}</div></sc-for></div></sc-if>
+          <sc-if value="{{ s.isHero }}">
+            <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:8px">
+              <a href="Request Demo.dc.html" style="display:inline-flex;align-items:center;gap:10px;background:#FF6D00;color:#FFFFFF;font-size:16px;font-weight:600;padding:16px 26px;border-radius:10px" style-hover="background:#E86300;color:#FFFFFF" style-active="transform:translateY(1px)">Request Demo<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+              <a href="{{ s.secHref }}" style="display:inline-flex;align-items:center;gap:10px;background:#FFFFFF;color:#212121;font-size:16px;font-weight:600;padding:15px 24px;border-radius:10px;border:1.5px solid #3B494C" style-hover="background:#3B494C;color:#FFFFFF">{{ s.sec }}</a>
+            </div>
+          </sc-if>
+          <sc-if value="{{ s.link }}"><a href="{{ s.link.href }}" style="align-self:flex-start;display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:600;color:#087C8C" style-hover="color:#3B494C">{{ s.link.t }}<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></sc-if>
+        </div>
+
+        <div style="flex:1 1 440px;min-width:0">
+          <!-- chain -->
+          <sc-if value="{{ s.v.chain }}">
+            <div style="background:#FFFFFF;border:1px solid #E8EAEB;border-radius:20px;padding:clamp(20px,3vw,32px);box-shadow:0 30px 60px -40px rgba(33,33,33,0.3)">
+              <span style="display:block;font-size:12px;font-weight:700;letter-spacing:0.14em;color:#3B494C;margin-bottom:18px">{{ s.vd.title }}</span>
+              <sc-for list="{{ s.vd.items }}" as="it">
+                <div style="display:flex;gap:16px">
+                  <div style="display:flex;flex-direction:column;align-items:center"><span style="width:36px;height:36px;border-radius:50%;flex:none;background:{{ it.bg }};color:{{ it.fg }};border:1.5px solid {{ it.bd }};font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center">{{ it.n }}</span><span style="flex:1;width:2px;min-height:12px;background:{{ it.line }}"></span></div>
+                  <div style="padding:7px 0 20px;display:flex;flex-direction:column;gap:2px"><span style="font-size:16px;font-weight:700;letter-spacing:0.06em;color:{{ it.tc }}">{{ it.t }}</span><sc-if value="{{ it.d }}"><span style="font-size:14px;line-height:1.45;color:#3B494C">{{ it.d }}</span></sc-if></div>
+                </div>
+              </sc-for>
+              <sc-if value="{{ s.vd.loop }}"><div style="display:flex;align-items:center;gap:10px;margin-top:2px;padding:12px 14px;border-radius:10px;background:#EEF9FB;font-size:13.5px;font-weight:600;color:#087C8C"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M3 12a9 9 0 0 1 15.5-6.2L21 8M21 3v5h-5M21 12a9 9 0 0 1-15.5 6.2L3 16M3 21v-5h5"></path></svg>{{ s.vd.loop }}</div></sc-if>
+            </div>
+          </sc-if>
+          <!-- quote -->
+          <sc-if value="{{ s.v.quote }}">
+            <div style="background:#FFFFFF;border:1px solid #E8EAEB;border-radius:20px;padding:clamp(20px,3vw,32px);display:flex;flex-direction:column;gap:20px;box-shadow:0 30px 60px -40px rgba(33,33,33,0.3)">
+              <div style="display:flex;align-items:center;gap:14px"><div style="width:48px;height:48px;border-radius:50%;background:#3B494C;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-weight:700;box-shadow:0 0 0 4px #FFFFFF,0 0 0 6px #FF6D00">TP</div><div style="display:flex;flex-direction:column;gap:3px"><span style="font-size:15px;font-weight:700;color:#212121">Top performer</span><span style="font-size:13px;color:#3B494C">{{ s.vd.role }}</span></div><span style="margin-left:auto;font-size:12px;font-weight:700;color:#087C8C;background:#EEF9FB;border-radius:99px;padding:5px 10px">Capturing</span></div>
+              <p style="margin:0;font-size:clamp(17px,1.6vw,20px);line-height:1.55;color:#212121;font-weight:500"><sc-for list="{{ s.vd.parts }}" as="q"><span style="background:{{ q.bg }};border-radius:4px;padding:1px 2px">{{ q.t }}</span></sc-for></p>
+              <div style="display:flex;flex-wrap:wrap;gap:8px;padding-top:16px;border-top:1px solid #E8EAEB"><span style="font-size:12px;font-weight:600;color:#3B494C;padding:6px 0">Extracted:</span><sc-for list="{{ s.vd.tags }}" as="tg"><span style="font-size:12.5px;font-weight:600;color:#087C8C;background:#DDF3F7;border-radius:6px;padding:6px 10px">{{ tg }}</span></sc-for></div>
+            </div>
+          </sc-if>
+          <!-- structure -->
+          <sc-if value="{{ s.v.structure }}">
+            <div style="background:#FFFFFF;border:1px solid #E8EAEB;border-radius:20px;overflow:hidden;box-shadow:0 30px 60px -40px rgba(33,33,33,0.3)">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid #E8EAEB"><span style="font-size:12px;font-weight:700;letter-spacing:0.14em;color:#3B494C">STRUCTURED KNOWLEDGE</span><span style="font-size:12px;font-weight:700;color:#3B494C;background:#E8EAEB;border-radius:99px;padding:5px 10px">{{ s.vd.status }}</span></div>
+              <sc-for list="{{ s.vd.fields }}" as="f">
+                <div style="display:grid;grid-template-columns:minmax(96px,130px) minmax(0,1fr);gap:16px;padding:16px 24px;border-bottom:1px solid #F0F1F2"><span style="font-size:12px;font-weight:700;letter-spacing:0.08em;color:#087C8C;padding-top:2px">{{ f.k }}</span><span style="font-size:15px;line-height:1.5;color:#212121">{{ f.v }}</span></div>
+              </sc-for>
+            </div>
+          </sc-if>
+          <!-- governance -->
+          <sc-if value="{{ s.v.governance }}">
+            <div style="background:#FFFFFF;border:1px solid #E8EAEB;border-radius:20px;padding:clamp(20px,3vw,28px);display:flex;flex-direction:column;gap:10px;box-shadow:0 30px 60px -40px rgba(33,33,33,0.3)">
+              <sc-for list="{{ s.vd.items }}" as="g">
+                <div style="display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:12px;background:{{ g.bg }};border:1.5px solid {{ g.bd }}">
+                  <span style="width:30px;height:30px;border-radius:50%;flex:none;background:{{ g.dot }};color:#FFFFFF;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center">{{ g.n }}</span>
+                  <span style="flex:1;font-size:15.5px;font-weight:700;color:{{ g.tc }}">{{ g.t }}</span>
+                  <span style="font-size:12px;font-weight:700;color:{{ g.sc }}">{{ g.s }}</span>
+                </div>
+              </sc-for>
+              <span style="display:flex;align-items:center;gap:8px;margin-top:6px;font-size:13.5px;font-weight:600;color:#3B494C"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>Nothing enters the Knowledge Universe without approval.</span>
+            </div>
+          </sc-if>
+          <!-- ku -->
+          <sc-if value="{{ s.v.ku }}">
+            <div style="background:#FFFFFF;border:1px solid #E8EAEB;border-radius:20px;padding:clamp(20px,3vw,28px);display:flex;flex-direction:column;align-items:stretch;gap:0;box-shadow:0 30px 60px -40px rgba(33,33,33,0.3)">
+              <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px"><sc-for list="{{ s.vd.sources }}" as="src"><span style="font-size:13.5px;font-weight:600;color:#212121;border:1px solid #E8EAEB;border-radius:10px;padding:11px 12px;text-align:center">{{ src }}</span></sc-for></div>
+              <div style="display:flex;justify-content:center;padding:8px 0"><span style="display:flex;align-items:center;gap:8px;font-size:11.5px;font-weight:700;letter-spacing:0.1em;color:#3B494C"><span style="width:2px;height:22px;background:#E8EAEB"></span>REVIEW · CURATION · APPROVAL<span style="width:2px;height:22px;background:#E8EAEB"></span></span></div>
+              <div style="position:relative;overflow:hidden;background:#087C8C;border-radius:14px;padding:22px;color:#FFFFFF;text-align:center"><div style="position:absolute;left:50%;top:50%;width:260px;height:260px;margin:-130px 0 0 -130px;border-radius:50%;border:1px solid rgba(221,243,247,0.25)"></div><span style="position:relative;display:block;font-size:12px;font-weight:700;letter-spacing:0.14em;color:#DDF3F7">KNOWLEDGE UNIVERSE</span><span style="position:relative;display:block;margin-top:6px;font-size:18px;font-weight:700">{{ s.vd.center }}</span></div>
+              <div style="display:flex;justify-content:center;padding:8px 0"><span style="width:2px;height:22px;background:#49B8D1"></span></div>
+              <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px"><sc-for list="{{ s.vd.outs }}" as="o"><span style="font-size:13.5px;font-weight:700;color:#087C8C;background:#EEF9FB;border-radius:10px;padding:11px 8px;text-align:center">{{ o }}</span></sc-for></div>
+            </div>
+          </sc-if>
+          <!-- list -->
+          <sc-if value="{{ s.v.list }}">
+            <div style="background:#FFFFFF;border:1px solid #E8EAEB;border-radius:20px;overflow:hidden;box-shadow:0 30px 60px -40px rgba(33,33,33,0.3)">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 24px;border-bottom:1px solid #E8EAEB"><span style="font-size:15px;font-weight:700;color:#212121">{{ s.vd.title }}</span><span style="font-size:12px;font-weight:700;color:#087C8C;background:#EEF9FB;border-radius:99px;padding:5px 10px">{{ s.vd.meta }}</span></div>
+              <sc-if value="{{ s.vd.progress }}"><div style="padding:14px 24px 0"><div style="height:6px;border-radius:3px;background:#E8EAEB;overflow:hidden"><div style="height:6px;width:{{ s.vd.progress }};background:#087C8C;border-radius:3px"></div></div></div></sc-if>
+              <div style="padding:8px 12px 12px">
+                <sc-for list="{{ s.vd.items }}" as="li">
+                  <div style="display:flex;align-items:center;gap:14px;padding:13px 12px;border-radius:10px;background:{{ li.rowBg }}">
+                    <span style="width:22px;height:22px;border-radius:{{ li.rad }};flex:none;background:{{ li.bg }};border:2px solid {{ li.bd }};display:flex;align-items:center;justify-content:center"><sc-if value="{{ li.check }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"></path></svg></sc-if></span>
+                    <span style="flex:1;font-size:15px;font-weight:{{ li.fw }};color:{{ li.tc }}">{{ li.t }}</span>
+                    <span style="font-size:12.5px;font-weight:600;color:{{ li.mc }};white-space:nowrap">{{ li.m }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </sc-if>
+          <!-- chat -->
+          <sc-if value="{{ s.v.chat }}">
+            <div style="background:#FFFFFF;border:1px solid #E8EAEB;border-radius:20px;overflow:hidden;box-shadow:0 30px 60px -40px rgba(33,33,33,0.3)">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 22px;border-bottom:1px solid #E8EAEB"><div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:11.5px;font-weight:700;letter-spacing:0.12em;color:#087C8C">SCENARIO</span><span style="font-size:15px;font-weight:700;color:#212121">{{ s.vd.title }}</span></div><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#087C8C;background:#EEF9FB;border-radius:99px;padding:5px 10px"><span style="width:7px;height:7px;border-radius:50%;background:#087C8C"></span>AI buyer</span></div>
+              <div style="padding:20px 22px;display:flex;flex-direction:column;gap:10px;background:#F6F7F7">
+                <sc-for list="{{ s.vd.msgs }}" as="m">
+                  <div style="align-self:{{ m.al }};max-width:82%;background:{{ m.bg }};color:#212121;border-radius:{{ m.rad }};padding:11px 14px;font-size:14.5px;line-height:1.45"><span style="display:block;font-size:11px;font-weight:700;letter-spacing:0.08em;color:{{ m.lc }};margin-bottom:3px">{{ m.who }}</span>{{ m.t }}</div>
+                </sc-for>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:8px;padding:14px 22px;border-top:1px solid #E8EAEB"><sc-for list="{{ s.vd.chips }}" as="c"><span style="font-size:12.5px;font-weight:600;color:{{ c.fg }};background:{{ c.bg }};border-radius:6px;padding:6px 10px">{{ c.t }}</span></sc-for></div>
+            </div>
+          </sc-if>
+          <!-- bars -->
+          <sc-if value="{{ s.v.bars }}">
+            <div style="background:#FFFFFF;border:1px solid #E8EAEB;border-radius:20px;padding:clamp(20px,3vw,28px);display:flex;flex-direction:column;gap:18px;box-shadow:0 30px 60px -40px rgba(33,33,33,0.3)">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:12px"><span style="font-size:15px;font-weight:700;color:#212121">{{ s.vd.title }}</span><span style="font-size:12px;font-weight:600;color:#3B494C">{{ s.vd.meta }}</span></div>
+              <sc-for list="{{ s.vd.items }}" as="b">
+                <div style="display:flex;flex-direction:column;gap:7px"><div style="display:flex;justify-content:space-between;gap:12px"><span style="font-size:14px;font-weight:600;color:#212121">{{ b.t }}</span><span style="font-size:12px;font-weight:700;letter-spacing:0.08em;color:{{ b.c }}">{{ b.tag }}</span></div><div style="height:8px;border-radius:4px;background:#E8EAEB;overflow:hidden"><div style="height:8px;width:{{ b.v }};background:{{ b.c }};border-radius:4px"></div></div></div>
+              </sc-for>
+              <sc-if value="{{ s.vd.note }}"><div style="display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-radius:12px;background:#FFF4EB;border:1px solid rgba(255,109,0,0.3)"><span style="font-size:11px;font-weight:800;letter-spacing:0.1em;color:#FFFFFF;background:#FF6D00;border-radius:5px;padding:4px 7px;flex:none">{{ s.vd.noteLabel }}</span><span style="font-size:14px;line-height:1.5;color:#212121">{{ s.vd.note }}</span></div></sc-if>
+            </div>
+          </sc-if>
+          <!-- team -->
+          <sc-if value="{{ s.v.team }}">
+            <div style="background:#FFFFFF;border:1px solid #E8EAEB;border-radius:20px;padding:clamp(20px,3vw,28px);display:flex;flex-direction:column;gap:18px;box-shadow:0 30px 60px -40px rgba(33,33,33,0.3)">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:12px"><span style="font-size:15px;font-weight:700;color:#212121">{{ s.vd.title }}</span><span style="font-size:12px;font-weight:600;color:#3B494C">{{ s.vd.meta }}</span></div>
+              <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px 10px">
+                <sc-for list="{{ team }}" as="m"><div style="display:flex;flex-direction:column;align-items:center;gap:7px"><div style="width:40px;height:40px;border-radius:50%;background:#FFFFFF;border:1.5px solid #3B494C;color:#3B494C;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center">{{ m.i }}</div><div style="width:44px;height:5px;border-radius:3px;background:#E8EAEB;overflow:hidden"><div style="height:5px;width:{{ m.w }};background:{{ m.c }}"></div></div></div></sc-for>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:8px 18px;font-size:12.5px;color:#3B494C"><span style="display:inline-flex;align-items:center;gap:6px"><span style="width:10px;height:4px;border-radius:2px;background:#087C8C"></span>Capability</span><span style="display:inline-flex;align-items:center;gap:6px"><span style="width:10px;height:4px;border-radius:2px;background:#FF6D00"></span>Coaching focus</span></div>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s.isCards }}">
+      <div style="display:flex;flex-direction:column;gap:20px;max-width:760px">
+        <span style="font-size:13px;font-weight:700;letter-spacing:0.14em;color:#087C8C">{{ s.kicker }}</span>
+        <h2 style="margin:0;font-size:clamp(28px,3vw,36px);line-height:1.15;font-weight:700;letter-spacing:-0.02em;color:#212121;text-wrap:balance">{{ s.title }}</h2>
+        <sc-if value="{{ s.body }}"><p style="margin:0;font-size:18px;line-height:1.6;color:#3B494C;text-wrap:pretty">{{ s.body }}</p></sc-if>
+      </div>
+      <div style="margin-top:clamp(32px,4vw,48px);display:grid;grid-template-columns:{{ g3 }};gap:16px">
+        <sc-for list="{{ s.cards }}" as="c">
+          <div style="display:flex;flex-direction:column;gap:14px;padding:26px;border-radius:16px;background:#FFFFFF;border:1px solid #E8EAEB">
+            <span style="width:36px;height:36px;border-radius:10px;background:{{ c.ib }};color:{{ c.ic }};font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center">{{ c.n }}</span>
+            <span style="font-size:19px;line-height:1.35;font-weight:700;color:#212121;text-wrap:pretty">{{ c.t }}</span>
+            <sc-if value="{{ c.d }}"><span style="font-size:15px;line-height:1.55;color:#3B494C">{{ c.d }}</span></sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s.isSteps }}">
+      <div style="display:flex;flex-direction:column;gap:20px;max-width:760px">
+        <span style="font-size:13px;font-weight:700;letter-spacing:0.14em;color:{{ s.kc }}">{{ s.kicker }}</span>
+        <h2 style="margin:0;font-size:clamp(28px,3vw,36px);line-height:1.15;font-weight:700;letter-spacing:-0.02em;color:{{ s.tc }};text-wrap:balance">{{ s.title }}</h2>
+        <sc-if value="{{ s.body }}"><p style="margin:0;font-size:18px;line-height:1.6;color:{{ s.bc }};text-wrap:pretty">{{ s.body }}</p></sc-if>
+      </div>
+      <div style="margin-top:clamp(36px,5vw,56px);display:grid;grid-template-columns:{{ g5 }};gap:0">
+        <sc-for list="{{ s.steps }}" as="st">
+          <div style="position:relative;padding:26px 20px 8px 0;border-top:2px solid {{ st.line }};display:flex;flex-direction:column;gap:10px">
+            <span style="position:absolute;top:-7px;left:0;width:12px;height:12px;border-radius:50%;background:{{ st.dot }}"></span>
+            <span style="font-size:13px;font-weight:700;color:{{ st.nc }}">{{ st.n }}</span>
+            <span style="font-size:19px;line-height:1.3;font-weight:700;color:{{ st.tc }}">{{ st.t }}</span>
+            <sc-if value="{{ st.d }}"><span style="font-size:14.5px;line-height:1.5;color:{{ st.dc }}">{{ st.d }}</span></sc-if>
+          </div>
+        </sc-for>
+      </div>
+      <sc-if value="{{ s.note }}"><p style="margin:28px 0 0;font-size:13px;color:{{ s.bc }}">{{ s.note }}</p></sc-if>
+    </sc-if>
+
+  </div>
+</section>
+</sc-for>
+
+<!-- Related -->
+<section data-screen-label="Related" style="background:#FFFFFF">
+  <div style="max-width:1366px;margin:0 auto;padding:clamp(72px,10vw,112px) clamp(20px,4.5vw,64px)">
+    <div style="display:flex;flex-direction:column;gap:20px;max-width:760px">
+      <span style="font-size:13px;font-weight:700;letter-spacing:0.14em;color:#087C8C">{{ relKicker }}</span>
+      <h2 style="margin:0;font-size:clamp(28px,3vw,36px);line-height:1.15;font-weight:700;letter-spacing:-0.02em;color:#212121">{{ relTitle }}</h2>
+    </div>
+    <div style="margin-top:clamp(32px,4vw,48px);display:grid;grid-template-columns:{{ g3 }};gap:16px">
+      <sc-for list="{{ related }}" as="r">
+        <a href="{{ r.href }}" style="display:flex;flex-direction:column;gap:10px;padding:26px;border-radius:16px;background:#F6F7F7;color:#212121;border:1px solid transparent;transition:border-color .2s,background .2s" style-hover="border-color:#49B8D1;background:#FFFFFF;color:#212121">
+          <span style="font-size:11.5px;font-weight:700;letter-spacing:0.12em;color:#087C8C">{{ r.tag }}</span>
+          <span style="font-size:21px;font-weight:700;color:#212121">{{ r.t }}</span>
+          <span style="font-size:15px;line-height:1.55;color:#3B494C">{{ r.d }}</span>
+          <span style="margin-top:8px;display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:#3B494C"><span>Explore</span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+        </a>
+      </sc-for>
+    </div>
+    <a href="Case Studies.dc.html" style="margin-top:16px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;padding:22px 26px;border-radius:16px;border:1px solid #E8EAEB;color:#212121" style-hover="border-color:#3B494C;color:#212121">
+      <div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:11.5px;font-weight:700;letter-spacing:0.12em;color:#FF6D00">PROOF</span><span style="font-size:18px;font-weight:700;color:#212121">See Expertise Become Capability.</span></div>
+      <span style="display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:600;color:#3B494C">View Case Studies<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+    </a>
+  </div>
+</section>
+
+<dc-import name="FinalCTA" hint-size="100%,380px"></dc-import>
+<dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;page&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;sales-teams&quot;,&quot;sales-managers&quot;,&quot;head-of-sales&quot;,&quot;ld-teams&quot;,&quot;extraction-studio&quot;,&quot;learning-path&quot;,&quot;scenario-studio&quot;,&quot;reflection-studio&quot;],&quot;default&quot;:&quot;sales-teams&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+const T = '#087C8C', O = '#FF6D00', S = '#3B494C';
+const F = {
+  ex: { tag: 'CAPTURE', t: 'Extraction Studio', d: 'Capture and structure the expertise of your best people.', href: 'Features - Extraction Studio.dc.html' },
+  lp: { tag: 'LEARN', t: 'Learning Path', d: 'Turn company knowledge into structured learning.', href: 'Features - Learning Path.dc.html' },
+  sc: { tag: 'PRACTICE', t: 'Scenario Studio', d: 'Practice realistic sales situations with AI.', href: 'Features - Scenario Studio.dc.html' },
+  rf: { tag: 'REFLECT', t: 'Reflection Studio', d: 'Turn sales experiences into actionable improvement.', href: 'Features - Reflection Studio.dc.html' },
+  ku: { tag: 'KNOWLEDGE', t: 'Knowledge Universe', d: 'A curated knowledge foundation for learning, practice, and coaching.', href: 'Features - Extraction Studio.dc.html#knowledge-universe' },
+};
+const SOL = {
+  st: { tag: 'SOLUTION', t: 'Sales Teams', d: 'Learn, practice, and improve.', href: 'Solutions - Sales Teams.dc.html' },
+  sm: { tag: 'SOLUTION', t: 'Sales Managers', d: 'Coach with greater consistency and insight.', href: 'Solutions - Sales Managers.dc.html' },
+  hs: { tag: 'SOLUTION', t: 'Head of Sales', d: 'Scale expertise across the organization.', href: 'Solutions - Head of Sales.dc.html' },
+  ld: { tag: 'SOLUTION', t: 'L&D Teams', d: 'Turn organizational knowledge into continuous development.', href: 'Solutions - LD Teams.dc.html' },
+};
+const chain = (title, labels, hl, loop) => ({ chain: { title, loop, items: labels.map((l, i) => { const [t, d] = Array.isArray(l) ? l : [l]; return { t, d, n: String(i + 1).padStart(2, '0'), hl: hl.includes(i), last: i === labels.length - 1 }; }) } });
+const list = (title, meta, items, progress) => ({ list: { title, meta, progress, items } });
+const bars = (title, meta, items, note, noteLabel) => ({ bars: { title, meta, items, note, noteLabel: noteLabel || 'NEXT ACTION' } });
+const KU = (center) => ({ ku: { sources: ['Company knowledge', 'Product knowledge', 'Sales expertise', 'Best practices'], center: center || 'Curated, approved, company-specific', outs: ['Learning', 'Practice', 'Coaching'] } });
+const GOV = { governance: { items: [['Extract', 'Done', 'done'], ['Review', 'Done', 'done'], ['Content Manager approval', 'Awaiting', 'now'], ['Knowledge Universe', 'After approval', 'todo']] } };
+const CHAT = (title) => ({ chat: { title, msgs: [['buyer', 'We already work with another vendor. Why would we change now?'], ['rep', 'Fair question. What would need to be true for a change to be worth it?'], ['buyer', 'Honestly, onboarding time. Our last rollout took months.']], chips: [['Asked an open question', 'g'], ['Try: quantify the impact', 'o']] } });
+const TEAM = (title, meta) => ({ team: { title, meta } });
+const QUOTE = { quote: { role: 'Account Executive · Enterprise', parts: [['When pricing comes up early, '], ['I go back to the problem we agreed on', 1], [' and '], ['confirm who else is part of the decision', 1], [' before I talk numbers.']], tags: ['Objection handling', 'Decision process'] } };
+const STRUCT = { structure: { status: 'In review', fields: [['TOPIC', 'Handling early pricing questions'], ['SITUATION', 'Buyer asks for price before value is established'], ['BEST PRACTICE', 'Reconnect to the agreed problem, then confirm the decision process'], ['SOURCE', 'Top performer · captured in Extraction Studio']] } };
+const PATH = list('Learning Path · Discovery fundamentals', '4 modules', [['Know your buyer', 'Done', 'done'], ['Ask better discovery questions', 'Done', 'done'], ['Handle early pricing questions', 'In progress', 'now'], ['Practice: discovery call scenario', 'Next', 'todo']], '55%');
+const FEED = bars('Reflection · Discovery call', 'After the meeting', [['Rapport and opening', '82%', T, 'STRENGTH'], ['Discovery questions', '74%', T, 'STRENGTH'], ['Handling pricing questions', '38%', S, 'GAP']], 'Reconnect to the agreed problem before discussing price.');
+const PROG = bars('Capability progress', 'Last 4 practice sessions', [['Discovery', '78%', T, '+12'], ['Objection handling', '64%', T, '+18'], ['Next-step commitment', '52%', T, '+9']]);
+
+const PAGES = {
+  'sales-teams': { active: 'solutions', parent: 'Solutions', parentHref: 'Solutions.dc.html', kicker: 'SOLUTIONS · SALES TEAMS',
+    title: 'Build Skills That Show Up in Real Sales Conversations.', body: "Learn from your company's knowledge, practice realistic situations, reflect on performance, and improve continuously.",
+    sec: 'See the workflow', secHref: '#workflow', hv: chain('YOUR CAPABILITY CYCLE', ['KNOWLEDGE', 'LEARNING', 'PRACTICE', 'REFLECTION', 'IMPROVEMENT'], [4]),
+    sections: [
+      { k: 'cards', kicker: 'SALES TEAM CHALLENGES', title: 'Knowing what works is different from doing it in the conversation.', cards: [['Best practices often stay with a few top performers.'], ['Training does not automatically become capability.'], ['There are few safe chances to practice before real conversations.']] },
+      { kicker: '03 · LEARN', title: "Learn from your company's knowledge.", body: 'Follow structured learning built from approved company and expert knowledge.', v: PATH, link: ['Explore Learning Path', F.lp.href] },
+      { kicker: '04 · PRACTICE', title: 'Practice realistic situations before they matter.', body: 'Rehearse sales conversations with AI and build confidence before the real one.', v: CHAT('Pricing objection · mid-market'), link: ['Explore Scenario Studio', F.sc.href] },
+      { kicker: '05 · REFLECT', title: 'Reflect on what happened and why.', body: 'Understand your strengths and gaps after practice and after real meetings.', v: FEED, link: ['Explore Reflection Studio', F.rf.href] },
+      { kicker: '06 · IMPROVE', title: 'Improve with every conversation.', body: 'Turn insights into better actions and see your capability grow over time.', v: PROG },
+      { k: 'steps', id: 'workflow', dark: true, kicker: 'EXAMPLE WORKFLOW', title: 'One week of building capability.', steps: [['Complete a module', 'Learn how your company handles early pricing questions.'], ['Practice the scenario', 'Rehearse the conversation with an AI buyer.'], ['Get feedback', 'See what worked and what to try next.'], ['Reflect after the meeting', 'Capture what happened in the real conversation.'], ['Apply the next action', 'Bring the improvement into the next call.']] },
+    ], relKicker: 'RELEVANT FEATURES', relTitle: 'Built on three Repskill capabilities.', related: [F.lp, F.sc, F.rf] },
+
+  'sales-managers': { active: 'solutions', parent: 'Solutions', parentHref: 'Solutions.dc.html', kicker: 'SOLUTIONS · SALES MANAGERS',
+    title: 'Build a Team That Gets Better Through Every Coaching Cycle.', body: 'Give managers the knowledge and insights they need to help their teams learn, practice, reflect, and improve.',
+    sec: 'See the coaching workflow', secHref: '#workflow', hv: TEAM('Team capability', '12 reps'),
+    sections: [
+      { k: 'cards', kicker: 'COACHING CHALLENGES', title: 'Coaching works best when it is consistent.', cards: [['Coaching quality varies from manager to manager.'], ['There is limited time to prepare every rep for every situation.'], ['Feedback is hard to keep consistent across the team.']] },
+      { kicker: '03 · TEAM CAPABILITY', title: 'Build team capability, not only monitor performance.', body: 'Managers help their teams learn, practice, and improve from the same approved knowledge.', v: TEAM('Team capability', 'Practice activity · this month') },
+      { kicker: '04 · VISIBILITY & INSIGHTS', title: 'See strengths and gaps across the team.', body: 'Use practice and reflection insights to decide where coaching will help most.', v: bars('Team insights', 'Across 12 reps', [['Discovery questions', '76%', T, 'STRENGTH'], ['Next-step commitment', '61%', T, 'DEVELOPING'], ['Handling pricing questions', '42%', S, 'GAP']], 'Focus the next coaching session on early pricing questions.', 'COACHING FOCUS'), link: ['Explore Reflection Studio', F.rf.href] },
+      { k: 'steps', id: 'workflow', dark: true, kicker: 'COACHING WORKFLOW', title: 'A coaching cycle your team can repeat.', steps: [['Learn', 'Reps build knowledge with Learning Path.'], ['Practice', 'Reps rehearse scenarios with AI.'], ['Reflect', 'Strengths and gaps become visible.'], ['Coach', 'Managers focus on what matters most.'], ['Improve', 'The team gets better every cycle.']] },
+      { id: 'knowledge-universe', kicker: '06 · KNOWLEDGE UNIVERSE', title: 'Coach from the same approved knowledge.', body: "Every coaching conversation draws on your organization's curated Knowledge Universe.", v: KU() },
+    ], relKicker: 'RELEVANT FEATURES', relTitle: 'Built on Repskill capabilities.', related: [F.sc, F.rf, F.ku] },
+
+  'head-of-sales': { active: 'solutions', parent: 'Solutions', parentHref: 'Solutions.dc.html', kicker: 'SOLUTIONS · HEAD OF SALES',
+    title: 'Scale the Expertise Behind Your Best Sales Teams.', body: 'Capture proven sales expertise, build consistent capability, and make best practices scalable across the organization.',
+    sec: 'See business impact', secHref: '#impact', hv: chain('FROM EXPERTISE TO SCALE', ['EXPERTISE', 'BEST PRACTICES', 'CAPABILITY', 'CONSISTENCY', 'SCALE'], [4]),
+    sections: [
+      { k: 'cards', kicker: 'BUSINESS CHALLENGE', title: 'Your best expertise is concentrated in a few people.', cards: [['Expertise sits with top performers.'], ['Best practices are not always documented.'], ['Performance varies from team to team.']] },
+      { kicker: '03 · SCALE SALES EXPERTISE', title: 'Capture proven expertise once. Make it available to every team.', body: 'Extract what your top performers know and turn it into knowledge the organization can use.', v: QUOTE, link: ['Explore Extraction Studio', F.ex.href] },
+      { kicker: '04 · STANDARDIZE BEST PRACTICES', title: 'Turn what works into approved best practices.', body: 'Knowledge is reviewed and approved before it becomes part of the Knowledge Universe.', v: GOV },
+      { kicker: '05 · BUILD SALES CAPABILITY', title: 'Build capability through learning, practice, and reflection.', body: 'Approved knowledge becomes learning paths, practice scenarios, and reflection across the team.', v: chain('CAPABILITY CYCLE', [['CAPTURE', 'Extraction Studio'], ['LEARN', 'Learning Path'], ['PRACTICE', 'Scenario Studio'], ['REFLECT', 'Reflection Studio'], ['IMPROVE', 'Capability across the team']], [4]) },
+      { kicker: '06 · IMPROVE TEAM CONSISTENCY', title: 'Bring every team closer to how your best people sell.', body: 'Build consistent capability across teams, regions, and new hires.', v: TEAM('Capability across teams', 'Consistency view') },
+      { k: 'steps', id: 'impact', dark: true, kicker: 'BUSINESS IMPACT', title: 'From expertise to scalable performance.', steps: [['Expertise'], ['Standardization'], ['Capability'], ['Consistency'], ['Scalable Performance']], note: 'Business outcomes are shown in Case Studies, using verified results only.' },
+    ], relKicker: 'RELEVANT FEATURES', relTitle: 'Built on Repskill capabilities.', related: [F.ex, F.ku] },
+
+  'ld-teams': { active: 'solutions', parent: 'Solutions', parentHref: 'Solutions.dc.html', kicker: 'SOLUTIONS · L&D TEAMS',
+    title: 'Turn Sales Knowledge Into Continuous Capability Development.', body: 'Connect organizational knowledge with structured learning, realistic practice, reflection, and continuous improvement.',
+    sec: 'See how it connects', secHref: '#development', hv: chain('CONTINUOUS DEVELOPMENT', ['KNOWLEDGE', 'LEARNING', 'PRACTICE', 'REFLECTION', 'DEVELOPMENT'], [4]),
+    sections: [
+      { k: 'cards', kicker: 'L&D CHALLENGE', title: 'Training alone does not build capability.', cards: [['Company knowledge is spread across people and documents.'], ['Learning is often disconnected from practice.'], ['Training does not automatically become capability.']] },
+      { kicker: '03 · COMPANY KNOWLEDGE', title: 'Start from the knowledge your organization already has.', body: 'Capture and curate company and expert knowledge into one Knowledge Universe.', v: KU(), link: ['Explore Extraction Studio', F.ex.href] },
+      { kicker: '04 · STRUCTURED LEARNING', title: 'Build structured learning around your business.', body: 'Turn approved knowledge into learning journeys designed for your sales teams.', v: PATH, link: ['Explore Learning Path', F.lp.href] },
+      { kicker: '05 · PRACTICE', title: 'Connect learning with realistic practice.', body: 'Learners practice company-specific scenarios with AI right after they learn.', v: CHAT('Discovery call · new product') },
+      { kicker: '06 · REFLECTION', title: "Understand what's working.", body: 'Reflection shows strengths, gaps, and where learning should go next.', v: FEED, link: ['Explore Reflection Studio', F.rf.href] },
+      { id: 'development', kicker: '07 · CONTINUOUS DEVELOPMENT', title: 'Keep development going after the course ends.', body: 'Reflection feeds new insights back into learning, so capability keeps growing.', v: chain('CONTINUOUS LOOP', ['KNOWLEDGE', 'LEARNING', 'PRACTICE', 'REFLECTION', 'DEVELOPMENT'], [4], 'Insights return to review and the Knowledge Universe.') },
+    ], relKicker: 'RELEVANT FEATURES', relTitle: 'Built on Repskill capabilities.', related: [F.lp, F.ex, F.rf] },
+
+  'extraction-studio': { active: 'features', parent: 'Features', parentHref: 'Features.dc.html', kicker: 'FEATURES · 01 CAPTURE',
+    title: 'Capture the Expertise Behind Your Best Sales Performance.', body: 'Extract company and top-performer knowledge, structure it, and prepare it for review and use across the organization.',
+    sec: 'See how review works', secHref: '#review', hv: QUOTE,
+    sections: [
+      { k: 'cards', kicker: 'THE KNOWLEDGE PROBLEM', title: "Expertise that isn't captured can't be scaled.", cards: [['Expertise lives with a few top performers.'], ['Best practices are not always documented.'], ['Knowledge is hard to transfer consistently.']] },
+      { kicker: '03 · CAPTURE EXPERT KNOWLEDGE', title: 'Capture what your top performers know.', body: 'Bring expert and company knowledge into one place, in the words of the people who use it.', v: chain('CAPTURE FROM', [['Top performers', 'Real approaches from your best people'], ['Company knowledge', 'Products, processes, and positioning'], ['Field insights', 'What is working in current deals']], [0]) },
+      { kicker: '04 · EXTRACT BEST PRACTICES', title: 'Extract the practices behind strong performance.', body: 'Identify the specific approaches that make your best people successful.', v: QUOTE },
+      { kicker: '05 · STRUCTURE KNOWLEDGE', title: 'Structure expertise into usable knowledge.', body: 'Organize what was captured so it can power learning, practice, and coaching.', v: STRUCT },
+      { id: 'review', kicker: '06 · REVIEW & APPROVAL', title: 'Reviewed and approved before it is used.', body: 'Knowledge does not automatically become part of the Knowledge Universe. It is reviewed and approved first.', v: GOV },
+      { id: 'knowledge-universe', kicker: '07 · KNOWLEDGE UNIVERSE', title: 'One Knowledge Universe, built around your business.', body: 'A curated knowledge layer that powers company-specific learning, practice, and coaching.', v: KU() },
+      { kicker: '08 · HOW IT POWERS AI COACHING', title: 'Approved knowledge powers every Repskill experience.', body: 'Learning paths, AI practice scenarios, and reflection all draw on the same approved knowledge.', v: chain('KNOWLEDGE UNIVERSE POWERS', [['LEARN', 'Learning Path'], ['PRACTICE', 'Scenario Studio'], ['REFLECT', 'Reflection Studio']], []), link: ['Explore all features', 'Features.dc.html'] },
+    ], relKicker: 'RELATED SOLUTIONS', relTitle: 'Who uses Extraction Studio.', related: [SOL.hs, SOL.ld] },
+
+  'learning-path': { active: 'features', parent: 'Features', parentHref: 'Features.dc.html', kicker: 'FEATURES · 02 LEARN',
+    title: 'Turn Knowledge Into Learning People Can Build On.', body: 'Transform company-specific knowledge into structured learning journeys that help teams build practical sales skills.',
+    sec: 'See the learning journey', secHref: '#journey', hv: PATH,
+    sections: [
+      { kicker: '02 · STRUCTURED LEARNING', title: 'Learning with a clear structure.', body: 'Organize knowledge into modules that build on each other.', v: list('Learning Path · Objection handling', '5 modules', [['Why objections happen', 'Module 1', 'done'], ['Listening before answering', 'Module 2', 'done'], ['Pricing objections', 'Module 3', 'now'], ['Competitor objections', 'Module 4', 'todo'], ['Practice scenario', 'Module 5', 'todo']], '45%') },
+      { kicker: '03 · COMPANY-SPECIFIC KNOWLEDGE', title: 'Built from your own approved knowledge.', body: "Learning is grounded in your organization's Knowledge Universe, not generic content.", v: KU('Your products, process, and best practices') },
+      { k: 'steps', id: 'journey', dark: true, kicker: 'LEARNING JOURNEY', title: 'A journey, not a one-off course.', steps: [['Learn', 'Structured modules from approved knowledge.'], ['Practice', 'Apply it in realistic scenarios.'], ['Reflect', 'Understand strengths and gaps.'], ['Progress', 'See capability build over time.'], ['Improve', 'Return to learning where it helps most.']] },
+      { kicker: '05 · PRACTICE INTEGRATION', title: 'Practice what you just learned.', body: 'Learning paths connect directly to AI practice scenarios in Scenario Studio.', v: CHAT('Pricing objection · after Module 3'), link: ['Explore Scenario Studio', F.sc.href] },
+      { kicker: '06 · PROGRESS', title: 'See progress as skills build.', body: 'Track how learning and practice turn into capability.', v: PROG },
+      { kicker: '07 · IMPROVEMENT', title: 'Learning that keeps improving.', body: 'Reflection insights show where to focus next.', v: FEED, link: ['Explore Reflection Studio', F.rf.href] },
+    ], relKicker: 'RELATED SOLUTIONS', relTitle: 'Who uses Learning Path.', related: [SOL.st, SOL.ld] },
+
+  'scenario-studio': { active: 'features', parent: 'Features', parentHref: 'Features.dc.html', kicker: 'FEATURES · 03 PRACTICE',
+    title: 'Practice Before It Matters.', body: 'Simulate realistic sales situations with AI and build confidence before the real conversation.', micro: 'Practice. Get feedback. Improve.',
+    sec: 'See AI roleplay', secHref: '#roleplay', hv: CHAT('Pricing objection · mid-market'),
+    sections: [
+      { k: 'cards', kicker: 'PRACTICE BEFORE THE MEETING', title: 'Build confidence before the real conversation.', cards: [['Practice.', 'Rehearse realistic sales situations in a safe space.'], ['Get feedback.', 'See what worked and what to try next.'], ['Improve.', 'Go into the real meeting better prepared.']] },
+      { kicker: '03 · REALISTIC SALES SCENARIOS', title: 'Scenarios based on real sales situations.', body: 'Practice the conversations your team faces every day.', v: list('Scenario library', 'Company-specific', [['Discovery call', 'Core', 'none'], ['Early pricing question', 'Core', 'none'], ['Competitor comparison', 'Advanced', 'none'], ['Renewal conversation', 'Advanced', 'none']]) },
+      { kicker: '04 · COMPANY-SPECIFIC CONTEXT', title: 'Grounded in your products and best practices.', body: "Scenarios use your organization's approved Knowledge Universe for context.", v: KU('Context for every scenario') },
+      { id: 'roleplay', kicker: '05 · AI ROLEPLAY', title: 'Roleplay with an AI buyer.', body: 'Have a realistic conversation and respond the way you would in a real meeting.', v: CHAT('Competitor comparison · enterprise') },
+      { kicker: '06 · FEEDBACK', title: 'Feedback right after you practice.', body: 'Understand what worked and where to improve.', v: bars('Practice feedback', 'Scenario complete', [['Open questions', '80%', T, 'STRENGTH'], ['Listening and summarizing', '70%', T, 'STRENGTH'], ['Quantifying impact', '40%', S, 'GAP']], 'Try quantifying the impact before discussing price.', 'TRY NEXT') },
+      { kicker: '07 · IMPROVEMENT', title: 'Practice again. Improve again.', body: 'Repeat scenarios and see capability build over time.', v: PROG },
+    ], relKicker: 'RELATED SOLUTIONS', relTitle: 'Who uses Scenario Studio.', related: [SOL.st, SOL.sm] },
+
+  'reflection-studio': { active: 'features', parent: 'Features', parentHref: 'Features.dc.html', kicker: 'FEATURES · 04 REFLECT',
+    title: 'Turn Every Sales Experience Into an Opportunity to Improve.', body: 'Reflect on what happened, understand strengths and gaps, and turn insights into better actions.',
+    sec: 'See the feedback loop', secHref: '#loop', hv: FEED,
+    sections: [
+      { kicker: '02 · REFLECT AFTER THE MEETING', title: 'Reflect while the conversation is fresh.', body: 'Guided prompts help you capture what happened and why.', v: list('Reflection · Discovery call', 'Guided', [['What happened in the conversation?', 'Answered', 'done'], ['What worked well?', 'Answered', 'done'], ['What would you do differently?', 'In progress', 'now'], ['What will you try next time?', 'Next', 'todo']]) },
+      { kicker: '03 · PERFORMANCE ASSESSMENT', title: 'Understand how the conversation went.', body: 'See performance across the skills that matter in your sales process.', v: PROG },
+      { kicker: '04 · STRENGTHS & GAPS', title: 'Know your strengths. See your gaps.', body: 'Clear, encouraging feedback on what to keep and what to improve.', v: FEED },
+      { kicker: '05 · COACHING INSIGHTS', title: 'Insights that make coaching easier.', body: 'Managers see patterns across reflections and focus coaching where it helps most.', v: bars('Coaching insight', 'Across recent reflections', [['Discovery questions', '76%', T, 'STRENGTH'], ['Handling pricing questions', '42%', S, 'GAP']], 'Pricing questions come up early in most reflections this month.', 'INSIGHT') },
+      { kicker: '06 · IMPROVEMENT ACTIONS', title: 'Turn insights into better actions.', body: 'Every reflection ends with a clear next step.', v: list('Improvement actions', '3 actions', [['Reconnect to the agreed problem before price', 'Done', 'done'], ['Confirm the decision process earlier', 'This week', 'todo'], ['Practice the pricing scenario again', 'This week', 'todo']]) },
+      { id: 'loop', kicker: '07 · FROM REFLECTION TO KNOWLEDGE', title: 'High-performing reflections can become new best practices.', body: 'Strong reflections become potential content. After review, they can join the Knowledge Universe.', v: chain('FEEDBACK LOOP', ['PRACTICE', 'PERFORMANCE', 'REFLECTION', 'INSIGHT', 'POTENTIAL BEST PRACTICE', 'REVIEW', 'KNOWLEDGE UNIVERSE'], [6], 'Potential content is reviewed before it joins the Knowledge Universe.') },
+    ], relKicker: 'RELATED SOLUTIONS', relTitle: 'Who uses Reflection Studio.', related: [SOL.st, SOL.sm, SOL.ld] },
+};
+
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280 };
+  componentDidMount() { this.onR = () => this.setState({ w: window.innerWidth }); window.addEventListener('resize', this.onR); }
+  componentWillUnmount() { window.removeEventListener('resize', this.onR); }
+  vis(v) {
+    if (!v) return { v: {}, vd: {} };
+    const key = Object.keys(v)[0]; let vd = { ...v[key] };
+    if (key === 'chain') vd.items = vd.items.map(it => ({ ...it, bg: it.hl ? O : '#FFFFFF', fg: it.hl ? '#FFFFFF' : T, bd: it.hl ? O : '#49B8D1', tc: it.hl ? O : '#212121', line: it.last ? 'transparent' : '#DDF3F7' }));
+    if (key === 'governance') vd.items = vd.items.map(([t, s, st], i) => ({ n: i + 1, t, s, bg: st === 'done' ? '#F6F7F7' : st === 'now' ? '#FFF4EB' : '#EEF9FB', bd: st === 'now' ? O : st === 'todo' ? '#49B8D1' : 'transparent', dot: st === 'done' ? S : st === 'now' ? O : T, tc: st === 'todo' ? T : '#212121', sc: st === 'now' ? '#C25200' : st === 'todo' ? T : S }));
+    if (key === 'list') vd.items = vd.items.map(([t, m, st]) => ({ t, m, check: st === 'done', rad: '50%', bg: st === 'done' ? T : '#FFFFFF', bd: st === 'done' ? T : st === 'now' ? O : st === 'none' ? '#49B8D1' : '#E8EAEB', rowBg: st === 'now' ? '#FFF4EB' : 'transparent', fw: st === 'now' ? 700 : 500, tc: st === 'todo' ? S : '#212121', mc: st === 'now' ? '#C25200' : S }));
+    if (key === 'bars') vd.items = vd.items.map(([t, v, c, tag]) => ({ t, v, c, tag }));
+    if (key === 'chat') { vd.msgs = vd.msgs.map(([w, t]) => w === 'buyer' ? { who: 'AI BUYER', t, al: 'flex-start', bg: '#FFFFFF', rad: '14px 14px 14px 4px', lc: S } : { who: 'YOU', t, al: 'flex-end', bg: '#DDF3F7', rad: '14px 14px 4px 14px', lc: T }); vd.chips = vd.chips.map(([t, k]) => ({ t, bg: k === 'o' ? '#FFF4EB' : '#EEF9FB', fg: k === 'o' ? '#C25200' : T })); }
+    if (key === 'quote') { vd.parts = vd.parts.map(([t, h]) => ({ t, bg: h ? '#DDF3F7' : 'transparent' })); }
+    if (key === 'structure') vd.fields = vd.fields.map(([k, v]) => ({ k, v }));
+    return { v: { [key]: true }, vd };
+  }
+  renderVals() {
+    const w = this.state.w, c = n => `repeat(${n},minmax(0,1fr))`;
+    const p = PAGES[this.props.page] || PAGES['sales-teams'];
+    const grid = 'linear-gradient(rgba(232,234,235,0.6) 1px,transparent 1px),linear-gradient(90deg,rgba(232,234,235,0.6) 1px,transparent 1px)';
+    const hero = { id: 'top', label: '01 Hero', isSplit: true, isHero: true, notHero: false, dir: 'row', bg: '#FFFFFF', bgImg: grid, pad: 'clamp(48px,7vw,96px)', parent: p.parent, parentHref: p.parentHref, kicker: p.kicker, title: p.title, body: p.body, micro: p.micro, sec: p.sec, secHref: p.secHref, ...this.vis(p.hv) };
+    let alt = 0;
+    const rest = p.sections.map((s, i) => {
+      const base = { id: s.id || 's' + (i + 2), label: String(i + 2).padStart(2, '0') + ' ' + s.kicker, kicker: s.kicker, title: s.title, body: s.body, bgImg: 'none', pad: 'clamp(72px,9vw,112px)' };
+      if (s.k === 'cards') return { ...base, isCards: true, bg: '#F6F7F7', cards: s.cards.map(([t, d], j) => ({ t, d, n: String(j + 1).padStart(2, '0'), ib: '#3B494C', ic: '#FFFFFF' })) };
+      if (s.k === 'steps') return { ...base, isSteps: true, bg: '#3B494C', kc: '#49B8D1', tc: '#FFFFFF', bc: '#E8EAEB', note: s.note, steps: s.steps.map(([t, d], j, a) => { const last = j === a.length - 1; return { t, d, n: String(j + 1).padStart(2, '0'), line: last ? O : 'rgba(73,184,209,0.55)', dot: last ? O : '#49B8D1', nc: '#49B8D1', tc: last ? O : '#FFFFFF', dc: '#E8EAEB' }; }) };
+      alt++;
+      return { ...base, isSplit: true, notHero: true, dir: alt % 2 ? 'row-reverse' : 'row', bg: alt % 2 ? '#FFFFFF' : '#F6F7F7', points: s.points, link: s.link ? { t: s.link[0], href: s.link[1] } : null, ...this.vis(s.v) };
+    });
+    const ini = ['AR', 'BK', 'CL', 'DM', 'EN', 'FS', 'GT', 'HW', 'IR', 'JP', 'KL', 'MN'];
+    const team = ini.map((i, k) => ({ i, w: [86, 72, 44, 64, 80, 76, 92, 38, 84, 70, 88, 74][k] + '%', c: [2, 7].includes(k) ? O : T }));
+    return {
+      active: p.active, sections: [hero, ...rest], team,
+      relKicker: p.relKicker, relTitle: p.relTitle, related: p.related,
+      g3: c(w >= 1080 ? 3 : w >= 680 ? 2 : 1), g5: c(w >= 960 ? 5 : 1),
+    };
+  }
+}
+</script>
+</body>
+</html>

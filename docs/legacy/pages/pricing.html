@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><title>Repskill Pricing — Tailored to Your Organization</title><meta name="description" content="Build sales capability around your organization. Pricing tailored to your organization's needs."><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style>body{margin:0;font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#212121;background:#FFFFFF;-webkit-font-smoothing:antialiased}a{color:#087C8C;text-decoration:none}a:hover{color:#3B494C}*{box-sizing:border-box}</style></helmet>
+<div style="font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:#FFFFFF">
+<dc-import name="SiteHeader" active="pricing" hint-size="100%,72px"></dc-import>
+
+<section data-screen-label="01 Hero + 02 Pricing Model" style="background-color:#FFFFFF;background-image:linear-gradient(rgba(232,234,235,0.6) 1px,transparent 1px),linear-gradient(90deg,rgba(232,234,235,0.6) 1px,transparent 1px);background-size:48px 48px">
+  <div style="max-width:1366px;margin:0 auto;padding:clamp(56px,8vw,104px) clamp(20px,4.5vw,64px);display:flex;flex-wrap:wrap;gap:clamp(40px,6vw,80px);align-items:center">
+    <div style="flex:1 1 440px;display:flex;flex-direction:column;gap:22px">
+      <span style="font-size:13px;font-weight:700;letter-spacing:0.14em;color:#087C8C">PRICING</span>
+      <h1 style="margin:0;font-size:clamp(34px,4.2vw,48px);line-height:1.06;font-weight:800;letter-spacing:-0.03em;color:#212121;text-wrap:balance">Build Sales Capability Around Your Organization.</h1>
+      <p style="margin:0;max-width:520px;font-size:18px;line-height:1.6;color:#3B494C;text-wrap:pretty">Choose an approach that fits your organization's sales capability goals.</p>
+    </div>
+    <div style="flex:1 1 380px;border-radius:24px;background:#3B494C;padding:clamp(28px,4vw,40px);display:flex;flex-direction:column;gap:18px;position:relative;overflow:hidden;box-shadow:0 40px 80px -48px rgba(33,33,33,0.6)">
+      <div style="position:absolute;right:-30px;top:-20px;bottom:-20px;width:150px" aria-hidden="true"><div style="position:absolute;right:60px;top:0;bottom:0;width:32px;background:#FF6D00;transform:skewX(-38deg)"></div><div style="position:absolute;right:10px;top:0;bottom:0;width:32px;background:#49B8D1;opacity:0.3;transform:skewX(-38deg)"></div></div>
+      <span style="position:relative;font-size:12px;font-weight:700;letter-spacing:0.14em;color:#49B8D1">PRICING MODEL</span>
+      <span style="position:relative;font-size:clamp(24px,2.6vw,32px);line-height:1.2;font-weight:800;color:#FFFFFF;max-width:340px">Pricing tailored to your organization's needs.</span>
+      <span style="position:relative;font-size:15.5px;line-height:1.55;color:#E8EAEB;max-width:360px">Includes every Repskill capability and your Knowledge Universe.</span>
+      <div style="position:relative;display:flex;flex-wrap:wrap;gap:12px;margin-top:8px">
+        <a href="Request Demo.dc.html" style="display:inline-flex;align-items:center;gap:10px;background:#FF6D00;color:#FFFFFF;font-size:16px;font-weight:600;padding:15px 24px;border-radius:10px" style-hover="background:#E86300;color:#FFFFFF">Talk to Sales<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="03 What's Included" style="background:#F6F7F7">
+  <div style="max-width:1366px;margin:0 auto;padding:clamp(72px,9vw,112px) clamp(20px,4.5vw,64px)">
+    <div style="display:flex;flex-direction:column;gap:16px;max-width:720px"><span style="font-size:13px;font-weight:700;letter-spacing:0.14em;color:#087C8C">WHAT'S INCLUDED</span><h2 style="margin:0;font-size:clamp(28px,3vw,36px);line-height:1.15;font-weight:700;letter-spacing:-0.02em;color:#212121">Everything that turns expertise into capability.</h2></div>
+    <div style="margin-top:clamp(28px,4vw,40px);display:grid;grid-template-columns:{{ g5 }};gap:12px">
+      <sc-for list="{{ included }}" as="i" hint-placeholder-count="5">
+        <a href="{{ i.href }}" style="display:flex;flex-direction:column;gap:10px;padding:22px;border-radius:14px;background:{{ i.bg }};color:{{ i.fg }};min-height:180px" style-hover="color:{{ i.fg }};box-shadow:0 0 0 1.5px #49B8D1"><span style="font-size:11.5px;font-weight:700;letter-spacing:0.12em;color:{{ i.tc }}">{{ i.s }}</span><span style="font-size:18px;font-weight:700">{{ i.t }}</span><span style="margin-top:auto;font-size:14px;line-height:1.5;color:{{ i.dc }}">{{ i.d }}</span></a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="04 Feature Comparison" style="background:#FFFFFF">
+  <div style="max-width:1366px;margin:0 auto;padding:clamp(72px,9vw,112px) clamp(20px,4.5vw,64px)">
+    <div style="display:flex;flex-direction:column;gap:16px;max-width:720px"><span style="font-size:13px;font-weight:700;letter-spacing:0.14em;color:#087C8C">FEATURE COMPARISON</span><h2 style="margin:0;font-size:clamp(28px,3vw,36px);line-height:1.15;font-weight:700;letter-spacing:-0.02em;color:#212121">Capabilities by role.</h2></div>
+    <div style="margin-top:clamp(28px,4vw,40px);overflow-x:auto;border:1px solid #E8EAEB;border-radius:16px">
+      <div style="min-width:680px">
+        <div style="display:grid;grid-template-columns:1.6fr repeat(4,1fr);background:#F6F7F7;border-bottom:1px solid #E8EAEB">
+          <span style="padding:16px 20px;font-size:12px;font-weight:700;letter-spacing:0.12em;color:#3B494C">CAPABILITY</span>
+          <sc-for list="{{ roleCols }}" as="r"><span style="padding:16px 12px;font-size:13.5px;font-weight:700;color:#212121;text-align:center">{{ r }}</span></sc-for>
+        </div>
+        <sc-for list="{{ matrix }}" as="m" hint-placeholder-count="5">
+          <div style="display:grid;grid-template-columns:1.6fr repeat(4,1fr);border-bottom:1px solid #F0F1F2;align-items:center">
+            <div style="padding:16px 20px;display:flex;flex-direction:column;gap:2px"><span style="font-size:15px;font-weight:700;color:#212121">{{ m.t }}</span><span style="font-size:11.5px;font-weight:700;letter-spacing:0.1em;color:#087C8C">{{ m.s }}</span></div>
+            <sc-for list="{{ m.cells }}" as="c"><div style="display:flex;justify-content:center;padding:12px"><sc-if value="{{ c.on }}"><span style="width:26px;height:26px;border-radius:50%;background:#087C8C;display:flex;align-items:center;justify-content:center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"></path></svg></span></sc-if><sc-if value="{{ c.off }}"><span style="width:14px;height:2px;background:#E8EAEB"></span></sc-if></div></sc-for>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <p style="margin:14px 0 0;font-size:13px;color:#3B494C">Primary capabilities per role. All capabilities are included.</p>
+  </div>
+</section>
+
+<section data-screen-label="05 Implementation / Onboarding" style="background:#3B494C">
+  <div style="max-width:1366px;margin:0 auto;padding:clamp(72px,9vw,112px) clamp(20px,4.5vw,64px)">
+    <div style="display:flex;flex-direction:column;gap:16px;max-width:720px"><span style="font-size:13px;font-weight:700;letter-spacing:0.14em;color:#49B8D1">IMPLEMENTATION / ONBOARDING</span><h2 style="margin:0;font-size:clamp(28px,3vw,36px);line-height:1.15;font-weight:700;letter-spacing:-0.02em;color:#FFFFFF">From first conversation to capability.</h2></div>
+    <div style="margin-top:clamp(36px,5vw,56px);display:grid;grid-template-columns:{{ g5s }};gap:0">
+      <sc-for list="{{ onboarding }}" as="o" hint-placeholder-count="5">
+        <div style="position:relative;padding:26px 20px 8px 0;border-top:2px solid {{ o.line }};display:flex;flex-direction:column;gap:10px"><span style="position:absolute;top:-7px;left:0;width:12px;height:12px;border-radius:50%;background:{{ o.dot }}"></span><span style="font-size:13px;font-weight:700;color:#49B8D1">{{ o.n }}</span><span style="font-size:19px;font-weight:700;color:{{ o.tc }}">{{ o.t }}</span><span style="font-size:14.5px;line-height:1.5;color:#E8EAEB">{{ o.d }}</span></div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="06 FAQ" style="background:#FFFFFF">
+  <div style="max-width:1366px;margin:0 auto;padding:clamp(72px,9vw,112px) clamp(20px,4.5vw,64px);display:flex;flex-wrap:wrap;gap:32px 80px">
+    <div style="flex:1 1 280px;display:flex;flex-direction:column;gap:16px"><span style="font-size:13px;font-weight:700;letter-spacing:0.14em;color:#087C8C">FAQ</span><h2 style="margin:0;font-size:clamp(28px,3vw,36px);line-height:1.15;font-weight:700;letter-spacing:-0.02em;color:#212121">Questions about adopting Repskill.</h2></div>
+    <div style="flex:2 1 520px;display:flex;flex-direction:column;border-top:1px solid #E8EAEB">
+      <sc-for list="{{ faq }}" as="q" hint-placeholder-count="5">
+        <div style="border-bottom:1px solid #E8EAEB">
+          <button onClick="{{ q.toggle }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 0;border:0;background:none;font:inherit;font-size:17px;font-weight:600;color:#212121;text-align:left;cursor:pointer" style-hover="color:#087C8C">{{ q.q }}<span style="flex:none;width:32px;height:32px;border-radius:50%;border:1.5px solid {{ q.bd }};background:{{ q.bg }};color:{{ q.fg }};display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:500">{{ q.sign }}</span></button>
+          <sc-if value="{{ q.open }}"><p style="margin:0;padding:0 48px 22px 0;font-size:16px;line-height:1.6;color:#3B494C">{{ q.a }}</p></sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<dc-import name="FinalCTA" title="Build Sales Capability Around Your Organization." body="Pricing tailored to your organization's needs." cta="Talk to Sales" hint-size="100%,380px"></dc-import>
+<dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, open: 0 };
+  componentDidMount() { this.onR = () => this.setState({ w: window.innerWidth }); window.addEventListener('resize', this.onR); }
+  componentWillUnmount() { window.removeEventListener('resize', this.onR); }
+  renderVals() {
+    const w = this.state.w, c = n => `repeat(${n},minmax(0,1fr))`;
+    const inc = [['CAPTURE', 'Extraction Studio', 'Capture and structure the expertise of your best people.', 'Features - Extraction Studio.dc.html'], ['LEARN', 'Learning Path', 'Turn company knowledge into structured learning.', 'Features - Learning Path.dc.html'], ['PRACTICE', 'Scenario Studio', 'Practice realistic sales situations with AI.', 'Features - Scenario Studio.dc.html'], ['REFLECT', 'Reflection Studio', 'Turn sales experiences into actionable improvement.', 'Features - Reflection Studio.dc.html'], ['FOUNDATION', 'Knowledge Universe', 'Curated, reviewed, and approved company knowledge.', 'Features - Extraction Studio.dc.html#knowledge-universe']];
+    const included = inc.map(([s, t, d, href], i) => i === 4 ? { s, t, d, href, bg: '#087C8C', fg: '#FFFFFF', tc: '#DDF3F7', dc: '#FFFFFF' } : { s, t, d, href, bg: '#FFFFFF', fg: '#212121', tc: '#087C8C', dc: '#3B494C' });
+    const roleCols = ['Sales Teams', 'Sales Managers', 'Head of Sales', 'L&D Teams'];
+    const M = [['Extraction Studio', 'CAPTURE', [0, 0, 1, 1]], ['Knowledge Universe', 'FOUNDATION', [0, 1, 1, 0]], ['Learning Path', 'LEARN', [1, 0, 0, 1]], ['Scenario Studio', 'PRACTICE', [1, 1, 0, 0]], ['Reflection Studio', 'REFLECT', [1, 1, 0, 1]]];
+    const matrix = M.map(([t, s, v]) => ({ t, s, cells: v.map(x => ({ on: !!x, off: !x })) }));
+    const onboarding = [['Talk to Sales', 'Share your goals and sales organization.'], ['Capture knowledge', 'Bring in company and expert knowledge.'], ['Review & approve', 'Build your curated Knowledge Universe.'], ['Launch learning & practice', 'Roll out Learning Paths and scenarios.'], ['Reflect & improve', 'Build capability across the team.']].map(([t, d], i) => ({ t, d, n: '0' + (i + 1), line: i === 4 ? '#FF6D00' : 'rgba(73,184,209,0.55)', dot: i === 4 ? '#FF6D00' : '#49B8D1', tc: i === 4 ? '#FF6D00' : '#FFFFFF' }));
+    const Q = [
+      ['How is Repskill priced?', "Pricing is tailored to your organization's needs. Talk to Sales to discuss your goals."],
+      ['Which capabilities are included?', 'Extraction Studio, Learning Path, Scenario Studio, Reflection Studio, and your Knowledge Universe.'],
+      ['Does all content automatically become part of the Knowledge Universe?', 'No. Content is reviewed, curated, and approved before it becomes part of the Knowledge Universe.'],
+      ['Is learning based on our own company knowledge?', 'Yes. Learning, practice, and coaching draw on your curated, company-specific Knowledge Universe.'],
+      ['How do we get started?', 'Request a demo. Our team will be in touch to understand your sales capability goals.'],
+    ];
+    const faq = Q.map(([q, a], i) => { const open = this.state.open === i; return { q, a, open, sign: open ? '–' : '+', bg: open ? '#3B494C' : '#FFFFFF', fg: open ? '#FFFFFF' : '#3B494C', bd: open ? '#3B494C' : '#E8EAEB', toggle: () => this.setState(s => ({ open: s.open === i ? -1 : i })) }; });
+    return { included, roleCols, matrix, onboarding, faq, g5: c(w >= 1060 ? 5 : w >= 600 ? 2 : 1), g5s: c(w >= 960 ? 5 : 1) };
+  }
+}
+</script>
+</body>
+</html>

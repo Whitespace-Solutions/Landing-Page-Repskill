@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><title>Request a Repskill Demo</title><meta name="description" content="Let's talk about your sales capability. Tell us a little about your organization and what you'd like to improve."><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style>body{margin:0;font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#212121;background:#FFFFFF;-webkit-font-smoothing:antialiased}a{color:#087C8C;text-decoration:none}a:hover{color:#3B494C}*{box-sizing:border-box}input::placeholder,textarea::placeholder{color:rgba(59,73,76,0.55)}</style></helmet>
+<div style="font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:#F6F7F7;min-height:100vh;display:flex;flex-direction:column">
+<dc-import name="SiteHeader" active="demo" hint-size="100%,72px"></dc-import>
+<section data-screen-label="Request Demo" style="flex:1;position:relative;overflow:hidden">
+  <div style="position:absolute;left:-80px;bottom:-60px;width:360px;height:420px;pointer-events:none" aria-hidden="true"><div style="position:absolute;left:80px;top:0;bottom:0;width:48px;background:#FF6D00;transform:skewX(-38deg);opacity:0.9"></div><div style="position:absolute;left:180px;top:0;bottom:0;width:48px;background:#49B8D1;transform:skewX(-38deg);opacity:0.25"></div></div>
+  <div style="position:relative;max-width:1366px;margin:0 auto;padding:clamp(48px,7vw,96px) clamp(20px,4.5vw,64px);display:flex;flex-wrap:wrap;gap:clamp(36px,6vw,88px);align-items:flex-start">
+    <div style="flex:1 1 360px;display:flex;flex-direction:column;gap:20px;padding-top:8px">
+      <span style="font-size:13px;font-weight:700;letter-spacing:0.14em;color:#087C8C">REQUEST DEMO</span>
+      <h1 style="margin:0;font-size:clamp(34px,4.2vw,48px);line-height:1.08;font-weight:800;letter-spacing:-0.03em;color:#212121;text-wrap:balance">Let's Talk About Your Sales Capability.</h1>
+      <p style="margin:0;max-width:440px;font-size:18px;line-height:1.6;color:#3B494C;text-wrap:pretty">Tell us a little about your organization and what you'd like to improve. Our team will be in touch to arrange a Repskill demo.</p>
+    </div>
+    <div style="flex:1.1 1 440px;background:#FFFFFF;border-radius:24px;border:1px solid #E8EAEB;box-shadow:0 40px 80px -50px rgba(33,33,33,0.4);padding:clamp(24px,4vw,40px)">
+      <sc-if value="{{ form }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ submit }}" style="display:flex;flex-direction:column;gap:18px" novalidate="novalidate">
+          <div style="display:grid;grid-template-columns:{{ g2 }};gap:18px">
+            <label style="display:flex;flex-direction:column;gap:8px"><span style="font-size:14px;font-weight:600;color:#212121">Name</span><input value="{{ v.name }}" onChange="{{ on.name }}" placeholder="Full name" style="height:50px;padding:0 14px;border-radius:10px;border:1.5px solid {{ bd.name }};font:inherit;font-size:16px;color:#212121;outline:none;background:#FFFFFF" style-focus="border-color:#087C8C;box-shadow:0 0 0 4px #DDF3F7"><sc-if value="{{ err.name }}"><span style="font-size:13px;font-weight:600;color:#C2410C">{{ err.name }}</span></sc-if></label>
+            <label style="display:flex;flex-direction:column;gap:8px"><span style="font-size:14px;font-weight:600;color:#212121">Work Email</span><input type="email" value="{{ v.email }}" onChange="{{ on.email }}" placeholder="name@company.com" style="height:50px;padding:0 14px;border-radius:10px;border:1.5px solid {{ bd.email }};font:inherit;font-size:16px;color:#212121;outline:none;background:#FFFFFF" style-focus="border-color:#087C8C;box-shadow:0 0 0 4px #DDF3F7"><sc-if value="{{ err.email }}"><span style="font-size:13px;font-weight:600;color:#C2410C">{{ err.email }}</span></sc-if></label>
+            <label style="display:flex;flex-direction:column;gap:8px"><span style="font-size:14px;font-weight:600;color:#212121">Company</span><input value="{{ v.company }}" onChange="{{ on.company }}" placeholder="Company name" style="height:50px;padding:0 14px;border-radius:10px;border:1.5px solid {{ bd.company }};font:inherit;font-size:16px;color:#212121;outline:none;background:#FFFFFF" style-focus="border-color:#087C8C;box-shadow:0 0 0 4px #DDF3F7"><sc-if value="{{ err.company }}"><span style="font-size:13px;font-weight:600;color:#C2410C">{{ err.company }}</span></sc-if></label>
+            <label style="display:flex;flex-direction:column;gap:8px"><span style="font-size:14px;font-weight:600;color:#212121">Job Title / Role</span><input value="{{ v.role }}" onChange="{{ on.role }}" placeholder="e.g. Sales Manager" style="height:50px;padding:0 14px;border-radius:10px;border:1.5px solid {{ bd.role }};font:inherit;font-size:16px;color:#212121;outline:none;background:#FFFFFF" style-focus="border-color:#087C8C;box-shadow:0 0 0 4px #DDF3F7"><sc-if value="{{ err.role }}"><span style="font-size:13px;font-weight:600;color:#C2410C">{{ err.role }}</span></sc-if></label>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <span style="font-size:14px;font-weight:600;color:#212121">Team Size</span>
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <sc-for list="{{ sizes }}" as="s" hint-placeholder-count="5"><button type="button" onClick="{{ s.pick }}" style="font:inherit;font-size:14.5px;font-weight:600;min-height:44px;padding:0 16px;border-radius:10px;cursor:pointer;background:{{ s.bg }};color:{{ s.fg }};border:1.5px solid {{ s.bd }}">{{ s.t }}</button></sc-for>
+            </div>
+          </div>
+          <label style="display:flex;flex-direction:column;gap:8px"><span style="font-size:14px;font-weight:600;color:#212121">What are you looking to improve?</span><textarea value="{{ v.improve }}" onChange="{{ on.improve }}" rows="4" placeholder="Tell us about your sales capability goals" style="padding:12px 14px;border-radius:10px;border:1.5px solid #E8EAEB;font:inherit;font-size:16px;line-height:1.5;color:#212121;outline:none;resize:vertical;background:#FFFFFF" style-focus="border-color:#087C8C;box-shadow:0 0 0 4px #DDF3F7"></textarea></label>
+          <button type="submit" style="margin-top:6px;height:56px;border:0;border-radius:10px;background:#FF6D00;color:#FFFFFF;font:inherit;font-size:16px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px" style-hover="background:#E86300" style-active="transform:translateY(1px)">Request My Demo<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
+          <span style="font-size:12.5px;line-height:1.5;color:#3B494C">By submitting, you agree to our <a href="#" style="color:#087C8C;font-weight:600">Privacy Policy</a>.</span>
+        </form>
+      </sc-if>
+      <sc-if value="{{ done }}">
+        <div style="display:flex;flex-direction:column;align-items:flex-start;gap:18px;padding:clamp(12px,3vw,32px) 0">
+          <span style="width:56px;height:56px;border-radius:50%;background:#087C8C;display:flex;align-items:center;justify-content:center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"></path></svg></span>
+          <h2 style="margin:0;font-size:clamp(26px,2.8vw,34px);line-height:1.2;font-weight:800;letter-spacing:-0.02em;color:#212121">Thank you. Your request has been received.</h2>
+          <p style="margin:0;font-size:18px;line-height:1.6;color:#3B494C">Our team will be in touch soon.</p>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+</section>
+<dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, v: { name: '', email: '', company: '', role: '', improve: '' }, size: '', err: {}, done: false };
+  componentDidMount() { this.onR = () => this.setState({ w: window.innerWidth }); window.addEventListener('resize', this.onR); }
+  componentWillUnmount() { window.removeEventListener('resize', this.onR); }
+  renderVals() {
+    const { v, err, size } = this.state;
+    const keys = ['name', 'email', 'company', 'role', 'improve'];
+    const on = {}; keys.forEach(k => on[k] = e => { const val = e.target.value; this.setState(s => ({ v: { ...s.v, [k]: val }, err: { ...s.err, [k]: null } })); });
+    const bd = {}; keys.forEach(k => bd[k] = err[k] ? '#C2410C' : '#E8EAEB');
+    const submit = e => {
+      e.preventDefault();
+      const er = {};
+      if (!v.name.trim()) er.name = 'Please enter your name.';
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v.email)) er.email = 'Please enter a valid work email.';
+      if (!v.company.trim()) er.company = 'Please enter your company.';
+      if (!v.role.trim()) er.role = 'Please enter your role.';
+      if (Object.keys(er).length) return this.setState({ err: er });
+      this.setState({ done: true });
+    };
+    const sizes = ['1–10', '11–50', '51–200', '201–1,000', '1,000+'].map(t => ({ t, pick: () => this.setState({ size: t }), bg: size === t ? '#3B494C' : '#FFFFFF', fg: size === t ? '#FFFFFF' : '#3B494C', bd: size === t ? '#3B494C' : '#E8EAEB' }));
+    return { v, on, bd, err, submit, sizes, form: !this.state.done, done: this.state.done, g2: `repeat(${this.state.w >= 640 ? 2 : 1},minmax(0,1fr))` };
+  }
+}
+</script>
+</body>
+</html>

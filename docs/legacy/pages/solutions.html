@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><title>Sales Capability Solutions by Role | Repskill</title><meta name="description" content="Build sales capability across every role: sales teams, sales managers, head of sales, and L&amp;D teams."><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style>body{margin:0;font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#212121;background:#FFFFFF;-webkit-font-smoothing:antialiased}a{color:#087C8C;text-decoration:none}a:hover{color:#3B494C}*{box-sizing:border-box}</style></helmet>
+<div style="font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:#FFFFFF">
+<dc-import name="SiteHeader" active="solutions" hint-size="100%,72px"></dc-import>
+
+<section data-screen-label="01 Hero" style="background-color:#FFFFFF;background-image:linear-gradient(rgba(232,234,235,0.6) 1px,transparent 1px),linear-gradient(90deg,rgba(232,234,235,0.6) 1px,transparent 1px);background-size:48px 48px">
+  <div style="max-width:1366px;margin:0 auto;padding:clamp(56px,8vw,104px) clamp(20px,4.5vw,64px);display:flex;flex-wrap:wrap;gap:clamp(40px,6vw,80px);align-items:center">
+    <div style="flex:1 1 440px;display:flex;flex-direction:column;gap:22px">
+      <span style="font-size:13px;font-weight:700;letter-spacing:0.14em;color:#087C8C">SOLUTIONS</span>
+      <h1 style="margin:0;font-size:clamp(34px,4.2vw,48px);line-height:1.06;font-weight:800;letter-spacing:-0.03em;color:#212121;text-wrap:balance">Build Sales Capability Across Every Role.</h1>
+      <p style="margin:0;max-width:540px;font-size:18px;line-height:1.6;color:#3B494C;text-wrap:pretty">Repskill helps every role that builds sales capability capture knowledge, learn, practice, reflect, and improve.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:6px">
+        <a href="#roles" style="display:inline-flex;align-items:center;gap:10px;background:#FFFFFF;color:#212121;font-size:16px;font-weight:600;padding:15px 24px;border-radius:10px;border:1.5px solid #3B494C" style-hover="background:#3B494C;color:#FFFFFF">Find your role</a>
+        <a href="Request Demo.dc.html" style="display:inline-flex;align-items:center;gap:10px;background:#FF6D00;color:#FFFFFF;font-size:16px;font-weight:600;padding:16px 26px;border-radius:10px" style-hover="background:#E86300;color:#FFFFFF">Request Demo</a>
+      </div>
+    </div>
+    <div style="flex:1 1 400px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px">
+      <sc-for list="{{ roles }}" as="r" hint-placeholder-count="4">
+        <a href="{{ r.href }}" style="display:flex;flex-direction:column;gap:8px;padding:20px;border-radius:16px;background:#FFFFFF;border:1px solid #E8EAEB;color:#212121;box-shadow:0 20px 40px -32px rgba(33,33,33,0.35)" style-hover="border-color:#3B494C;color:#212121"><span style="font-size:12px;font-weight:700;color:#FF6D00">{{ r.n }}</span><span style="font-size:18px;font-weight:700;color:#212121">{{ r.name }}</span><span style="font-size:13.5px;line-height:1.45;color:#3B494C">{{ r.line }}</span></a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="02 The Challenge" style="background:#F6F7F7">
+  <div style="max-width:1366px;margin:0 auto;padding:clamp(72px,10vw,120px) clamp(20px,4.5vw,64px);display:flex;flex-wrap:wrap;gap:clamp(40px,6vw,88px);align-items:center">
+    <div style="flex:1 1 420px;display:flex;flex-direction:column;gap:20px">
+      <span style="font-size:13px;font-weight:700;letter-spacing:0.14em;color:#087C8C">THE CHALLENGE</span>
+      <h2 style="margin:0;font-size:clamp(28px,3vw,36px);line-height:1.14;font-weight:700;letter-spacing:-0.02em;color:#212121;text-wrap:balance">Sales capability isn't only the job of individual salespeople.</h2>
+      <p style="margin:0;font-size:18px;line-height:1.6;color:#3B494C;text-wrap:pretty">It is built by a connected group of people: the sales team, their managers, sales leadership, and L&amp;D.</p>
+    </div>
+    <div style="flex:1 1 380px;display:flex;flex-direction:column;align-items:stretch;max-width:460px">
+      <sc-for list="{{ eco }}" as="e" hint-placeholder-count="4">
+        <div style="display:flex;flex-direction:column;align-items:center">
+          <div style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 22px;border-radius:14px;background:#FFFFFF;border:1px solid #E8EAEB"><span style="font-size:17px;font-weight:700;color:#212121">{{ e.t }}</span><span style="font-size:12px;font-weight:700;letter-spacing:0.08em;color:#087C8C">{{ e.d }}</span></div>
+          <sc-if value="{{ e.more }}"><span style="font-size:18px;line-height:1;color:#49B8D1;padding:6px 0">↕</span></sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="roles" data-screen-label="03 Solutions by Role" style="background:#FFFFFF;scroll-margin-top:72px">
+  <div style="max-width:1366px;margin:0 auto;padding:clamp(72px,10vw,120px) clamp(20px,4.5vw,64px)">
+    <div style="display:flex;flex-direction:column;gap:20px;max-width:720px">
+      <span style="font-size:13px;font-weight:700;letter-spacing:0.14em;color:#087C8C">SOLUTIONS BY ROLE</span>
+      <h2 style="margin:0;font-size:clamp(28px,3vw,36px);line-height:1.14;font-weight:700;letter-spacing:-0.02em;color:#212121;text-wrap:balance">Built Around the People Who Build Sales Capability.</h2>
+    </div>
+    <div style="margin-top:clamp(36px,5vw,56px);display:grid;grid-template-columns:{{ g2 }};gap:16px">
+      <sc-for list="{{ roles }}" as="r" hint-placeholder-count="4">
+        <a href="{{ r.href }}" style="display:flex;flex-direction:column;gap:16px;padding:clamp(24px,3vw,36px);border-radius:20px;background:#F6F7F7;color:#212121;border:1px solid transparent;transition:border-color .2s,background .2s" style-hover="border-color:#3B494C;background:#FFFFFF;color:#212121">
+          <div style="display:flex;align-items:center;justify-content:space-between"><span style="font-size:13px;font-weight:700;letter-spacing:0.14em;color:#087C8C">{{ r.nameU }}</span><span style="font-size:13px;font-weight:700;color:#FF6D00">{{ r.n }}</span></div>
+          <span style="font-size:clamp(22px,2.2vw,26px);line-height:1.25;font-weight:700;letter-spacing:-0.01em;color:#212121;text-wrap:balance">{{ r.core }}</span>
+          <span style="font-size:15.5px;line-height:1.55;color:#3B494C">{{ r.sup }}</span>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px"><sc-for list="{{ r.uses }}" as="u"><span style="font-size:12px;font-weight:600;color:#087C8C;background:#FFFFFF;border:1px solid #DDF3F7;border-radius:6px;padding:5px 8px">{{ u }}</span></sc-for></div>
+          <span style="margin-top:6px;display:inline-flex;align-items:center;gap:6px;font-size:14.5px;font-weight:600;color:#3B494C"><span>Explore {{ r.name }}</span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="04 How Roles Connect" style="background:#3B494C">
+  <div style="max-width:1366px;margin:0 auto;padding:clamp(72px,10vw,120px) clamp(20px,4.5vw,64px)">
+    <div style="display:flex;flex-direction:column;gap:20px;max-width:720px">
+      <span style="font-size:13px;font-weight:700;letter-spacing:0.14em;color:#49B8D1">HOW ROLES CONNECT</span>
+      <h2 style="margin:0;font-size:clamp(28px,3vw,36px);line-height:1.14;font-weight:700;letter-spacing:-0.02em;color:#FFFFFF;text-wrap:balance">One connected capability-building system.</h2>
+      <p style="margin:0;font-size:18px;line-height:1.6;color:#E8EAEB;text-wrap:pretty">Every role works from the same Knowledge Universe, and every role helps it grow.</p>
+    </div>
+    <div style="margin-top:clamp(36px,5vw,56px);display:grid;grid-template-columns:{{ g4 }};gap:12px">
+      <sc-for list="{{ connect }}" as="c" hint-placeholder-count="4">
+        <div style="display:flex;flex-direction:column;gap:10px;padding:22px;border-radius:14px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14)">
+          <span style="font-size:17px;font-weight:700;color:#FFFFFF">{{ c.t }}</span>
+          <span style="font-size:14.5px;line-height:1.5;color:#E8EAEB">{{ c.d }}</span>
+        </div>
+      </sc-for>
+    </div>
+    <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}"><div style="display:grid;grid-template-columns:{{ g4 }};gap:12px">
+      <sc-for list="{{ connect }}" as="c" hint-placeholder-count="4"><div style="display:flex;justify-content:center"><span style="width:2px;height:28px;background:#49B8D1"></span></div></sc-for>
+    </div></sc-if>
+    <sc-if value="{{ narrow }}"><div style="height:12px"></div></sc-if>
+    <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;padding:22px 26px;border-radius:14px;background:#087C8C">
+      <div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:12px;font-weight:700;letter-spacing:0.14em;color:#DDF3F7">SHARED FOUNDATION</span><span style="font-size:20px;font-weight:700;color:#FFFFFF">Knowledge Universe</span></div>
+      <span style="font-size:14.5px;line-height:1.5;color:#FFFFFF;max-width:480px">Curated, reviewed, and approved knowledge that powers learning, practice, and coaching for every role.</span>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="05 CTA" style="background:#FFFFFF">
+  <div style="max-width:1366px;margin:0 auto;padding:clamp(72px,10vw,112px) clamp(20px,4.5vw,64px)">
+    <div style="border-radius:24px;background:#EEF9FB;padding:clamp(28px,5vw,56px);display:flex;flex-wrap:wrap;gap:32px;align-items:center;justify-content:space-between">
+      <div style="flex:1 1 380px;display:flex;flex-direction:column;gap:14px">
+        <h2 style="margin:0;font-size:clamp(28px,3vw,36px);line-height:1.14;font-weight:700;letter-spacing:-0.02em;color:#212121">Explore Your Solution.</h2>
+        <p style="margin:0;font-size:17px;line-height:1.6;color:#3B494C">Choose your role, or talk to us about your sales organization.</p>
+      </div>
+      <div style="flex:1 1 420px;display:flex;flex-direction:column;gap:10px">
+        <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px">
+          <sc-for list="{{ roles }}" as="r" hint-placeholder-count="4"><a href="{{ r.href }}" style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:14px 16px;border-radius:10px;background:#FFFFFF;font-size:15px;font-weight:600;color:#212121;border:1px solid #DDF3F7" style-hover="border-color:#087C8C;color:#087C8C"><span>{{ r.name }}</span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></sc-for>
+        </div>
+        <a href="Request Demo.dc.html" style="display:flex;align-items:center;justify-content:center;gap:10px;height:52px;border-radius:10px;background:#FF6D00;color:#FFFFFF;font-size:16px;font-weight:600" style-hover="background:#E86300;color:#FFFFFF">Request Demo</a>
+      </div>
+    </div>
+  </div>
+</section>
+<dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280 };
+  componentDidMount() { this.onR = () => this.setState({ w: window.innerWidth }); window.addEventListener('resize', this.onR); }
+  componentWillUnmount() { window.removeEventListener('resize', this.onR); }
+  renderVals() {
+    const w = this.state.w, c = n => `repeat(${n},minmax(0,1fr))`;
+    const roles = [
+      { n: '01', name: 'Sales Teams', line: 'Learn, practice, and improve.', core: 'Build Skills That Show Up in Real Sales Conversations.', sup: "Learn from your company's knowledge, practice realistic situations, reflect on performance, and improve continuously.", href: 'Solutions - Sales Teams.dc.html', uses: ['Learning Path', 'Scenario Studio', 'Reflection Studio'] },
+      { n: '02', name: 'Sales Managers', line: 'Coach with greater consistency and insight.', core: 'Build a Team That Gets Better Through Every Coaching Cycle.', sup: 'Give managers the knowledge and insights they need to help their teams learn, practice, reflect, and improve.', href: 'Solutions - Sales Managers.dc.html', uses: ['Scenario Studio', 'Reflection Studio', 'Knowledge Universe'] },
+      { n: '03', name: 'Head of Sales', line: 'Scale expertise across the organization.', core: 'Scale the Expertise Behind Your Best Sales Teams.', sup: 'Capture proven sales expertise, build consistent capability, and make best practices scalable across the organization.', href: 'Solutions - Head of Sales.dc.html', uses: ['Extraction Studio', 'Knowledge Universe'] },
+      { n: '04', name: 'L&D Teams', line: 'Turn organizational knowledge into continuous development.', core: 'Turn Sales Knowledge Into Continuous Capability Development.', sup: 'Connect organizational knowledge with structured learning, realistic practice, reflection, and continuous improvement.', href: 'Solutions - LD Teams.dc.html', uses: ['Learning Path', 'Extraction Studio', 'Reflection Studio'] },
+    ].map(r => ({ ...r, nameU: r.name.toUpperCase() }));
+    const eco = [['Sales Team', 'LEARN · PRACTICE'], ['Sales Manager', 'COACH'], ['Head of Sales', 'SCALE'], ['L&D', 'DEVELOP']].map(([t, d], i, a) => ({ t, d, more: i < a.length - 1 }));
+    const connect = [
+      { t: 'Head of Sales', d: 'Brings proven expertise and best practices into the system.' },
+      { t: 'L&D Teams', d: 'Turns approved knowledge into structured learning.' },
+      { t: 'Sales Managers', d: 'Coaches from shared insights and knowledge.' },
+      { t: 'Sales Teams', d: 'Learns, practices, reflects, and improves.' },
+    ];
+    return { roles, eco, connect, wide: w >= 1000, narrow: w < 1000, g2: c(w >= 820 ? 2 : 1), g4: c(w >= 1000 ? 4 : w >= 600 ? 2 : 1) };
+  }
+}
+</script>
+</body>
+</html>
