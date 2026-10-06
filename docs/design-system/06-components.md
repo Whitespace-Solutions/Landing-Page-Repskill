@@ -68,7 +68,7 @@ Semua section mengikuti kerangka: **Eyebrow → Judul → Lead → Konten → (l
 | ------------------------ | ------------------------------------------------------------------------------ | ---------------------------------------------- |
 | **Hero Home**            | Putih polos, eyebrow + accent, `text-display`, 2 tombol, panel mockup di bawah | `home/hero.tsx`                                |
 | **Page hero**            | Teks kiri, mockup kanan                                                        | `PageHero`                                     |
-| **Our Clients**          | Marquee logo klien kiri → kanan di antara border tipis                         | `ClientLogos`                                  |
+| **Our Clients**          | Marquee logo klien berwarna (tanpa outline) kiri → kanan                       | `ClientLogos`                                  |
 | **Split**                | Teks + poin di satu sisi, mockup di sisi lain; berselang-seling                | `FeatureSplit`                                 |
 | **Heading + grid kartu** | `SectionHeader` (+ tombol outline) lalu grid 3–4 kartu                         | Platform Overview, What's Included             |
 | **Timeline**             | 5 langkah dengan garis atas + dot, langkah terakhir oranye                     | `StepsTimeline` (How it works, Implementation) |

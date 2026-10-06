@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Worktree sesi paralel (lihat CLAUDE.md) — jangan ikut di-lint dari folder utama
+    ".claude/**",
   ]),
 ]);
 

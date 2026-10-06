@@ -12,7 +12,7 @@ const MIN_PER_LOOP = 10;
 const SECONDS_PER_LOGO = 4;
 
 /**
- * Section "Our Clients": logo berjalan dari kiri ke kanan tanpa putus (marquee).
+ * Section "Our Clients": logo berwarna penuh tanpa outline, berjalan dari kiri ke kanan tanpa putus (marquee).
  * Berhenti saat di-hover; tampil sebagai grid statis bila pengguna memilih "reduce motion".
  * Daftar logo: src/content/clients.ts
  */
@@ -75,17 +75,13 @@ function LogoTile({
   focusable?: boolean;
   className?: string;
 }) {
-  const tileClass = cn(
-    "group flex h-24 items-center justify-center rounded-card border border-line bg-white px-6 transition-colors",
-    client.href && "hover:border-brand-slate",
-    className,
-  );
-  // Abu-abu agar palet tetap netral; berwarna saat hover
+  const tileClass = cn("group flex h-24 items-center justify-center px-6", className);
+  // Logo tampil berwarna penuh, tanpa kotak/outline
   const logo = (
     <Image
       src={client.logo}
       alt={client.name}
-      className="h-auto max-h-10 w-auto max-w-full opacity-80 grayscale transition duration-300 group-hover:opacity-100 group-hover:grayscale-0"
+      className="h-auto max-h-10 w-auto max-w-full transition-transform duration-300 group-hover:scale-105"
     />
   );
 
