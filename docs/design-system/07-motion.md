@@ -43,7 +43,7 @@ animasi khusus, misalnya visual hero.
 
 ## Pola yang sudah dipakai
 
-- **Hero:** teks masuk berurutan, lalu panel mockup naik, kartu muncul satu per satu, progress bar mengisi, avatar tim pop.
+- **Hero Home:** eyebrow, judul, paragraf, dan tombol masuk berurutan (fade + naik). Tanpa panel visual di bawahnya.
 - **Header:** garis aktif oranye bergeser antar menu (`layoutId`), dropdown fade + scale 0.98 → 1, menu mobile slide.
 - **Timeline gelap:** stage muncul berurutan dari kiri.
 - **Our Clients (marquee):** logo berjalan dari kiri ke kanan tanpa putus (`animate-marquee-right`, kecepatan diatur

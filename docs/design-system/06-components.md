@@ -67,7 +67,7 @@ Semua section mengikuti kerangka: **Eyebrow → Judul → Lead → Konten → (l
 
 | Pola                     | Deskripsi                                                                         | Komponen / contoh                              |
 | ------------------------ | --------------------------------------------------------------------------------- | ---------------------------------------------- |
-| **Hero Home**            | Putih polos, eyebrow + accent, `text-display`, 2 tombol, panel mockup di bawah    | `home/hero.tsx`                                |
+| **Hero Home**            | Putih polos, eyebrow + accent, `text-display`, 2 tombol (tanpa panel visual)      | `home/hero.tsx`                                |
 | **Page hero**            | Teks kiri, mockup kanan                                                           | `PageHero`                                     |
 | **Our Clients**          | Marquee logo klien berwarna (tanpa outline) kiri → kanan                          | `ClientLogos`                                  |
 | **Split**                | Teks + poin di satu sisi, mockup di sisi lain; berselang-seling                   | `FeatureSplit`                                 |

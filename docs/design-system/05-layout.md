@@ -49,13 +49,13 @@ Mobile first: desain harus benar di lebar **360–390px** tanpa scroll horizonta
 
 Shadow dipakai **hemat**. Sebagian besar kartu cukup memakai `border border-line` tanpa shadow.
 
-| Token          | Dipakai untuk                             |
-| -------------- | ----------------------------------------- |
-| `shadow-float` | Panel besar yang "melayang" (mockup hero) |
-| `shadow-pop`   | Dropdown, popover                         |
-| `shadow-glow`  | Hover kartu fitur (bernuansa amber)       |
+| Token          | Dipakai untuk                               |
+| -------------- | ------------------------------------------- |
+| `shadow-float` | Panel besar yang "melayang" (mockup produk) |
+| `shadow-pop`   | Dropdown, popover                           |
+| `shadow-glow`  | Hover kartu fitur (bernuansa amber)         |
 
 ## Background hero
 
-Hero memakai background **putih polos**, tanpa pola grid atau tekstur. Kedalaman cukup datang dari panel mockup
-(`shadow-float`).
+Hero memakai background **putih polos**, tanpa pola grid atau tekstur. Hero Home hanya berisi teks + tombol (tanpa panel
+visual); hero halaman turunan boleh menampilkan satu mockup di sisi kanan.
