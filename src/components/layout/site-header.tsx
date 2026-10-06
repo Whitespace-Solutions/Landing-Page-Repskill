@@ -162,8 +162,10 @@ function DesktopDropdown({
   onOpenChange: (open: boolean) => void;
   onNavigate: () => void;
 }) {
-  // Daftar pendek (≤3) tampil satu kolom; lebih dari itu dua kolom.
-  const twoColumns = (item.children?.length ?? 0) > 3;
+  // `row`: semua sub menu berjajar ke samping. Selain itu: ≤3 item satu kolom, lebih dari itu dua kolom.
+  const count = item.children?.length ?? 0;
+  const row = item.layout === "row";
+  const twoColumns = !row && count > 3;
   return (
     <div
       className="relative"
@@ -207,10 +209,13 @@ function DesktopDropdown({
             <div
               className={cn(
                 "rounded-card border border-line bg-white p-2.5 shadow-pop",
-                twoColumns ? "w-[580px]" : "w-[380px]",
+                row ? "w-[760px]" : twoColumns ? "w-[580px]" : "w-[380px]",
               )}
             >
-              <div className={cn("grid gap-1", twoColumns && "grid-cols-2")}>
+              <div
+                className={cn("grid gap-1", twoColumns && "grid-cols-2")}
+                style={row ? { gridTemplateColumns: `repeat(${count}, minmax(0, 1fr))` } : undefined}
+              >
                 {item.children!.map((child) => (
                   <Link
                     key={child.href}

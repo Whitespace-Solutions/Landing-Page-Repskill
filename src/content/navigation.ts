@@ -16,6 +16,8 @@ export type NavItem = NavLink & {
   children?: NavLink[];
   /** Tautan ringkasan di bagian bawah dropdown */
   overview?: NavLink;
+  /** `row`: sub menu dropdown desktop berjajar ke samping (satu baris), bukan bertumpuk ke bawah */
+  layout?: "row";
 };
 
 // Urutan baku alur produk: Capture → Learn → Practice.
@@ -49,7 +51,7 @@ export const stories: NavLink[] = successStories.map((s) => ({
 export const primaryCta: NavLink = { label: "Book Demo", href: "/book-demo/" };
 
 export const mainNav: NavItem[] = [
-  { label: "Features", href: "/features/", children: features },
+  { label: "Features", href: "/features/", children: features, layout: "row" },
   {
     label: "Success Stories",
     href: "/success-stories/",
