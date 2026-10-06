@@ -61,6 +61,14 @@
   /* Motion — class: ease-brand */
   --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
 
+  /* Putaran sangat pelan untuk wireframe dekoratif (1 putaran / 150 detik) — class: animate-spin-slow */
+  --animate-spin-slow: spin-slow 150s linear infinite;
+  @keyframes spin-slow {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
   /* Marquee kiri → kanan — class: animate-marquee-right; atur kecepatan via --marquee-duration */
   --animate-marquee-right: marquee-right var(--marquee-duration, 40s) linear infinite;
   @keyframes marquee-right {

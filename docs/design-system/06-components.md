@@ -24,6 +24,7 @@ Pakai komponen yang sudah ada sebelum membuat yang baru. Komponen baru yang reus
 | `StoryRow`                         | `src/components/sections/success-stories/story-parts.tsx` | Kartu lebar satu klien di `/success-stories/`: "Nama: headline", ringkasan, metrik, tombol "Read Case Study", logo kanan   |
 | `Mockup`                           | `src/components/mockups/mockup.tsx`                       | Ilustrasi UI produk dari data: `chat` · `checklist` · `bars` · `knowledge-universe` · `governance` · `quote` · `structure` |
 | `AnimatedBar`                      | `src/components/motion/animated-bar.tsx`                  | Bar progres yang mengisi saat terlihat                                                                                     |
+| `Wireframe`                        | `src/components/ui/wireframe.tsx`                         | Grafik garis poligon dekoratif (warna via `text-*`), dipakai di latar footer                                               |
 
 ## Button
 

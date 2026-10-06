@@ -33,7 +33,15 @@ Aturan mockup:
 Diambil dari symbol logo (panah/garis miring R):
 
 - Aksen eyebrow: `h-1 w-[18px] -skew-x-[38deg] bg-brand-orange`.
-- Panel `FinalCta` dan footer sengaja polos, tanpa bilah miring dekoratif atau grafik (keputusan 2026-10-06).
+- Panel `FinalCta` sengaja polos, tanpa bilah miring dekoratif (keputusan 2026-10-06).
+
+## Wireframe poligon
+
+Grafik garis poligon (komponen `Wireframe`, diambil dari referensi Whitespace Talents Landing). Warna mengikuti
+`text-*` (`fill="currentColor"`).
+
+- Dipakai di footer: `text-brand-orange opacity-45`, di sisi kanan, terpotong tepi footer, di belakang teks.
+- Hanya sebagai latar dekoratif di section gelap, dengan teks selalu di atasnya. Maksimal satu per halaman.
 - Maksimal satu motif dekoratif per section. Jangan sampai menutupi teks.
 
 ## Foto (bila nanti dibutuhkan)

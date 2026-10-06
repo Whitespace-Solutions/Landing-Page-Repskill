@@ -2,13 +2,23 @@ import Image from "next/image";
 import Link from "next/link";
 import logoReverse from "@/assets/brand/repskill-logo-reverse.png";
 import { Container } from "@/components/ui/container";
+import { Wireframe } from "@/components/ui/wireframe";
 import { siteConfig } from "@/config/site";
 import { footerNav } from "@/content/navigation";
 
 export function SiteFooter() {
   return (
-    <footer className="bg-brand-grey text-white">
-      <Container className="py-16 lg:py-20">
+    <footer className="relative overflow-hidden bg-brand-grey text-white">
+      {/* Wireframe dekoratif di kanan, terpotong tepi footer. Berputar pelan; berhenti bila "reduce motion" aktif.
+          Teks tetap di atasnya karena Container dirender setelahnya dengan `relative`. */}
+      <div
+        className="pointer-events-none absolute top-1/2 -right-[18%] w-[min(85%,520px)] -translate-y-1/2 text-brand-orange opacity-45 sm:-right-[8%] lg:-right-[4%] lg:w-[min(46%,520px)]"
+        aria-hidden
+      >
+        <Wireframe className="h-auto w-full motion-safe:animate-spin-slow" />
+      </div>
+
+      <Container className="relative py-16 lg:py-20">
         <div className="flex flex-wrap items-start justify-between gap-12">
           {/* Tombol Book Demo tidak diulang di sini: sudah ada di FinalCta tepat di atas footer dan di kolom GET STARTED. */}
           <div className="flex max-w-xs flex-col gap-5">

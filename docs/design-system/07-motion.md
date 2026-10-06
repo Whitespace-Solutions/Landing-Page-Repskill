@@ -46,7 +46,10 @@ animasi khusus, misalnya visual hero.
 - **Hero Home:** eyebrow, judul, paragraf, dan tombol masuk berurutan (fade + naik). Tanpa panel visual di bawahnya.
 - **Header:** garis aktif oranye bergeser antar menu (`layoutId`), dropdown fade + scale 0.98 → 1, menu mobile slide.
 - **Timeline gelap:** stage muncul berurutan dari kiri.
-- **CTA penutup:** teks masuk dengan `Reveal`, tanpa dekorasi bergerak. Footer statis.
+- **CTA penutup:** teks masuk dengan `Reveal`, tanpa dekorasi bergerak.
+- **Footer:** `Wireframe` oranye (opacity 45%) di kanan berputar sangat pelan, 1 putaran per 150 detik
+  (`motion-safe:animate-spin-slow`). Ini satu-satunya animasi berulang di luar marquee, dan berhenti bila "reduce
+  motion" aktif.
 - **Skew + Motion:** elemen `motion.*` yang dianimasikan transform-nya (x, y, scale) tidak bisa memakai class
   `-skew-x-*`, karena transform inline dari Motion menimpanya. Pakai `style={{ skewX: -20 }}`.
 - **Our Clients (marquee):** logo berjalan dari kiri ke kanan tanpa putus (`animate-marquee-right`, kecepatan diatur
