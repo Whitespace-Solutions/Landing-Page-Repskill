@@ -45,8 +45,11 @@ Foto orang asli di situasi kerja nyata (tim sales, coaching), pencahayaan natura
 
 - File siap pakai ada di `src/assets/clients/`: PNG berlatar **transparan**, sudah di-crop rapat, tinggi maksimal 160px.
   File asli dari klien disimpan di `docs/brand/clients/`.
+- Daftar logo wall ada di `src/content/clients.ts`: klien dengan success story ikut otomatis, klien lain ditambahkan di
+  `otherClients`.
 - Logo wall ("Our Clients"): **abu-abu + opacity 80%**, berubah berwarna saat hover. Ini menjaga palet halaman tetap netral
-  dan tidak bersaing dengan oranye Repskill.
+  dan tidak bersaing dengan oranye Repskill. Logo wall berjalan sebagai marquee kiri → kanan (lihat
+  [07-motion.md](07-motion.md)).
 - Di kartu success story dan halaman klien, logo tampil **berwarna penuh**.
 - Jangan recolor, stretch, atau memberi efek pada logo klien. Ukuran diatur lewat `max-h-*`, dengan lebar mengikuti
   proporsi aslinya.

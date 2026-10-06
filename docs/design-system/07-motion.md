@@ -46,3 +46,6 @@ animasi khusus, misalnya visual hero.
 - **Hero:** teks masuk berurutan, lalu panel mockup naik, kartu muncul satu per satu, progress bar mengisi, avatar tim pop.
 - **Header:** garis aktif oranye bergeser antar menu (`layoutId`), dropdown fade + scale 0.98 → 1, menu mobile slide.
 - **Timeline gelap:** stage muncul berurutan dari kiri.
+- **Our Clients (marquee):** logo berjalan dari kiri ke kanan tanpa putus (`animate-marquee-right`, kecepatan diatur
+  lewat `--marquee-duration`, sekitar 4 detik per logo), dengan tepi kiri-kanan memudar. Berhenti saat di-hover, dan
+  berganti menjadi grid statis bila "reduce motion" aktif. Komponen: `ClientLogos`.

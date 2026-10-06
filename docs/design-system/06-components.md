@@ -19,7 +19,7 @@ Pakai komponen yang sudah ada sebelum membuat yang baru. Komponen baru yang reus
 | `PageHero`                         | `src/components/sections/shared/page-hero.tsx`      | Hero halaman turunan (data `PageHeroData`)                                                                                 |
 | `FeatureSplit`                     | `src/components/sections/shared/feature-split.tsx`  | Pola Split dengan poin + mockup (data `FeatureBlockData`)                                                                  |
 | `StepsTimeline`                    | `src/components/sections/shared/steps-timeline.tsx` | Timeline bernomor, `tone="dark"` (default) atau `"light"`                                                                  |
-| `ClientLogos`                      | `src/components/sections/shared/client-logos.tsx`   | Section "Our Clients", otomatis dari daftar success story                                                                  |
+| `ClientLogos`                      | `src/components/sections/shared/client-logos.tsx`   | Section "Our Clients": marquee logo dari `src/content/clients.ts`                                                          |
 | `StoryCard`                        | `src/components/sections/shared/story-card.tsx`     | Kartu ringkas success story                                                                                                |
 | `Mockup`                           | `src/components/mockups/mockup.tsx`                 | Ilustrasi UI produk dari data: `chat` · `checklist` · `bars` · `knowledge-universe` · `governance` · `quote` · `structure` |
 | `AnimatedBar`                      | `src/components/motion/animated-bar.tsx`            | Bar progres yang mengisi saat terlihat                                                                                     |
@@ -68,7 +68,7 @@ Semua section mengikuti kerangka: **Eyebrow → Judul → Lead → Konten → (l
 | ------------------------ | ------------------------------------------------------------------------------ | ---------------------------------------------- |
 | **Hero Home**            | Putih polos, eyebrow + accent, `text-display`, 2 tombol, panel mockup di bawah | `home/hero.tsx`                                |
 | **Page hero**            | Teks kiri, mockup kanan                                                        | `PageHero`                                     |
-| **Our Clients**          | Baris logo/wordmark klien di antara border tipis                               | `ClientLogos`                                  |
+| **Our Clients**          | Marquee logo klien kiri → kanan di antara border tipis                         | `ClientLogos`                                  |
 | **Split**                | Teks + poin di satu sisi, mockup di sisi lain; berselang-seling                | `FeatureSplit`                                 |
 | **Heading + grid kartu** | `SectionHeader` (+ tombol outline) lalu grid 3–4 kartu                         | Platform Overview, What's Included             |
 | **Timeline**             | 5 langkah dengan garis atas + dot, langkah terakhir oranye                     | `StepsTimeline` (How it works, Implementation) |

@@ -62,6 +62,17 @@
 
   /* Motion — class: ease-brand */
   --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Marquee kiri → kanan — class: animate-marquee-right; atur kecepatan via --marquee-duration */
+  --animate-marquee-right: marquee-right var(--marquee-duration, 40s) linear infinite;
+  @keyframes marquee-right {
+    from {
+      transform: translateX(-50%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
 }
 
 @layer base {

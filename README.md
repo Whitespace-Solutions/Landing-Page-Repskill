@@ -66,14 +66,15 @@ npm run dev        # http://localhost:3000, auto-reload saat file diubah
 
 Semua teks ada di `src/content/`. Ubah di sana, tidak perlu menyentuh komponen.
 
-| File                                       | Isi                                               |
-| ------------------------------------------ | ------------------------------------------------- |
-| `navigation.ts`                            | Menu header, footer, dan daftar URL untuk sitemap |
-| `home.ts`                                  | Home                                              |
-| `features.ts`                              | Practice, Capture Knowledge, Learn Knowledge      |
-| `success-stories.ts`                       | Data tiap klien (bamms, ReCharge, ASCO, Trilogy)  |
-| `success-stories-page.ts`                  | Halaman induk Success Stories                     |
-| `pricing.ts` / `about.ts` / `book-demo.ts` | Halaman masing-masing                             |
+| File                                       | Isi                                                              |
+| ------------------------------------------ | ---------------------------------------------------------------- |
+| `navigation.ts`                            | Menu header, footer, dan daftar URL untuk sitemap                |
+| `home.ts`                                  | Home                                                             |
+| `features.ts`                              | Practice, Capture Knowledge, Learn Knowledge                     |
+| `success-stories.ts`                       | Data tiap klien (bamms, ReCharge, ASCO, Trilogy)                 |
+| `clients.ts`                               | Logo di section Our Clients (termasuk klien tanpa success story) |
+| `success-stories-page.ts`                  | Halaman induk Success Stories                                    |
+| `pricing.ts` / `about.ts` / `book-demo.ts` | Halaman masing-masing                                            |
 
 **Menambah success story baru:** tambahkan satu objek di `success-stories.ts`. Halaman, kartu, logo klien, menu, dan
 sitemap ikut terbuat otomatis. Set `draft: false` setelah kontennya disetujui klien (badge "Draft content" akan hilang).
