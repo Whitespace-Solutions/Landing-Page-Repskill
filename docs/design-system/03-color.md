@@ -87,3 +87,17 @@ Transparansi hanya alat pendukung. Level: **100 / 70 / 40 / 10** (palet) dan per
 ✓ Oranye untuk aksi dan penekanan · ✓ Shadow Grey untuk konten utama yang dipercaya · ✓ Amber/Linen untuk AI dan
 progres · ✓ Background mostly neutral
 ✗ Warna di luar palet · ✗ Semua elemen dijadikan aksen · ✗ Kontras rendah · ✗ Gradient/efek pada logo
+
+## Token lama (dihapus 06-10-2026)
+
+`brand-slate`, `brand-teal`, `brand-cyan`, `brand-cyan-soft`, `surface-ice`, dan `ink` sudah dihapus. ESLint akan **error**
+bila token ini dipakai lagi (aturan di `eslint.config.mjs`). Padanannya:
+
+| Lama                                  | Baru                                                     |
+| ------------------------------------- | -------------------------------------------------------- |
+| `text-ink`, `bg-/border-brand-slate`  | `brand-grey`                                             |
+| `text-brand-slate` (paragraf)         | `text-brand-charcoal`                                    |
+| `bg-brand-teal`, `brand-cyan` (isian) | `brand-amber` (teks di atasnya `text-brand-grey`)        |
+| `text-brand-teal` (eyebrow/label)     | `text-brand-orange` · chip/label data: `text-brand-grey` |
+| `surface-ice`, `bg-brand-cyan-soft`   | `brand-linen`                                            |
+| `text-brand-cyan` (di latar gelap)    | `text-brand-amber`                                       |

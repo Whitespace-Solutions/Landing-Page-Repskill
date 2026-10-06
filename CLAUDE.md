@@ -8,6 +8,9 @@
   if they conflict, the PDF wins and the design-system doc should be updated.
 - Use the Tailwind tokens from `src/app/globals.css` (`bg-brand-orange`, `text-h2`, `rounded-card`, `shadow-float`, …), never
   raw hex or arbitrary font sizes in components. Micro sizes are only allowed inside UI-mockup illustrations.
+- The brand palette changed on 2026-10-06 (guideline 05.10.26). Old tokens (`brand-slate`, `brand-teal`, `brand-cyan`,
+  `brand-cyan-soft`, `surface-ice`, `ink`) are removed and **fail `npm run lint`**. Map them via
+  `docs/design-system/03-color.md`.
 - Static export (`output: "export"`): no server features (Server Actions, route handlers using Request,
   rewrites/redirects/headers, proxy, default image optimization).
 - All copy/data lives in `src/content/`; components in `src/components/` only render it. Navigation is the single source in
