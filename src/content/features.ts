@@ -86,7 +86,7 @@ export const practicePage: FeaturePage = {
     {
       id: "scenario-studio",
       eyebrow: "Scenario Studio",
-      title: "Roleplay real sales situations with an AI buyer.",
+      title: "Roleplay real sales situations with an AI buyer, or flip roles and let the AI sell.",
       body: "Practice the conversations your team faces every day, from discovery calls to early pricing questions and competitor comparisons, grounded in your own products and best practices.",
       points: [
         "Company-specific scenarios built from your Knowledge Universe",
