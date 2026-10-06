@@ -47,7 +47,7 @@ animasi khusus, misalnya visual hero.
 - **Header:** garis aktif oranye bergeser antar menu (`layoutId`), dropdown fade + scale 0.98 → 1, menu mobile slide.
 - **Timeline gelap:** stage muncul berurutan dari kiri.
 - **CTA penutup:** teks masuk dengan `Reveal`, tanpa dekorasi bergerak.
-- **Footer:** `Wireframe` oranye (opacity 45%) di kanan berputar sangat pelan, 1 putaran per 150 detik
+- **Footer:** `Wireframe` oranye (opacity 35%) di kanan berputar sangat pelan, 1 putaran per 150 detik
   (`motion-safe:animate-spin-slow`). Ini satu-satunya animasi berulang di luar marquee, dan berhenti bila "reduce
   motion" aktif.
 - **Skew + Motion:** elemen `motion.*` yang dianimasikan transform-nya (x, y, scale) tidak bisa memakai class

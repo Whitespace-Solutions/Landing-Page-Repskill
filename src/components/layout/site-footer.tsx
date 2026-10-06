@@ -12,7 +12,7 @@ export function SiteFooter() {
       {/* Wireframe dekoratif di kanan, terpotong tepi footer. Berputar pelan; berhenti bila "reduce motion" aktif.
           Teks tetap di atasnya karena Container dirender setelahnya dengan `relative`. */}
       <div
-        className="pointer-events-none absolute top-1/2 -right-[18%] w-[min(85%,520px)] -translate-y-1/2 text-brand-orange opacity-45 sm:-right-[8%] lg:-right-[4%] lg:w-[min(46%,520px)]"
+        className="pointer-events-none absolute top-1/2 -right-[18%] w-[min(85%,520px)] -translate-y-1/2 text-brand-orange opacity-35 sm:-right-[8%] lg:-right-[4%] lg:w-[min(46%,520px)]"
         aria-hidden
       >
         <Wireframe className="h-auto w-full motion-safe:animate-spin-slow" />

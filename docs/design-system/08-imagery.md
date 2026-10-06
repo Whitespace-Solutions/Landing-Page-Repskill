@@ -40,7 +40,7 @@ Diambil dari symbol logo (panah/garis miring R):
 Grafik garis poligon (komponen `Wireframe`, diambil dari referensi Whitespace Talents Landing). Warna mengikuti
 `text-*` (`fill="currentColor"`).
 
-- Dipakai di footer: `text-brand-orange opacity-45`, di sisi kanan, terpotong tepi footer, di belakang teks.
+- Dipakai di footer: `text-brand-orange opacity-35`, di sisi kanan, terpotong tepi footer, di belakang teks.
 - Hanya sebagai latar dekoratif di section gelap, dengan teks selalu di atasnya. Maksimal satu per halaman.
 - Maksimal satu motif dekoratif per section. Jangan sampai menutupi teks.
 
