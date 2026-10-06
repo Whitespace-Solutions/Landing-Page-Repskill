@@ -12,3 +12,16 @@ export function Wireframe({ className }: { className?: string }) {
     </svg>
   );
 }
+
+/** Heksagon garis (dari referensi yang sama). Stroke `currentColor`; dekoratif. */
+export function HexOutline({ className, strokeWidth = 1.6 }: { className?: string; strokeWidth?: number }) {
+  return (
+    <svg viewBox="0 0 100 100" fill="none" className={className} aria-hidden>
+      <polygon
+        points="25,6.7 75,6.7 100,50 75,93.3 25,93.3 0,50"
+        stroke="currentColor"
+        strokeWidth={strokeWidth}
+      />
+    </svg>
+  );
+}

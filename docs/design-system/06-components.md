@@ -24,7 +24,8 @@ Pakai komponen yang sudah ada sebelum membuat yang baru. Komponen baru yang reus
 | `StoryRow`                         | `src/components/sections/success-stories/story-parts.tsx` | Kartu lebar satu klien di `/success-stories/`: "Nama: headline", ringkasan, metrik, tombol "Read Case Study", logo kanan                     |
 | `Mockup`                           | `src/components/mockups/mockup.tsx`                       | Ilustrasi UI produk dari data: `chat` · `checklist` · `bars` · `knowledge-universe` · `governance` · `quote` · `structure`                   |
 | `AnimatedBar`                      | `src/components/motion/animated-bar.tsx`                  | Bar progres yang mengisi saat terlihat                                                                                                       |
-| `Wireframe`                        | `src/components/ui/wireframe.tsx`                         | Grafik garis poligon dekoratif (warna via `text-*`), dipakai di latar footer                                                                 |
+| `Wireframe`, `HexOutline`          | `src/components/ui/wireframe.tsx`                         | Grafik garis poligon dan heksagon garis dekoratif (warna via `text-*`), dipakai di footer dan `HeroOrb`                                      |
+| `HeroOrb`                          | `src/components/sections/home/hero-orb.tsx`               | Ilustrasi hero Home: wireframe berputar + "bernapas", glow, ring orbit, 3 heksagon melayang, parallax kursor                                 |
 | `TextField`, `TextAreaField`       | `src/components/ui/form-field.tsx`                        | Field formulir (label, error, "(optional)"), plus `FormError` dan `FormSuccess`. Kirim data lewat `submitForm()` di `src/lib/submit-form.ts` |
 | `GuideShell`                       | `src/components/sections/guide/guide-shell.tsx`           | Kerangka Help Center `/guide/`: hero + pencarian, sidebar artikel (aktif = `bg-brand-orange/10`), hasil pencarian                            |
 | `GuideArticleView` dkk.            | `src/components/sections/guide/guide-parts.tsx`           | Breadcrumb, kartu panduan, halaman ringkasan, artikel (langkah bernomor linen, callout linen, mockup dalam bingkai jendela)                  |
@@ -71,7 +72,7 @@ Semua section mengikuti kerangka: **Eyebrow → Judul → Lead → Konten → (l
 
 | Pola                     | Deskripsi                                                                                    | Komponen / contoh                              |
 | ------------------------ | -------------------------------------------------------------------------------------------- | ---------------------------------------------- |
-| **Hero Home**            | Putih polos, eyebrow + accent, `text-display`, 2 tombol (tanpa panel visual)                 | `home/hero.tsx`                                |
+| **Hero Home**            | Eyebrow + accent, `text-display`, 2 tombol; ilustrasi `HeroOrb` kanan di atas `bg-hero-mesh` | `home/hero.tsx`                                |
 | **Page hero**            | Teks kiri, mockup kanan                                                                      | `PageHero`                                     |
 | **Our Clients**          | Marquee logo klien berwarna (tanpa outline) kiri → kanan                                     | `ClientLogos`                                  |
 | **Split**                | Teks + poin di satu sisi, mockup di sisi lain; berselang-seling                              | `FeatureSplit`                                 |

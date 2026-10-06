@@ -19,13 +19,14 @@ Library: **Motion** (`import { motion } from "motion/react"`).
 
 ## Token
 
-| Hal          | Nilai                                                           |
-| ------------ | --------------------------------------------------------------- |
-| Easing utama | `[0.22, 1, 0.36, 1]` (`EASE_OUT` di JS, `ease-brand` di CSS)    |
-| Masuk        | `duration: 0.7`                                                 |
-| Stagger      | `0.08` (kartu) · `0.12` (stage alur)                            |
-| Hover        | `transition-colors duration-200`, kartu naik `-translate-y-0.5` |
-| Spring (pop) | `{ type: "spring", stiffness: 320, damping: 20 }`               |
+| Hal          | Nilai                                                                                                                                                              |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Easing utama | `[0.22, 1, 0.36, 1]` (`EASE_OUT` di JS, `ease-brand` di CSS)                                                                                                       |
+| Masuk        | `duration: 0.7`                                                                                                                                                    |
+| Stagger      | `0.08` (kartu) · `0.12` (stage alur)                                                                                                                               |
+| Hover        | `transition-colors duration-200`, kartu naik `-translate-y-0.5`                                                                                                    |
+| Spring (pop) | `{ type: "spring", stiffness: 320, damping: 20 }`                                                                                                                  |
+| Orb hero     | `animate-orb-spin` (64 dtk/putaran) · `animate-orb-breathe` (9 dtk, skala 1.045) · `animate-orb-glow` (8 dtk) · `animate-hex-float` (9 dtk, naik 15px + putar 13°) |
 
 ## Komponen siap pakai (`src/components/motion/reveal.tsx`)
 
@@ -43,7 +44,11 @@ animasi khusus, misalnya visual hero.
 
 ## Pola yang sudah dipakai
 
-- **Hero Home:** eyebrow, judul, paragraf, dan tombol masuk berurutan (fade + naik). Tanpa panel visual di bawahnya.
+- **Hero Home:** eyebrow, judul, paragraf, dan tombol masuk berurutan (fade + naik). Ilustrasi `HeroOrb` masuk dengan fade +
+  skala 0.9 → 1 (0.9 dtk, jeda 0.25 dtk), lalu terus bergerak pelan: wireframe berputar dan "bernapas", glow berdenyut,
+  tiga heksagon melayang (9 / 7.5 / 11 dtk). Dengan mouse, wireframe dan heksagon bergeser mengikuti kursor (parallax,
+  spring `stiffness 60, damping 20`). Parallax mati di layar sentuh dan saat "reduce motion"; animasi CSS memakai
+  `motion-safe:` sehingga ikut berhenti.
 - **Header:** garis aktif oranye bergeser antar menu (`layoutId`), dropdown fade + scale 0.98 → 1, menu mobile slide.
 - **Timeline gelap:** stage muncul berurutan dari kiri.
 - **CTA penutup:** teks masuk dengan `Reveal`, tanpa dekorasi bergerak.

@@ -69,6 +69,41 @@
     }
   }
 
+  /* Ilustrasi hero Home (orb wireframe) — class: animate-orb-spin, animate-orb-breathe, animate-orb-glow, animate-hex-float */
+  --animate-orb-spin: spin-slow 64s linear infinite;
+  --animate-orb-breathe: orb-breathe 9s ease-in-out infinite;
+  --animate-orb-glow: orb-glow 8s ease-in-out infinite;
+  --animate-hex-float: hex-float 9s ease-in-out infinite;
+  @keyframes orb-breathe {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.045);
+    }
+  }
+  @keyframes orb-glow {
+    0%,
+    100% {
+      opacity: 0.62;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.07);
+    }
+  }
+  @keyframes hex-float {
+    0%,
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-15px) rotate(13deg);
+    }
+  }
+
   /* Marquee kiri → kanan — class: animate-marquee-right; atur kecepatan via --marquee-duration */
   --animate-marquee-right: marquee-right var(--marquee-duration, 40s) linear infinite;
   @keyframes marquee-right {
@@ -100,4 +135,29 @@
   html {
     scroll-behavior: auto;
   }
+}
+
+/* Mesh geodesik tipis di belakang ilustrasi hero Home, memudar ke arah teks — class: bg-hero-mesh */
+@utility bg-hero-mesh {
+  background-image:
+    repeating-linear-gradient(
+      60deg,
+      color-mix(in srgb, var(--color-brand-grey) 6%, transparent) 0 1px,
+      transparent 1px 46px
+    ),
+    repeating-linear-gradient(
+      -60deg,
+      color-mix(in srgb, var(--color-brand-grey) 6%, transparent) 0 1px,
+      transparent 1px 46px
+    );
+  mask-image: radial-gradient(72% 68% at 74% 46%, #000, transparent 72%);
+}
+
+/* Cahaya oranye lembut di tengah ilustrasi hero Home — class: bg-orb-glow */
+@utility bg-orb-glow {
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--color-brand-orange) 26%, transparent),
+    transparent 64%
+  );
 }

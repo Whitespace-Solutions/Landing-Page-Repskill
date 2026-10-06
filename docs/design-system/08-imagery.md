@@ -41,7 +41,9 @@ Grafik garis poligon (komponen `Wireframe`, diambil dari referensi Whitespace Ta
 `text-*` (`fill="currentColor"`).
 
 - Dipakai di footer: `text-brand-orange opacity-18`, di sisi kanan, terpotong tepi footer, di belakang teks.
-- Hanya sebagai latar dekoratif di section gelap, dengan teks selalu di atasnya. Maksimal satu per halaman.
+- Dipakai di hero Home sebagai ilustrasi utama (`HeroOrb`): wireframe `text-brand-orange` penuh, dengan glow oranye lembut
+  (`bg-orb-glow`), ring orbit oranye tipis, dan heksagon garis (`HexOutline`; dua oranye, satu Shadow Grey).
+- Selain dua tempat itu, wireframe hanya dipakai sebagai latar dekoratif di section gelap, dengan teks selalu di atasnya.
 - Maksimal satu motif dekoratif per section. Jangan sampai menutupi teks.
 
 ## Foto (bila nanti dibutuhkan)
