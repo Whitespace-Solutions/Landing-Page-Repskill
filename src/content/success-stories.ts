@@ -22,6 +22,8 @@ export type SuccessStory = {
   /** Logo resmi klien (src/assets/clients/, latar transparan & sudah di-crop) */
   logo: StaticImageData;
   industry: string;
+  /** Hasil utama, tampil sebagai judul "<name>: <headline>" di halaman daftar */
+  headline: string;
   /** Satu kalimat untuk kartu & teaser */
   summary: string;
   draft: boolean;
@@ -50,6 +52,7 @@ const draftStory = (
   slug: string,
   name: string,
   logo: StaticImageData,
+  headline: string,
   features: FeatureKey[],
   visual: MockupData,
 ): SuccessStory => ({
@@ -57,6 +60,7 @@ const draftStory = (
   name,
   logo,
   industry: "Industry · Team size",
+  headline,
   summary: `How ${name} turned the expertise of its best people into capability across the sales team.`,
   draft: true,
   about: {
@@ -91,7 +95,7 @@ const draftStory = (
 });
 
 export const successStories: SuccessStory[] = [
-  draftStory("bamms", "bamms", bammsLogo, ["capture", "learn"], {
+  draftStory("bamms", "bamms", bammsLogo, "Best Practices Shared Across the Team", ["capture", "learn"], {
     type: "structure",
     title: "Best practice captured",
     status: "Approved",
@@ -101,7 +105,7 @@ export const successStories: SuccessStory[] = [
       { label: "USED IN", value: "Learning Path · Scenario Studio" },
     ],
   }),
-  draftStory("recharge", "ReCharge", rechargeLogo, ["learn", "practice"], {
+  draftStory("recharge", "ReCharge", rechargeLogo, "Faster Capability Growth", ["learn", "practice"], {
     type: "bars",
     title: "Capability progress",
     meta: "Team average",
@@ -111,7 +115,7 @@ export const successStories: SuccessStory[] = [
       { label: "Next-step commitment", value: 52, tone: "strength", tag: "+9" },
     ],
   }),
-  draftStory("asco", "ASCO", ascoLogo, ["capture", "practice"], {
+  draftStory("asco", "ASCO", ascoLogo, "Reps Ready for Tough Conversations", ["capture", "practice"], {
     type: "chat",
     title: "Scenario · Competitor comparison",
     messages: [
@@ -120,18 +124,25 @@ export const successStories: SuccessStory[] = [
     ],
     chips: [{ text: "Asked an open question", tone: "good" }],
   }),
-  draftStory("trilogy", "Trilogy", trilogyLogo, ["capture", "learn", "practice"], {
-    type: "checklist",
-    title: "Learning Path · Discovery fundamentals",
-    meta: "4 modules",
-    progress: 55,
-    items: [
-      { label: "Know your buyer", meta: "Done", status: "done" },
-      { label: "Ask better discovery questions", meta: "Done", status: "done" },
-      { label: "Handle early pricing questions", meta: "In progress", status: "now" },
-      { label: "Practice: discovery call", meta: "Next", status: "todo" },
-    ],
-  }),
+  draftStory(
+    "trilogy",
+    "Trilogy",
+    trilogyLogo,
+    "One Consistent Sales Playbook",
+    ["capture", "learn", "practice"],
+    {
+      type: "checklist",
+      title: "Learning Path · Discovery fundamentals",
+      meta: "4 modules",
+      progress: 55,
+      items: [
+        { label: "Know your buyer", meta: "Done", status: "done" },
+        { label: "Ask better discovery questions", meta: "Done", status: "done" },
+        { label: "Handle early pricing questions", meta: "In progress", status: "now" },
+        { label: "Practice: discovery call", meta: "Next", status: "todo" },
+      ],
+    },
+  ),
 ];
 
 export const getStory = (slug: string) => successStories.find((s) => s.slug === slug);

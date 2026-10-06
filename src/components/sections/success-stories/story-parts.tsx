@@ -5,7 +5,7 @@ import { Reveal, Stagger, StaggerItem } from "@/components/motion/reveal";
 import { ArrowRight, ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Eyebrow } from "@/components/ui/eyebrow";
-import { Section, type SectionTone } from "@/components/ui/section";
+import { Section } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
 import { featureInfo } from "@/content/features";
 import type { SuccessStory } from "@/content/success-stories";
@@ -46,63 +46,49 @@ export function MetricTiles({
   );
 }
 
-/** Teaser satu klien di halaman /success-stories/. */
-export function StoryTeaser({
-  story,
-  tone,
-  reverse,
-}: {
-  story: SuccessStory;
-  tone: SectionTone;
-  reverse?: boolean;
-}) {
+/**
+ * Kartu satu klien di halaman /success-stories/: judul hasil, ringkasan, metrik, tombol ke halaman detail,
+ * dan logo di panel kanan.
+ */
+export function StoryRow({ story }: { story: SuccessStory }) {
+  const href = `/success-stories/${story.slug}/`;
   return (
-    <Section id={story.slug} tone={tone}>
-      <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-20">
-        <Reveal className="flex flex-col gap-5">
-          <div className="flex flex-wrap items-center gap-3">
-            <span className="rounded-full border border-line bg-white px-2.5 py-1 text-xs font-semibold text-brand-charcoal">
-              {story.industry}
-            </span>
-            <DraftBadge show={story.draft} />
-          </div>
-          <h3>
-            <Image src={story.logo} alt={story.name} className="h-auto max-h-14 w-auto max-w-[70%]" />
-          </h3>
-          <p className="text-lead text-pretty text-brand-charcoal">{story.summary}</p>
-          <div className="flex flex-col gap-2">
-            <span className="text-eyebrow text-brand-orange">THE CHALLENGE</span>
-            <p className="text-base text-brand-grey">{story.challenge.title}</p>
-          </div>
-          <div className="flex flex-wrap gap-1.5">
-            {story.help.features.map((key) => (
-              <Link
-                key={key}
-                href={featureInfo[key].href}
-                className="rounded-md bg-brand-linen px-2 py-1 text-xs font-semibold text-brand-grey hover:bg-brand-amber/25"
-              >
-                {featureInfo[key].label}
-              </Link>
-            ))}
-          </div>
-          <ButtonLink
-            href={`/success-stories/${story.slug}/`}
-            variant="outline"
-            withArrow
-            className="mt-2 self-start"
-          >
-            Read the full story
-          </ButtonLink>
-        </Reveal>
-
-        <Reveal delay={0.15} className={cn("flex flex-col gap-4", reverse && "lg:order-first")}>
-          <div className={cn("rounded-panel p-4 sm:p-8", tone === "white" ? "bg-brand-linen" : "bg-white")}>
-            <Mockup data={story.help.visual} />
-          </div>
-          <MetricTiles metrics={story.result.metrics} />
-        </Reveal>
+    <article className="grid items-center gap-8 rounded-panel border border-line bg-white p-6 sm:p-10 lg:grid-cols-[1.5fr_1fr] lg:gap-14">
+      <div className="flex flex-col gap-6">
+        <div className="flex flex-wrap items-center gap-3">
+          <span className="rounded-full border border-line bg-white px-2.5 py-1 text-xs font-semibold text-brand-charcoal">
+            {story.industry}
+          </span>
+          <DraftBadge show={story.draft} />
+        </div>
+        <div className="flex flex-col gap-4">
+          <h2 className="text-h2 text-balance">
+            {story.name}: {story.headline}
+          </h2>
+          <p className="max-w-[620px] text-lead text-pretty text-brand-charcoal">{story.summary}</p>
+        </div>
+        <dl className="flex flex-wrap gap-3">
+          {story.result.metrics.map((m) => (
+            <div key={m.label} className="flex flex-col gap-1 rounded-card bg-brand-linen px-5 py-4">
+              <dt className="order-last text-sm font-semibold text-brand-charcoal">{m.label}</dt>
+              <dd className="text-h3 text-brand-grey">{m.value}</dd>
+            </div>
+          ))}
+        </dl>
+        <ButtonLink href={href} withArrow className="self-start">
+          Read Case Study
+        </ButtonLink>
       </div>
-    </Section>
+
+      <Link
+        href={href}
+        tabIndex={-1}
+        aria-hidden
+        className="order-first flex aspect-video items-center justify-center rounded-card border border-line bg-surface p-10 transition-colors hover:border-brand-amber lg:order-last"
+      >
+        <Image src={story.logo} alt="" className="h-auto max-h-24 w-auto max-w-[70%]" />
+      </Link>
+    </article>
   );
 }
 

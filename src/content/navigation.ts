@@ -52,12 +52,8 @@ export const primaryCta: NavLink = { label: "Book Demo", href: "/book-demo/" };
 
 export const mainNav: NavItem[] = [
   { label: "Features", href: "/features/", children: features, layout: "row" },
-  {
-    label: "Success Stories",
-    href: "/success-stories/",
-    children: stories,
-    overview: { label: "All success stories", href: "/success-stories/" },
-  },
+  // Tanpa dropdown: daftar klien tampil sebagai kartu di halaman /success-stories/.
+  { label: "Success Stories", href: "/success-stories/" },
   { label: "Pricing", href: "/pricing/" },
   { label: "About Us", href: "/about/" },
 ];
