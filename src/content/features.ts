@@ -129,8 +129,11 @@ export const practicePage: FeaturePage = {
     },
   ],
   cta: {
+    eyebrow: "Get Started",
     title: "Give Your Team a Safe Place to Practice.",
+    highlight: "Practice.",
     body: "See how Repskill helps your sales team rehearse, reflect, and improve before the conversations that matter.",
+    secondary: { label: "View Pricing", href: "/pricing/" },
   },
 };
 
@@ -209,8 +212,11 @@ export const capturePage: FeaturePage = {
     },
   ],
   cta: {
+    eyebrow: "Get Started",
     title: "Make Your Best People's Expertise Scalable.",
+    highlight: "Scalable.",
     body: "See how Repskill captures what your top performers know and turns it into knowledge your whole team can use.",
+    secondary: { label: "Next: Learn Knowledge", href: "/features/learn-knowledge/" },
   },
 };
 
@@ -299,7 +305,10 @@ export const learnPage: FeaturePage = {
     },
   ],
   cta: {
+    eyebrow: "Get Started",
     title: "Build Learning Around Your Own Expertise.",
+    highlight: "Your Own Expertise.",
     body: "See how Repskill turns your company knowledge into learning your sales team can build on.",
+    secondary: { label: "Next: Practice", href: "/features/practice/" },
   },
 };

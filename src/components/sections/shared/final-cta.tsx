@@ -1,42 +1,41 @@
 import { Reveal } from "@/components/motion/reveal";
+import { SlashStripes } from "@/components/motion/slash-stripes";
 import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
+import { Eyebrow } from "@/components/ui/eyebrow";
+import { HighlightText } from "@/components/ui/highlight-text";
 import { primaryCta } from "@/content/navigation";
+import type { CtaData } from "@/content/types";
 
-type FinalCtaProps = {
-  title?: string;
-  body?: string;
-  cta?: string;
-  href?: string;
-};
-
-/** CTA penutup yang dipakai ulang di bagian bawah banyak halaman. */
-export function FinalCta({
-  title = "Make Your Sales Expertise Scalable.",
-  body = "See how Repskill can help turn your organization's expertise into capability your whole sales team can build.",
-  cta = primaryCta.label,
-  href = primaryCta.href,
-}: FinalCtaProps) {
+/**
+ * CTA penutup yang dipakai ulang di bagian bawah banyak halaman.
+ * Panel Shadow Grey membulat di atas latar putih, supaya tidak menempel ke footer yang juga gelap.
+ */
+export function FinalCta({ eyebrow, title, highlight, body, primary = primaryCta, secondary }: CtaData) {
   return (
-    <section className="relative overflow-hidden bg-brand-charcoal text-white">
-      {/* Aksen garis miring dari brand symbol */}
-      <div
-        className="pointer-events-none absolute -top-10 right-[8%] hidden h-[140%] w-24 -skew-x-[20deg] bg-brand-orange/90 md:block"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute -top-10 right-[calc(8%+7rem)] hidden h-[140%] w-24 -skew-x-[20deg] bg-brand-grey/70 md:block"
-        aria-hidden
-      />
+    <section className="bg-white">
+      <Container className="py-16 lg:py-24">
+        <div className="relative overflow-hidden rounded-panel bg-brand-grey px-6 py-14 text-white sm:px-12 lg:px-16 lg:py-20">
+          <SlashStripes className="absolute inset-y-0 right-0 hidden w-1/3 lg:block" />
 
-      <Container className="relative py-20 lg:py-28">
-        <Reveal className="flex max-w-2xl flex-col gap-6">
-          <h2 className="text-h1 text-balance">{title}</h2>
-          <p className="text-lead text-pretty text-line">{body}</p>
-          <ButtonLink href={href} size="lg" withArrow className="mt-2 self-start">
-            {cta}
-          </ButtonLink>
-        </Reveal>
+          <Reveal className="relative flex max-w-2xl flex-col gap-6">
+            {eyebrow && <Eyebrow accent>{eyebrow}</Eyebrow>}
+            <h2 className="text-h1 text-balance">
+              <HighlightText text={title} highlight={highlight} />
+            </h2>
+            <p className="text-lead text-pretty text-line/80">{body}</p>
+            <div className="mt-2 flex flex-wrap gap-3">
+              <ButtonLink href={primary.href} size="lg" withArrow>
+                {primary.label}
+              </ButtonLink>
+              {secondary && (
+                <ButtonLink href={secondary.href} size="lg" variant="outline-dark">
+                  {secondary.label}
+                </ButtonLink>
+              )}
+            </div>
+          </Reveal>
+        </div>
       </Container>
     </section>
   );

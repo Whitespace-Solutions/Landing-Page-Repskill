@@ -118,8 +118,11 @@ export const pricingPage: {
     ],
   },
   cta: {
+    eyebrow: "Get Started",
     title: "Build Sales Capability Around Your Organization.",
+    highlight: "Your Organization.",
     body: "Pricing tailored to your organization's needs. Tell us about your team and goals.",
-    cta: "Talk to Sales",
+    primary: { label: "Talk to Sales", href: "/book-demo/" },
+    secondary: { label: "Read Success Stories", href: "/success-stories/" },
   },
 };

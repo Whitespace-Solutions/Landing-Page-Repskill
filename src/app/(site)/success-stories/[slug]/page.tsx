@@ -8,6 +8,7 @@ import {
   StoryResult,
 } from "@/components/sections/success-stories/story-parts";
 import { getStory, successStories } from "@/content/success-stories";
+import { successStoriesPage } from "@/content/success-stories-page";
 
 // Semua halaman dibuat saat build dari src/content/success-stories.ts
 export const dynamicParams = false;
@@ -32,10 +33,7 @@ export default async function SuccessStoryPage({ params }: PageProps<"/success-s
       <StoryChallenge story={story} />
       <StoryHelp story={story} />
       <StoryResult story={story} />
-      <FinalCta
-        title="See What Repskill Could Do for Your Organization."
-        body="Tell us a little about your organization and what you'd like to improve."
-      />
+      <FinalCta {...successStoriesPage.storyCta} />
     </>
   );
 }

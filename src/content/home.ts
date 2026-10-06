@@ -1,5 +1,5 @@
 /** Konten halaman Home. Teks dipisah dari komponen agar mudah diganti tanpa menyentuh layout. */
-import type { StepsData } from "./types";
+import type { CtaData, StepsData } from "./types";
 
 export const clientsSection = {
   eyebrow: "Our Clients",
@@ -57,4 +57,12 @@ export const caseStudiesSection = {
   title: "See Expertise Become Capability.",
   lead: "See how organizations use Repskill to capture knowledge, build skills, and improve sales capability.",
   action: { label: "View Success Stories", href: "/success-stories/" },
+};
+
+export const homeCta: CtaData = {
+  eyebrow: "Get Started",
+  title: "Make Your Sales Expertise Scalable.",
+  highlight: "Scalable.",
+  body: "See how Repskill can help turn your organization's expertise into capability your whole sales team can build.",
+  secondary: { label: "View Pricing", href: "/pricing/" },
 };

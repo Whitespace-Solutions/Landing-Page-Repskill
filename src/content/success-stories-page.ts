@@ -6,6 +6,8 @@ export const successStoriesPage: {
   clients: { eyebrow: string; title: string };
   caseStudies: { eyebrow: string; title: string; lead: string };
   cta: CtaData;
+  /** CTA penutup di halaman detail tiap klien */
+  storyCta: CtaData;
 } = {
   hero: {
     eyebrow: "Success Stories",
@@ -22,7 +24,17 @@ export const successStoriesPage: {
     lead: "From the expertise challenge, through the Repskill approach, to verified outcomes.",
   },
   cta: {
+    eyebrow: "Get Started",
     title: "See What Repskill Could Do for Your Organization.",
+    highlight: "Your Organization.",
     body: "Tell us a little about your organization and what you'd like to improve.",
+    secondary: { label: "View Pricing", href: "/pricing/" },
+  },
+  storyCta: {
+    eyebrow: "Get Started",
+    title: "See What Repskill Could Do for Your Organization.",
+    highlight: "Your Organization.",
+    body: "Tell us a little about your organization and what you'd like to improve.",
+    secondary: { label: "More Success Stories", href: "/success-stories/" },
   },
 };

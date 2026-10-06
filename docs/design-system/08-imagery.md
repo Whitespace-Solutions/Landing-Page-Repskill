@@ -33,7 +33,9 @@ Aturan mockup:
 Diambil dari symbol logo (panah/garis miring R):
 
 - Aksen eyebrow: `h-1 w-[18px] -skew-x-[38deg] bg-brand-orange`.
-- Dekorasi section gelap: dua bilah `-skew-x-[20deg]` (oranye + Shadow Grey 70%) di sisi kanan, seperti di `FinalCta`.
+- Dekorasi panel/section gelap: dua bilah miring 20° (Charcoal + oranye) di sisi kanan, komponen `SlashStripes` (dipakai
+  `FinalCta`).
+- Dasar footer: deretan bilah miring yang tumbuh seperti grafik naik, komponen `FooterGraphic`.
 - Maksimal satu motif dekoratif per section. Jangan sampai menutupi teks.
 
 ## Foto (bila nanti dibutuhkan)

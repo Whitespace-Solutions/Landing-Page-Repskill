@@ -12,7 +12,7 @@ Pakai komponen yang sudah ada sebelum membuat yang baru. Komponen baru yang reus
 | `Eyebrow`                          | `src/components/ui/eyebrow.tsx`                           | `accent` = aksen garis miring oranye                                                                                       |
 | `Reveal`, `Stagger`, `StaggerItem` | `src/components/motion/reveal.tsx`                        | Lihat [07-motion.md](07-motion.md)                                                                                         |
 | `SiteHeader` / `SiteFooter`        | `src/components/layout/`                                  | Diambil dari `src/content/navigation.ts`. Dropdown: `layout: "row"` = sub menu berjajar ke samping (dipakai Features)      |
-| `FinalCta`                         | `src/components/sections/shared/final-cta.tsx`            | CTA penutup, props `title` `body` `cta` `href`                                                                             |
+| `FinalCta`                         | `src/components/sections/shared/final-cta.tsx`            | CTA penutup, data `CtaData`: `eyebrow` `title` `highlight` `body` `primary` (default Book Demo) `secondary`                |
 | `Section`                          | `src/components/ui/section.tsx`                           | Wrapper section: `tone` (`white` · `surface` · `linen` · `dark`), `size` (`md` · `lg`)                                     |
 | `SectionHeader`                    | `src/components/ui/section-header.tsx`                    | Eyebrow → judul → lead (+ tombol). `layout="side"`, `size="h1"`, `tone="dark"`                                             |
 | `HighlightText`                    | `src/components/ui/highlight-text.tsx`                    | Mewarnai satu frasa judul dengan oranye                                                                                    |
@@ -24,6 +24,8 @@ Pakai komponen yang sudah ada sebelum membuat yang baru. Komponen baru yang reus
 | `StoryRow`                         | `src/components/sections/success-stories/story-parts.tsx` | Kartu lebar satu klien di `/success-stories/`: "Nama: headline", ringkasan, metrik, tombol "Read Case Study", logo kanan   |
 | `Mockup`                           | `src/components/mockups/mockup.tsx`                       | Ilustrasi UI produk dari data: `chat` · `checklist` · `bars` · `knowledge-universe` · `governance` · `quote` · `structure` |
 | `AnimatedBar`                      | `src/components/motion/animated-bar.tsx`                  | Bar progres yang mengisi saat terlihat                                                                                     |
+| `SlashStripes`                     | `src/components/motion/slash-stripes.tsx`                 | Dua bilah miring (Charcoal + oranye) yang meluncur masuk, untuk panel/section gelap                                        |
+| `FooterGraphic`                    | `src/components/layout/footer-graphic.tsx`                | Grafik bilah miring yang tumbuh di dasar footer                                                                            |
 
 ## Button
 
@@ -76,7 +78,20 @@ Semua section mengikuti kerangka: **Eyebrow → Judul → Lead → Konten → (l
 | **Tabel perbandingan**   | Kolom Repskill disorot oranye muda, ✓ oranye                                      | Pricing › Feature Comparison                   |
 | **Daftar success story** | Kartu lebar bertumpuk (`StoryRow`): teks + metrik + tombol kiri, panel logo kanan | `/success-stories/`                            |
 | **Metrik hasil**         | 3 tile angka oranye + label; "—" bila belum terverifikasi                         | `MetricTiles` (success stories)                |
-| **CTA penutup**          | `FinalCta` di atas footer pada hampir setiap halaman                              | `shared/final-cta.tsx`                         |
+| **CTA penutup**          | Panel Shadow Grey membulat di latar putih, tepat di atas footer (lihat di bawah)  | `shared/final-cta.tsx`                         |
+
+### CTA penutup
+
+Dipakai di semua halaman kecuali Book Demo (halaman tujuan CTA itu sendiri). Copy-nya ada di `src/content/` sebagai
+`CtaData`, tidak ditulis langsung di halaman.
+
+- Struktur: eyebrow `Get Started` → judul `text-h1` dengan satu `highlight` oranye → lead → tombol.
+- Tombol: satu `primary` (default "Book Demo"; Pricing memakai "Talk to Sales") + satu `secondary` `outline-dark` yang
+  mengarah ke langkah logis berikutnya. Contoh: halaman fitur → fitur berikutnya (Capture → Learn → Practice), halaman
+  terakhir → Pricing, detail klien → Success Stories.
+- Bentuk: panel `rounded-panel bg-brand-grey` di dalam section putih, jadi tidak menempel ke footer yang juga gelap.
+  Motif `SlashStripes` di kanan, hanya dari `lg` ke atas supaya tidak menabrak teks.
+- Footer tidak mengulang tombol Book Demo. Cukup link di kolom GET STARTED.
 
 **Ritme gelap/terang:** jangan menaruh dua section gelap berdempetan. Contohnya, timeline tepat di atas `FinalCta` harus
 memakai `tone="light"`.

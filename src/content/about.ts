@@ -79,7 +79,10 @@ export const aboutPage: {
     ],
   },
   cta: {
+    eyebrow: "Get Started",
     title: "Make Your Sales Expertise Scalable.",
+    highlight: "Scalable.",
     body: "See how Repskill can help turn your organization's expertise into capability your whole sales team can build.",
+    secondary: { label: "Read Success Stories", href: "/success-stories/" },
   },
 };

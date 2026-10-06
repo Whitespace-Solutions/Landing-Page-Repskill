@@ -54,7 +54,16 @@ export type FeatureBlockData = {
   visual: MockupData;
 };
 
-export type CtaData = { title: string; body: string; cta?: string; href?: string };
+/** CTA penutup (`FinalCta`). `primary` default ke `primaryCta` (Book Demo). */
+export type CtaData = {
+  eyebrow?: string;
+  title: string;
+  /** Frasa di dalam `title` yang diwarnai oranye */
+  highlight?: string;
+  body: string;
+  primary?: Link;
+  secondary?: Link;
+};
 
 export type Step = { name: string; message: string; tag?: string; href?: string };
 
