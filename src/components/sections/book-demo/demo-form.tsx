@@ -2,15 +2,10 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
+import { FormError, FormSuccess, TextAreaField, TextField } from "@/components/ui/form-field";
 import { bookDemoPage } from "@/content/book-demo";
 import { cn } from "@/lib/cn";
-
-/**
- * Endpoint penerima formulir (mis. Formspree, Web3Forms, HubSpot, atau API sendiri).
- * Set di GitHub: Settings → Secrets and variables → Actions → Variables → FORM_ENDPOINT.
- * Data dikirim sebagai JSON via POST.
- */
-const FORM_ENDPOINT = process.env.NEXT_PUBLIC_FORM_ENDPOINT;
+import { submitForm } from "@/lib/submit-form";
 
 type Field = "name" | "email" | "company" | "role" | "teamSize" | "improve";
 type Values = Record<Field, string>;
@@ -43,59 +38,21 @@ export function DemoForm() {
     setErrors(found);
     if (Object.keys(found).length) return;
 
-    if (!FORM_ENDPOINT) {
-      console.error("Book Demo form: NEXT_PUBLIC_FORM_ENDPOINT is not set, so the request was not sent.");
-      setState("error");
-      return;
-    }
-
     setState("sending");
-    try {
-      const res = await fetch(FORM_ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ ...values, source: "repskill.ai/book-demo" }),
-      });
-      setState(res.ok ? "done" : "error");
-    } catch {
-      setState("error");
-    }
+    const ok = await submitForm("repskill.ai/book-demo", values);
+    setState(ok ? "done" : "error");
   }
 
   return (
     <div className="rounded-panel border border-line bg-white p-6 shadow-float sm:p-10">
       <AnimatePresence mode="wait" initial={false}>
         {state === "done" ? (
-          <motion.div
+          <FormSuccess
             key="done"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="flex min-h-[420px] flex-col items-center justify-center gap-5 text-center"
-            role="status"
-          >
-            <motion.span
-              initial={{ scale: 0.5 }}
-              animate={{ scale: 1 }}
-              transition={{ type: "spring", stiffness: 320, damping: 18 }}
-              className="flex size-16 items-center justify-center rounded-full bg-brand-amber text-brand-grey"
-            >
-              <svg
-                width="28"
-                height="28"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.6"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden
-              >
-                <path d="M5 12l5 5L20 7" />
-              </svg>
-            </motion.span>
-            <h2 className="text-h3">{form.success.title}</h2>
-            <p className="text-brand-charcoal">{form.success.body}</p>
-          </motion.div>
+            title={form.success.title}
+            body={form.success.body}
+            className="min-h-[420px]"
+          />
         ) : (
           <motion.form
             key="form"
@@ -109,34 +66,34 @@ export function DemoForm() {
                 label="Name"
                 name="name"
                 autoComplete="name"
-                values={values}
-                errors={errors}
-                onChange={set}
+                value={values.name}
+                error={errors.name}
+                onChange={(v) => set("name", v)}
               />
               <TextField
                 label="Work Email"
                 name="email"
                 type="email"
                 autoComplete="email"
-                values={values}
-                errors={errors}
-                onChange={set}
+                value={values.email}
+                error={errors.email}
+                onChange={(v) => set("email", v)}
               />
               <TextField
                 label="Company"
                 name="company"
                 autoComplete="organization"
-                values={values}
-                errors={errors}
-                onChange={set}
+                value={values.company}
+                error={errors.company}
+                onChange={(v) => set("company", v)}
               />
               <TextField
                 label="Job Title / Role"
                 name="role"
                 autoComplete="organization-title"
-                values={values}
-                errors={errors}
-                onChange={set}
+                value={values.role}
+                error={errors.role}
+                onChange={(v) => set("role", v)}
               />
             </div>
 
@@ -165,28 +122,15 @@ export function DemoForm() {
               </div>
             </fieldset>
 
-            <label className="flex flex-col gap-2">
-              <span className="text-sm font-semibold text-brand-grey">
-                What are you looking to improve?{" "}
-                <span className="font-normal text-brand-charcoal">(optional)</span>
-              </span>
-              <textarea
-                name="improve"
-                rows={4}
-                value={values.improve}
-                onChange={(e) => set("improve", e.target.value)}
-                className="resize-y rounded-button border border-line px-4 py-3 text-base text-brand-grey transition-colors outline-none focus:border-brand-grey focus:ring-2 focus:ring-brand-amber/40"
-              />
-            </label>
+            <TextAreaField
+              label="What are you looking to improve?"
+              name="improve"
+              optional
+              value={values.improve}
+              onChange={(v) => set("improve", v)}
+            />
 
-            {state === "error" && (
-              <p
-                role="alert"
-                className="rounded-xl bg-brand-orange/10 px-4 py-3 text-sm font-medium text-brand-orange-deep"
-              >
-                {form.error}
-              </p>
-            )}
+            {state === "error" && <FormError>{form.error}</FormError>}
 
             <button
               type="submit"
@@ -200,45 +144,5 @@ export function DemoForm() {
         )}
       </AnimatePresence>
     </div>
-  );
-}
-
-function TextField({
-  label,
-  name,
-  type = "text",
-  autoComplete,
-  values,
-  errors,
-  onChange,
-}: {
-  label: string;
-  name: Exclude<Field, "teamSize" | "improve">;
-  type?: string;
-  autoComplete?: string;
-  values: Values;
-  errors: Partial<Record<Field, string>>;
-  onChange: (field: Field, value: string) => void;
-}) {
-  const error = errors[name];
-  return (
-    <label className="flex flex-col gap-2">
-      <span className="text-sm font-semibold text-brand-grey">{label}</span>
-      <input
-        type={type}
-        name={name}
-        autoComplete={autoComplete}
-        value={values[name]}
-        onChange={(e) => onChange(name, e.target.value)}
-        aria-invalid={!!error}
-        className={cn(
-          "h-12 rounded-button border px-4 text-base text-brand-grey transition-colors outline-none focus:ring-2",
-          error
-            ? "border-brand-orange-deep focus:ring-brand-orange/20"
-            : "border-line focus:border-brand-grey focus:ring-brand-amber/40",
-        )}
-      />
-      {error && <span className="text-xs font-medium text-brand-orange-deep">{error}</span>}
-    </label>
   );
 }

@@ -2,6 +2,7 @@
  * Struktur navigasi situs — satu sumber untuk header, footer, dan sitemap.
  * Mengikuti sitemap baru (Oktober 2026).
  */
+import { guideRoutes } from "./guide";
 import { successStories } from "./success-stories";
 
 export type NavLink = {
@@ -65,6 +66,7 @@ export const mainNav: NavItem[] = [
   { label: "Success Stories", href: "/success-stories/" },
   { label: "Pricing", href: "/pricing/" },
   { label: "About Us", href: "/about/" },
+  { label: "Guide", href: "/guide/" },
 ];
 
 export const footerNav: { title: string; links: NavLink[] }[] = [
@@ -78,6 +80,7 @@ export const footerNav: { title: string; links: NavLink[] }[] = [
     links: [
       { label: "About Us", href: "/about/" },
       { label: "Pricing", href: "/pricing/" },
+      { label: "Guide", href: "/guide/" },
     ],
   },
   { title: "GET STARTED", links: [primaryCta] },
@@ -92,4 +95,5 @@ export const allRoutes: string[] = [
   "/pricing/",
   "/about/",
   "/book-demo/",
+  ...guideRoutes,
 ];

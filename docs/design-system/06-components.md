@@ -4,27 +4,30 @@ Pakai komponen yang sudah ada sebelum membuat yang baru. Komponen baru yang reus
 
 ## Yang sudah ada
 
-| Komponen                           | File                                                      | Catatan                                                                                                                    |
-| ---------------------------------- | --------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `Container`                        | `src/components/ui/container.tsx`                         | Wadah lebar konten                                                                                                         |
-| `ButtonLink`                       | `src/components/ui/button.tsx`                            | Varian `primary` · `outline` · `outline-dark`; size `md` · `lg`; `withArrow`                                               |
-| `ArrowRight`                       | `src/components/ui/button.tsx`                            | Ikon panah standar                                                                                                         |
-| `Eyebrow`                          | `src/components/ui/eyebrow.tsx`                           | `accent` = aksen garis miring oranye                                                                                       |
-| `Reveal`, `Stagger`, `StaggerItem` | `src/components/motion/reveal.tsx`                        | Lihat [07-motion.md](07-motion.md)                                                                                         |
-| `SiteHeader` / `SiteFooter`        | `src/components/layout/`                                  | Diambil dari `src/content/navigation.ts`. Dropdown: `layout: "row"` = sub menu berjajar ke samping (dipakai Features)      |
-| `FinalCta`                         | `src/components/sections/shared/final-cta.tsx`            | CTA penutup, data `CtaData`: `eyebrow` `title` `highlight` `body` `primary` (default Book Demo) `secondary`                |
-| `Section`                          | `src/components/ui/section.tsx`                           | Wrapper section: `tone` (`white` · `surface` · `linen` · `dark`), `size` (`md` · `lg`)                                     |
-| `SectionHeader`                    | `src/components/ui/section-header.tsx`                    | Eyebrow → judul → lead (+ tombol). `layout="side"`, `size="h1"`, `tone="dark"`                                             |
-| `HighlightText`                    | `src/components/ui/highlight-text.tsx`                    | Mewarnai satu frasa judul dengan oranye                                                                                    |
-| `PageHero`                         | `src/components/sections/shared/page-hero.tsx`            | Hero halaman turunan (data `PageHeroData`)                                                                                 |
-| `FeatureSplit`                     | `src/components/sections/shared/feature-split.tsx`        | Pola Split dengan poin + mockup (data `FeatureBlockData`)                                                                  |
-| `StepsTimeline`                    | `src/components/sections/shared/steps-timeline.tsx`       | Timeline bernomor, `tone="dark"` (default) atau `"light"`                                                                  |
-| `ClientLogos`                      | `src/components/sections/shared/client-logos.tsx`         | Section "Our Clients": marquee logo dari `src/content/clients.ts`                                                          |
-| `StoryCard`                        | `src/components/sections/shared/story-card.tsx`           | Kartu ringkas success story                                                                                                |
-| `StoryRow`                         | `src/components/sections/success-stories/story-parts.tsx` | Kartu lebar satu klien di `/success-stories/`: "Nama: headline", ringkasan, metrik, tombol "Read Case Study", logo kanan   |
-| `Mockup`                           | `src/components/mockups/mockup.tsx`                       | Ilustrasi UI produk dari data: `chat` · `checklist` · `bars` · `knowledge-universe` · `governance` · `quote` · `structure` |
-| `AnimatedBar`                      | `src/components/motion/animated-bar.tsx`                  | Bar progres yang mengisi saat terlihat                                                                                     |
-| `Wireframe`                        | `src/components/ui/wireframe.tsx`                         | Grafik garis poligon dekoratif (warna via `text-*`), dipakai di latar footer                                               |
+| Komponen                           | File                                                      | Catatan                                                                                                                                      |
+| ---------------------------------- | --------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Container`                        | `src/components/ui/container.tsx`                         | Wadah lebar konten                                                                                                                           |
+| `ButtonLink`                       | `src/components/ui/button.tsx`                            | Varian `primary` · `outline` · `outline-dark`; size `md` · `lg`; `withArrow`                                                                 |
+| `ArrowRight`                       | `src/components/ui/button.tsx`                            | Ikon panah standar                                                                                                                           |
+| `Eyebrow`                          | `src/components/ui/eyebrow.tsx`                           | `accent` = aksen garis miring oranye                                                                                                         |
+| `Reveal`, `Stagger`, `StaggerItem` | `src/components/motion/reveal.tsx`                        | Lihat [07-motion.md](07-motion.md)                                                                                                           |
+| `SiteHeader` / `SiteFooter`        | `src/components/layout/`                                  | Diambil dari `src/content/navigation.ts`. Dropdown: `layout: "row"` = sub menu berjajar ke samping (dipakai Features)                        |
+| `FinalCta`                         | `src/components/sections/shared/final-cta.tsx`            | CTA penutup, data `CtaData`: `eyebrow` `title` `highlight` `body` `primary` (default Book Demo) `secondary`                                  |
+| `Section`                          | `src/components/ui/section.tsx`                           | Wrapper section: `tone` (`white` · `surface` · `linen` · `dark`), `size` (`md` · `lg`)                                                       |
+| `SectionHeader`                    | `src/components/ui/section-header.tsx`                    | Eyebrow → judul → lead (+ tombol). `layout="side"`, `size="h1"`, `tone="dark"`                                                               |
+| `HighlightText`                    | `src/components/ui/highlight-text.tsx`                    | Mewarnai satu frasa judul dengan oranye                                                                                                      |
+| `PageHero`                         | `src/components/sections/shared/page-hero.tsx`            | Hero halaman turunan (data `PageHeroData`)                                                                                                   |
+| `FeatureSplit`                     | `src/components/sections/shared/feature-split.tsx`        | Pola Split dengan poin + mockup (data `FeatureBlockData`)                                                                                    |
+| `StepsTimeline`                    | `src/components/sections/shared/steps-timeline.tsx`       | Timeline bernomor, `tone="dark"` (default) atau `"light"`                                                                                    |
+| `ClientLogos`                      | `src/components/sections/shared/client-logos.tsx`         | Section "Our Clients": marquee logo dari `src/content/clients.ts`                                                                            |
+| `StoryCard`                        | `src/components/sections/shared/story-card.tsx`           | Kartu ringkas success story                                                                                                                  |
+| `StoryRow`                         | `src/components/sections/success-stories/story-parts.tsx` | Kartu lebar satu klien di `/success-stories/`: "Nama: headline", ringkasan, metrik, tombol "Read Case Study", logo kanan                     |
+| `Mockup`                           | `src/components/mockups/mockup.tsx`                       | Ilustrasi UI produk dari data: `chat` · `checklist` · `bars` · `knowledge-universe` · `governance` · `quote` · `structure`                   |
+| `AnimatedBar`                      | `src/components/motion/animated-bar.tsx`                  | Bar progres yang mengisi saat terlihat                                                                                                       |
+| `Wireframe`                        | `src/components/ui/wireframe.tsx`                         | Grafik garis poligon dekoratif (warna via `text-*`), dipakai di latar footer                                                                 |
+| `TextField`, `TextAreaField`       | `src/components/ui/form-field.tsx`                        | Field formulir (label, error, "(optional)"), plus `FormError` dan `FormSuccess`. Kirim data lewat `submitForm()` di `src/lib/submit-form.ts` |
+| `GuideShell`                       | `src/components/sections/guide/guide-shell.tsx`           | Kerangka Help Center `/guide/`: hero + pencarian, sidebar artikel (aktif = `bg-brand-orange/10`), hasil pencarian                            |
+| `GuideArticleView` dkk.            | `src/components/sections/guide/guide-parts.tsx`           | Breadcrumb, kartu panduan, halaman ringkasan, artikel (langkah bernomor linen, callout linen, mockup dalam bingkai jendela)                  |
 
 ## Button
 
@@ -66,18 +69,19 @@ State dalam list/progress: **done** = amber · **now/sedang berjalan** = oranye 
 
 Semua section mengikuti kerangka: **Eyebrow → Judul → Lead → Konten → (link/CTA)**.
 
-| Pola                     | Deskripsi                                                                         | Komponen / contoh                              |
-| ------------------------ | --------------------------------------------------------------------------------- | ---------------------------------------------- |
-| **Hero Home**            | Putih polos, eyebrow + accent, `text-display`, 2 tombol (tanpa panel visual)      | `home/hero.tsx`                                |
-| **Page hero**            | Teks kiri, mockup kanan                                                           | `PageHero`                                     |
-| **Our Clients**          | Marquee logo klien berwarna (tanpa outline) kiri → kanan                          | `ClientLogos`                                  |
-| **Split**                | Teks + poin di satu sisi, mockup di sisi lain; berselang-seling                   | `FeatureSplit`                                 |
-| **Heading + grid kartu** | `SectionHeader` (+ tombol outline) lalu grid 3–4 kartu                            | Platform Overview, What's Included             |
-| **Timeline**             | 5 langkah dengan garis atas + dot, langkah terakhir oranye                        | `StepsTimeline` (How it works, Implementation) |
-| **Tabel perbandingan**   | Kolom Repskill disorot oranye muda, ✓ oranye                                      | Pricing › Feature Comparison                   |
-| **Daftar success story** | Kartu lebar bertumpuk (`StoryRow`): teks + metrik + tombol kiri, panel logo kanan | `/success-stories/`                            |
-| **Metrik hasil**         | 3 tile angka oranye + label; "—" bila belum terverifikasi                         | `MetricTiles` (success stories)                |
-| **CTA penutup**          | Panel Shadow Grey membulat di latar putih, tepat di atas footer (lihat di bawah)  | `shared/final-cta.tsx`                         |
+| Pola                     | Deskripsi                                                                                    | Komponen / contoh                              |
+| ------------------------ | -------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| **Hero Home**            | Putih polos, eyebrow + accent, `text-display`, 2 tombol (tanpa panel visual)                 | `home/hero.tsx`                                |
+| **Page hero**            | Teks kiri, mockup kanan                                                                      | `PageHero`                                     |
+| **Our Clients**          | Marquee logo klien berwarna (tanpa outline) kiri → kanan                                     | `ClientLogos`                                  |
+| **Split**                | Teks + poin di satu sisi, mockup di sisi lain; berselang-seling                              | `FeatureSplit`                                 |
+| **Heading + grid kartu** | `SectionHeader` (+ tombol outline) lalu grid 3–4 kartu                                       | Platform Overview, What's Included             |
+| **Timeline**             | 5 langkah dengan garis atas + dot, langkah terakhir oranye                                   | `StepsTimeline` (How it works, Implementation) |
+| **Tabel perbandingan**   | Kolom Repskill disorot oranye muda, ✓ oranye                                                 | Pricing › Feature Comparison                   |
+| **Daftar success story** | Kartu lebar bertumpuk (`StoryRow`): teks + metrik + tombol kiri, panel logo kanan            | `/success-stories/`                            |
+| **Metrik hasil**         | 3 tile angka oranye + label; "—" bila belum terverifikasi                                    | `MetricTiles` (success stories)                |
+| **Help Center**          | Hero putih + pencarian, sidebar kiri (lg) / "Browse the guide" (mobile), artikel maks. 780px | `/guide/` (`GuideShell`)                       |
+| **CTA penutup**          | Panel Shadow Grey membulat di latar putih, tepat di atas footer (lihat di bawah)             | `shared/final-cta.tsx`                         |
 
 ### CTA penutup
 
@@ -97,11 +101,12 @@ memakai `tone="light"`.
 
 ## Template halaman
 
-| Jenis halaman       | Cara membuat                                                                                                                                      |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Halaman fitur       | Tambah objek `FeaturePage` di `src/content/features.ts` lalu render `<FeaturePageView page={…} />`                                                |
-| Success story klien | Tambah objek di `src/content/success-stories.ts`; halaman, kartu, logo, link footer, dan sitemap otomatis. Menu header tidak punya dropdown klien |
-| Halaman lain        | `PageHero` + kombinasi pola di atas + `FinalCta`                                                                                                  |
+| Jenis halaman       | Cara membuat                                                                                                                                                      |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Halaman fitur       | Tambah objek `FeaturePage` di `src/content/features.ts` lalu render `<FeaturePageView page={…} />`                                                                |
+| Success story klien | Tambah objek di `src/content/success-stories.ts`; halaman, kartu, logo, link footer, dan sitemap otomatis. Menu header tidak punya dropdown klien                 |
+| Artikel Guide       | Tambah objek artikel di `src/content/guide.ts` (blok `p` · `h2` · `steps` · `callout` · `shot`); halaman, sidebar, pencarian, Previous/Next, dan sitemap otomatis |
+| Halaman lain        | `PageHero` + kombinasi pola di atas + `FinalCta`                                                                                                                  |
 
 Contoh pola dari situs lama ada di `docs/legacy/pages/*.html`. Pakai sebagai referensi tata letak, lalu tulis ulang
 memakai token dan komponen di repo ini.
