@@ -4,12 +4,11 @@ import logoReverse from "@/assets/brand/repskill-logo-reverse.png";
 import { Container } from "@/components/ui/container";
 import { siteConfig } from "@/config/site";
 import { footerNav } from "@/content/navigation";
-import { FooterGraphic } from "./footer-graphic";
 
 export function SiteFooter() {
   return (
-    <footer className="overflow-hidden bg-brand-grey text-white">
-      <Container className="pt-16 lg:pt-20">
+    <footer className="bg-brand-grey text-white">
+      <Container className="py-16 lg:py-20">
         <div className="flex flex-wrap items-start justify-between gap-12">
           {/* Tombol Book Demo tidak diulang di sini: sudah ada di FinalCta tepat di atas footer dan di kolom GET STARTED. */}
           <div className="flex max-w-xs flex-col gap-5">
@@ -41,8 +40,6 @@ export function SiteFooter() {
         <div className="mt-14 border-t border-white/10 pt-6 text-sm text-line/60">
           © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
         </div>
-
-        <FooterGraphic className="mt-12 lg:mt-16" />
       </Container>
     </footer>
   );

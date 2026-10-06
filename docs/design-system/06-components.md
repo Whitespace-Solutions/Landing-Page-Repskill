@@ -24,8 +24,6 @@ Pakai komponen yang sudah ada sebelum membuat yang baru. Komponen baru yang reus
 | `StoryRow`                         | `src/components/sections/success-stories/story-parts.tsx` | Kartu lebar satu klien di `/success-stories/`: "Nama: headline", ringkasan, metrik, tombol "Read Case Study", logo kanan   |
 | `Mockup`                           | `src/components/mockups/mockup.tsx`                       | Ilustrasi UI produk dari data: `chat` · `checklist` · `bars` · `knowledge-universe` · `governance` · `quote` · `structure` |
 | `AnimatedBar`                      | `src/components/motion/animated-bar.tsx`                  | Bar progres yang mengisi saat terlihat                                                                                     |
-| `SlashStripes`                     | `src/components/motion/slash-stripes.tsx`                 | Dua bilah miring (Charcoal + oranye) yang meluncur masuk, untuk panel/section gelap                                        |
-| `FooterGraphic`                    | `src/components/layout/footer-graphic.tsx`                | Grafik bilah miring yang tumbuh di dasar footer                                                                            |
 
 ## Button
 
@@ -89,8 +87,8 @@ Dipakai di semua halaman kecuali Book Demo (halaman tujuan CTA itu sendiri). Cop
 - Tombol: satu `primary` (default "Book Demo"; Pricing memakai "Talk to Sales") + satu `secondary` `outline-dark` yang
   mengarah ke langkah logis berikutnya. Contoh: halaman fitur → fitur berikutnya (Capture → Learn → Practice), halaman
   terakhir → Pricing, detail klien → Success Stories.
-- Bentuk: panel `rounded-panel bg-brand-grey` di dalam section putih, jadi tidak menempel ke footer yang juga gelap.
-  Motif `SlashStripes` di kanan, hanya dari `lg` ke atas supaya tidak menabrak teks.
+- Bentuk: panel polos `rounded-panel bg-brand-grey` di dalam section putih, jadi tidak menempel ke footer yang juga
+  gelap. Tanpa bilah miring dekoratif.
 - Footer tidak mengulang tombol Book Demo. Cukup link di kolom GET STARTED.
 
 **Ritme gelap/terang:** jangan menaruh dua section gelap berdempetan. Contohnya, timeline tepat di atas `FinalCta` harus
