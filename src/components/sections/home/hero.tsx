@@ -34,7 +34,8 @@ export function Hero() {
             Make Sales Expertise <span className="text-brand-orange">Scalable.</span>
           </motion.h1>
           <motion.p variants={rise} className="max-w-[620px] text-lead text-pretty text-brand-charcoal">
-            Repskill turns the knowledge of your best people into skills your whole sales team can build.
+            Repskill is AI sales coaching that turns your best people’s knowledge into sales skills your whole
+            team can build.
           </motion.p>
           <motion.div variants={rise} className="mt-2 flex flex-wrap gap-3">
             <ButtonLink href={primaryCta.href} size="lg" withArrow>
