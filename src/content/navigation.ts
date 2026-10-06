@@ -50,6 +50,15 @@ export const stories: NavLink[] = successStories.map((s) => ({
 
 export const primaryCta: NavLink = { label: "Book Demo", href: "/book-demo/" };
 
+/**
+ * Login ke aplikasi Repskill. Alamatnya diatur lewat env `NEXT_PUBLIC_LOGIN_URL`
+ * (GitHub: Settings → Secrets and variables → Actions → Variables → `LOGIN_URL`).
+ */
+export const loginLink: NavLink = {
+  label: "Log in",
+  href: process.env.NEXT_PUBLIC_LOGIN_URL || "/book-demo/",
+};
+
 export const mainNav: NavItem[] = [
   { label: "Features", href: "/features/", children: features, layout: "row" },
   // Tanpa dropdown: daftar klien tampil sebagai kartu di halaman /success-stories/.

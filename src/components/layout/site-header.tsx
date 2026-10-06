@@ -8,7 +8,7 @@ import { AnimatePresence, motion } from "motion/react";
 import logo from "@/assets/brand/repskill-logo.png";
 import { ArrowRight, ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
-import { mainNav, primaryCta, type NavItem } from "@/content/navigation";
+import { loginLink, mainNav, primaryCta, type NavItem } from "@/content/navigation";
 import { cn } from "@/lib/cn";
 
 const trimSlash = (path: string) => path.replace(/\/+$/, "") || "/";
@@ -58,7 +58,7 @@ export function SiteHeader() {
             <Image src={logo} alt="Repskill" priority className="h-auto w-[126px]" />
           </Link>
 
-          <nav className="ml-4 hidden flex-1 items-center gap-0.5 lg:flex" aria-label="Main">
+          <nav className="ml-1 hidden flex-1 items-center gap-0.5 lg:flex xl:ml-4" aria-label="Main">
             {mainNav.map((item) =>
               item.children ? (
                 <DesktopDropdown
@@ -78,11 +78,19 @@ export function SiteHeader() {
           </nav>
 
           <div className="ml-auto flex items-center gap-2 lg:ml-0">
+            {/* Log in: aksi sekunder (teks), oranye tetap khusus untuk Book Demo */}
+            <Link
+              href={loginLink.href}
+              onClick={closeAll}
+              className="hidden rounded-lg px-2.5 py-2.5 text-base font-medium whitespace-nowrap text-brand-charcoal transition-colors hover:bg-surface hover:text-brand-grey lg:inline-flex xl:px-3 xl:text-[17px]"
+            >
+              {loginLink.label}
+            </Link>
             {!isActive(pathname, primaryCta.href) && (
               <ButtonLink
                 href={primaryCta.href}
                 onClick={closeAll}
-                className="max-lg:h-11 max-lg:px-3.5 max-lg:text-sm"
+                className="whitespace-nowrap max-lg:h-11 max-lg:px-3.5 max-lg:text-sm"
               >
                 {primaryCta.label}
               </ButtonLink>
@@ -131,7 +139,7 @@ function NavTopLink({
   return (
     <Link
       href={href}
-      className="relative rounded-lg px-3 py-2.5 text-[17px] font-medium whitespace-nowrap text-brand-charcoal transition-colors hover:bg-surface hover:text-brand-grey"
+      className="relative rounded-lg px-2.5 py-2.5 text-base font-medium whitespace-nowrap text-brand-charcoal transition-colors hover:bg-surface hover:text-brand-grey xl:px-3 xl:text-[17px]"
     >
       {children}
       {active && <ActiveBar />}
@@ -176,7 +184,7 @@ function DesktopDropdown({
         type="button"
         onClick={() => onOpenChange(!open)}
         aria-expanded={open}
-        className="relative flex items-center gap-1.5 rounded-lg px-3 py-2.5 text-[17px] font-medium whitespace-nowrap text-brand-charcoal transition-colors hover:bg-surface hover:text-brand-grey"
+        className="relative flex items-center gap-1.5 rounded-lg px-2.5 py-2.5 text-base font-medium whitespace-nowrap text-brand-charcoal transition-colors hover:bg-surface hover:text-brand-grey xl:px-3 xl:text-[17px]"
       >
         {item.label}
         <motion.svg
@@ -330,6 +338,9 @@ function MobileMenu({ pathname, onNavigate }: { pathname: string; onNavigate: ()
       )}
       <ButtonLink href={primaryCta.href} onClick={onNavigate} size="lg" className="mt-7">
         {primaryCta.label}
+      </ButtonLink>
+      <ButtonLink href={loginLink.href} onClick={onNavigate} size="lg" variant="outline" className="mt-3">
+        {loginLink.label}
       </ButtonLink>
     </motion.div>
   );
