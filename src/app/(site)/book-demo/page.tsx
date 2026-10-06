@@ -26,13 +26,13 @@ export default function BookDemoPage() {
             <h1 className="text-display text-balance">{page.title}</h1>
           </StaggerItem>
           <StaggerItem>
-            <p className="text-lead text-pretty text-brand-slate">{page.lead}</p>
+            <p className="text-lead text-pretty text-brand-charcoal">{page.lead}</p>
           </StaggerItem>
           <StaggerItem className="mt-2 flex flex-col gap-3 border-t border-line pt-6">
-            <span className="text-eyebrow text-brand-teal">WHAT TO EXPECT</span>
+            <span className="text-eyebrow text-brand-orange">WHAT TO EXPECT</span>
             <ul className="flex flex-col gap-3">
               {page.expectations.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-ink">
+                <li key={item} className="flex items-start gap-3 text-brand-grey">
                   <span className="mt-2 h-1 w-3 flex-none -skew-x-[38deg] bg-brand-orange" aria-hidden />
                   {item}
                 </li>

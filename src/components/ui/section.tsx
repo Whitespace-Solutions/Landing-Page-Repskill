@@ -4,8 +4,8 @@ import { Container } from "./container";
 const tones = {
   white: "bg-white",
   surface: "bg-surface",
-  ice: "bg-surface-ice",
-  slate: "bg-brand-slate text-white",
+  linen: "bg-brand-linen",
+  dark: "bg-brand-grey text-white",
 } as const;
 
 export type SectionTone = keyof typeof tones;

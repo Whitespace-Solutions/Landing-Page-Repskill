@@ -18,14 +18,14 @@ export function FinalCta({
   href = primaryCta.href,
 }: FinalCtaProps) {
   return (
-    <section className="relative overflow-hidden bg-brand-slate text-white">
+    <section className="relative overflow-hidden bg-brand-charcoal text-white">
       {/* Aksen garis miring dari brand symbol */}
       <div
         className="pointer-events-none absolute -top-10 right-[8%] hidden h-[140%] w-24 -skew-x-[20deg] bg-brand-orange/90 md:block"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute -top-10 right-[calc(8%+7rem)] hidden h-[140%] w-24 -skew-x-[20deg] bg-brand-cyan/25 md:block"
+        className="pointer-events-none absolute -top-10 right-[calc(8%+7rem)] hidden h-[140%] w-24 -skew-x-[20deg] bg-brand-grey/70 md:block"
         aria-hidden
       />
 

@@ -6,15 +6,15 @@ Repskill tidak memakai foto stok atau ilustrasi kartun. Visual dibangun dari **m
 dan dibuat dengan HTML/Tailwind (bukan gambar), misalnya:
 
 - kutipan top performer di kartu putih (italic),
-- list learning path dengan dot status (done teal · now oranye · todo abu),
-- bubble chat AI buyer vs rep (buyer putih kiri, rep `brand-cyan-soft` kanan),
-- bar strengths/gaps (teal = strength, slate = gap) + badge oranye "Next action",
+- list learning path dengan dot status (done amber · now oranye · todo abu),
+- bubble chat AI buyer vs rep (buyer abu muda kiri, rep `brand-linen` kanan),
+- bar strengths/gaps (amber = strength, Shadow Grey = gap) + badge oranye "Next action",
 - grid avatar inisial tim dengan progress bar mini.
 
 Aturan mockup:
 
-- Wadah: `rounded-panel` / `rounded-card`, background `surface` atau `surface-ice`.
-- Garis "teks palsu" (skeleton): `h-2 rounded bg-brand-slate` (utama) dan `bg-line` (sekunder).
+- Wadah: `rounded-panel` / `rounded-card`, background `surface` atau `brand-linen`.
+- Garis "teks palsu" (skeleton): `h-2 rounded bg-brand-grey` (utama) dan `bg-line` (sekunder).
 - Ukuran teks mikro di dalam mockup (11–13px) diperbolehkan, khusus di dalam ilustrasi.
 - Konten mockup harus realistis dan relevan dengan sales (pricing objection, discovery call, decision process).
 - Jangan menampilkan angka hasil customer yang belum terverifikasi.
@@ -33,7 +33,7 @@ Aturan mockup:
 Diambil dari symbol logo (panah/garis miring R):
 
 - Aksen eyebrow: `h-1 w-[18px] -skew-x-[38deg] bg-brand-orange`.
-- Dekorasi section gelap: dua bilah `-skew-x-[20deg]` (oranye + cyan transparan) di sisi kanan, seperti di `FinalCta`.
+- Dekorasi section gelap: dua bilah `-skew-x-[20deg]` (oranye + Shadow Grey 70%) di sisi kanan, seperti di `FinalCta`.
 - Maksimal satu motif dekoratif per section. Jangan sampai menutupi teks.
 
 ## Foto (bila nanti dibutuhkan)

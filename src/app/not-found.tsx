@@ -16,7 +16,7 @@ export default function NotFound() {
           <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
             This page is still being built.
           </h1>
-          <p className="max-w-xl text-lg text-brand-slate">
+          <p className="max-w-xl text-lg text-brand-charcoal">
             The page you are looking for doesn&apos;t exist yet or has moved.
           </p>
           <ButtonLink href="/" size="lg" withArrow>

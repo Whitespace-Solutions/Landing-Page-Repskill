@@ -92,7 +92,7 @@ export function SiteHeader() {
               onClick={() => setMobileOpen((o) => !o)}
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileOpen}
-              className="flex size-11 items-center justify-center rounded-button border border-line bg-white text-ink lg:hidden"
+              className="flex size-11 items-center justify-center rounded-button border border-line bg-white text-brand-grey lg:hidden"
             >
               <svg
                 width="20"
@@ -131,7 +131,7 @@ function NavTopLink({
   return (
     <Link
       href={href}
-      className="relative rounded-lg px-3 py-2.5 text-[17px] font-medium whitespace-nowrap text-brand-slate transition-colors hover:bg-surface hover:text-ink"
+      className="relative rounded-lg px-3 py-2.5 text-[17px] font-medium whitespace-nowrap text-brand-charcoal transition-colors hover:bg-surface hover:text-brand-grey"
     >
       {children}
       {active && <ActiveBar />}
@@ -174,7 +174,7 @@ function DesktopDropdown({
         type="button"
         onClick={() => onOpenChange(!open)}
         aria-expanded={open}
-        className="relative flex items-center gap-1.5 rounded-lg px-3 py-2.5 text-[17px] font-medium whitespace-nowrap text-brand-slate transition-colors hover:bg-surface hover:text-ink"
+        className="relative flex items-center gap-1.5 rounded-lg px-3 py-2.5 text-[17px] font-medium whitespace-nowrap text-brand-charcoal transition-colors hover:bg-surface hover:text-brand-grey"
       >
         {item.label}
         <motion.svg
@@ -216,16 +216,18 @@ function DesktopDropdown({
                     key={child.href}
                     href={child.href}
                     onClick={onNavigate}
-                    className="flex flex-col gap-1 rounded-xl px-4 py-3.5 transition-colors hover:bg-surface-ice"
+                    className="flex flex-col gap-1 rounded-xl px-4 py-3.5 transition-colors hover:bg-brand-linen"
                   >
                     {child.kicker && (
-                      <span className="text-[11px] font-bold tracking-[0.12em] text-brand-teal">
+                      <span className="text-[11px] font-bold tracking-[0.12em] text-brand-orange">
                         {child.kicker}
                       </span>
                     )}
-                    <span className="text-[15px] font-semibold text-ink">{child.label}</span>
+                    <span className="text-[15px] font-semibold text-brand-grey">{child.label}</span>
                     {child.description && (
-                      <span className="text-[13.5px] leading-snug text-brand-slate">{child.description}</span>
+                      <span className="text-[13.5px] leading-snug text-brand-charcoal">
+                        {child.description}
+                      </span>
                     )}
                   </Link>
                 ))}
@@ -234,7 +236,7 @@ function DesktopDropdown({
                 <Link
                   href={item.overview.href}
                   onClick={onNavigate}
-                  className="group mt-1.5 flex items-center justify-between rounded-xl bg-surface px-4 py-3.5 text-sm font-semibold text-brand-slate transition-colors hover:bg-line hover:text-ink"
+                  className="group mt-1.5 flex items-center justify-between rounded-xl bg-surface px-4 py-3.5 text-sm font-semibold text-brand-charcoal transition-colors hover:bg-line hover:text-brand-grey"
                 >
                   <span>{item.overview.label}</span>
                   <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
@@ -266,10 +268,10 @@ function MobileMenu({ pathname, onNavigate }: { pathname: string; onNavigate: ()
               type="button"
               onClick={() => setExpanded((e) => (e === item.label ? null : item.label))}
               aria-expanded={expanded === item.label}
-              className="flex min-h-14 w-full items-center justify-between text-lg font-semibold text-ink"
+              className="flex min-h-14 w-full items-center justify-between text-lg font-semibold text-brand-grey"
             >
               {item.label}
-              <span className="text-[22px] font-normal text-brand-teal">
+              <span className="text-[22px] font-normal text-brand-charcoal">
                 {expanded === item.label ? "–" : "+"}
               </span>
             </button>
@@ -287,7 +289,7 @@ function MobileMenu({ pathname, onNavigate }: { pathname: string; onNavigate: ()
                       <Link
                         href={item.overview.href}
                         onClick={onNavigate}
-                        className="py-3 pl-3.5 font-semibold text-brand-teal"
+                        className="py-3 pl-3.5 font-semibold text-brand-orange"
                       >
                         {item.overview.label}
                       </Link>
@@ -298,7 +300,7 @@ function MobileMenu({ pathname, onNavigate }: { pathname: string; onNavigate: ()
                         href={child.href}
                         onClick={onNavigate}
                         className={cn(
-                          "py-3 pl-3.5 text-brand-slate",
+                          "py-3 pl-3.5 text-brand-charcoal",
                           isActive(pathname, child.href) && "text-brand-orange",
                         )}
                       >
@@ -315,7 +317,7 @@ function MobileMenu({ pathname, onNavigate }: { pathname: string; onNavigate: ()
             key={item.label}
             href={item.href}
             onClick={onNavigate}
-            className="flex min-h-14 items-center border-b border-line text-lg font-semibold text-ink"
+            className="flex min-h-14 items-center border-b border-line text-lg font-semibold text-brand-grey"
           >
             {item.label}
           </Link>

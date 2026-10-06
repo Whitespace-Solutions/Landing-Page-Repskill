@@ -77,7 +77,7 @@ export function DemoForm() {
               initial={{ scale: 0.5 }}
               animate={{ scale: 1 }}
               transition={{ type: "spring", stiffness: 320, damping: 18 }}
-              className="flex size-16 items-center justify-center rounded-full bg-brand-teal text-white"
+              className="flex size-16 items-center justify-center rounded-full bg-brand-amber text-brand-grey"
             >
               <svg
                 width="28"
@@ -94,7 +94,7 @@ export function DemoForm() {
               </svg>
             </motion.span>
             <h2 className="text-h3">{form.success.title}</h2>
-            <p className="text-brand-slate">{form.success.body}</p>
+            <p className="text-brand-charcoal">{form.success.body}</p>
           </motion.div>
         ) : (
           <motion.form
@@ -141,7 +141,7 @@ export function DemoForm() {
             </div>
 
             <fieldset className="flex flex-col gap-2">
-              <legend className="mb-2 text-sm font-semibold text-ink">Team Size</legend>
+              <legend className="mb-2 text-sm font-semibold text-brand-grey">Team Size</legend>
               <div className="flex flex-wrap gap-2">
                 {form.teamSizes.map((size) => {
                   const active = values.teamSize === size;
@@ -154,8 +154,8 @@ export function DemoForm() {
                       className={cn(
                         "rounded-button border px-4 py-2.5 text-sm font-semibold transition-colors",
                         active
-                          ? "border-brand-slate bg-brand-slate text-white"
-                          : "border-line bg-white text-brand-slate hover:border-brand-slate",
+                          ? "border-brand-grey bg-brand-grey text-white"
+                          : "border-line bg-white text-brand-charcoal hover:border-brand-grey",
                       )}
                     >
                       {size}
@@ -166,16 +166,16 @@ export function DemoForm() {
             </fieldset>
 
             <label className="flex flex-col gap-2">
-              <span className="text-sm font-semibold text-ink">
+              <span className="text-sm font-semibold text-brand-grey">
                 What are you looking to improve?{" "}
-                <span className="font-normal text-brand-slate">(optional)</span>
+                <span className="font-normal text-brand-charcoal">(optional)</span>
               </span>
               <textarea
                 name="improve"
                 rows={4}
                 value={values.improve}
                 onChange={(e) => set("improve", e.target.value)}
-                className="resize-y rounded-button border border-line px-4 py-3 text-base text-ink transition-colors outline-none focus:border-brand-teal focus:ring-2 focus:ring-brand-cyan-soft"
+                className="resize-y rounded-button border border-line px-4 py-3 text-base text-brand-grey transition-colors outline-none focus:border-brand-grey focus:ring-2 focus:ring-brand-amber/40"
               />
             </label>
 
@@ -195,7 +195,7 @@ export function DemoForm() {
             >
               {state === "sending" ? "Sending…" : form.submit}
             </button>
-            <p className="text-caption text-brand-slate">{form.consent}</p>
+            <p className="text-caption text-brand-charcoal">{form.consent}</p>
           </motion.form>
         )}
       </AnimatePresence>
@@ -223,7 +223,7 @@ function TextField({
   const error = errors[name];
   return (
     <label className="flex flex-col gap-2">
-      <span className="text-sm font-semibold text-ink">{label}</span>
+      <span className="text-sm font-semibold text-brand-grey">{label}</span>
       <input
         type={type}
         name={name}
@@ -232,10 +232,10 @@ function TextField({
         onChange={(e) => onChange(name, e.target.value)}
         aria-invalid={!!error}
         className={cn(
-          "h-12 rounded-button border px-4 text-base text-ink transition-colors outline-none focus:ring-2",
+          "h-12 rounded-button border px-4 text-base text-brand-grey transition-colors outline-none focus:ring-2",
           error
             ? "border-brand-orange-deep focus:ring-brand-orange/20"
-            : "border-line focus:border-brand-teal focus:ring-brand-cyan-soft",
+            : "border-line focus:border-brand-grey focus:ring-brand-amber/40",
         )}
       />
       {error && <span className="text-xs font-medium text-brand-orange-deep">{error}</span>}

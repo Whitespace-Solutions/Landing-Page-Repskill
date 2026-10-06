@@ -25,7 +25,7 @@ export function ClientLogos({ eyebrow, title }: { eyebrow: string; title: string
       <Container>
         <Reveal className="flex flex-col items-center gap-3 text-center">
           <Eyebrow>{eyebrow}</Eyebrow>
-          <p className="text-lg font-semibold text-ink">{title}</p>
+          <p className="text-lg font-semibold text-brand-grey">{title}</p>
         </Reveal>
       </Container>
 

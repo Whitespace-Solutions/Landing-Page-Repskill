@@ -16,7 +16,7 @@ export function StepsTimeline({ id, eyebrow, title, body, steps, note, tone = "d
   const last = steps.length - 1;
 
   return (
-    <Section id={id} tone={dark ? "slate" : "ice"} size="lg">
+    <Section id={id} tone={dark ? "dark" : "linen"} size="lg">
       <SectionHeader
         eyebrow={eyebrow}
         title={title}
@@ -37,23 +37,23 @@ export function StepsTimeline({ id, eyebrow, title, body, steps, note, tone = "d
             key={step.name}
             className={cn(
               "relative flex flex-col gap-3.5 border-t-2 py-7 pr-6",
-              i === last ? "border-brand-orange" : dark ? "border-brand-cyan/55" : "border-brand-teal/30",
+              i === last ? "border-brand-orange" : dark ? "border-brand-amber/55" : "border-brand-amber/30",
             )}
           >
             <span
               className={cn(
                 "absolute -top-[7px] left-0 size-3 rounded-full",
                 dark
-                  ? "shadow-[0_0_0_4px_var(--color-brand-slate)]"
-                  : "shadow-[0_0_0_4px_var(--color-surface-ice)]",
-                i === last ? "bg-brand-orange" : dark ? "bg-brand-cyan" : "bg-brand-teal",
+                  ? "shadow-[0_0_0_4px_var(--color-brand-grey)]"
+                  : "shadow-[0_0_0_4px_var(--color-brand-linen)]",
+                i === last ? "bg-brand-orange" : "bg-brand-amber",
               )}
               aria-hidden
             />
             <span
               className={cn(
                 "text-[13px] font-bold tracking-[0.08em]",
-                dark ? "text-brand-cyan" : "text-brand-teal",
+                dark ? "text-brand-amber" : "text-brand-charcoal",
               )}
             >
               {String(i + 1).padStart(2, "0")}
@@ -62,7 +62,7 @@ export function StepsTimeline({ id, eyebrow, title, body, steps, note, tone = "d
             <span
               className={cn(
                 "text-[15px] leading-relaxed lg:min-h-[70px]",
-                dark ? "text-line" : "text-brand-slate",
+                dark ? "text-line" : "text-brand-charcoal",
               )}
             >
               {step.message}
@@ -80,7 +80,9 @@ export function StepsTimeline({ id, eyebrow, title, body, steps, note, tone = "d
         <Reveal
           className={cn(
             "mt-10 flex items-center gap-3 rounded-[14px] border px-5.5 py-4.5 text-[15px] leading-normal",
-            dark ? "border-brand-cyan/30 bg-brand-cyan/10" : "border-brand-teal/20 bg-white text-ink",
+            dark
+              ? "border-brand-amber/30 bg-brand-amber/10"
+              : "border-brand-amber/20 bg-white text-brand-grey",
           )}
         >
           <svg
@@ -92,7 +94,7 @@ export function StepsTimeline({ id, eyebrow, title, body, steps, note, tone = "d
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className={cn("flex-none", dark ? "text-brand-cyan" : "text-brand-teal")}
+            className={cn("flex-none", dark ? "text-brand-amber" : "text-brand-orange")}
             aria-hidden
           >
             <path d="M3 12a9 9 0 0 1 15.5-6.2L21 8M21 3v5h-5M21 12a9 9 0 0 1-15.5 6.2L3 16M3 21v-5h5" />
@@ -107,8 +109,8 @@ export function StepsTimeline({ id, eyebrow, title, body, steps, note, tone = "d
 function StepTag({ href, dark, children }: { href?: string; dark: boolean; children: React.ReactNode }) {
   const className = cn(
     "self-start rounded-lg border px-3 py-2 text-[13.5px] font-semibold transition-colors",
-    dark ? "border-white/15 bg-white/10 text-white" : "border-line bg-white text-brand-slate",
-    href && (dark ? "hover:bg-white/20" : "hover:border-brand-teal hover:text-brand-teal"),
+    dark ? "border-white/15 bg-white/10 text-white" : "border-line bg-white text-brand-charcoal",
+    href && (dark ? "hover:bg-white/20" : "hover:border-brand-orange hover:text-brand-orange"),
   );
   return href ? (
     <Link href={href} className={className}>

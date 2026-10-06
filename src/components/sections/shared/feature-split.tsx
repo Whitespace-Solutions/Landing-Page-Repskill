@@ -32,13 +32,13 @@ export function FeatureSplit({
           <Reveal className="flex flex-col gap-5">
             <Eyebrow>{eyebrow}</Eyebrow>
             <h2 className="text-h2 text-balance">{title}</h2>
-            <p className="text-lead text-pretty text-brand-slate">{body}</p>
+            <p className="text-lead text-pretty text-brand-charcoal">{body}</p>
           </Reveal>
           {points && (
             <Stagger as="ul" className="mt-2 flex flex-col gap-3" stagger={0.08}>
               {points.map((point) => (
-                <StaggerItem as="li" key={point} className="flex items-start gap-3 text-base text-ink">
-                  <span className="mt-0.5 flex size-5 flex-none items-center justify-center rounded-full bg-brand-teal text-white">
+                <StaggerItem as="li" key={point} className="flex items-start gap-3 text-base text-brand-grey">
+                  <span className="mt-0.5 flex size-5 flex-none items-center justify-center rounded-full bg-brand-amber text-brand-grey">
                     <svg
                       width="11"
                       height="11"
@@ -62,7 +62,7 @@ export function FeatureSplit({
             <Reveal>
               <Link
                 href={link.href}
-                className="group mt-2 inline-flex items-center gap-2 font-semibold text-brand-teal hover:text-brand-slate"
+                className="group mt-2 inline-flex items-center gap-2 font-semibold text-brand-orange hover:text-brand-grey"
               >
                 {link.label}
                 <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
@@ -75,7 +75,7 @@ export function FeatureSplit({
           <div
             className={cn(
               "rounded-panel p-4 sm:p-8 lg:p-10",
-              tone === "white" ? "bg-surface-ice" : "bg-white",
+              tone === "white" ? "bg-brand-linen" : "bg-white",
             )}
           >
             <Mockup data={visual} />

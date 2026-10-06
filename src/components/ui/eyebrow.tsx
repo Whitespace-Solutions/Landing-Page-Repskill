@@ -12,7 +12,7 @@ export function Eyebrow({
 }) {
   return (
     <span
-      className={cn("inline-flex items-center gap-2.5 text-eyebrow text-brand-teal uppercase", className)}
+      className={cn("inline-flex items-center gap-2.5 text-eyebrow text-brand-orange uppercase", className)}
     >
       {accent && <span className="h-1 w-[18px] -skew-x-[38deg] bg-brand-orange" aria-hidden />}
       {children}

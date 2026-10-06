@@ -4,14 +4,17 @@ Logo menggabungkan **symbol** (huruf R dengan panah oranye) dan **wordmark** "Re
 
 ## File
 
-| Varian               | File (`src/assets/brand/`)  | Kapan dipakai                            |
-| -------------------- | --------------------------- | ---------------------------------------- |
-| Full color (primary) | `repskill-logo.png`         | Background putih/terang (header)         |
-| Reversed             | `repskill-logo-reverse.png` | Background Slate/Graphite/gelap (footer) |
-| Symbol / icon        | `repskill-icon.png`         | Favicon, avatar, ruang sangat kecil      |
+Logo final versi 05.10.26 (dark part memakai Shadow Grey `#252729`).
+
+| Varian                  | File (`src/assets/brand/`)                   | Kapan dipakai                                      |
+| ----------------------- | -------------------------------------------- | -------------------------------------------------- |
+| Full color (primary)    | `repskill-logo.png`                          | Background putih/terang (header)                   |
+| Reversed (putih+oranye) | `repskill-logo-reverse.png`                  | Background Shadow Grey / gelap (footer)            |
+| Monochrome (putih)      | `docs/brand/logo/repskill-logo-white.png`    | Background gelap bila oranye tidak cocok           |
+| App icon                | `src/app/icon.png`, `src/app/apple-icon.png` | Favicon & ikon perangkat (R linen di kotak oranye) |
 
 Pakai lewat `next/image` dengan static import, contoh `import logo from "@/assets/brand/repskill-logo.png"`.
-File asli resolusi penuh ada di `docs/brand/logo/`.
+File resolusi penuh ada di `docs/brand/logo/`, file master (`.ai` / `.pdf`) di `docs/brand/logo/source/`.
 
 ## Ukuran
 

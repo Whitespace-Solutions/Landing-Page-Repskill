@@ -33,15 +33,19 @@ export function SectionHeader({
   const dark = tone === "dark";
   const heading = (
     <h2
-      className={cn(size === "h1" ? "text-h1" : "text-h2", "text-balance", dark ? "text-white" : "text-ink")}
+      className={cn(
+        size === "h1" ? "text-h1" : "text-h2",
+        "text-balance",
+        dark ? "text-white" : "text-brand-grey",
+      )}
     >
       <HighlightText text={title} highlight={highlight} />
     </h2>
   );
   const leadText = lead && (
-    <p className={cn("text-lead text-pretty", dark ? "text-line" : "text-brand-slate")}>{lead}</p>
+    <p className={cn("text-lead text-pretty", dark ? "text-line" : "text-brand-charcoal")}>{lead}</p>
   );
-  const eyebrowEl = <Eyebrow className={dark ? "text-brand-cyan" : undefined}>{eyebrow}</Eyebrow>;
+  const eyebrowEl = <Eyebrow className={dark ? "text-brand-amber" : undefined}>{eyebrow}</Eyebrow>;
 
   if (layout === "side") {
     return (

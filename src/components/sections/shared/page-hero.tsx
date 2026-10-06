@@ -27,7 +27,7 @@ export function PageHero({ eyebrow, title, highlight, lead, primary, secondary, 
             </h1>
           </StaggerItem>
           <StaggerItem>
-            <p className="max-w-[620px] text-lead text-pretty text-brand-slate">{lead}</p>
+            <p className="max-w-[620px] text-lead text-pretty text-brand-charcoal">{lead}</p>
           </StaggerItem>
           {(primary || secondary) && (
             <StaggerItem className="mt-2 flex flex-wrap gap-3">

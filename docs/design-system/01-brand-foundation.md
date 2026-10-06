@@ -25,7 +25,7 @@ Selalu ditampilkan dengan urutan dan penamaan yang sama:
 
 Fondasi bersama: **Knowledge Universe**, yaitu pengetahuan yang sudah di-review, dikurasi, dan di-approve.
 Penulisan baku: `Capture → Learn → Practice → Reflect → Improve` (pakai panah `→`).
-Secara visual, stage 01–04 memakai teal/cyan, sedangkan stage 05 (Improve) memakai **oranye** sebagai hasil akhir.
+Secara visual, stage 01–04 memakai Amber Gold (dot/garis), sedangkan stage 05 (Improve) memakai **oranye** sebagai hasil akhir.
 
 ## Personality
 

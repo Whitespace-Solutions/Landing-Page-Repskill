@@ -101,8 +101,9 @@ Selama endpoint belum diisi, formulir menampilkan pesan error dan tidak menyimpa
 
 ### Warna brand (class Tailwind)
 
-`brand-orange` · `brand-slate` · `brand-teal` · `brand-cyan` · `brand-cyan-soft` · `ink` · `line` · `surface` · `surface-ice`
-→ contoh: `bg-brand-orange`, `text-brand-slate`, `border-line`. Sumber: `docs/brand/repskill-brand-guidelines.pdf`.
+`brand-orange` · `brand-grey` (Shadow Grey) · `brand-amber` (Amber Gold) · `brand-linen` (Soft Linen) · `brand-charcoal` ·
+`line` (Cool Gray) · `surface`
+→ contoh: `bg-brand-orange`, `text-brand-charcoal`, `border-line`. Sumber: `docs/brand/repskill-brand-guidelines.pdf`.
 
 ## Deployment (GitHub Actions)
 

@@ -8,7 +8,7 @@ import { footerNav, primaryCta } from "@/content/navigation";
 
 export function SiteFooter() {
   return (
-    <footer className="bg-ink text-white">
+    <footer className="bg-brand-grey text-white">
       <Container className="py-16 lg:py-20">
         <div className="flex flex-wrap items-start justify-between gap-12">
           <div className="flex max-w-xs flex-col gap-5">
@@ -24,7 +24,7 @@ export function SiteFooter() {
           <nav className="grid grid-cols-2 gap-x-12 gap-y-10 sm:grid-cols-4" aria-label="Footer">
             {footerNav.map((group) => (
               <div key={group.title} className="flex flex-col gap-3">
-                <span className="text-xs font-bold tracking-[0.14em] text-brand-cyan">{group.title}</span>
+                <span className="text-xs font-bold tracking-[0.14em] text-brand-amber">{group.title}</span>
                 {group.links.map((link) => (
                   <Link
                     key={link.href + link.label}

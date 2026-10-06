@@ -26,7 +26,7 @@ export function MetricTiles({
   tone = "light",
 }: {
   metrics: SuccessStory["result"]["metrics"];
-  tone?: "light" | "ice";
+  tone?: "light" | "linen";
 }) {
   return (
     <Stagger className="grid grid-cols-1 gap-3 sm:grid-cols-3" stagger={0.1}>
@@ -35,11 +35,11 @@ export function MetricTiles({
           key={m.label}
           className={cn(
             "flex flex-col gap-2 rounded-card p-5",
-            tone === "ice" ? "bg-white" : "border border-line bg-surface",
+            tone === "linen" ? "bg-white" : "border border-line bg-surface",
           )}
         >
           <span className="text-h1 text-brand-orange">{m.value}</span>
-          <span className="text-sm font-semibold text-brand-slate">{m.label}</span>
+          <span className="text-sm font-semibold text-brand-charcoal">{m.label}</span>
         </StaggerItem>
       ))}
     </Stagger>
@@ -61,7 +61,7 @@ export function StoryTeaser({
       <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-20">
         <Reveal className="flex flex-col gap-5">
           <div className="flex flex-wrap items-center gap-3">
-            <span className="rounded-full border border-line bg-white px-2.5 py-1 text-xs font-semibold text-brand-slate">
+            <span className="rounded-full border border-line bg-white px-2.5 py-1 text-xs font-semibold text-brand-charcoal">
               {story.industry}
             </span>
             <DraftBadge show={story.draft} />
@@ -69,17 +69,17 @@ export function StoryTeaser({
           <h3>
             <Image src={story.logo} alt={story.name} className="h-auto max-h-14 w-auto max-w-[70%]" />
           </h3>
-          <p className="text-lead text-pretty text-brand-slate">{story.summary}</p>
+          <p className="text-lead text-pretty text-brand-charcoal">{story.summary}</p>
           <div className="flex flex-col gap-2">
-            <span className="text-eyebrow text-brand-teal">THE CHALLENGE</span>
-            <p className="text-base text-ink">{story.challenge.title}</p>
+            <span className="text-eyebrow text-brand-orange">THE CHALLENGE</span>
+            <p className="text-base text-brand-grey">{story.challenge.title}</p>
           </div>
           <div className="flex flex-wrap gap-1.5">
             {story.help.features.map((key) => (
               <Link
                 key={key}
                 href={featureInfo[key].href}
-                className="rounded-md bg-surface-ice px-2 py-1 text-xs font-semibold text-brand-teal hover:bg-brand-cyan-soft"
+                className="rounded-md bg-brand-linen px-2 py-1 text-xs font-semibold text-brand-grey hover:bg-brand-amber/25"
               >
                 {featureInfo[key].label}
               </Link>
@@ -96,7 +96,7 @@ export function StoryTeaser({
         </Reveal>
 
         <Reveal delay={0.15} className={cn("flex flex-col gap-4", reverse && "lg:order-first")}>
-          <div className={cn("rounded-panel p-4 sm:p-8", tone === "white" ? "bg-surface-ice" : "bg-white")}>
+          <div className={cn("rounded-panel p-4 sm:p-8", tone === "white" ? "bg-brand-linen" : "bg-white")}>
             <Mockup data={story.help.visual} />
           </div>
           <MetricTiles metrics={story.result.metrics} />
@@ -113,11 +113,11 @@ export function StoryAbout({ story }: { story: SuccessStory }) {
       <Container className="relative grid items-center gap-12 pt-12 pb-16 sm:pt-16 lg:grid-cols-[1.2fr_1fr] lg:gap-16 lg:pb-24">
         <Stagger className="flex flex-col gap-6" stagger={0.1}>
           <StaggerItem className="flex flex-wrap items-center gap-3 text-sm font-semibold">
-            <Link href="/success-stories/" className="text-brand-teal hover:text-brand-slate">
+            <Link href="/success-stories/" className="text-brand-orange hover:text-brand-grey">
               Success Stories
             </Link>
             <span className="text-line">/</span>
-            <span className="text-brand-slate">{story.name}</span>
+            <span className="text-brand-charcoal">{story.name}</span>
             <DraftBadge show={story.draft} />
           </StaggerItem>
           <StaggerItem>
@@ -127,7 +127,7 @@ export function StoryAbout({ story }: { story: SuccessStory }) {
             <h1 className="text-display text-balance">{story.about.title}</h1>
           </StaggerItem>
           <StaggerItem>
-            <p className="max-w-[620px] text-lead text-pretty text-brand-slate">{story.about.body}</p>
+            <p className="max-w-[620px] text-lead text-pretty text-brand-charcoal">{story.about.body}</p>
           </StaggerItem>
         </Stagger>
 
@@ -141,8 +141,8 @@ export function StoryAbout({ story }: { story: SuccessStory }) {
           <dl className="divide-y divide-line">
             {story.about.facts.map((fact) => (
               <div key={fact.label} className="flex items-center justify-between gap-4 py-3">
-                <dt className="text-sm text-brand-slate">{fact.label}</dt>
-                <dd className="text-sm font-semibold text-ink">{fact.value}</dd>
+                <dt className="text-sm text-brand-charcoal">{fact.label}</dt>
+                <dd className="text-sm font-semibold text-brand-grey">{fact.value}</dd>
               </div>
             ))}
           </dl>
@@ -160,7 +160,7 @@ export function StoryChallenge({ story }: { story: SuccessStory }) {
         {story.challenge.points.map((point, i) => (
           <StaggerItem key={point} className="flex flex-col gap-3 rounded-card bg-white p-6">
             <span className="text-sm font-bold text-brand-orange">{String(i + 1).padStart(2, "0")}</span>
-            <span className="text-base leading-relaxed text-ink">{point}</span>
+            <span className="text-base leading-relaxed text-brand-grey">{point}</span>
           </StaggerItem>
         ))}
       </Stagger>
@@ -181,15 +181,15 @@ export function StoryHelp({ story }: { story: SuccessStory }) {
                 <StaggerItem key={key}>
                   <Link
                     href={f.href}
-                    className="group flex items-center justify-between gap-4 rounded-card border border-line p-5 transition-colors hover:border-brand-cyan"
+                    className="group flex items-center justify-between gap-4 rounded-card border border-line p-5 transition-colors hover:border-brand-amber"
                   >
                     <div className="flex flex-col gap-1">
-                      <span className="font-bold text-ink">{f.label}</span>
-                      <span className="text-sm text-brand-slate">{f.tools}</span>
+                      <span className="font-bold text-brand-grey">{f.label}</span>
+                      <span className="text-sm text-brand-charcoal">{f.tools}</span>
                     </div>
                     <ArrowRight
                       size={16}
-                      className="flex-none text-brand-teal transition-transform group-hover:translate-x-1"
+                      className="flex-none text-brand-charcoal transition-transform group-hover:translate-x-1"
                     />
                   </Link>
                 </StaggerItem>
@@ -198,7 +198,7 @@ export function StoryHelp({ story }: { story: SuccessStory }) {
           </Stagger>
         </div>
         <Reveal delay={0.15}>
-          <div className="rounded-panel bg-surface-ice p-4 sm:p-8 lg:p-10">
+          <div className="rounded-panel bg-brand-linen p-4 sm:p-8 lg:p-10">
             <Mockup data={story.help.visual} />
           </div>
         </Reveal>
@@ -210,16 +210,16 @@ export function StoryHelp({ story }: { story: SuccessStory }) {
 export function StoryResult({ story }: { story: SuccessStory }) {
   const { result } = story;
   return (
-    <Section tone="ice">
+    <Section tone="linen">
       <SectionHeader eyebrow="Result" title={result.title} lead={result.body} />
       <div className="mt-10 lg:mt-14">
-        <MetricTiles metrics={result.metrics} tone="ice" />
+        <MetricTiles metrics={result.metrics} tone="linen" />
       </div>
       {result.quote && (
         <Reveal className="mt-6 flex flex-col gap-4 rounded-card bg-white p-7">
-          <p className="text-h3 font-semibold text-ink">“{result.quote.text}”</p>
-          <span className="text-sm text-brand-slate">
-            <strong className="text-ink">{result.quote.author}</strong> · {result.quote.role}
+          <p className="text-h3 font-semibold text-brand-grey">“{result.quote.text}”</p>
+          <span className="text-sm text-brand-charcoal">
+            <strong className="text-brand-grey">{result.quote.author}</strong> · {result.quote.role}
           </span>
         </Reveal>
       )}

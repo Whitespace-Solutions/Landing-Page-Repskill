@@ -40,14 +40,14 @@ export function PricingModel() {
             </span>
           </div>
           <div className="flex flex-col gap-3">
-            <span className="text-h3 text-brand-slate">{plan.name}</span>
+            <span className="text-h3 text-brand-charcoal">{plan.name}</span>
             <h2 className="text-h2 text-balance">{plan.title}</h2>
-            <p className="text-lead text-pretty text-brand-slate">{plan.body}</p>
+            <p className="text-lead text-pretty text-brand-charcoal">{plan.body}</p>
           </div>
           <ul className="grid gap-3 sm:grid-cols-2">
             {plan.includes.map((item) => (
-              <li key={item} className="flex items-start gap-3 text-[15px] text-ink">
-                <span className="mt-0.5 flex size-5 flex-none items-center justify-center rounded-full bg-brand-teal text-white">
+              <li key={item} className="flex items-start gap-3 text-[15px] text-brand-grey">
+                <span className="mt-0.5 flex size-5 flex-none items-center justify-center rounded-full bg-brand-amber text-brand-grey">
                   <Check />
                 </span>
                 {item}
@@ -61,13 +61,13 @@ export function PricingModel() {
 
         <Reveal
           delay={0.15}
-          className="flex flex-col gap-5 rounded-panel bg-brand-slate p-7 text-white sm:p-10"
+          className="flex flex-col gap-5 rounded-panel bg-brand-grey p-7 text-white sm:p-10"
         >
-          <span className="text-eyebrow text-brand-cyan">{plan.factors.title.toUpperCase()}</span>
+          <span className="text-eyebrow text-brand-amber">{plan.factors.title.toUpperCase()}</span>
           <Stagger as="ol" className="flex flex-col gap-5" stagger={0.1}>
             {plan.factors.items.map((f, i) => (
               <StaggerItem as="li" key={f.title} className="flex gap-4">
-                <span className="text-sm font-bold text-brand-cyan">{String(i + 1).padStart(2, "0")}</span>
+                <span className="text-sm font-bold text-brand-amber">{String(i + 1).padStart(2, "0")}</span>
                 <div className="flex flex-col gap-1">
                   <span className="font-bold">{f.title}</span>
                   <span className="text-[15px] leading-relaxed text-line">{f.desc}</span>
@@ -95,14 +95,14 @@ export function WhatsIncluded() {
               className={cn(
                 "group flex h-full flex-col gap-3 rounded-card p-6 transition-[border-color,box-shadow,transform] duration-200 hover:-translate-y-0.5",
                 item.accent
-                  ? "bg-brand-teal text-white"
-                  : "border border-line bg-white hover:border-brand-cyan hover:shadow-glow",
+                  ? "bg-brand-amber text-brand-grey"
+                  : "border border-line bg-white hover:border-brand-amber hover:shadow-glow",
               )}
             >
               <span
                 className={cn(
                   "text-[11.5px] font-bold tracking-[0.12em]",
-                  item.accent ? "text-brand-cyan-soft" : "text-brand-teal",
+                  item.accent ? "text-brand-grey/70" : "text-brand-orange",
                 )}
               >
                 {item.stage}
@@ -111,13 +111,16 @@ export function WhatsIncluded() {
               <span
                 className={cn(
                   "text-[13px] font-semibold",
-                  item.accent ? "text-brand-cyan-soft" : "text-brand-slate",
+                  item.accent ? "text-brand-grey/70" : "text-brand-charcoal",
                 )}
               >
                 {item.tools}
               </span>
               <span
-                className={cn("text-[15px] leading-relaxed", item.accent ? "text-white" : "text-brand-slate")}
+                className={cn(
+                  "text-[15px] leading-relaxed",
+                  item.accent ? "text-brand-grey" : "text-brand-charcoal",
+                )}
               >
                 {item.desc}
               </span>
@@ -125,7 +128,7 @@ export function WhatsIncluded() {
                 size={16}
                 className={cn(
                   "mt-auto transition-transform group-hover:translate-x-1",
-                  item.accent ? "text-white" : "text-brand-teal",
+                  item.accent ? "text-brand-grey" : "text-brand-charcoal",
                 )}
               />
             </Link>
@@ -138,13 +141,13 @@ export function WhatsIncluded() {
 
 function ComparisonValue({ value, highlight }: { value: boolean | string; highlight: boolean }) {
   if (typeof value === "string")
-    return <span className="text-sm font-semibold text-brand-slate">{value}</span>;
+    return <span className="text-sm font-semibold text-brand-charcoal">{value}</span>;
   if (value)
     return (
       <span
         className={cn(
-          "flex size-7 items-center justify-center rounded-full text-white",
-          highlight ? "bg-brand-orange" : "bg-brand-teal",
+          "flex size-7 items-center justify-center rounded-full",
+          highlight ? "bg-brand-orange text-white" : "bg-brand-amber text-brand-grey",
         )}
       >
         <Check />
@@ -152,7 +155,7 @@ function ComparisonValue({ value, highlight }: { value: boolean | string; highli
       </span>
     );
   return (
-    <span className="text-xl leading-none text-brand-slate/40">
+    <span className="text-xl leading-none text-brand-charcoal/40">
       —<span className="sr-only">No</span>
     </span>
   );
@@ -168,13 +171,13 @@ export function FeatureComparison() {
         <table className="w-full min-w-[560px] border-collapse text-left">
           <thead>
             <tr className="border-b border-line">
-              <th className="px-6 py-5 text-eyebrow text-brand-slate">CAPABILITY</th>
+              <th className="px-6 py-5 text-eyebrow text-brand-charcoal">CAPABILITY</th>
               {comparison.columns.map((col, i) => (
                 <th
                   key={col}
                   className={cn(
                     "w-40 px-6 py-5 text-center text-sm font-bold",
-                    i === 1 ? "bg-brand-orange/10 text-brand-orange-deep" : "text-brand-slate",
+                    i === 1 ? "bg-brand-orange/10 text-brand-orange-deep" : "text-brand-charcoal",
                   )}
                 >
                   {col}
@@ -185,7 +188,7 @@ export function FeatureComparison() {
           <tbody>
             {comparison.rows.map((row) => (
               <tr key={row.label} className="border-b border-line last:border-b-0">
-                <td className="px-6 py-4 text-[15px] font-medium text-ink">{row.label}</td>
+                <td className="px-6 py-4 text-[15px] font-medium text-brand-grey">{row.label}</td>
                 {row.values.map((value, i) => (
                   <td key={i} className={cn("px-6 py-4", i === 1 && "bg-brand-orange/5")}>
                     <div className="flex justify-center">

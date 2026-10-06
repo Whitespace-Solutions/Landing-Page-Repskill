@@ -1,26 +1,24 @@
 @import "tailwindcss";
 
 /*
- * Repskill design tokens — sumber: docs/brand/repskill-brand-guidelines.pdf
- * Pakai sebagai class Tailwind, mis. `bg-brand-orange`, `text-ink`, `border-line`.
+ * Repskill design tokens — sumber: docs/brand/repskill-brand-guidelines.pdf (versi 05.10.26)
+ * Pakai sebagai class Tailwind, mis. `bg-brand-orange`, `text-brand-grey`, `border-line`.
  */
 @theme {
   /* Primary */
-  --color-brand-orange: #ff6d00; /* Action / performance */
+  --color-brand-orange: #ff6d00; /* Primary Orange — action / performance */
   --color-brand-orange-hover: #e86300;
-  --color-brand-orange-deep: #c25200;
-  --color-brand-slate: #3b494c; /* Trust / expertise */
+  --color-brand-orange-deep: #c25200; /* teks oranye di atas latar oranye muda */
+  --color-brand-grey: #252729; /* Shadow Grey — trust / expertise, teks utama, latar gelap */
 
   /* Secondary */
-  --color-brand-teal: #087c8c; /* AI / intelligence */
-  --color-brand-cyan: #49b8d1; /* Progress / development */
-  --color-brand-cyan-soft: #ddf3f7; /* Information / support */
+  --color-brand-amber: #ffbe0b; /* Amber Gold — AI / intelligence, progres (isian, bukan teks di latar terang) */
+  --color-brand-linen: #f3efe6; /* Soft Linen — information / support */
 
   /* Neutrals */
-  --color-ink: #212121; /* Graphite */
-  --color-line: #e8eaeb; /* Cool Gray */
-  --color-surface: #f6f7f7;
-  --color-surface-ice: #eef9fb;
+  --color-brand-charcoal: #515254; /* Charcoal — neutral dark, teks sekunder */
+  --color-line: #e8eaeb; /* Cool Gray — border, divider */
+  --color-surface: #f6f7f7; /* Cool Gray ±40% — latar section netral */
 
   --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
 
@@ -56,9 +54,9 @@
   --radius-panel: 20px;
 
   /* Shadow — class: shadow-float, shadow-pop, shadow-glow */
-  --shadow-float: 0 30px 60px -36px rgb(33 33 33 / 0.28); /* panel besar / mockup */
-  --shadow-pop: 0 24px 48px -20px rgb(33 33 33 / 0.22); /* dropdown, popover */
-  --shadow-glow: 0 20px 40px -28px rgb(8 124 140 / 0.45); /* hover kartu */
+  --shadow-float: 0 30px 60px -36px rgb(37 39 41 / 0.28); /* panel besar / mockup */
+  --shadow-pop: 0 24px 48px -20px rgb(37 39 41 / 0.22); /* dropdown, popover */
+  --shadow-glow: 0 20px 40px -28px rgb(255 190 11 / 0.55); /* hover kartu (amber) */
 
   /* Motion — class: ease-brand */
   --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
@@ -82,7 +80,7 @@
   }
 
   body {
-    @apply bg-white font-sans text-ink antialiased;
+    @apply bg-white font-sans text-brand-grey antialiased;
   }
 
   ::selection {

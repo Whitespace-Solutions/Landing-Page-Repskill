@@ -28,12 +28,12 @@ Tombol memakai 15–16px semibold (sudah diatur di komponen `ButtonLink`).
 - Highlight **satu frasa** di judul dengan `text-brand-orange` (misalnya "Scalable."). Maksimal satu highlight per judul.
 - Tambahkan `text-balance` di judul dan `text-pretty` di paragraf supaya baris tidak menggantung.
 - Lebar baris paragraf maksimal ±620–680px (`max-w-[620px]` / `max-w-2xl`).
-- Warna: judul `text-ink` (terang) atau `text-white` (gelap), paragraf `text-brand-slate` atau `text-line` (gelap).
+- Warna: judul `text-brand-grey` (terang) atau `text-white` (gelap), paragraf `text-brand-charcoal` atau `text-line` (gelap).
 
 ## Contoh
 
 ```tsx
 <Eyebrow>Knowledge Universe</Eyebrow>
 <h2 className="text-h2 text-balance">Your Sales Expertise, Built Into a Living Knowledge System.</h2>
-<p className="max-w-2xl text-lead text-pretty text-brand-slate">Bring together company knowledge…</p>
+<p className="max-w-2xl text-lead text-pretty text-brand-charcoal">Bring together company knowledge…</p>
 ```

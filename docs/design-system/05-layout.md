@@ -53,7 +53,7 @@ Shadow dipakai **hemat**. Sebagian besar kartu cukup memakai `border border-line
 | -------------- | ----------------------------------------- |
 | `shadow-float` | Panel besar yang "melayang" (mockup hero) |
 | `shadow-pop`   | Dropdown, popover                         |
-| `shadow-glow`  | Hover kartu fitur (bernuansa teal)        |
+| `shadow-glow`  | Hover kartu fitur (bernuansa amber)       |
 
 ## Background hero
 

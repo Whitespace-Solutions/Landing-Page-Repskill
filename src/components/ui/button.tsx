@@ -3,7 +3,7 @@ import { cn } from "@/lib/cn";
 
 const variants = {
   primary: "bg-brand-orange text-white hover:bg-brand-orange-hover",
-  outline: "border-[1.5px] border-brand-slate bg-white text-ink hover:bg-brand-slate hover:text-white",
+  outline: "border-[1.5px] border-brand-grey bg-white text-brand-grey hover:bg-brand-grey hover:text-white",
   "outline-dark": "border border-white/20 bg-white/5 text-white hover:bg-white/15",
 } as const;
 

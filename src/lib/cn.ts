@@ -2,7 +2,7 @@ import { clsx, type ClassValue } from "clsx";
 import { extendTailwindMerge } from "tailwind-merge";
 
 // Daftarkan token kustom dari globals.css. Tanpa ini, tailwind-merge mengira `text-h2` adalah warna
-// dan membuangnya saat digabung dengan `text-brand-teal`. Tambahkan di sini bila menambah token baru.
+// dan membuangnya saat digabung dengan `text-brand-orange`. Tambahkan di sini bila menambah token baru.
 const twMerge = extendTailwindMerge({
   extend: {
     theme: {

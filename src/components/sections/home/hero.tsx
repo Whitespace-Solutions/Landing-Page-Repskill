@@ -45,7 +45,7 @@ export function Hero() {
           <motion.h1 variants={rise} className="text-display text-balance">
             Make Sales Expertise <span className="text-brand-orange">Scalable.</span>
           </motion.h1>
-          <motion.p variants={rise} className="max-w-[620px] text-lead text-pretty text-brand-slate">
+          <motion.p variants={rise} className="max-w-[620px] text-lead text-pretty text-brand-charcoal">
             Repskill turns the knowledge of your best people into skills your whole sales team can build.
           </motion.p>
           <motion.div variants={rise} className="mt-2 flex flex-wrap gap-3">
@@ -83,22 +83,22 @@ function PipelineVisual() {
         <motion.div variants={rise} className="flex flex-col gap-4 rounded-[14px] bg-surface p-5.5">
           <CardHead label="01 · EXPERTISE" badge="Top performer" />
           <div className="flex items-center gap-3">
-            <div className="flex size-12 items-center justify-center rounded-full bg-brand-slate font-bold text-white shadow-[0_0_0_4px_#fff,0_0_0_6px_var(--color-brand-orange)]">
+            <div className="flex size-12 items-center justify-center rounded-full bg-brand-grey font-bold text-white shadow-[0_0_0_4px_#fff,0_0_0_6px_var(--color-brand-orange)]">
               TP
             </div>
             <div className="flex flex-1 flex-col gap-1.5">
-              <span className="h-2 w-[70%] rounded bg-brand-slate" />
+              <span className="h-2 w-[70%] rounded bg-brand-grey" />
               <span className="h-2 w-[45%] rounded bg-line" />
             </div>
           </div>
-          <blockquote className="rounded-xl border border-line bg-white px-4 py-3.5 text-sm leading-normal text-brand-slate italic">
+          <blockquote className="rounded-xl border border-line bg-white px-4 py-3.5 text-sm leading-normal text-brand-charcoal italic">
             “When the buyer pushes on price, I go back to the problem we agreed on first.”
           </blockquote>
           <div className="flex flex-wrap gap-1.5">
             {["Discovery", "Objection handling", "Next steps"].map((tag) => (
               <span
                 key={tag}
-                className="rounded-md bg-line px-2.5 py-1 text-xs font-semibold text-brand-slate"
+                className="rounded-md bg-line px-2.5 py-1 text-xs font-semibold text-brand-charcoal"
               >
                 {tag}
               </span>
@@ -107,24 +107,24 @@ function PipelineVisual() {
         </motion.div>
 
         {/* 02 · Capability */}
-        <motion.div variants={rise} className="flex flex-col gap-3 rounded-[14px] bg-surface-ice p-5.5">
+        <motion.div variants={rise} className="flex flex-col gap-3 rounded-[14px] bg-brand-linen p-5.5">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold tracking-[0.14em] whitespace-nowrap text-brand-teal">
+            <span className="text-xs font-bold tracking-[0.14em] whitespace-nowrap text-brand-orange">
               02 · CAPABILITY
             </span>
-            <span className="text-xs font-semibold whitespace-nowrap text-brand-teal">
+            <span className="text-xs font-semibold whitespace-nowrap text-brand-grey">
               Knowledge Universe
             </span>
           </div>
           {capabilities.map((c, i) => (
             <div key={c.name} className="flex items-center gap-3 rounded-[10px] bg-white px-3.5 py-3">
-              <span className="w-[68px] text-[11px] font-bold tracking-[0.1em] text-brand-teal">
+              <span className="w-[68px] text-[11px] font-bold tracking-[0.1em] text-brand-charcoal">
                 {c.stage}
               </span>
               <span className="flex-1 text-sm font-semibold whitespace-nowrap">{c.name}</span>
-              <span className="h-1.5 w-12 overflow-hidden rounded-full bg-brand-cyan-soft">
+              <span className="h-1.5 w-12 overflow-hidden rounded-full bg-brand-linen">
                 <motion.span
-                  className="block h-full rounded-full bg-brand-teal"
+                  className="block h-full rounded-full bg-brand-amber"
                   initial={{ width: 0 }}
                   animate={{ width: `${c.progress}%` }}
                   transition={{ duration: 1, ease: EASE_OUT, delay: 1.4 + i * 0.15 }}
@@ -132,7 +132,7 @@ function PipelineVisual() {
               </span>
             </div>
           ))}
-          <span className="mt-0.5 flex items-center gap-2 text-[12.5px] font-semibold text-brand-teal">
+          <span className="mt-0.5 flex items-center gap-2 text-[12.5px] font-semibold text-brand-grey">
             <svg
               width="14"
               height="14"
@@ -165,12 +165,12 @@ function PipelineVisual() {
                 transition={{ type: "spring", stiffness: 320, damping: 20, delay: 1.6 + i * 0.05 }}
                 className="flex flex-col items-center gap-1.5"
               >
-                <div className="flex size-9 items-center justify-center rounded-full border-[1.5px] border-brand-slate bg-white text-[11px] font-bold text-brand-slate">
+                <div className="flex size-9 items-center justify-center rounded-full border-[1.5px] border-brand-grey bg-white text-[11px] font-bold text-brand-charcoal">
                   {m.initials}
                 </div>
                 <div className="h-1 w-9 overflow-hidden rounded-full bg-line">
                   <motion.div
-                    className={m.highlight ? "h-1 bg-brand-orange" : "h-1 bg-brand-teal"}
+                    className={m.highlight ? "h-1 bg-brand-orange" : "h-1 bg-brand-amber"}
                     initial={{ width: 0 }}
                     animate={{ width: `${m.progress}%` }}
                     transition={{ duration: 0.9, ease: EASE_OUT, delay: 2 + i * 0.05 }}
@@ -179,7 +179,7 @@ function PipelineVisual() {
               </motion.div>
             ))}
           </div>
-          <span className="text-[13px] leading-normal text-brand-slate">
+          <span className="text-[13px] leading-normal text-brand-charcoal">
             Expertise from one person, built into capability across the team.
           </span>
         </motion.div>
@@ -199,12 +199,14 @@ function CardHead({
 }) {
   return (
     <div className="flex items-center justify-between">
-      <span className="text-xs font-bold tracking-[0.14em] whitespace-nowrap text-brand-slate">{label}</span>
+      <span className="text-xs font-bold tracking-[0.14em] whitespace-nowrap text-brand-charcoal">
+        {label}
+      </span>
       <span
         className={
           badgeAccent
             ? "rounded-full bg-brand-orange px-2.5 py-1 text-xs font-semibold whitespace-nowrap text-white"
-            : "rounded-full border border-line bg-white px-2.5 py-1 text-xs font-semibold whitespace-nowrap text-brand-slate"
+            : "rounded-full border border-line bg-white px-2.5 py-1 text-xs font-semibold whitespace-nowrap text-brand-charcoal"
         }
       >
         {badge}
