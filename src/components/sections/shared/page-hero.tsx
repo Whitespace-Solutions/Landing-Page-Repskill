@@ -19,7 +19,7 @@ export function PageHero({ eyebrow, title, highlight, lead, primary, secondary, 
       >
         <Stagger className="flex max-w-[720px] flex-col gap-6" stagger={0.1}>
           <StaggerItem>
-            <Eyebrow accent>{eyebrow}</Eyebrow>
+            <Eyebrow>{eyebrow}</Eyebrow>
           </StaggerItem>
           <StaggerItem>
             <h1 className="text-display text-balance">

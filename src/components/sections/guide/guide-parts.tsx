@@ -230,8 +230,7 @@ function ArticleBlock({ block }: { block: GuideBlock }) {
     case "callout":
       return (
         <aside className="flex flex-col gap-2 rounded-card bg-brand-linen p-5 sm:flex-row sm:gap-6 sm:p-6">
-          <span className="inline-flex flex-none items-center gap-2.5 text-eyebrow text-brand-orange-deep uppercase sm:w-24 sm:pt-1">
-            <span className="h-1 w-3.5 -skew-x-[38deg] bg-brand-orange" aria-hidden />
+          <span className="flex-none text-eyebrow text-brand-orange-deep uppercase sm:w-24 sm:pt-1">
             {block.label}
           </span>
           <p className="text-pretty text-brand-grey">

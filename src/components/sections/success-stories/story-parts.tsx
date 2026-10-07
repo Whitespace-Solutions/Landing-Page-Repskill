@@ -107,7 +107,7 @@ export function StoryAbout({ story }: { story: SuccessStory }) {
             <DraftBadge show={story.draft} />
           </StaggerItem>
           <StaggerItem>
-            <Eyebrow accent>About the company</Eyebrow>
+            <Eyebrow>About the company</Eyebrow>
           </StaggerItem>
           <StaggerItem>
             <h1 className="text-display text-balance">{story.about.title}</h1>

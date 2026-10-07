@@ -1,20 +1,9 @@
 import { cn } from "@/lib/cn";
 
-/** Label kecil uppercase di atas judul section, dengan aksen garis miring oranye opsional. */
-export function Eyebrow({
-  children,
-  accent = false,
-  className,
-}: {
-  children: React.ReactNode;
-  accent?: boolean;
-  className?: string;
-}) {
+/** Label kecil uppercase oranye di atas judul section. */
+export function Eyebrow({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
-    <span
-      className={cn("inline-flex items-center gap-2.5 text-eyebrow text-brand-orange uppercase", className)}
-    >
-      {accent && <span className="h-1 w-[18px] -skew-x-[38deg] bg-brand-orange" aria-hidden />}
+    <span className={cn("inline-flex items-center text-eyebrow text-brand-orange uppercase", className)}>
       {children}
     </span>
   );

@@ -12,7 +12,7 @@ export default function NotFound() {
       <SiteHeader />
       <main>
         <Container className="flex min-h-[60vh] flex-col items-start justify-center gap-6 py-24">
-          <Eyebrow accent>404</Eyebrow>
+          <Eyebrow>404</Eyebrow>
           <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
             This page is still being built.
           </h1>

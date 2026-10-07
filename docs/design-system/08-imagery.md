@@ -32,7 +32,8 @@ Aturan mockup:
 
 Diambil dari symbol logo (panah/garis miring R):
 
-- Aksen eyebrow: `h-1 w-[18px] -skew-x-[38deg] bg-brand-orange`.
+- Eyebrow/label section **tanpa** aksen strip miring di depannya (dihapus di seluruh situs, keputusan 2026-10-07).
+- Strip miring kecil hanya tersisa sebagai bullet daftar "What to Expect" di halaman Book Demo.
 - Panel `FinalCta` sengaja polos, tanpa bilah miring dekoratif (keputusan 2026-10-06).
 
 ## Wireframe poligon

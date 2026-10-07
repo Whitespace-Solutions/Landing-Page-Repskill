@@ -20,7 +20,7 @@ export default function BookDemoPage() {
       <Container className="relative grid items-start gap-12 pt-14 pb-20 sm:pt-20 lg:grid-cols-[1fr_1.15fr] lg:gap-16 lg:pt-24 lg:pb-28">
         <Stagger className="flex flex-col gap-6 lg:sticky lg:top-28" stagger={0.1}>
           <StaggerItem>
-            <Eyebrow accent>{page.eyebrow}</Eyebrow>
+            <Eyebrow>{page.eyebrow}</Eyebrow>
           </StaggerItem>
           <StaggerItem>
             <h1 className="text-display text-balance">{page.title}</h1>

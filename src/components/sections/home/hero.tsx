@@ -55,7 +55,7 @@ export function Hero() {
           className="flex max-w-[820px] flex-col gap-6"
         >
           <motion.div variants={rise}>
-            <Eyebrow accent>AI-Powered Sales Capability Platform</Eyebrow>
+            <Eyebrow>AI-Powered Sales Capability Platform</Eyebrow>
           </motion.div>
           <motion.h1 variants={rise} className="text-display text-balance">
             Make Sales Expertise <span className="text-brand-orange">Scalable.</span>

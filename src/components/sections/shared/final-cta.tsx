@@ -16,7 +16,7 @@ export function FinalCta({ eyebrow, title, highlight, body, primary = primaryCta
       <Container className="py-16 lg:py-24">
         <div className="rounded-panel bg-brand-grey px-6 py-14 text-white sm:px-12 lg:px-16 lg:py-20">
           <Reveal className="flex max-w-2xl flex-col gap-6">
-            {eyebrow && <Eyebrow accent>{eyebrow}</Eyebrow>}
+            {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
             <h2 className="text-h1 text-balance">
               <HighlightText text={title} highlight={highlight} />
             </h2>

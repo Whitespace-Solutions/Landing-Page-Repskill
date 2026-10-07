@@ -66,7 +66,7 @@ export function GuideShell({ children }: { children: React.ReactNode }) {
           <Container className="pt-14 pb-14 sm:pt-20 lg:pt-24 lg:pb-20">
             <Stagger className="flex flex-col gap-6" stagger={0.1}>
               <StaggerItem>
-                <Eyebrow accent>{guidePage.eyebrow}</Eyebrow>
+                <Eyebrow>{guidePage.eyebrow}</Eyebrow>
               </StaggerItem>
               <StaggerItem>
                 <h1 className="text-display text-balance">{guidePage.title}</h1>
@@ -79,7 +79,7 @@ export function GuideShell({ children }: { children: React.ReactNode }) {
           </Container>
         ) : (
           <Container className="flex flex-wrap items-center gap-x-8 gap-y-4 py-6 lg:py-8">
-            <Eyebrow accent>{guidePage.eyebrow}</Eyebrow>
+            <Eyebrow>{guidePage.eyebrow}</Eyebrow>
             {search}
           </Container>
         )}
