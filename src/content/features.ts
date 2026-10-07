@@ -3,6 +3,7 @@ import type { StaticImageData } from "next/image";
 import capturePortrait from "@/assets/images/cta/capture-portrait.webp";
 import learnPortrait from "@/assets/images/cta/learn-portrait.webp";
 import practicePortrait from "@/assets/images/cta/practice-portrait.webp";
+import reflectionStudioPoster from "@/assets/images/mockups/reflection-studio-poster.webp";
 import type { VisualCtaLayout } from "@/components/sections/shared/visual-cta";
 import type { FeatureKey } from "./success-stories";
 import type { CtaData, FeatureBlockData, MockupData, PageHeroData } from "./types";
@@ -123,15 +124,13 @@ export const practicePage: FeaturePage = {
         "Strong reflections can become new best practices after review",
       ],
       visual: {
-        type: "checklist",
-        title: "Reflection · Discovery call",
-        meta: "Guided",
-        items: [
-          { label: "What happened in the conversation?", meta: "Answered", status: "done" },
-          { label: "What worked well?", meta: "Answered", status: "done" },
-          { label: "What would you do differently?", meta: "In progress", status: "now" },
-          { label: "What will you try next time?", meta: "Next", status: "todo" },
-        ],
+        type: "video",
+        src: "/media/reflection-studio.mp4",
+        poster: reflectionStudioPoster,
+        width: 1112,
+        height: 536,
+        label:
+          "Screen recording of Repskill Reflection Studio: choosing the recording type and uploading a meeting recording for reflection.",
       },
     },
   ],

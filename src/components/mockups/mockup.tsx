@@ -2,6 +2,7 @@ import { AnimatedBar } from "@/components/motion/animated-bar";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/reveal";
 import type { MockupData, Status } from "@/content/types";
 import { cn } from "@/lib/cn";
+import { VideoMockup } from "./video-mockup";
 
 /**
  * Ilustrasi mockup UI produk, dirender dari data konten (`MockupData`).
@@ -23,6 +24,8 @@ export function Mockup({ data }: { data: MockupData }) {
       return <QuoteMockup {...data} />;
     case "structure":
       return <StructureMockup {...data} />;
+    case "video":
+      return <VideoMockup {...data} />;
   }
 }
 

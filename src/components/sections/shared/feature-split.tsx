@@ -25,9 +25,24 @@ export function FeatureSplit({
   tone = "white",
   reverse = false,
 }: FeatureSplitProps) {
+  // Rekaman layar butuh ruang lebih: kolom visual lebih lebar dan bingkai panel lebih tipis.
+  const isVideo = visual.type === "video";
   return (
     <Section id={id} tone={tone}>
-      <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+      <div
+        className={cn(
+          "grid items-center gap-12",
+          isVideo
+            ? cn(
+                "lg:gap-14",
+                // reverse = visual di kolom kiri, jadi kolom lebar ada di depan
+                reverse
+                  ? "lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)]"
+                  : "lg:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)]",
+              )
+            : "lg:grid-cols-2 lg:gap-20",
+        )}
+      >
         <div className="flex flex-col gap-5">
           <Reveal className="flex flex-col gap-5">
             <Eyebrow>{eyebrow}</Eyebrow>
@@ -74,7 +89,8 @@ export function FeatureSplit({
         <Reveal delay={0.15} className={cn(reverse && "lg:order-first")}>
           <div
             className={cn(
-              "rounded-panel p-4 sm:p-8 lg:p-10",
+              "rounded-panel",
+              isVideo ? "p-2 sm:p-3" : "p-4 sm:p-8 lg:p-10",
               tone === "white" ? "bg-brand-linen" : "bg-white",
             )}
           >

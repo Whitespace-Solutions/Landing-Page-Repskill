@@ -61,6 +61,13 @@ Foto orang di situasi kerja (tim sales, coaching), pencahayaan natural, tanpa fi
   oranye + judul + satu baris penjelasan). Urutan Capture (kiri atas) → Learn (kiri bawah) → Practice (kanan). Foto, kartu, dan heksagon **tidak boleh menabrak wireframe** yang berputar: kartu ditempatkan di sudut-sudut di luar lingkarannya (jarak ±20px di desktop), dan tiap kartu sedikit menumpuk fotonya (Capture di kanan atas foto, Learn di kanan bawah, Practice di bawah foto). Di mobile wireframe dikecilkan ke 64% supaya kartu tetap renggang. Di bawah layar `xl` kartu hanya menampilkan judul. Seluruh ilustrasi (termasuk kartu Practice) tetap di dalam batas lebar konten `Container` — di `lg` wadahnya 82% lebar kolom dan digeser 6% dari kiri — dan heksagon abu berada di luar ring orbit oranye.
 - **CTA halaman fitur (`VisualCta`):** potret heksagon besar (sumber sama: `Image Capture.png`, `Image Learn.png`,
   `Image Practice.png`) disimpan sebagai WebP 560–600px (30–40 KB, tidak diperbesar dari aslinya) di `src/assets/images/cta/`.
+- **Rekaman layar produk (mockup `video`):** GIF dari user dikonversi ke MP4 H.264 (dipotong ke jendela aplikasi, tanpa
+  margin putih, tanpa suara) di `public/media/`, plus poster WebP dari frame pertama di `src/assets/images/mockups/`.
+  Jangan memakai GIF mentah: Reflection Studio 7,9 MB GIF → 1,4 MB MP4. Ditampilkan `VideoMockup` di kartu
+  `rounded-card border border-line shadow-float`, autoplay tanpa suara + loop hanya saat terlihat; saat "reduce motion"
+  tidak diputar dan kontrol muncul. Path di `src` tanpa basePath (ditambahkan otomatis). Isi `label` untuk pembaca layar.
+  Di `FeatureSplit`, section dengan video memakai kolom visual lebih lebar (1.35fr : 1fr) dan bingkai panel tipis
+  (`p-2 sm:p-3`). Potong juga elemen yang tidak boleh publik (mis. status bar browser berisi URL staging).
 - Static export tidak mengoptimasi gambar: perkecil dulu ke ±2× ukuran tampil (foto hero: lebar 340px, <150 KB).
 - `alt` deskriptif untuk foto yang membawa informasi; `alt=""` bila dekoratif (seperti di ilustrasi hero yang seluruhnya
   `aria-hidden`).

@@ -1,4 +1,5 @@
 /** Tipe data konten bersama. Halaman dibangun dari data ini, bukan teks yang ditulis langsung di komponen. */
+import type { StaticImageData } from "next/image";
 
 export type Link = { label: string; href: string };
 
@@ -31,7 +32,18 @@ export type MockupData =
   | { type: "knowledge-universe"; center?: string }
   | { type: "governance"; title: string; items: { label: string; meta: string; status: Status }[] }
   | { type: "quote"; role: string; parts: { text: string; highlight?: boolean }[]; tags: string[] }
-  | { type: "structure"; title: string; status: string; fields: { label: string; value: string }[] };
+  | { type: "structure"; title: string; status: string; fields: { label: string; value: string }[] }
+  | {
+      /** Rekaman layar produk (MP4 di `public/media/`, diputar otomatis tanpa suara, berulang) */
+      type: "video";
+      /** Path di `public/`, tanpa basePath, mis. "/media/reflection-studio.mp4" */
+      src: string;
+      poster: StaticImageData;
+      width: number;
+      height: number;
+      /** Deskripsi isi video untuk pembaca layar */
+      label: string;
+    };
 
 export type PageHeroData = {
   eyebrow: string;
