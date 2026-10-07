@@ -11,7 +11,7 @@ export const heroHeadline = {
   lead: "Make Sales",
   lastWord: "Expertise",
   /** Kata oranye yang bergantian tanpa henti; kata pertama dibaca pembaca layar dan tampil saat "reduce motion". */
-  rotatingWords: ["Scalable.", "Accessible.", "Actionable.", "Measurable."],
+  rotatingWords: ["Scalable", "Accessible", "Actionable", "Measurable"],
 };
 
 /** Foto + kartu keterangan di ilustrasi hero Home (urutan baku Capture → Learn → Practice). */

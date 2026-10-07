@@ -41,7 +41,12 @@ export function Hero() {
           <motion.div variants={rise}>
             <Eyebrow>AI-Powered Sales Capability Platform</Eyebrow>
           </motion.div>
-          <motion.h1 variants={rise} className="text-display text-balance">
+          <motion.h1
+            variants={rise}
+            className="text-display text-balance"
+            // Nama tetap untuk pembaca layar: "Make Sales Expertise Scalable" (kata pertama), tanpa ikut berganti
+            aria-label={`${heroHeadline.lead} ${heroHeadline.lastWord} ${heroHeadline.rotatingWords[0]}`}
+          >
             {heroHeadline.lead}{" "}
             <span className="xl:whitespace-nowrap">
               {heroHeadline.lastWord}{" "}
