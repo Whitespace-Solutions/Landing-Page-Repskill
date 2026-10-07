@@ -15,14 +15,20 @@ import { cn } from "@/lib/cn";
  * kartu tidak boleh menabrak wireframe yang berputar (kartu di luar lingkaran wireframe, di sudut-sudutnya).
  */
 const personaLayout = [
-  // Capture: kiri atas, kartu di kanan atas foto (di atas wireframe)
-  { photo: "left-[-12%] top-[6%]", card: "left-[96%] top-[-82%]", depth: 36, duration: "8s", delay: "0s" },
-  // Learn: kiri bawah, kartu di kanan bawah foto (di bawah wireframe)
-  { photo: "left-[-7%] top-[74%]", card: "left-[69%] top-[84%]", depth: 52, duration: "9.5s", delay: "-3s" },
-  // Practice: kanan, kartu di bawah foto, rata kanan (di luar sisi kanan bawah wireframe)
+  // Capture: kiri atas, kartu sedikit menumpuk di kanan atas foto (tetap di luar wireframe)
   {
-    photo: "left-[88%] top-[60%]",
-    card: "right-[-30%] top-[124%]",
+    photo: "left-[-12%] top-[6%]",
+    card: "left-[78%] top-[-50%] max-sm:left-[66%]",
+    depth: 36,
+    duration: "8s",
+    delay: "0s",
+  },
+  // Learn: kiri bawah, kartu sedikit menumpuk di kanan bawah foto (tetap di luar wireframe)
+  { photo: "left-[-7%] top-[74%]", card: "left-[58%] top-[68%]", depth: 52, duration: "9.5s", delay: "-3s" },
+  // Practice: kanan, foto sedikit menumpuk dengan kartu di bawahnya, rata kanan (di luar wireframe)
+  {
+    photo: "left-[88%] top-[68%]",
+    card: "right-[-30%] top-[84%]",
     depth: 44,
     duration: "8.5s",
     delay: "-5s",
@@ -57,7 +63,7 @@ export function HeroOrb({ mx, my }: Pointer) {
         <ellipse cx="200" cy="200" rx="70" ry="194" stroke="currentColor" strokeOpacity={0.16} />
       </svg>
 
-      <motion.div className="relative z-1 w-[min(72%,332px)]" style={{ x: wx, y: wy }}>
+      <motion.div className="relative z-1 w-[64%] sm:w-[min(72%,332px)]" style={{ x: wx, y: wy }}>
         <div className="motion-safe:animate-orb-spin">
           <div className="motion-safe:animate-orb-breathe">
             <Wireframe className="block h-auto w-full text-brand-orange" />
