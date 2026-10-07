@@ -1,4 +1,6 @@
 /** Konten halaman fitur, urut alur produk: Capture Knowledge → Learn Knowledge → Practice. */
+import type { StaticImageData } from "next/image";
+import capturePortrait from "@/assets/images/cta/capture-portrait.webp";
 import type { FeatureKey } from "./success-stories";
 import type { CtaData, FeatureBlockData, MockupData, PageHeroData } from "./types";
 
@@ -31,6 +33,8 @@ export type FeaturePage = {
   hero: PageHeroData;
   sections: FeatureBlockData[];
   cta: CtaData;
+  /** Foto heksagon untuk CTA terang dengan visual (`VisualCta`). Tanpa ini halaman memakai `FinalCta` gelap. */
+  ctaImage?: StaticImageData;
 };
 
 const BOOK_DEMO = { label: "Book Demo", href: "/book-demo/" };
@@ -211,6 +215,7 @@ export const capturePage: FeaturePage = {
       },
     },
   ],
+  ctaImage: capturePortrait,
   cta: {
     eyebrow: "Get Started",
     title: "Make Your Best People's Expertise Scalable",
