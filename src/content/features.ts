@@ -1,6 +1,8 @@
 /** Konten halaman fitur, urut alur produk: Capture Knowledge → Learn Knowledge → Practice. */
 import type { StaticImageData } from "next/image";
 import capturePortrait from "@/assets/images/cta/capture-portrait.webp";
+import learnPortrait from "@/assets/images/cta/learn-portrait.webp";
+import type { VisualCtaLayout } from "@/components/sections/shared/visual-cta";
 import type { FeatureKey } from "./success-stories";
 import type { CtaData, FeatureBlockData, MockupData, PageHeroData } from "./types";
 
@@ -33,8 +35,8 @@ export type FeaturePage = {
   hero: PageHeroData;
   sections: FeatureBlockData[];
   cta: CtaData;
-  /** Foto heksagon untuk CTA terang dengan visual (`VisualCta`). Tanpa ini halaman memakai `FinalCta` gelap. */
-  ctaImage?: StaticImageData;
+  /** Foto heksagon + komposisi untuk CTA terang (`VisualCta`). Tanpa ini halaman memakai `FinalCta` gelap. */
+  ctaVisual?: { image: StaticImageData; layout: VisualCtaLayout };
 };
 
 const BOOK_DEMO = { label: "Book Demo", href: "/book-demo/" };
@@ -215,7 +217,7 @@ export const capturePage: FeaturePage = {
       },
     },
   ],
-  ctaImage: capturePortrait,
+  ctaVisual: { image: capturePortrait, layout: "capture" },
   cta: {
     eyebrow: "Get Started",
     title: "Make Your Best People's Expertise Scalable",
@@ -309,6 +311,7 @@ export const learnPage: FeaturePage = {
       visual: progress,
     },
   ],
+  ctaVisual: { image: learnPortrait, layout: "learn" },
   cta: {
     eyebrow: "Get Started",
     title: "Build Learning Around Your Own Expertise.",

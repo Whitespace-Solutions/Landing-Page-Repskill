@@ -4,7 +4,7 @@ import { PageHero } from "@/components/sections/shared/page-hero";
 import { VisualCta } from "@/components/sections/shared/visual-cta";
 import type { FeaturePage } from "@/content/features";
 
-/** Template halaman fitur: Hero → section penjelasan (berselang-seling) → CTA (terang dengan foto bila ada `ctaImage`). */
+/** Template halaman fitur: Hero → section penjelasan (berselang-seling) → CTA (terang dengan foto bila ada `ctaVisual`). */
 export function FeaturePageView({ page }: { page: FeaturePage }) {
   return (
     <>
@@ -17,7 +17,7 @@ export function FeaturePageView({ page }: { page: FeaturePage }) {
           reverse={i % 2 === 1}
         />
       ))}
-      {page.ctaImage ? <VisualCta {...page.cta} image={page.ctaImage} /> : <FinalCta {...page.cta} />}
+      {page.ctaVisual ? <VisualCta {...page.cta} visual={page.ctaVisual} /> : <FinalCta {...page.cta} />}
     </>
   );
 }
