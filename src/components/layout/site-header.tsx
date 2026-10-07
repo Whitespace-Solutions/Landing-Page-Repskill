@@ -82,7 +82,7 @@ export function SiteHeader() {
             <Link
               href={loginLink.href}
               onClick={closeAll}
-              className="hidden rounded-lg px-2.5 py-2.5 text-base font-medium whitespace-nowrap text-brand-charcoal transition-colors hover:bg-surface hover:text-brand-grey lg:inline-flex xl:px-3 xl:text-[17px]"
+              className="hidden rounded-lg px-2.5 py-2.5 text-base font-medium whitespace-nowrap text-brand-charcoal transition-colors hover:text-brand-orange lg:inline-flex xl:px-3 xl:text-[17px]"
             >
               {loginLink.label}
             </Link>
@@ -139,7 +139,10 @@ function NavTopLink({
   return (
     <Link
       href={href}
-      className="relative rounded-lg px-2.5 py-2.5 text-base font-medium whitespace-nowrap text-brand-charcoal transition-colors hover:bg-surface hover:text-brand-grey xl:px-3 xl:text-[17px]"
+      className={cn(
+        "relative rounded-lg px-2.5 py-2.5 text-base font-medium whitespace-nowrap transition-colors hover:text-brand-orange xl:px-3 xl:text-[17px]",
+        active ? "text-brand-orange" : "text-brand-charcoal",
+      )}
     >
       {children}
       {active && <ActiveBar />}
@@ -184,7 +187,10 @@ function DesktopDropdown({
         type="button"
         onClick={() => onOpenChange(!open)}
         aria-expanded={open}
-        className="relative flex items-center gap-1.5 rounded-lg px-2.5 py-2.5 text-base font-medium whitespace-nowrap text-brand-charcoal transition-colors hover:bg-surface hover:text-brand-grey xl:px-3 xl:text-[17px]"
+        className={cn(
+          "relative flex items-center gap-1.5 rounded-lg px-2.5 py-2.5 text-base font-medium whitespace-nowrap transition-colors hover:text-brand-orange xl:px-3 xl:text-[17px]",
+          active || open ? "text-brand-orange" : "text-brand-charcoal",
+        )}
       >
         {item.label}
         <motion.svg
