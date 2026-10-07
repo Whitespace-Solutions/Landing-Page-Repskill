@@ -2,6 +2,7 @@
  * Struktur navigasi situs — satu sumber untuk header, footer, dan sitemap.
  * Mengikuti sitemap baru (Oktober 2026).
  */
+import type { FeatureIconName } from "@/components/ui/feature-icon";
 import { guideRoutes } from "./guide";
 import { successStories } from "./success-stories";
 
@@ -11,6 +12,8 @@ export type NavLink = {
   description?: string;
   /** Label kecil di atas judul, mis. "PRACTICE" */
   kicker?: string;
+  /** Ikon di sub menu (lihat `FeatureIcon`) */
+  icon?: FeatureIconName;
 };
 
 export type NavItem = NavLink & {
@@ -25,18 +28,21 @@ export type NavItem = NavLink & {
 export const features: NavLink[] = [
   {
     kicker: "CAPTURE",
+    icon: "capture",
     label: "Capture Knowledge",
     href: "/features/capture-knowledge/",
     description: "Capture and structure the expertise of your best people.",
   },
   {
     kicker: "LEARN",
+    icon: "learn",
     label: "Learn Knowledge",
     href: "/features/learn-knowledge/",
     description: "Turn approved company knowledge into structured learning.",
   },
   {
     kicker: "PRACTICE & REFLECT",
+    icon: "practice",
     label: "Practice",
     href: "/features/practice/",
     description: "Roleplay real sales situations with AI, then reflect and improve.",

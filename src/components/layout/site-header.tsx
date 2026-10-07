@@ -8,6 +8,7 @@ import { AnimatePresence, motion } from "motion/react";
 import logo from "@/assets/brand/repskill-logo.png";
 import { ArrowRight, ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
+import { FeatureIcon } from "@/components/ui/feature-icon";
 import { loginLink, mainNav, primaryCta, type NavItem } from "@/content/navigation";
 import { cn } from "@/lib/cn";
 
@@ -237,6 +238,11 @@ function DesktopDropdown({
                     onClick={onNavigate}
                     className="flex flex-col gap-1 rounded-xl px-4 py-3.5 transition-colors hover:bg-brand-linen"
                   >
+                    {child.icon && (
+                      <span className="mb-2 flex size-10 items-center justify-center rounded-xl bg-brand-orange/10 text-brand-orange">
+                        <FeatureIcon name={child.icon} />
+                      </span>
+                    )}
                     {child.kicker && (
                       <span className="text-[11px] font-bold tracking-[0.12em] text-brand-orange">
                         {child.kicker}
@@ -319,10 +325,13 @@ function MobileMenu({ pathname, onNavigate }: { pathname: string; onNavigate: ()
                         href={child.href}
                         onClick={onNavigate}
                         className={cn(
-                          "py-3 pl-3.5 text-brand-charcoal",
+                          "flex items-center gap-3 py-3 pl-3.5 text-brand-charcoal",
                           isActive(pathname, child.href) && "text-brand-orange",
                         )}
                       >
+                        {child.icon && (
+                          <FeatureIcon name={child.icon} size={18} className="text-brand-orange" />
+                        )}
                         {child.label}
                       </Link>
                     ))}

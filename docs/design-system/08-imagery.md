@@ -24,7 +24,10 @@ Aturan mockup:
 - Gaya **outline / stroke**: `stroke-width 2`, `stroke-linecap round`, `stroke-linejoin round`, `fill none`, warna
   `currentColor`.
 - Ukuran 14–20px, viewBox `0 0 24 24`. Selalu `aria-hidden` bila hanya dekoratif.
-- Set yang dipakai: panah (`ArrowRight`), chevron, check, lock, refresh/loop, menu, close. Kalau butuh banyak ikon,
+- Set yang dipakai: panah (`ArrowRight`), chevron, check, lock, refresh/loop, menu, close.
+- Ikon alur produk (`FeatureIcon`): Capture = bingkai bidik + lampu, Learn = buku terbuka, Practice = dua balon chat.
+  Di dropdown desktop tampil dalam kotak `size-10 rounded-xl bg-brand-orange/10 text-brand-orange`; di menu mobile 18px
+  oranye di kiri label. Kalau butuh banyak ikon,
   pakai `lucide-react` (gaya yang sama).
 - Jangan pakai ikon solid/filled warna-warni atau emoji.
 
