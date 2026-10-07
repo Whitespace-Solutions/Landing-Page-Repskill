@@ -44,7 +44,8 @@ Diambil dari symbol logo (panah/garis miring R):
 Grafik garis poligon (komponen `Wireframe`, diambil dari referensi Whitespace Talents Landing). Warna mengikuti
 `text-*` (`fill="currentColor"`).
 
-- Dipakai di footer: `text-brand-orange opacity-18`, di sisi kanan, terpotong tepi footer, di belakang teks.
+- Dipakai di footer: `text-brand-orange opacity-18`, di pojok kanan bawah, digeser 19% ke kanan dan ke bawah sehingga
+  ±65% bentuknya terlihat (sisanya terpotong tepi footer), di belakang teks.
 - Dipakai di hero Home sebagai ilustrasi utama (`HeroOrb`): wireframe `text-brand-orange` penuh, dengan glow oranye lembut
   (`bg-orb-glow`), ring orbit oranye tipis, heksagon garis (`HexOutline`; satu oranye kanan atas, satu Shadow Grey di atas foto Learn), dan logo Repskill (`src/assets/brand/repskill-icon.svg`, file resmi, tidak diubah) di tengah.
 - Selain dua tempat itu, wireframe hanya dipakai sebagai latar dekoratif di section gelap, dengan teks selalu di atasnya.
