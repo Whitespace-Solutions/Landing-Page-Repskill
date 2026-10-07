@@ -46,8 +46,7 @@ Grafik garis poligon (komponen `Wireframe`, diambil dari referensi Whitespace Ta
 
 - Dipakai di footer: `text-brand-orange opacity-18`, di sisi kanan, terpotong tepi footer, di belakang teks.
 - Dipakai di hero Home sebagai ilustrasi utama (`HeroOrb`): wireframe `text-brand-orange` penuh, dengan glow oranye lembut
-  (`bg-orb-glow`), ring orbit oranye tipis, heksagon garis (`HexOutline`; satu oranye kanan atas, satu Shadow Grey di
-  bawah), dan logo Repskill (`src/assets/brand/repskill-icon.svg`, file resmi, tidak diubah) di tengah.
+  (`bg-orb-glow`), ring orbit oranye tipis, heksagon garis (`HexOutline`; satu oranye kanan atas, satu Shadow Grey di atas foto Learn), dan logo Repskill (`src/assets/brand/repskill-icon.svg`, file resmi, tidak diubah) di tengah.
 - Selain dua tempat itu, wireframe hanya dipakai sebagai latar dekoratif di section gelap, dengan teks selalu di atasnya.
 - Maksimal satu motif dekoratif per section. Jangan sampai menutupi teks.
 
@@ -58,7 +57,7 @@ Foto orang di situasi kerja (tim sales, coaching), pencahayaan natural, tanpa fi
 
 - **Hero Home:** tiga potret berbingkai heksagon (PNG transparan, sumber `Logo Final Repskill/Image *.png`) di
   `src/assets/images/hero/`, masing-masing dipasangkan dengan kartu keterangan putih (ikon `FeatureIcon` dalam kotak
-  oranye + judul + satu baris penjelasan). Urutan Capture (kiri atas) → Learn (kiri bawah) → Practice (kanan).
+  oranye + judul + satu baris penjelasan). Urutan Capture (kiri atas) → Learn (kiri bawah) → Practice (kanan). Foto, kartu, dan heksagon **tidak boleh menabrak wireframe** yang berputar: kartu ditempatkan di sudut-sudut di luar lingkarannya (jarak ±20px di desktop). Di bawah layar `xl` kartu hanya menampilkan judul.
 - Static export tidak mengoptimasi gambar: perkecil dulu ke ±2× ukuran tampil (foto hero: lebar 340px, <150 KB).
 - `alt` deskriptif untuk foto yang membawa informasi; `alt=""` bila dekoratif (seperti di ilustrasi hero yang seluruhnya
   `aria-hidden`).

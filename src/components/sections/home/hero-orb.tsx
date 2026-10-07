@@ -12,17 +12,18 @@ type Pointer = { mx: MotionValue<number>; my: MotionValue<number> };
 
 /**
  * Posisi tiap persona (foto heksagon + kartu keterangan), dalam % dari wadah ilustrasi. `photo` = sudut kiri atas foto,
- * `card` = posisi kartu relatif ke foto (% dari ukuran foto). Diambil dari contoh desain hero (contoh image hero.jpg).
+ * `card` = posisi kartu relatif ke foto (% dari ukuran foto). Mengikuti contoh desain hero, dengan aturan: foto dan
+ * kartu tidak boleh menabrak wireframe yang berputar (kartu di luar lingkaran wireframe, di sudut-sudutnya).
  */
 const personaLayout = [
-  // Capture: kiri atas, kartu di kanan atas foto
-  { photo: "left-[-12%] top-[14%]", card: "left-[96%] top-[-28%]", depth: 36, duration: "8s", delay: "0s" },
-  // Learn: kiri bawah, kartu menumpuk di kanan bawah foto
-  { photo: "left-[-7%] top-[71%]", card: "left-[69%] top-[48%]", depth: 52, duration: "9.5s", delay: "-3s" },
-  // Practice: kanan tengah, kartu tepat di bawah foto (rata kanan, supaya tidak keluar layar)
+  // Capture: kiri atas, kartu di kanan atas foto (di atas wireframe)
+  { photo: "left-[-12%] top-[6%]", card: "left-[96%] top-[-66%]", depth: 36, duration: "8s", delay: "0s" },
+  // Learn: kiri bawah, kartu di kanan bawah foto (di bawah wireframe)
+  { photo: "left-[-7%] top-[74%]", card: "left-[69%] top-[84%]", depth: 52, duration: "9.5s", delay: "-3s" },
+  // Practice: kanan, kartu di bawah foto, rata kanan (di luar sisi kanan bawah wireframe)
   {
-    photo: "left-[83%] top-[52%]",
-    card: "right-[-20%] top-[100%]",
+    photo: "left-[88%] top-[60%]",
+    card: "right-[-30%] top-[114%]",
     depth: 44,
     duration: "8.5s",
     delay: "-5s",
@@ -82,8 +83,9 @@ export function HeroOrb({ mx, my }: Pointer) {
       >
         <HexOutline className="block size-full" />
       </Floating>
+      {/* Heksagon abu: di atas foto Learn, di luar jangkauan wireframe */}
       <Floating
-        className="top-[97%] left-[24%] aspect-square w-[38px] text-brand-grey opacity-42"
+        className="top-[60%] left-[-1%] aspect-square w-[28px] text-brand-grey opacity-42 sm:w-[38px]"
         animation="motion-safe:animate-hex-float"
         depth={64}
         duration="7.5s"
@@ -110,16 +112,16 @@ export function HeroOrb({ mx, my }: Pointer) {
             <Image src={persona.image} alt="" sizes="120px" className="block h-auto w-full drop-shadow-lg" />
             <div
               className={cn(
-                "absolute flex w-max items-center gap-2 rounded-xl border border-line/80 bg-white/95 py-2 pr-3 pl-2 shadow-pop backdrop-blur-sm sm:items-start sm:gap-2.5 sm:py-2.5",
+                "absolute flex w-max items-center gap-2 rounded-xl border border-line/80 bg-white/95 py-2 pr-3 pl-2 shadow-pop backdrop-blur-sm xl:items-start xl:gap-2.5 xl:py-2.5",
                 layout.card,
               )}
             >
-              <span className="flex size-7 flex-none items-center justify-center rounded-lg bg-brand-orange text-white sm:size-8">
+              <span className="flex size-7 flex-none items-center justify-center rounded-lg bg-brand-orange text-white xl:size-8">
                 <FeatureIcon name={persona.icon} size={16} />
               </span>
               <span className="flex flex-col">
                 <span className="text-[13px] font-bold text-brand-grey">{persona.title}</span>
-                <span className="hidden max-w-[112px] text-[11.5px] leading-snug text-brand-charcoal sm:block">
+                <span className="hidden max-w-[112px] text-[11.5px] leading-snug text-brand-charcoal xl:block">
                   {persona.body}
                 </span>
               </span>
