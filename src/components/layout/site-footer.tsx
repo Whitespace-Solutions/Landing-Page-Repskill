@@ -13,7 +13,7 @@ export function SiteFooter() {
           Berputar pelan; berhenti bila "reduce motion" aktif. Teks tetap di atasnya karena Container dirender
           setelahnya dengan `relative`. */}
       <div
-        className="pointer-events-none absolute right-0 bottom-0 w-[min(85%,520px)] translate-x-[19%] translate-y-[19%] text-brand-orange opacity-18 lg:w-[min(46%,520px)]"
+        className="pointer-events-none absolute right-0 bottom-0 w-[min(70%,280px)] translate-x-[19%] translate-y-[19%] text-brand-orange opacity-18 sm:w-[min(45%,340px)] lg:w-[min(28%,380px)]"
         aria-hidden
       >
         <Wireframe className="h-auto w-full motion-safe:animate-spin-slow" />
