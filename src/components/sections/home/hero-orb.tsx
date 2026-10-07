@@ -16,13 +16,13 @@ import { cn } from "@/lib/cn";
  */
 const personaLayout = [
   // Capture: kiri atas, kartu di kanan atas foto (di atas wireframe)
-  { photo: "left-[-12%] top-[6%]", card: "left-[96%] top-[-66%]", depth: 36, duration: "8s", delay: "0s" },
+  { photo: "left-[-12%] top-[6%]", card: "left-[96%] top-[-82%]", depth: 36, duration: "8s", delay: "0s" },
   // Learn: kiri bawah, kartu di kanan bawah foto (di bawah wireframe)
   { photo: "left-[-7%] top-[74%]", card: "left-[69%] top-[84%]", depth: 52, duration: "9.5s", delay: "-3s" },
   // Practice: kanan, kartu di bawah foto, rata kanan (di luar sisi kanan bawah wireframe)
   {
     photo: "left-[88%] top-[60%]",
-    card: "right-[-30%] top-[114%]",
+    card: "right-[-30%] top-[124%]",
     depth: 44,
     duration: "8.5s",
     delay: "-5s",
@@ -42,7 +42,7 @@ export function HeroOrb({ mx, my }: Pointer) {
 
   return (
     <div
-      className="relative mx-auto mt-8 grid aspect-square w-full max-w-[300px] place-items-center sm:max-w-[420px] lg:mt-0 lg:aspect-auto lg:min-h-[clamp(340px,40vw,466px)] lg:max-w-none"
+      className="relative mx-auto mt-14 grid aspect-square w-full max-w-[270px] place-items-center sm:max-w-[380px] lg:mt-0 lg:ml-[6%] lg:aspect-auto lg:min-h-[clamp(340px,40vw,466px)] lg:w-[82%] lg:max-w-none"
       aria-hidden
     >
       <div className="absolute aspect-square w-4/5 rounded-full bg-orb-glow motion-safe:animate-orb-glow" />
@@ -84,7 +84,7 @@ export function HeroOrb({ mx, my }: Pointer) {
       </Floating>
       {/* Heksagon abu: di atas foto Learn, di luar jangkauan wireframe */}
       <Floating
-        className="top-[60%] left-[-1%] aspect-square w-[28px] text-brand-grey opacity-42 sm:w-[38px]"
+        className="top-[60%] left-[-12%] aspect-square w-[28px] text-brand-grey opacity-42 sm:w-[38px]"
         animation="motion-safe:animate-hex-float"
         depth={64}
         duration="7.5s"
