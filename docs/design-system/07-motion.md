@@ -51,6 +51,11 @@ animasi khusus, misalnya visual hero.
   Practice juga `animate-float-soft` dengan durasi berbeda (8 / 9.5 / 8.5 dtk). Dengan mouse, semua elemen bergeser
   mengikuti kursor dengan kedalaman berbeda (parallax, spring `stiffness 60, damping 20`). Parallax mati di layar sentuh dan saat "reduce motion"; animasi CSS memakai
   `motion-safe:` sehingga ikut berhenti.
+- **Parallax + melayang (`src/components/motion/parallax.tsx`):** `usePointerParallax()` memberi `mx`/`my` dan handler
+  untuk section; `Floating` membungkus elemen dekoratif dengan animasi CSS + pergeseran sesuai `depth`. Dipakai hero
+  Home dan `HomeCta`.
+- **CTA penutup Home (`HomeCta`):** teks masuk dengan `Reveal`; foto memakai `animate-float-soft` (8 / 9.5 / 8.5 dtk),
+  heksagon `animate-hex-float` (7.5–10 dtk), semua ikut parallax kursor.
 - **Kata bergantian di judul hero Home (`RotatingWords`):** kata oranye berganti setiap 2 detik dengan urutan
   Scalable. → Accessible. → Actionable. → Measurable. → kembali ke Scalable. Kata lama naik keluar (y 0 → -100%),
   kata baru naik masuk dari bawah (y 100% → 0), 0.5 detik, `EASE_OUT`, tanpa fade. Dipotong tepat di tinggi huruf

@@ -1,14 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useTransform, type MotionValue } from "motion/react";
+import { motion, useTransform } from "motion/react";
 import repskillIcon from "@/assets/brand/repskill-icon.svg";
+import { Floating, type Pointer } from "@/components/motion/parallax";
 import { FeatureIcon } from "@/components/ui/feature-icon";
 import { HexOutline, Wireframe } from "@/components/ui/wireframe";
 import { heroPersonas } from "@/content/home";
 import { cn } from "@/lib/cn";
-
-type Pointer = { mx: MotionValue<number>; my: MotionValue<number> };
 
 /**
  * Posisi tiap persona (foto heksagon + kartu keterangan), dalam % dari wadah ilustrasi. `photo` = sudut kiri atas foto,
@@ -130,37 +129,5 @@ export function HeroOrb({ mx, my }: Pointer) {
         );
       })}
     </div>
-  );
-}
-
-/** Elemen yang melayang (animasi CSS) dan ikut parallax kursor sesuai `depth`. */
-function Floating({
-  className,
-  animation,
-  depth,
-  duration,
-  delay,
-  mx,
-  my,
-  children,
-}: Pointer & {
-  className: string;
-  animation: string;
-  depth: number;
-  duration: string;
-  delay: string;
-  children: React.ReactNode;
-}) {
-  const x = useTransform(mx, (v) => v * depth);
-  const y = useTransform(my, (v) => v * depth);
-  return (
-    <motion.div className={cn("absolute", className)} style={{ x, y }}>
-      <div
-        className={cn("relative size-full", animation)}
-        style={{ animationDuration: duration, animationDelay: delay }}
-      >
-        {children}
-      </div>
-    </motion.div>
   );
 }

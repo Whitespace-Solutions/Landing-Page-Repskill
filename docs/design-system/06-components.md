@@ -14,6 +14,7 @@ Pakai komponen yang sudah ada sebelum membuat yang baru. Komponen baru yang reus
 | `Reveal`, `Stagger`, `StaggerItem` | `src/components/motion/reveal.tsx`                        | Lihat [07-motion.md](07-motion.md)                                                                                                                                                                                                                      |
 | `SiteHeader` / `SiteFooter`        | `src/components/layout/`                                  | Diambil dari `src/content/navigation.ts`. Dropdown: `layout: "row"` = sub menu berjajar ke samping (dipakai Features). Menu: hover dan aktif = teks oranye tanpa kotak latar; aktif + garis oranye di bawah                                             |
 | `FinalCta`                         | `src/components/sections/shared/final-cta.tsx`            | CTA penutup, data `CtaData`: `eyebrow` `title` `highlight` `body` `primary` (default Book Demo) `secondary`                                                                                                                                             |
+| `HomeCta`                          | `src/components/sections/home/home-cta.tsx`               | CTA penutup **khusus Home** (data `homeCta`): teks di tengah, foto heksagon Capture/Learn/Practice + heksagon garis/isi melayang di kiri-kanan (xl+), deretan 3 foto kecil di atas eyebrow (< xl)                                                       |
 | `Section`                          | `src/components/ui/section.tsx`                           | Wrapper section: `tone` (`white` · `surface` · `linen` · `dark`), `size` (`md` · `lg`)                                                                                                                                                                  |
 | `SectionHeader`                    | `src/components/ui/section-header.tsx`                    | Eyebrow → judul → lead (+ tombol). `layout="side"`, `size="h1"`, `tone="dark"`                                                                                                                                                                          |
 | `HighlightText`                    | `src/components/ui/highlight-text.tsx`                    | Mewarnai satu frasa judul dengan oranye                                                                                                                                                                                                                 |
@@ -26,6 +27,7 @@ Pakai komponen yang sudah ada sebelum membuat yang baru. Komponen baru yang reus
 | `StoryRow`                         | `src/components/sections/success-stories/story-parts.tsx` | Kartu lebar satu klien di `/success-stories/`: "Nama: headline", ringkasan, metrik, tombol "Read Case Study", logo kanan                                                                                                                                |
 | `Mockup`                           | `src/components/mockups/mockup.tsx`                       | Ilustrasi UI produk dari data: `chat` · `checklist` · `bars` · `knowledge-universe` · `governance` · `quote` · `structure`                                                                                                                              |
 | `AnimatedBar`                      | `src/components/motion/animated-bar.tsx`                  | Bar progres yang mengisi saat terlihat                                                                                                                                                                                                                  |
+| `usePointerParallax`, `Floating`   | `src/components/motion/parallax.tsx`                      | Parallax kursor (hanya mouse, mati saat "reduce motion") + elemen dekoratif yang melayang. Dipakai `HeroOrb` dan `HomeCta`                                                                                                                              |
 | `Wireframe`, `HexOutline`          | `src/components/ui/wireframe.tsx`                         | Grafik garis poligon dan heksagon garis dekoratif (warna via `text-*`), dipakai di footer dan `HeroOrb`                                                                                                                                                 |
 | `HeroOrb`                          | `src/components/sections/home/hero-orb.tsx`               | Ilustrasi hero Home: wireframe berputar + "bernapas", glow, ring orbit, logo Repskill di tengah (tidak berputar), 3 foto heksagon + kartu Capture/Learn/Practice (data `heroPersonas` di `home.ts`), 2 heksagon garis; semua melayang + parallax kursor |
 | `TextField`, `TextAreaField`       | `src/components/ui/form-field.tsx`                        | Field formulir (label, error, "(optional)"), plus `FormError` dan `FormSuccess`. Kirim data lewat `submitForm()` di `src/lib/submit-form.ts`                                                                                                            |
@@ -85,11 +87,18 @@ Semua section mengikuti kerangka: **Eyebrow → Judul → Lead → Konten → (l
 | **Metrik hasil**         | 3 tile angka oranye + label; "—" bila belum terverifikasi                                    | `MetricTiles` (success stories)                |
 | **Help Center**          | Hero putih + pencarian, sidebar kiri (lg) / "Browse the guide" (mobile), artikel maks. 780px | `/guide/` (`GuideShell`)                       |
 | **CTA penutup**          | Panel Shadow Grey membulat di latar putih, tepat di atas footer (lihat di bawah)             | `shared/final-cta.tsx`                         |
+| **CTA penutup Home**     | Latar putih + glow oranye 7% kiri-kanan, teks di tengah diapit foto & heksagon melayang      | `home/home-cta.tsx`                            |
 
 ### CTA penutup
 
 Dipakai di semua halaman kecuali Book Demo (halaman tujuan CTA itu sendiri). Copy-nya ada di `src/content/` sebagai
 `CtaData`, tidak ditulis langsung di halaman.
+
+**Home memakai varian sendiri (`HomeCta`, sejak 2026-10-07):** section putih terang (bukan panel gelap), teks rata
+tengah, tombol `primary` + `outline`. Di kiri dua foto heksagon (Capture, Learn) dan di kanan satu (Practice), dikelilingi
+heksagon garis oranye 50% dan heksagon isi oranye 20%, semuanya melayang + parallax seperti hero. Di bawah `xl` foto
+berubah jadi deretan kecil di atas eyebrow dan heksagon disembunyikan. Halaman lain **tetap** memakai `FinalCta` sampai
+diputuskan lain.
 
 - Struktur: eyebrow `Get Started` → judul `text-h1` dengan satu `highlight` oranye → lead → tombol.
 - Tombol: satu `primary` (default "Book Demo"; Pricing memakai "Talk to Sales") + satu `secondary` `outline-dark` yang

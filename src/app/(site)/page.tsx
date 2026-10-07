@@ -1,10 +1,10 @@
 import { CaseStudies } from "@/components/sections/home/case-studies";
 import { Hero } from "@/components/sections/home/hero";
+import { HomeCta } from "@/components/sections/home/home-cta";
 import { PlatformOverview } from "@/components/sections/home/platform-overview";
 import { ClientLogos } from "@/components/sections/shared/client-logos";
-import { FinalCta } from "@/components/sections/shared/final-cta";
 import { StepsTimeline } from "@/components/sections/shared/steps-timeline";
-import { clientsSection, homeCta, howItWorks } from "@/content/home";
+import { clientsSection, howItWorks } from "@/content/home";
 
 export default function HomePage() {
   return (
@@ -14,7 +14,7 @@ export default function HomePage() {
       <PlatformOverview />
       <StepsTimeline {...howItWorks} />
       <CaseStudies />
-      <FinalCta {...homeCta} />
+      <HomeCta />
     </>
   );
 }

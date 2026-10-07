@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useMotionValue, useReducedMotion, useSpring, type Variants } from "motion/react";
+import { motion, type Variants } from "motion/react";
+import { usePointerParallax } from "@/components/motion/parallax";
 import { EASE_OUT } from "@/components/motion/reveal";
 import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
@@ -21,29 +22,10 @@ const rise: Variants = {
 };
 
 export function Hero() {
-  const reduceMotion = useReducedMotion();
-  // Posisi kursor relatif ke layar (-0.5…0.5), dihaluskan dengan spring, untuk parallax ilustrasi.
-  const rawX = useMotionValue(0);
-  const rawY = useMotionValue(0);
-  const mx = useSpring(rawX, { stiffness: 60, damping: 20 });
-  const my = useSpring(rawY, { stiffness: 60, damping: 20 });
-
-  const onPointerMove = (e: React.PointerEvent<HTMLElement>) => {
-    if (reduceMotion || e.pointerType !== "mouse") return;
-    rawX.set(e.clientX / window.innerWidth - 0.5);
-    rawY.set(e.clientY / window.innerHeight - 0.5);
-  };
-  const onPointerLeave = () => {
-    rawX.set(0);
-    rawY.set(0);
-  };
+  const { mx, my, handlers } = usePointerParallax();
 
   return (
-    <section
-      className="relative overflow-hidden bg-white"
-      onPointerMove={onPointerMove}
-      onPointerLeave={onPointerLeave}
-    >
+    <section className="relative overflow-hidden bg-white" {...handlers}>
       {/* Aksen cahaya oranye blur tipis (7%) di pojok kanan atas */}
       <div
         className="pointer-events-none absolute -top-32 -right-32 size-[360px] rounded-full bg-brand-orange opacity-7 blur-[100px] lg:-top-48 lg:-right-40 lg:size-[640px] lg:blur-[140px]"
