@@ -1,4 +1,9 @@
 /** Konten halaman Home. Teks dipisah dari komponen agar mudah diganti tanpa menyentuh layout. */
+import type { StaticImageData } from "next/image";
+import captureImage from "@/assets/images/hero/capture-woman.png";
+import learnImage from "@/assets/images/hero/learn-man.png";
+import practiceImage from "@/assets/images/hero/practice-woman.png";
+import type { FeatureIconName } from "@/components/ui/feature-icon";
 import type { CtaData, StepsData } from "./types";
 
 export const heroHeadline = {
@@ -8,6 +13,14 @@ export const heroHeadline = {
   /** Kata oranye yang bergantian tanpa henti; kata pertama dibaca pembaca layar dan tampil saat "reduce motion". */
   rotatingWords: ["Scalable.", "Accessible.", "Actionable.", "Measurable."],
 };
+
+/** Foto + kartu keterangan di ilustrasi hero Home (urutan baku Capture → Learn → Practice). */
+export const heroPersonas: { icon: FeatureIconName; title: string; body: string; image: StaticImageData }[] =
+  [
+    { icon: "capture", title: "Capture", body: "Collect trusted sales knowledge", image: captureImage },
+    { icon: "learn", title: "Learn", body: "Personalized AI coaching", image: learnImage },
+    { icon: "practice", title: "Practice", body: "Real scenarios and feedback", image: practiceImage },
+  ];
 
 export const clientsSection = {
   eyebrow: "Our Clients",

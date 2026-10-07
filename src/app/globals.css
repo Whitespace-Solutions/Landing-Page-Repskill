@@ -69,11 +69,22 @@
     }
   }
 
-  /* Ilustrasi hero Home (orb wireframe) — class: animate-orb-spin, animate-orb-breathe, animate-orb-glow, animate-hex-float */
+  /* Ilustrasi hero Home (orb wireframe) — class: animate-orb-spin, animate-orb-breathe, animate-orb-glow, animate-hex-float,
+     animate-float-soft (naik-turun pelan tanpa berputar: logo & foto) */
   --animate-orb-spin: spin-slow 64s linear infinite;
   --animate-orb-breathe: orb-breathe 9s ease-in-out infinite;
   --animate-orb-glow: orb-glow 8s ease-in-out infinite;
   --animate-hex-float: hex-float 9s ease-in-out infinite;
+  --animate-float-soft: float-soft 8s ease-in-out infinite;
+  @keyframes float-soft {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
   @keyframes orb-breathe {
     0%,
     100% {

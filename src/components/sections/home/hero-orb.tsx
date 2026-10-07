@@ -1,15 +1,40 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useTransform, type MotionValue } from "motion/react";
+import repskillIcon from "@/assets/brand/repskill-icon.svg";
+import { FeatureIcon } from "@/components/ui/feature-icon";
 import { HexOutline, Wireframe } from "@/components/ui/wireframe";
+import { heroPersonas } from "@/content/home";
 import { cn } from "@/lib/cn";
 
 type Pointer = { mx: MotionValue<number>; my: MotionValue<number> };
 
 /**
- * Ilustrasi hero Home: wireframe oranye yang berputar pelan dan "bernapas", dengan cahaya berdenyut, ring orbit,
- * dan tiga heksagon melayang. Wireframe dan heksagon bergeser mengikuti kursor (parallax, `mx`/`my` = -0.5…0.5).
- * Diadaptasi dari hero Whitespace Talents Landing. Semua animasi CSS berhenti bila "reduce motion" aktif.
+ * Posisi tiap persona (foto heksagon + kartu keterangan), dalam % dari wadah ilustrasi. `photo` = sudut kiri atas foto,
+ * `card` = posisi kartu relatif ke foto (% dari ukuran foto). Diambil dari contoh desain hero (contoh image hero.jpg).
+ */
+const personaLayout = [
+  // Capture: kiri atas, kartu di kanan atas foto
+  { photo: "left-[-12%] top-[14%]", card: "left-[96%] top-[-28%]", depth: 36, duration: "8s", delay: "0s" },
+  // Learn: kiri bawah, kartu menumpuk di kanan bawah foto
+  { photo: "left-[-7%] top-[71%]", card: "left-[69%] top-[48%]", depth: 52, duration: "9.5s", delay: "-3s" },
+  // Practice: kanan tengah, kartu tepat di bawah foto (rata kanan, supaya tidak keluar layar)
+  {
+    photo: "left-[83%] top-[52%]",
+    card: "right-[-20%] top-[100%]",
+    depth: 44,
+    duration: "8.5s",
+    delay: "-5s",
+  },
+];
+
+/**
+ * Ilustrasi hero Home: wireframe oranye yang berputar pelan dan "bernapas", dengan cahaya berdenyut dan ring orbit.
+ * Di tengahnya logo Repskill (tidak ikut berputar, hanya melayang). Di sekelilingnya tiga foto heksagon dengan kartu
+ * Capture / Learn / Practice dan dua heksagon garis, semuanya melayang pelan. Semua elemen bergeser mengikuti kursor
+ * (parallax, `mx`/`my` = -0.5…0.5). Animasi CSS memakai `motion-safe:` sehingga berhenti saat "reduce motion".
+ * Seluruh ilustrasi dekoratif (`aria-hidden`): isinya sudah dijelaskan oleh judul, paragraf, dan menu Features.
  */
 export function HeroOrb({ mx, my }: Pointer) {
   const wx = useTransform(mx, (v) => v * 24);
@@ -17,7 +42,7 @@ export function HeroOrb({ mx, my }: Pointer) {
 
   return (
     <div
-      className="relative mx-auto mt-8 grid aspect-square w-full max-w-[420px] place-items-center lg:mt-0 lg:aspect-auto lg:min-h-[clamp(340px,40vw,466px)] lg:max-w-none"
+      className="relative mx-auto mt-8 grid aspect-square w-full max-w-[300px] place-items-center sm:max-w-[420px] lg:mt-0 lg:aspect-auto lg:min-h-[clamp(340px,40vw,466px)] lg:max-w-none"
       aria-hidden
     >
       <div className="absolute aspect-square w-4/5 rounded-full bg-orb-glow motion-safe:animate-orb-glow" />
@@ -38,54 +63,101 @@ export function HeroOrb({ mx, my }: Pointer) {
             <Wireframe className="block h-auto w-full text-brand-orange" />
           </div>
         </div>
+        {/* Logo di tengah: di luar wadah putar, jadi hanya melayang */}
+        <div className="absolute inset-0 grid place-items-center">
+          <div className="w-[28%] motion-safe:animate-float-soft" style={{ animationDuration: "7s" }}>
+            <Image src={repskillIcon} alt="" className="h-auto w-full drop-shadow-xl" priority />
+          </div>
+        </div>
       </motion.div>
 
-      <FloatHex
-        className="top-[2%] right-[7%] w-[52px] text-brand-orange opacity-50"
+      <Floating
+        className="top-[2%] right-[7%] aspect-square w-[52px] text-brand-orange opacity-50"
+        animation="motion-safe:animate-hex-float"
         depth={40}
         duration="9s"
         delay="0s"
         mx={mx}
         my={my}
-      />
-      <FloatHex
-        className="bottom-[5%] left-[3%] w-[38px] text-brand-grey opacity-42"
+      >
+        <HexOutline className="block size-full" />
+      </Floating>
+      <Floating
+        className="top-[97%] left-[24%] aspect-square w-[38px] text-brand-grey opacity-42"
+        animation="motion-safe:animate-hex-float"
         depth={64}
         duration="7.5s"
         delay="-2s"
         mx={mx}
         my={my}
-      />
-      <FloatHex
-        className="right-[1%] bottom-[22%] w-[30px] text-brand-orange opacity-30 max-sm:hidden"
-        depth={28}
-        duration="11s"
-        delay="-4s"
-        mx={mx}
-        my={my}
-      />
+      >
+        <HexOutline className="block size-full" />
+      </Floating>
+
+      {heroPersonas.map((persona, i) => {
+        const layout = personaLayout[i];
+        return (
+          <Floating
+            key={persona.title}
+            className={cn("z-2 w-[20%] max-w-[120px]", layout.photo)}
+            animation="motion-safe:animate-float-soft"
+            depth={layout.depth}
+            duration={layout.duration}
+            delay={layout.delay}
+            mx={mx}
+            my={my}
+          >
+            <Image src={persona.image} alt="" sizes="120px" className="block h-auto w-full drop-shadow-lg" />
+            <div
+              className={cn(
+                "absolute flex w-max items-center gap-2 rounded-xl border border-line/80 bg-white/95 py-2 pr-3 pl-2 shadow-pop backdrop-blur-sm sm:items-start sm:gap-2.5 sm:py-2.5",
+                layout.card,
+              )}
+            >
+              <span className="flex size-7 flex-none items-center justify-center rounded-lg bg-brand-orange text-white sm:size-8">
+                <FeatureIcon name={persona.icon} size={16} />
+              </span>
+              <span className="flex flex-col">
+                <span className="text-[13px] font-bold text-brand-grey">{persona.title}</span>
+                <span className="hidden max-w-[112px] text-[11.5px] leading-snug text-brand-charcoal sm:block">
+                  {persona.body}
+                </span>
+              </span>
+            </div>
+          </Floating>
+        );
+      })}
     </div>
   );
 }
 
-/** Satu heksagon yang melayang naik-turun sambil berputar sedikit, dan ikut parallax kursor. */
-function FloatHex({
+/** Elemen yang melayang (animasi CSS) dan ikut parallax kursor sesuai `depth`. */
+function Floating({
   className,
+  animation,
   depth,
   duration,
   delay,
   mx,
   my,
-}: Pointer & { className: string; depth: number; duration: string; delay: string }) {
+  children,
+}: Pointer & {
+  className: string;
+  animation: string;
+  depth: number;
+  duration: string;
+  delay: string;
+  children: React.ReactNode;
+}) {
   const x = useTransform(mx, (v) => v * depth);
   const y = useTransform(my, (v) => v * depth);
   return (
-    <motion.div className={cn("absolute aspect-square", className)} style={{ x, y }}>
+    <motion.div className={cn("absolute", className)} style={{ x, y }}>
       <div
-        className="size-full motion-safe:animate-hex-float"
+        className={cn("relative size-full", animation)}
         style={{ animationDuration: duration, animationDelay: delay }}
       >
-        <HexOutline className="block size-full" />
+        {children}
       </div>
     </motion.div>
   );

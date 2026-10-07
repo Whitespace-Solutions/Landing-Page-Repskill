@@ -2,7 +2,7 @@
 
 ## Ilustrasi = mockup UI produk
 
-Repskill tidak memakai foto stok atau ilustrasi kartun. Visual dibangun dari **mockup UI produk yang disederhanakan**
+Repskill tidak memakai ilustrasi kartun, dan foto hanya di tempat yang disebut di bagian [Foto](#foto). Visual dibangun dari **mockup UI produk yang disederhanakan**
 dan dibuat dengan HTML/Tailwind (bukan gambar), misalnya:
 
 - kutipan top performer di kartu putih (italic),
@@ -46,14 +46,22 @@ Grafik garis poligon (komponen `Wireframe`, diambil dari referensi Whitespace Ta
 
 - Dipakai di footer: `text-brand-orange opacity-18`, di sisi kanan, terpotong tepi footer, di belakang teks.
 - Dipakai di hero Home sebagai ilustrasi utama (`HeroOrb`): wireframe `text-brand-orange` penuh, dengan glow oranye lembut
-  (`bg-orb-glow`), ring orbit oranye tipis, dan heksagon garis (`HexOutline`; dua oranye, satu Shadow Grey).
+  (`bg-orb-glow`), ring orbit oranye tipis, heksagon garis (`HexOutline`; satu oranye kanan atas, satu Shadow Grey di
+  bawah), dan logo Repskill (`src/assets/brand/repskill-icon.svg`, file resmi, tidak diubah) di tengah.
 - Selain dua tempat itu, wireframe hanya dipakai sebagai latar dekoratif di section gelap, dengan teks selalu di atasnya.
 - Maksimal satu motif dekoratif per section. Jangan sampai menutupi teks.
 
-## Foto (bila nanti dibutuhkan)
+## Foto
 
-Foto orang asli di situasi kerja nyata (tim sales, coaching), pencahayaan natural, tanpa filter berwarna. Letakkan di
-`public/images/` atau `src/assets/images/` dan selalu isi `alt` yang deskriptif.
+Foto orang di situasi kerja (tim sales, coaching), pencahayaan natural, tanpa filter berwarna. Letakkan di
+`src/assets/images/` dan import statis (supaya ukuran & `basePath` benar).
+
+- **Hero Home:** tiga potret berbingkai heksagon (PNG transparan, sumber `Logo Final Repskill/Image *.png`) di
+  `src/assets/images/hero/`, masing-masing dipasangkan dengan kartu keterangan putih (ikon `FeatureIcon` dalam kotak
+  oranye + judul + satu baris penjelasan). Urutan Capture (kiri atas) → Learn (kiri bawah) → Practice (kanan).
+- Static export tidak mengoptimasi gambar: perkecil dulu ke ±2× ukuran tampil (foto hero: lebar 340px, <150 KB).
+- `alt` deskriptif untuk foto yang membawa informasi; `alt=""` bila dekoratif (seperti di ilustrasi hero yang seluruhnya
+  `aria-hidden`).
 
 ## Logo klien
 

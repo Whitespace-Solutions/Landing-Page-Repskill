@@ -46,8 +46,10 @@ animasi khusus, misalnya visual hero.
 
 - **Hero Home:** eyebrow, judul, paragraf, dan tombol masuk berurutan (fade + naik). Ilustrasi `HeroOrb` masuk dengan fade +
   skala 0.9 → 1 (0.9 dtk, jeda 0.25 dtk), lalu terus bergerak pelan: wireframe berputar dan "bernapas", glow berdenyut,
-  tiga heksagon melayang (9 / 7.5 / 11 dtk). Dengan mouse, wireframe dan heksagon bergeser mengikuti kursor (parallax,
-  spring `stiffness 60, damping 20`). Parallax mati di layar sentuh dan saat "reduce motion"; animasi CSS memakai
+  dua heksagon garis melayang sambil berputar sedikit (`animate-hex-float`, 9 / 7.5 dtk). Logo Repskill di tengah
+  **tidak ikut berputar**, hanya naik-turun pelan (`animate-float-soft`, 7 dtk, 10px). Tiga foto + kartu Capture / Learn /
+  Practice juga `animate-float-soft` dengan durasi berbeda (8 / 9.5 / 8.5 dtk). Dengan mouse, semua elemen bergeser
+  mengikuti kursor dengan kedalaman berbeda (parallax, spring `stiffness 60, damping 20`). Parallax mati di layar sentuh dan saat "reduce motion"; animasi CSS memakai
   `motion-safe:` sehingga ikut berhenti.
 - **Kata bergantian di judul hero Home (`RotatingWords`):** kata oranye berganti setiap 2 detik dengan urutan
   Scalable. → Accessible. → Actionable. → Measurable. → kembali ke Scalable. Kata lama naik keluar (y 0 → -100%),
