@@ -57,7 +57,7 @@ Shadow dipakai **hemat**. Sebagian besar kartu cukup memakai `border border-line
 
 ## Background hero
 
-Hero memakai background **putih polos**. Pengecualian satu-satunya: hero Home memakai mesh geodesik sangat tipis
-(`bg-hero-mesh`, Shadow Grey 6%) yang hanya terlihat di sisi ilustrasi dan memudar sebelum kolom judul. Hero Home berisi
+Hero memakai background **putih polos**. Pengecualian satu-satunya: hero Home punya aksen cahaya oranye blur sangat tipis
+(`bg-brand-orange opacity-7`, blur besar) di pojok kanan atas. Tanpa pola grid/mesh. Hero Home berisi
 teks + tombol di kiri dan ilustrasi `HeroOrb` di kanan (di mobile: di bawah tombol). Hero halaman turunan boleh
 menampilkan satu mockup di sisi kanan.

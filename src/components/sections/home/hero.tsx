@@ -42,8 +42,11 @@ export function Hero() {
       onPointerMove={onPointerMove}
       onPointerLeave={onPointerLeave}
     >
-      {/* Mesh tipis di sisi ilustrasi, memudar sebelum mencapai kolom judul */}
-      <div className="pointer-events-none absolute inset-0 bg-hero-mesh" aria-hidden />
+      {/* Aksen cahaya oranye blur tipis (7%) di pojok kanan atas */}
+      <div
+        className="pointer-events-none absolute -top-32 -right-32 size-[360px] rounded-full bg-brand-orange opacity-7 blur-[100px] lg:-top-48 lg:-right-40 lg:size-[640px] lg:blur-[140px]"
+        aria-hidden
+      />
       <Container className="relative grid items-center gap-2 pt-14 pb-16 sm:pt-20 sm:pb-20 lg:grid-cols-[minmax(0,1.18fr)_minmax(0,0.82fr)] lg:gap-12 lg:pt-26 lg:pb-28">
         <motion.div
           variants={intro}

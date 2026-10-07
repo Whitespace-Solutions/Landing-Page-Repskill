@@ -137,22 +137,6 @@
   }
 }
 
-/* Mesh geodesik tipis di belakang ilustrasi hero Home, memudar ke arah teks — class: bg-hero-mesh */
-@utility bg-hero-mesh {
-  background-image:
-    repeating-linear-gradient(
-      60deg,
-      color-mix(in srgb, var(--color-brand-grey) 6%, transparent) 0 1px,
-      transparent 1px 46px
-    ),
-    repeating-linear-gradient(
-      -60deg,
-      color-mix(in srgb, var(--color-brand-grey) 6%, transparent) 0 1px,
-      transparent 1px 46px
-    );
-  mask-image: radial-gradient(72% 68% at 74% 46%, #000, transparent 72%);
-}
-
 /* Cahaya oranye lembut di tengah ilustrasi hero Home — class: bg-orb-glow */
 @utility bg-orb-glow {
   background: radial-gradient(

@@ -70,19 +70,19 @@ State dalam list/progress: **done** = amber · **now/sedang berjalan** = oranye 
 
 Semua section mengikuti kerangka: **Eyebrow → Judul → Lead → Konten → (link/CTA)**.
 
-| Pola                     | Deskripsi                                                                                    | Komponen / contoh                              |
-| ------------------------ | -------------------------------------------------------------------------------------------- | ---------------------------------------------- |
-| **Hero Home**            | Eyebrow + accent, `text-display`, 2 tombol; ilustrasi `HeroOrb` kanan di atas `bg-hero-mesh` | `home/hero.tsx`                                |
-| **Page hero**            | Teks kiri, mockup kanan                                                                      | `PageHero`                                     |
-| **Our Clients**          | Marquee logo klien berwarna (tanpa outline) kiri → kanan                                     | `ClientLogos`                                  |
-| **Split**                | Teks + poin di satu sisi, mockup di sisi lain; berselang-seling                              | `FeatureSplit`                                 |
-| **Heading + grid kartu** | `SectionHeader` (+ tombol outline) lalu grid 3–4 kartu                                       | Platform Overview, What's Included             |
-| **Timeline**             | 5 langkah dengan garis atas + dot, langkah terakhir oranye                                   | `StepsTimeline` (How it works, Implementation) |
-| **Tabel perbandingan**   | Kolom Repskill disorot oranye muda, ✓ oranye                                                 | Pricing › Feature Comparison                   |
-| **Daftar success story** | Kartu lebar bertumpuk (`StoryRow`): teks + metrik + tombol kiri, panel logo kanan            | `/success-stories/`                            |
-| **Metrik hasil**         | 3 tile angka oranye + label; "—" bila belum terverifikasi                                    | `MetricTiles` (success stories)                |
-| **Help Center**          | Hero putih + pencarian, sidebar kiri (lg) / "Browse the guide" (mobile), artikel maks. 780px | `/guide/` (`GuideShell`)                       |
-| **CTA penutup**          | Panel Shadow Grey membulat di latar putih, tepat di atas footer (lihat di bawah)             | `shared/final-cta.tsx`                         |
+| Pola                     | Deskripsi                                                                                          | Komponen / contoh                              |
+| ------------------------ | -------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| **Hero Home**            | Eyebrow + accent, `text-display`, 2 tombol; ilustrasi `HeroOrb` kanan + glow oranye 7% pojok kanan | `home/hero.tsx`                                |
+| **Page hero**            | Teks kiri, mockup kanan                                                                            | `PageHero`                                     |
+| **Our Clients**          | Marquee logo klien berwarna (tanpa outline) kiri → kanan                                           | `ClientLogos`                                  |
+| **Split**                | Teks + poin di satu sisi, mockup di sisi lain; berselang-seling                                    | `FeatureSplit`                                 |
+| **Heading + grid kartu** | `SectionHeader` (+ tombol outline) lalu grid 3–4 kartu                                             | Platform Overview, What's Included             |
+| **Timeline**             | 5 langkah dengan garis atas + dot, langkah terakhir oranye                                         | `StepsTimeline` (How it works, Implementation) |
+| **Tabel perbandingan**   | Kolom Repskill disorot oranye muda, ✓ oranye                                                       | Pricing › Feature Comparison                   |
+| **Daftar success story** | Kartu lebar bertumpuk (`StoryRow`): teks + metrik + tombol kiri, panel logo kanan                  | `/success-stories/`                            |
+| **Metrik hasil**         | 3 tile angka oranye + label; "—" bila belum terverifikasi                                          | `MetricTiles` (success stories)                |
+| **Help Center**          | Hero putih + pencarian, sidebar kiri (lg) / "Browse the guide" (mobile), artikel maks. 780px       | `/guide/` (`GuideShell`)                       |
+| **CTA penutup**          | Panel Shadow Grey membulat di latar putih, tepat di atas footer (lihat di bawah)                   | `shared/final-cta.tsx`                         |
 
 ### CTA penutup
 
