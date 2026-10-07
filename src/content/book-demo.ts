@@ -2,7 +2,7 @@
 
 export const bookDemoPage = {
   eyebrow: "Book Demo",
-  title: "Let's Talk About Your Sales Capability.",
+  title: "Let's Talk About Your Sales Capability",
   lead: "Tell us a little about your organization and what you'd like to improve. Our team will be in touch to arrange a Repskill demo.",
   expectations: [
     "A conversation about your sales team and goals",

@@ -45,7 +45,8 @@ Secara visual, stage 01–04 memakai Amber Gold (dot/garis), sedangkan stage 05 
 - **Clear:** satu ide kuat per baris/section. Mudah di-scan.
 - **Confident:** "Practice a scenario", bukan "You can practice".
 - **Approachable:** coach, don't lecture.
-- Judul memakai Title Case dan boleh diakhiri titik ("From Expertise to Capability.").
+- Judul memakai Title Case dan **tidak diakhiri titik** ("From Expertise to Capability"). Titik di tengah judul tetap
+  boleh ("Capture expertise. Build skills. Scale capability"). Keputusan 2026-10-07.
 - Eyebrow: UPPERCASE, 1–4 kata ("HOW REPSKILL WORKS").
 - CTA utama: **Book Demo** (tombol di form: "Request My Demo"; di Pricing: "Talk to Sales"). CTA sekunder: "Explore …", "See …", "View …".
 - Jangan menulis angka/hasil customer yang belum terverifikasi. Pakai placeholder yang jelas ("Placeholder — publish with

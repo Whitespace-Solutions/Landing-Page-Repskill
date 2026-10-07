@@ -24,19 +24,19 @@ export const heroPersonas: { icon: FeatureIconName; title: string; body: string;
 
 export const clientsSection = {
   eyebrow: "Our Clients",
-  title: "Trusted by sales teams building capability.",
+  title: "Trusted by sales teams building capability",
 };
 
 export const platformOverview = {
   eyebrow: "Platform Overview",
-  title: "One Platform to Capture, Learn, and Practice.",
+  title: "One Platform to Capture, Learn, and Practice",
   lead: "Repskill brings your best sales knowledge into one curated Knowledge Universe, then turns it into learning, practice, and reflection.",
 };
 
 export const howItWorks: StepsData = {
   id: "how",
   eyebrow: "How It Works",
-  title: "From Expertise to Capability.",
+  title: "From Expertise to Capability",
   body: "Capture what your best people know. Turn it into learning and practice. Reflect on performance. Build capability across the team.",
   note: "A continuous cycle: reflection can surface new best practices, which return to review and the Knowledge Universe.",
   steps: [
@@ -75,7 +75,7 @@ export const howItWorks: StepsData = {
 
 export const caseStudiesSection = {
   eyebrow: "Success Stories",
-  title: "See Expertise Become Capability.",
+  title: "See Expertise Become Capability",
   lead: "See how organizations use Repskill to capture knowledge, build skills, and improve sales capability.",
   action: { label: "View Success Stories", href: "/success-stories/" },
 };

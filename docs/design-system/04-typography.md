@@ -25,6 +25,8 @@ Tombol memakai 15–16px semibold (sudah diatur di komponen `ButtonLink`).
 - **Satu titik masuk per section.** Hierarki harus terlihat sebelum kata-katanya dibaca.
 - Hanya **satu** `text-display` per halaman, yaitu `<h1>` di hero.
 - Urutan semantik heading harus benar (`h1` → `h2` → `h3`). Ukuran visual boleh beda dari level tag.
+- **Judul tanpa titik di akhir** (semua heading, termasuk hero dan CTA). Titik di tengah judul boleh. `highlight` harus
+  sama persis dengan potongan judulnya, jadi ikut tanpa titik.
 - Highlight **satu frasa** di judul dengan `text-brand-orange` (misalnya "Scalable"). Maksimal satu highlight per judul.
 - Tambahkan `text-balance` di judul dan `text-pretty` di paragraf supaya baris tidak menggantung.
 - Lebar baris paragraf maksimal ±620–680px (`max-w-[620px]` / `max-w-2xl`).
@@ -34,6 +36,6 @@ Tombol memakai 15–16px semibold (sudah diatur di komponen `ButtonLink`).
 
 ```tsx
 <Eyebrow>Knowledge Universe</Eyebrow>
-<h2 className="text-h2 text-balance">Your Sales Expertise, Built Into a Living Knowledge System.</h2>
+<h2 className="text-h2 text-balance">Your Sales Expertise, Built Into a Living Knowledge System</h2>
 <p className="max-w-2xl text-lead text-pretty text-brand-charcoal">Bring together company knowledge…</p>
 ```

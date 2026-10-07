@@ -437,8 +437,8 @@ export const guidePage = {
 /** CTA penutup di semua halaman Guide (untuk pengunjung yang belum memakai Repskill). */
 export const guideCta: CtaData = {
   eyebrow: "Get Started",
-  title: "Bring Repskill to Your Sales Team.",
-  highlight: "Your Sales Team.",
+  title: "Bring Repskill to Your Sales Team",
+  highlight: "Your Sales Team",
   body: "See how Repskill turns the expertise of your best people into capability your whole sales team can build.",
   secondary: { label: "Read Success Stories", href: "/success-stories/" },
 };
@@ -462,7 +462,7 @@ export const featureRequest = {
   },
   submit: "Send Request",
   success: {
-    title: "Thanks, your request is noted.",
+    title: "Thanks, your request is noted",
     body: "We read every request. If it shapes the roadmap, we'll follow up.",
   },
   error: "Something went wrong. Please try again in a moment.",

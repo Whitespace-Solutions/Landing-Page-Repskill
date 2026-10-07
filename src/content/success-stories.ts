@@ -64,7 +64,7 @@ const draftStory = (
   summary: `How ${name} turned the expertise of its best people into capability across the sales team.`,
   draft: true,
   about: {
-    title: `How ${name} made sales expertise scalable.`,
+    title: `How ${name} made sales expertise scalable`,
     body: `Short company overview of ${name}: what it sells, who it sells to, and how its sales team is organized.`,
     facts: [
       { label: "Industry", value: "—" },
@@ -73,7 +73,7 @@ const draftStory = (
     ],
   },
   challenge: {
-    title: "Expertise was concentrated in a few people.",
+    title: "Expertise was concentrated in a few people",
     body: `Describe where expertise sat inside ${name} and what the wider team needed to build.`,
     points: [
       "Where best practices lived before Repskill.",
@@ -82,13 +82,13 @@ const draftStory = (
     ],
   },
   help: {
-    title: `How Repskill helped ${name}.`,
+    title: `How Repskill helped ${name}`,
     body: "Describe which Repskill capabilities were used and how the rollout worked.",
     features,
     visual,
   },
   result: {
-    title: "Outcomes, verified.",
+    title: "Outcomes, verified",
     body: "Publish verified results only. Replace the placeholders below once the client has approved them.",
     metrics: PENDING_METRICS,
   },

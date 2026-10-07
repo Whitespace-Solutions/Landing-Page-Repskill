@@ -29,8 +29,8 @@ export const pricingPage: {
 } = {
   hero: {
     eyebrow: "Pricing",
-    title: "Build Sales Capability Around Your Organization.",
-    highlight: "Your Organization.",
+    title: "Build Sales Capability Around Your Organization",
+    highlight: "Your Organization",
     lead: "Choose an approach that fits your organization's sales capability goals.",
     primary: { label: "Talk to Sales", href: "/book-demo/" },
     secondary: { label: "What's included", href: "#included" },
@@ -38,7 +38,7 @@ export const pricingPage: {
   plan: {
     eyebrow: "Pricing Model",
     name: "Repskill Platform",
-    title: "Pricing tailored to your organization's needs.",
+    title: "Pricing tailored to your organization's needs",
     body: "One platform that includes every Repskill capability and your own Knowledge Universe.",
     includes: [
       "Capture Knowledge: Extraction Studio & content review",
@@ -58,7 +58,7 @@ export const pricingPage: {
   },
   included: {
     eyebrow: "What's Included",
-    title: "Everything that turns expertise into capability.",
+    title: "Everything that turns expertise into capability",
     items: [
       {
         stage: "CAPTURE",
@@ -93,7 +93,7 @@ export const pricingPage: {
   },
   comparison: {
     eyebrow: "Feature Comparison",
-    title: "Training vs. building capability.",
+    title: "Training vs. building capability",
     lead: "Training shares information. Repskill builds the skills that show up in real sales conversations.",
     columns: ["Traditional training", "Repskill"],
     rows: [
@@ -108,7 +108,7 @@ export const pricingPage: {
   implementation: {
     id: "implementation",
     eyebrow: "Implementation",
-    title: "From first conversation to capability.",
+    title: "From first conversation to capability",
     steps: [
       { name: "Talk to Sales", message: "Share your goals and sales organization." },
       { name: "Capture knowledge", message: "Bring in company and expert knowledge." },
@@ -119,8 +119,8 @@ export const pricingPage: {
   },
   cta: {
     eyebrow: "Get Started",
-    title: "Build Sales Capability Around Your Organization.",
-    highlight: "Your Organization.",
+    title: "Build Sales Capability Around Your Organization",
+    highlight: "Your Organization",
     body: "Pricing tailored to your organization's needs. Tell us about your team and goals.",
     primary: { label: "Talk to Sales", href: "/book-demo/" },
     secondary: { label: "Read Success Stories", href: "/success-stories/" },

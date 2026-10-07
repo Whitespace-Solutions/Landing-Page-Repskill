@@ -25,7 +25,7 @@ export const aboutPage: {
   },
   why: {
     eyebrow: "Why Repskill Exists",
-    title: "Great sales expertise should not remain locked inside a few top performers.",
+    title: "Great sales expertise should not remain locked inside a few top performers",
     body: "Repskill helps organizations capture, structure, practice, and scale that expertise across the team.",
     flow: ["Expertise", "Capability", "Performance"],
   },
@@ -44,7 +44,7 @@ export const aboutPage: {
   ],
   philosophy: {
     eyebrow: "Our Philosophy",
-    title: "Mentor × Builder.",
+    title: "Mentor × Builder",
     body: "Repskill should feel like a knowledgeable mentor that helps organizations systematically build sales capability at scale.",
     archetypes: [
       {
@@ -69,7 +69,7 @@ export const aboutPage: {
   },
   thinking: {
     eyebrow: "How We Think About Sales Capability",
-    title: "Capture expertise. Build skills. Scale capability.",
+    title: "Capture expertise. Build skills. Scale capability",
     stages: [
       { name: "Capture", desc: "Extract company & top-performer knowledge." },
       { name: "Learn", desc: "Turn knowledge into structured learning." },

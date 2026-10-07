@@ -61,8 +61,8 @@ export const practicePage: FeaturePage = {
   },
   hero: {
     eyebrow: "Features · Practice",
-    title: "Practice Before It Matters.",
-    highlight: "Before It Matters.",
+    title: "Practice Before It Matters",
+    highlight: "Before It Matters",
     lead: "Simulate realistic sales situations with AI, get feedback right away, and reflect on every conversation, so your team walks into the real one prepared.",
     primary: BOOK_DEMO,
     secondary: { label: "See Scenario Studio", href: "#scenario-studio" },
@@ -93,7 +93,7 @@ export const practicePage: FeaturePage = {
     {
       id: "scenario-studio",
       eyebrow: "Scenario Studio",
-      title: "Roleplay real sales situations with an AI buyer, or flip roles and let the AI sell.",
+      title: "Roleplay real sales situations with an AI buyer, or flip roles and let the AI sell",
       body: "Practice the conversations your team faces every day, from discovery calls to early pricing questions and competitor comparisons, grounded in your own products and best practices.",
       points: [
         "Company-specific scenarios built from your Knowledge Universe",
@@ -115,7 +115,7 @@ export const practicePage: FeaturePage = {
     {
       id: "reflection-studio",
       eyebrow: "Reflection Studio",
-      title: "Turn every sales experience into an opportunity to improve.",
+      title: "Turn every sales experience into an opportunity to improve",
       body: "Reflect after practice and after real meetings. Understand strengths and gaps, and leave every reflection with a clear next action.",
       points: [
         "Guided reflection while the conversation is fresh",
@@ -138,8 +138,8 @@ export const practicePage: FeaturePage = {
   ctaVisual: { image: practicePortrait, layout: "practice" },
   cta: {
     eyebrow: "Get Started",
-    title: "Give Your Team a Safe Place to Practice.",
-    highlight: "Practice.",
+    title: "Give Your Team a Safe Place to Practice",
+    highlight: "Practice",
     body: "See how Repskill helps your sales team rehearse, reflect, and improve before the conversations that matter.",
     secondary: { label: "View Pricing", href: "/pricing/" },
   },
@@ -153,8 +153,8 @@ export const capturePage: FeaturePage = {
   },
   hero: {
     eyebrow: "Features · Capture Knowledge",
-    title: "Capture the Expertise Behind Your Best Sales Performance.",
-    highlight: "Best Sales Performance.",
+    title: "Capture the Expertise Behind Your Best Sales Performance",
+    highlight: "Best Sales Performance",
     lead: "Extract company and top-performer knowledge, structure it, and prepare it for review and use across the organization.",
     primary: BOOK_DEMO,
     secondary: { label: "See how review works", href: "#add-content" },
@@ -175,7 +175,7 @@ export const capturePage: FeaturePage = {
     {
       id: "extraction-studio",
       eyebrow: "Extraction Studio",
-      title: "Turn what top performers know into structured knowledge.",
+      title: "Turn what top performers know into structured knowledge",
       body: "Capture real approaches in the words of the people who use them, then extract and structure the practices behind strong performance.",
       points: [
         "Capture from top performers, company knowledge, and field insights",
@@ -200,7 +200,7 @@ export const capturePage: FeaturePage = {
     {
       id: "add-content",
       eyebrow: "Add Content",
-      title: "Add knowledge. Review it. Approve it.",
+      title: "Add knowledge. Review it. Approve it",
       body: "Bring in company materials and new best practices. Nothing reaches your team until it has been reviewed, curated, and approved.",
       points: [
         "Add product, process, and positioning materials",
@@ -237,7 +237,7 @@ export const learnPage: FeaturePage = {
   },
   hero: {
     eyebrow: "Features · Learn Knowledge",
-    title: "Turn Knowledge Into Learning People Can Build On.",
+    title: "Turn Knowledge Into Learning People Can Build On",
     highlight: "Learning",
     lead: "Give your team one curated source of company knowledge, and structured ways to learn from it.",
     primary: BOOK_DEMO,
@@ -259,7 +259,7 @@ export const learnPage: FeaturePage = {
     {
       id: "knowledge-universe",
       eyebrow: "Knowledge Universe",
-      title: "One curated knowledge foundation, built around your business.",
+      title: "One curated knowledge foundation, built around your business",
       body: "Company knowledge, product knowledge, sales expertise, and best practices, reviewed and approved before it powers learning, practice, and coaching.",
       points: [
         "Company-specific, not generic content",
@@ -271,7 +271,7 @@ export const learnPage: FeaturePage = {
     {
       id: "chat",
       eyebrow: "Knowledge Chat",
-      title: "Ask questions. Get answers from approved knowledge.",
+      title: "Ask questions. Get answers from approved knowledge",
       body: "Reps ask about products, processes, and best practices in plain language and get answers grounded in your Knowledge Universe.",
       points: [
         "Answers drawn from approved company knowledge",
@@ -303,7 +303,7 @@ export const learnPage: FeaturePage = {
     {
       id: "learning-path",
       eyebrow: "Learning Path",
-      title: "Structured learning journeys that build real skills.",
+      title: "Structured learning journeys that build real skills",
       body: "Organize knowledge into modules that build on each other, each connected to a practice scenario, so learning turns into capability.",
       points: [
         "Modules built from approved company knowledge",
@@ -316,8 +316,8 @@ export const learnPage: FeaturePage = {
   ctaVisual: { image: learnPortrait, layout: "learn" },
   cta: {
     eyebrow: "Get Started",
-    title: "Build Learning Around Your Own Expertise.",
-    highlight: "Your Own Expertise.",
+    title: "Build Learning Around Your Own Expertise",
+    highlight: "Your Own Expertise",
     body: "See how Repskill turns your company knowledge into learning your sales team can build on.",
     secondary: { label: "Next: Practice", href: "/features/practice/" },
   },
