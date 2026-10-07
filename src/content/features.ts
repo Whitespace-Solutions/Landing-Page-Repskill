@@ -213,8 +213,8 @@ export const capturePage: FeaturePage = {
   ],
   cta: {
     eyebrow: "Get Started",
-    title: "Make Your Best People's Expertise Scalable.",
-    highlight: "Scalable.",
+    title: "Make Your Best People's Expertise Scalable",
+    highlight: "Scalable",
     body: "See how Repskill captures what your top performers know and turns it into knowledge your whole team can use.",
     secondary: { label: "Next: Learn Knowledge", href: "/features/learn-knowledge/" },
   },

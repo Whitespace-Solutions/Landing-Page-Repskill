@@ -17,8 +17,8 @@ export const aboutPage: {
 } = {
   hero: {
     eyebrow: "About Repskill",
-    title: "Make Great Sales Expertise Scalable.",
-    highlight: "Scalable.",
+    title: "Make Great Sales Expertise Scalable",
+    highlight: "Scalable",
     lead: "Repskill turns the knowledge of your best people into skills your whole sales team can build.",
     primary: { label: "Book Demo", href: "/book-demo/" },
     secondary: { label: "How Repskill works", href: "/#how" },
@@ -80,8 +80,8 @@ export const aboutPage: {
   },
   cta: {
     eyebrow: "Get Started",
-    title: "Make Your Sales Expertise Scalable.",
-    highlight: "Scalable.",
+    title: "Make Your Sales Expertise Scalable",
+    highlight: "Scalable",
     body: "See how Repskill can help turn your organization's expertise into capability your whole sales team can build.",
     secondary: { label: "Read Success Stories", href: "/success-stories/" },
   },

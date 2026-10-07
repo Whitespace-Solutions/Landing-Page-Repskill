@@ -82,8 +82,8 @@ export const caseStudiesSection = {
 
 export const homeCta: CtaData = {
   eyebrow: "Get Started",
-  title: "Make Your Sales Expertise Scalable.",
-  highlight: "Scalable.",
+  title: "Make Your Sales Expertise Scalable",
+  highlight: "Scalable",
   body: "See how Repskill can help turn your organization's expertise into capability your whole sales team can build.",
   secondary: { label: "View Pricing", href: "/pricing/" },
 };
