@@ -39,7 +39,7 @@ export function VisualCta({
         aria-hidden
       />
 
-      <Container className="relative grid items-center gap-14 py-20 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-12 lg:py-28 xl:py-32">
+      <Container className="relative grid items-center gap-14 py-20 lg:grid-cols-2 lg:gap-12 lg:py-28 xl:py-32">
         <Reveal className="flex max-w-xl flex-col items-start gap-6">
           {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
           <h2 className="text-h1 text-balance">
@@ -73,7 +73,7 @@ export function VisualCta({
 function Visual({ image, mx, my }: Pointer & { image: StaticImageData }) {
   return (
     <div
-      className="relative mx-auto aspect-[500/426] w-full max-w-[340px] sm:max-w-[420px] lg:mr-0 lg:max-w-[460px]"
+      className="relative mx-auto aspect-[500/426] w-full max-w-[340px] sm:max-w-[420px] lg:ml-0 lg:max-w-[460px]"
       aria-hidden
     >
       <Floating
