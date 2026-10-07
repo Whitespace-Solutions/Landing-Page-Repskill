@@ -2,6 +2,7 @@
 import type { StaticImageData } from "next/image";
 import capturePortrait from "@/assets/images/cta/capture-portrait.webp";
 import learnPortrait from "@/assets/images/cta/learn-portrait.webp";
+import practicePortrait from "@/assets/images/cta/practice-portrait.webp";
 import type { VisualCtaLayout } from "@/components/sections/shared/visual-cta";
 import type { FeatureKey } from "./success-stories";
 import type { CtaData, FeatureBlockData, MockupData, PageHeroData } from "./types";
@@ -134,6 +135,7 @@ export const practicePage: FeaturePage = {
       },
     },
   ],
+  ctaVisual: { image: practicePortrait, layout: "practice" },
   cta: {
     eyebrow: "Get Started",
     title: "Give Your Team a Safe Place to Practice.",

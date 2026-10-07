@@ -15,7 +15,7 @@ import { cn } from "@/lib/cn";
 /**
  * CTA penutup terang dengan visual: teks rata kiri, di sebelahnya satu foto heksagon besar, heksagon garis oranye, dan
  * heksagon isi oranye muda, semuanya melayang + parallax kursor (sama seperti CTA Home). Latar putih dengan cahaya
- * oranye tipis. Dipakai halaman fitur yang punya `ctaVisual` (Capture & Learn Knowledge). Visual `aria-hidden`.
+ * oranye tipis. Dipakai halaman fitur yang punya `ctaVisual` (ketiga halaman fitur). Visual `aria-hidden`.
  */
 export function VisualCta({
   eyebrow,
@@ -88,6 +88,14 @@ const layouts = {
     outline: "top-[38%] left-[78%] w-[22%]",
     fill: "top-[80%] left-0 w-[13%]",
     sizes: "(min-width: 1024px) 310px, 280px",
+  },
+  // Practice: foto besar di kiri, heksagon garis di kanan atas, heksagon isi di kanan bawah (sejajar tepi kanan foto)
+  practice: {
+    box: "aspect-[540/430] max-w-[340px] sm:max-w-[420px] lg:max-w-[440px]",
+    photo: "top-0 left-0 w-[72%]",
+    outline: "top-[27%] left-[78%] w-[22%]",
+    fill: "top-[79%] left-[77.5%] w-[15%]",
+    sizes: "(min-width: 1024px) 320px, 300px",
   },
 } as const;
 
