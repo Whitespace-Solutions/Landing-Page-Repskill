@@ -1,6 +1,14 @@
 /** Konten halaman Home. Teks dipisah dari komponen agar mudah diganti tanpa menyentuh layout. */
 import type { CtaData, StepsData } from "./types";
 
+export const heroHeadline = {
+  /** Baris pertama, lalu kata yang selalu satu baris dengan kata bergantian (mulai layar xl) */
+  lead: "Make Sales",
+  lastWord: "Expertise",
+  /** Kata oranye yang bergantian tanpa henti; kata pertama dibaca pembaca layar dan tampil saat "reduce motion". */
+  rotatingWords: ["Scalable.", "Accessible.", "Actionable.", "Measurable."],
+};
+
 export const clientsSection = {
   eyebrow: "Our Clients",
   title: "Trusted by sales teams building capability.",

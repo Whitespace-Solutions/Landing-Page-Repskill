@@ -5,6 +5,8 @@ import { EASE_OUT } from "@/components/motion/reveal";
 import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Eyebrow } from "@/components/ui/eyebrow";
+import { RotatingWords } from "@/components/ui/rotating-words";
+import { heroHeadline } from "@/content/home";
 import { primaryCta } from "@/content/navigation";
 import { HeroOrb } from "./hero-orb";
 
@@ -58,7 +60,11 @@ export function Hero() {
             <Eyebrow>AI-Powered Sales Capability Platform</Eyebrow>
           </motion.div>
           <motion.h1 variants={rise} className="text-display text-balance">
-            Make Sales Expertise <span className="text-brand-orange">Scalable.</span>
+            {heroHeadline.lead}{" "}
+            <span className="xl:whitespace-nowrap">
+              {heroHeadline.lastWord}{" "}
+              <RotatingWords words={heroHeadline.rotatingWords} className="text-brand-orange" />
+            </span>
           </motion.h1>
           <motion.p variants={rise} className="max-w-[620px] text-lead text-pretty text-brand-charcoal">
             Repskill is AI sales coaching that turns your best people’s knowledge into sales skills your whole
