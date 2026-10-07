@@ -49,9 +49,10 @@ animasi khusus, misalnya visual hero.
   tiga heksagon melayang (9 / 7.5 / 11 dtk). Dengan mouse, wireframe dan heksagon bergeser mengikuti kursor (parallax,
   spring `stiffness 60, damping 20`). Parallax mati di layar sentuh dan saat "reduce motion"; animasi CSS memakai
   `motion-safe:` sehingga ikut berhenti.
-- **Kata bergantian di judul hero Home (`RotatingWords`):** kata oranye berganti setiap 2.5 detik dengan urutan
+- **Kata bergantian di judul hero Home (`RotatingWords`):** kata oranye berganti setiap 2 detik dengan urutan
   Scalable. → Accessible. → Actionable. → Measurable. → kembali ke Scalable. Kata lama naik keluar (y 0 → -100%),
-  kata baru naik masuk dari bawah (y 100% → 0), 0.6 detik, `EASE_OUT`, dipotong oleh wadah `overflow-hidden`.
+  kata baru naik masuk dari bawah (y 100% → 0), 0.5 detik, `EASE_OUT`, tanpa fade. Dipotong tepat di tinggi huruf
+  (`overflow-hidden` + `clip-path: inset(0.1em 0 0.1em 0)`), jadi kata tidak terlihat di atas atau di bawah baris.
   "Scalable." selalu tampil pertama (tagline brand). Saat "reduce motion" kata tetap "Scalable.".
 - **Header:** garis aktif oranye bergeser antar menu (`layoutId`), dropdown fade + scale 0.98 → 1, menu mobile slide.
 - **Timeline gelap:** stage muncul berurutan dari kiri.
