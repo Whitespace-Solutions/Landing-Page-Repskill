@@ -9,6 +9,7 @@ import { Eyebrow } from "@/components/ui/eyebrow";
 import { HighlightText } from "@/components/ui/highlight-text";
 import { HexOutline } from "@/components/ui/wireframe";
 import { heroPersonas, homeCta } from "@/content/home";
+import type { CtaData } from "@/content/types";
 import { primaryCta } from "@/content/navigation";
 import { cn } from "@/lib/cn";
 
@@ -42,10 +43,11 @@ const hexLayout = [
  * CTA penutup khusus Home: teks di tengah di atas latar putih dengan cahaya oranye tipis di kiri-kanan, diapit foto
  * heksagon Capture / Learn / Practice dan heksagon dekoratif yang melayang + parallax kursor (sama seperti hero).
  * Di bawah xl foto menjadi deretan kecil di atas eyebrow dan heksagon disembunyikan. Dekorasi `aria-hidden`.
+ * Copy default `homeCta`; halaman lain (mis. Success Stories) bisa mengirim `CtaData` sendiri.
  */
-export function HomeCta() {
+export function HomeCta(props: Partial<CtaData>) {
   const { mx, my, handlers } = usePointerParallax();
-  const { eyebrow, title, highlight, body, primary = primaryCta, secondary } = homeCta;
+  const { eyebrow, title, highlight, body, primary = primaryCta, secondary } = { ...homeCta, ...props };
 
   return (
     <section className="relative overflow-hidden bg-white" {...handlers}>

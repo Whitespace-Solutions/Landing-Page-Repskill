@@ -14,7 +14,7 @@ Pakai komponen yang sudah ada sebelum membuat yang baru. Komponen baru yang reus
 | `Reveal`, `Stagger`, `StaggerItem` | `src/components/motion/reveal.tsx`                        | Lihat [07-motion.md](07-motion.md)                                                                                                                                                                                                                      |
 | `SiteHeader` / `SiteFooter`        | `src/components/layout/`                                  | Diambil dari `src/content/navigation.ts`. Dropdown: `layout: "row"` = sub menu berjajar ke samping (dipakai Features). Menu: hover dan aktif = teks oranye tanpa kotak latar; aktif + garis oranye di bawah                                             |
 | `FinalCta`                         | `src/components/sections/shared/final-cta.tsx`            | CTA penutup, data `CtaData`: `eyebrow` `title` `highlight` `body` `primary` (default Book Demo) `secondary`                                                                                                                                             |
-| `HomeCta`                          | `src/components/sections/home/home-cta.tsx`               | CTA penutup **khusus Home** (data `homeCta`): teks di tengah, foto heksagon Capture/Learn/Practice + heksagon garis/isi melayang di kiri-kanan (xl+), deretan 3 foto kecil di atas eyebrow (< xl)                                                       |
+| `HomeCta`                          | `src/components/sections/home/home-cta.tsx`               | CTA penutup Home & Success Stories (default `homeCta`, bisa menerima `CtaData` lain): teks di tengah, foto heksagon Capture/Learn/Practice + heksagon garis/isi melayang di kiri-kanan (xl+), deretan 3 foto kecil di atas eyebrow (< xl)               |
 | `VisualCta`                        | `src/components/sections/shared/visual-cta.tsx`           | CTA penutup terang dengan visual: teks rata kiri, kanan 1 foto heksagon besar + heksagon garis oranye + heksagon isi oranye muda, melayang + parallax. Dipakai ketiga halaman fitur lewat `ctaVisual`; komposisi per halaman lewat `layout`             |
 | `Section`                          | `src/components/ui/section.tsx`                           | Wrapper section: `tone` (`white` · `surface` · `linen` · `dark`), `size` (`md` · `lg`)                                                                                                                                                                  |
 | `SectionHeader`                    | `src/components/ui/section-header.tsx`                    | Eyebrow → judul → lead (+ tombol). `layout="side"`, `size="h1"`, `tone="dark"`                                                                                                                                                                          |
@@ -98,8 +98,8 @@ Dipakai di semua halaman kecuali Book Demo (halaman tujuan CTA itu sendiri). Cop
 **Home memakai varian sendiri (`HomeCta`, sejak 2026-10-07):** section putih terang (bukan panel gelap), teks rata
 tengah, tombol `primary` + `outline`. Di kiri dua foto heksagon (Capture, Learn) dan di kanan satu (Practice), dikelilingi
 heksagon garis oranye 50% dan heksagon isi oranye 20%, semuanya melayang + parallax seperti hero. Di bawah `xl` foto
-berubah jadi deretan kecil di atas eyebrow dan heksagon disembunyikan. Halaman lain **tetap** memakai `FinalCta` sampai
-diputuskan lain.
+berubah jadi deretan kecil di atas eyebrow dan heksagon disembunyikan. Sejak 2026-10-08 halaman `/success-stories/` juga
+memakai `HomeCta` (copy dari `successStoriesPage.cta`). Halaman lain **tetap** memakai `FinalCta` sampai diputuskan lain.
 
 **Halaman fitur (Capture, Learn, Practice) memakai `VisualCta` (sejak 2026-10-07):** isi `ctaVisual: { image, layout }` di data
 halaman fitur (`src/content/features.ts`) untuk mengganti `FinalCta` gelap dengan versi terang: teks rata kiri + tombol

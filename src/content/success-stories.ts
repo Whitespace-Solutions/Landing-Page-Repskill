@@ -5,6 +5,9 @@
  *
  * ⚠️ Semua isi di bawah masih DRAFT (template). Ganti dengan konten yang sudah disetujui klien,
  * lalu set `draft: false`. Jangan isi angka hasil yang belum terverifikasi.
+ *
+ * ⚠️ Angka metrik di bawah adalah DUMMY (permintaan user 2026-10-08, untuk melihat layout). Ganti dengan angka yang sudah
+ * disetujui klien sebelum `draft: false`.
  */
 import type { StaticImageData } from "next/image";
 import ascoLogo from "@/assets/clients/asco.png";
@@ -42,10 +45,11 @@ export type SuccessStory = {
   };
 };
 
-const PENDING_METRICS = [
-  { value: "—", label: "Capability outcome" },
-  { value: "—", label: "Practice activity" },
-  { value: "—", label: "Business outcome" },
+/** DUMMY: [capability outcome, practice activity, business outcome] */
+const dummyMetrics = (capability: string, practice: string, business: string) => [
+  { value: capability, label: "Capability outcome" },
+  { value: practice, label: "Practice activity" },
+  { value: business, label: "Business outcome" },
 ];
 
 const draftStory = (
@@ -55,6 +59,7 @@ const draftStory = (
   headline: string,
   features: FeatureKey[],
   visual: MockupData,
+  metrics: SuccessStory["result"]["metrics"],
 ): SuccessStory => ({
   slug,
   name,
@@ -90,40 +95,64 @@ const draftStory = (
   result: {
     title: "Outcomes, verified",
     body: "Publish verified results only. Replace the placeholders below once the client has approved them.",
-    metrics: PENDING_METRICS,
+    metrics,
   },
 });
 
 export const successStories: SuccessStory[] = [
-  draftStory("bamms", "bamms", bammsLogo, "Best Practices Shared Across the Team", ["capture", "learn"], {
-    type: "structure",
-    title: "Best practice captured",
-    status: "Approved",
-    fields: [
-      { label: "TOPIC", value: "Handling early pricing questions" },
-      { label: "SOURCE", value: "Top performer interview" },
-      { label: "USED IN", value: "Learning Path · Scenario Studio" },
-    ],
-  }),
-  draftStory("recharge", "ReCharge", rechargeLogo, "Faster Capability Growth", ["learn", "practice"], {
-    type: "bars",
-    title: "Capability progress",
-    meta: "Team average",
-    items: [
-      { label: "Discovery", value: 78, tone: "strength", tag: "+12" },
-      { label: "Objection handling", value: 64, tone: "strength", tag: "+18" },
-      { label: "Next-step commitment", value: 52, tone: "strength", tag: "+9" },
-    ],
-  }),
-  draftStory("asco", "ASCO", ascoLogo, "Reps Ready for Tough Conversations", ["capture", "practice"], {
-    type: "chat",
-    title: "Scenario · Competitor comparison",
-    messages: [
-      { side: "left", label: "AI BUYER", text: "Why should we switch from our current vendor?" },
-      { side: "right", label: "YOU", text: "What would need to be true for a change to be worth it?" },
-    ],
-    chips: [{ text: "Asked an open question", tone: "good" }],
-  }),
+  draftStory(
+    "bamms",
+    "bamms",
+    bammsLogo,
+    "Best Practices Shared Across the Team",
+    ["capture", "learn"],
+    {
+      type: "structure",
+      title: "Best practice captured",
+      status: "Approved",
+      fields: [
+        { label: "TOPIC", value: "Handling early pricing questions" },
+        { label: "SOURCE", value: "Top performer interview" },
+        { label: "USED IN", value: "Learning Path · Scenario Studio" },
+      ],
+    },
+    dummyMetrics("+32%", "4.5x", "+18%"),
+  ),
+  draftStory(
+    "recharge",
+    "ReCharge",
+    rechargeLogo,
+    "Faster Capability Growth",
+    ["learn", "practice"],
+    {
+      type: "bars",
+      title: "Capability progress",
+      meta: "Team average",
+      items: [
+        { label: "Discovery", value: 78, tone: "strength", tag: "+12" },
+        { label: "Objection handling", value: 64, tone: "strength", tag: "+18" },
+        { label: "Next-step commitment", value: 52, tone: "strength", tag: "+9" },
+      ],
+    },
+    dummyMetrics("+41%", "6x", "+22%"),
+  ),
+  draftStory(
+    "asco",
+    "ASCO",
+    ascoLogo,
+    "Reps Ready for Tough Conversations",
+    ["capture", "practice"],
+    {
+      type: "chat",
+      title: "Scenario · Competitor comparison",
+      messages: [
+        { side: "left", label: "AI BUYER", text: "Why should we switch from our current vendor?" },
+        { side: "right", label: "YOU", text: "What would need to be true for a change to be worth it?" },
+      ],
+      chips: [{ text: "Asked an open question", tone: "good" }],
+    },
+    dummyMetrics("+27%", "3x", "+15%"),
+  ),
   draftStory(
     "trilogy",
     "Trilogy",
@@ -142,6 +171,7 @@ export const successStories: SuccessStory[] = [
         { label: "Practice: discovery call", meta: "Next", status: "todo" },
       ],
     },
+    dummyMetrics("+35%", "5x", "+20%"),
   ),
 ];
 

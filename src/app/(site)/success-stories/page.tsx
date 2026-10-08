@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
+import { HomeCta } from "@/components/sections/home/home-cta";
 import { ClientLogos } from "@/components/sections/shared/client-logos";
-import { FinalCta } from "@/components/sections/shared/final-cta";
 import { PageHero } from "@/components/sections/shared/page-hero";
 import { Reveal } from "@/components/motion/reveal";
 import { StoryRow } from "@/components/sections/success-stories/story-parts";
@@ -30,7 +30,7 @@ export default function SuccessStoriesPage() {
           ))}
         </div>
       </Section>
-      <FinalCta {...page.cta} />
+      <HomeCta {...page.cta} />
     </>
   );
 }
