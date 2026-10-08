@@ -45,6 +45,16 @@ export type MockupData =
       label: string;
     }
   | {
+      /** Pemakaian token per area, meniru kartu "Where tokens go" di halaman Team tokens platform */
+      type: "token-usage";
+      title: string;
+      meta: string;
+      /** `share` = persen dari total; panjang bar relatif terhadap area terbesar */
+      items: { label: string; tokens: string; share: number }[];
+      /** Label tombol (tampilan saja, bukan tautan) */
+      action?: string;
+    }
+  | {
       /** Screenshot produk (WebP di `src/assets/images/mockups/`) */
       type: "screenshot";
       image: StaticImageData;

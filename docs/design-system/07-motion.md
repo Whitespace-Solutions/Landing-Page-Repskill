@@ -74,3 +74,5 @@ animasi khusus, misalnya visual hero.
 - **Our Clients (marquee):** logo berjalan dari kiri ke kanan tanpa putus (`animate-marquee-right`, kecepatan diatur
   lewat `--marquee-duration`, sekitar 4 detik per logo), dengan tepi kiri-kanan memudar. Berhenti saat di-hover, dan
   berganti menjadi grid statis bila "reduce motion" aktif. Komponen: `ClientLogos`.
+- **Bar pemakaian token (`token-usage`, Pricing):** `AnimatedBar` dengan `duration={1.6}` dan `EASE_SMOOTH`
+  (`[0.65, 0, 0.35, 1]`, pelan di awal & akhir), jeda 0,18 dtk antar baris. Bar default tetap 1 dtk `EASE_OUT`.

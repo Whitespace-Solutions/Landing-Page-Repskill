@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { AnimatedBar } from "@/components/motion/animated-bar";
+import { AnimatedBar, EASE_SMOOTH } from "@/components/motion/animated-bar";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/reveal";
 import type { MockupData, Status } from "@/content/types";
 import { cn } from "@/lib/cn";
@@ -30,7 +30,62 @@ export function Mockup({ data }: { data: MockupData }) {
       return <VideoMockup {...data} />;
     case "screenshot":
       return <ScreenshotMockup {...data} />;
+    case "token-usage":
+      return <TokenUsageMockup {...data} />;
   }
+}
+
+/**
+ * Kartu "Where tokens go" seperti di platform: area, jumlah token tebal · persen, bar amber yang terisi pelan & halus
+ * berurutan. Panjang bar relatif terhadap area terbesar (area terbesar = penuh).
+ */
+function TokenUsageMockup({ title, meta, items, action }: Extract<MockupData, { type: "token-usage" }>) {
+  const max = Math.max(...items.map((item) => item.share));
+  return (
+    <div className="rounded-panel border border-line bg-white p-6 shadow-float sm:p-7">
+      <p className="text-h3 text-brand-grey">{title}</p>
+      <p className="mt-1 text-sm text-brand-charcoal">{meta}</p>
+      <ul className="mt-5 flex flex-col gap-4">
+        {items.map((item, i) => (
+          <li key={item.label} className="flex flex-col gap-2">
+            <div className="flex items-baseline justify-between gap-3">
+              <span className="font-semibold text-brand-grey">{item.label}</span>
+              <span className="whitespace-nowrap text-brand-charcoal">
+                <strong className="font-bold text-brand-grey">{item.tokens}</strong> · {item.share}%
+              </span>
+            </div>
+            <span className="block h-2.5 overflow-hidden rounded-full bg-brand-linen">
+              <AnimatedBar
+                value={(item.share / max) * 100}
+                delay={0.3 + i * 0.18}
+                duration={1.6}
+                ease={EASE_SMOOTH}
+                className="min-w-2.5 bg-brand-amber"
+              />
+            </span>
+          </li>
+        ))}
+      </ul>
+      {action && (
+        <span className="mt-6 inline-flex items-center gap-2 rounded-button border border-line px-4 py-2.5 text-sm font-semibold text-brand-grey">
+          {action}
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden
+          >
+            <path d="M9 6l6 6-6 6" />
+          </svg>
+        </span>
+      )}
+    </div>
+  );
 }
 
 /** Screenshot produk dalam bingkai yang sama dengan `VideoMockup`; bisa dibuka layar penuh. */
