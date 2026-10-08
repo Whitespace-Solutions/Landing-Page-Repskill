@@ -6,7 +6,7 @@
  * ⚠️ Semua isi di bawah masih DRAFT (template). Ganti dengan konten yang sudah disetujui klien,
  * lalu set `draft: false`. Jangan isi angka hasil yang belum terverifikasi.
  *
- * ⚠️ Angka metrik di bawah adalah DUMMY (permintaan user 2026-10-08, untuk melihat layout). Ganti dengan angka yang sudah
+ * ⚠️ Angka metrik dan data profil (industry, sales team, region) di bawah adalah DUMMY (permintaan user 2026-10-08, untuk melihat layout). Ganti dengan angka yang sudah
  * disetujui klien sebelum `draft: false`.
  */
 import type { StaticImageData } from "next/image";
@@ -52,6 +52,9 @@ const dummyMetrics = (capability: string, practice: string, business: string) =>
   { value: business, label: "Business outcome" },
 ];
 
+/** DUMMY: profil klien di halaman detail (Industry · Sales team · Region) */
+type DummyFacts = { industry: string; team: string; region: string };
+
 const draftStory = (
   slug: string,
   name: string,
@@ -60,11 +63,12 @@ const draftStory = (
   features: FeatureKey[],
   visual: MockupData,
   metrics: SuccessStory["result"]["metrics"],
+  facts: DummyFacts,
 ): SuccessStory => ({
   slug,
   name,
   logo,
-  industry: "Industry · Team size",
+  industry: `${facts.industry} · ${facts.team}`,
   headline,
   summary: `How ${name} turned the expertise of its best people into capability across the sales team.`,
   draft: true,
@@ -72,9 +76,9 @@ const draftStory = (
     title: `How ${name} made sales expertise scalable`,
     body: `Short company overview of ${name}: what it sells, who it sells to, and how its sales team is organized.`,
     facts: [
-      { label: "Industry", value: "—" },
-      { label: "Sales team", value: "—" },
-      { label: "Region", value: "—" },
+      { label: "Industry", value: facts.industry },
+      { label: "Sales team", value: facts.team },
+      { label: "Region", value: facts.region },
     ],
   },
   challenge: {
@@ -117,6 +121,7 @@ export const successStories: SuccessStory[] = [
       ],
     },
     dummyMetrics("+32%", "4.5x", "+18%"),
+    { industry: "Technology", team: "40 reps", region: "Indonesia" },
   ),
   draftStory(
     "recharge",
@@ -135,6 +140,7 @@ export const successStories: SuccessStory[] = [
       ],
     },
     dummyMetrics("+41%", "6x", "+22%"),
+    { industry: "Consumer electronics", team: "60 reps", region: "Indonesia" },
   ),
   draftStory(
     "asco",
@@ -152,6 +158,7 @@ export const successStories: SuccessStory[] = [
       chips: [{ text: "Asked an open question", tone: "good" }],
     },
     dummyMetrics("+27%", "3x", "+15%"),
+    { industry: "Automotive", team: "120 reps", region: "Indonesia" },
   ),
   draftStory(
     "trilogy",
@@ -172,6 +179,7 @@ export const successStories: SuccessStory[] = [
       ],
     },
     dummyMetrics("+35%", "5x", "+20%"),
+    { industry: "Consumer goods", team: "35 reps", region: "Indonesia" },
   ),
 ];
 
