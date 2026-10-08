@@ -79,7 +79,7 @@ Semua section mengikuti kerangka: **Eyebrow → Judul → Lead → Konten → (l
 | ------------------------ | -------------------------------------------------------------------------------------------- | ---------------------------------------------- |
 | **Hero Home**            | Eyebrow, `text-display`, 2 tombol; ilustrasi `HeroOrb` kanan + glow oranye 7% pojok kanan    | `home/hero.tsx`                                |
 | **Page hero**            | Teks kiri, mockup kanan                                                                      | `PageHero`                                     |
-| **Hero pernyataan**      | Hanya eyebrow, judul `text-display`, dan lead, rata tengah; tanpa tombol dan visual          | `AboutHero` (About Us)                         |
+| **Hero pernyataan**      | Eyebrow, judul `text-display`, lead; rata kiri selebar container, tanpa tombol/visual        | `AboutHero` (About Us)                         |
 | **Our Clients**          | Marquee logo klien berwarna (tanpa outline) kiri → kanan                                     | `ClientLogos`                                  |
 | **Split**                | Teks + poin di satu sisi, mockup di sisi lain; berselang-seling                              | `FeatureSplit`                                 |
 | **Heading + grid kartu** | `SectionHeader` (+ tombol outline) lalu grid 3–4 kartu                                       | Platform Overview, What's Included             |

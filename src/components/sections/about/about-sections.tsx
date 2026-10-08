@@ -6,26 +6,23 @@ import { Section } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
 import { aboutPage } from "@/content/about";
 
-/** Hero About: satu pernyataan kuat di tengah, tanpa tombol atau visual. */
+/** Hero About: satu pernyataan kuat rata kiri selebar container, tanpa tombol atau visual. */
 export function AboutHero() {
   const { hero } = aboutPage;
   return (
     <section className="bg-white">
-      <Container className="pt-20 pb-20 sm:pt-28 lg:pt-36 lg:pb-32">
-        <Stagger
-          className="mx-auto flex max-w-[980px] flex-col items-center gap-6 text-center"
-          stagger={0.12}
-        >
+      <Container className="pt-14 pb-16 sm:pt-20 lg:pt-24 lg:pb-24">
+        <Stagger className="flex flex-col gap-6" stagger={0.12}>
           <StaggerItem>
             <Eyebrow>{hero.eyebrow}</Eyebrow>
           </StaggerItem>
           <StaggerItem>
-            <h1 className="text-display text-balance">
+            <h1 className="text-display text-pretty">
               <HighlightText text={hero.title} highlight={hero.highlight} />
             </h1>
           </StaggerItem>
           <StaggerItem>
-            <p className="max-w-[640px] text-lead text-pretty text-brand-charcoal">{hero.lead}</p>
+            <p className="max-w-[960px] text-lead text-pretty text-brand-charcoal">{hero.lead}</p>
           </StaggerItem>
         </Stagger>
       </Container>
