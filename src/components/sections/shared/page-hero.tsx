@@ -7,29 +7,14 @@ import { HighlightText } from "@/components/ui/highlight-text";
 import type { PageHeroData } from "@/content/types";
 import { cn } from "@/lib/cn";
 
-type PageHeroProps = PageHeroData & {
-  /** Visual kanan khusus halaman (bukan mockup), mis. alur nilai di About. Dipakai bila `visual` kosong. */
-  aside?: React.ReactNode;
-};
-
-/** Hero untuk halaman turunan: teks kiri, mockup/visual kanan (atau teks saja bila tanpa visual). */
-export function PageHero({
-  eyebrow,
-  title,
-  highlight,
-  lead,
-  primary,
-  secondary,
-  visual,
-  aside,
-}: PageHeroProps) {
-  const hasVisual = Boolean(visual || aside);
+/** Hero untuk halaman turunan: teks kiri, mockup kanan (atau teks saja bila tanpa visual). */
+export function PageHero({ eyebrow, title, highlight, lead, primary, secondary, visual }: PageHeroData) {
   return (
     <section className="relative overflow-hidden bg-white">
       <Container
         className={cn(
           "relative grid items-center gap-12 pt-14 pb-16 sm:pt-20 lg:gap-16 lg:pt-24 lg:pb-24",
-          hasVisual && "lg:grid-cols-[1.05fr_1fr]",
+          visual && "lg:grid-cols-[1.05fr_1fr]",
         )}
       >
         <Stagger className="flex max-w-[720px] flex-col gap-6" stagger={0.1}>
@@ -60,9 +45,9 @@ export function PageHero({
           )}
         </Stagger>
 
-        {hasVisual && (
+        {visual && (
           <Reveal delay={0.35} className="w-full">
-            {visual ? <Mockup data={visual} /> : aside}
+            <Mockup data={visual} />
           </Reveal>
         )}
       </Container>

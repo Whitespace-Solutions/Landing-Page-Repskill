@@ -1,10 +1,9 @@
 /** Konten halaman About Us (sumber: brand guideline hal. 3–8). */
-import type { CtaData, PageHeroData, StepsData } from "./types";
+import type { CtaData, StepsData } from "./types";
 
 export const aboutPage: {
-  hero: PageHeroData;
-  /** Visual hero: alur nilai Expertise → Capability → Performance */
-  flow: { name: string; desc: string }[];
+  /** Hero pernyataan: hanya kalimat pembuka, tanpa tombol atau visual. */
+  hero: { eyebrow: string; title: string; highlight?: string; lead: string };
   why: {
     eyebrow: string;
     title: string;
@@ -27,14 +26,7 @@ export const aboutPage: {
     title: "Make Great Sales Expertise Scalable",
     highlight: "Scalable",
     lead: "Repskill turns the knowledge of your best people into skills your whole sales team can build.",
-    primary: { label: "Book Demo", href: "/book-demo/" },
-    secondary: { label: "See Our Approach", href: "#approach" },
   },
-  flow: [
-    { name: "Expertise", desc: "What your best people know" },
-    { name: "Capability", desc: "Skills your whole team can build" },
-    { name: "Performance", desc: "Stronger sales conversations, every day" },
-  ],
   why: {
     eyebrow: "Why Repskill Exists",
     title: "Great Sales Expertise Should Not Stay With a Few Top Performers",

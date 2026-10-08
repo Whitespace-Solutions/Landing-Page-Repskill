@@ -1,62 +1,35 @@
 import { Stagger, StaggerItem } from "@/components/motion/reveal";
+import { Container } from "@/components/ui/container";
 import { Eyebrow } from "@/components/ui/eyebrow";
+import { HighlightText } from "@/components/ui/highlight-text";
 import { Section } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
 import { aboutPage } from "@/content/about";
-import { cn } from "@/lib/cn";
 
-/** Visual hero About: alur nilai Expertise → Capability → Performance, langkah terakhir oranye. */
-export function AboutFlow() {
-  const { flow } = aboutPage;
-  const last = flow.length - 1;
+/** Hero About: satu pernyataan kuat di tengah, tanpa tombol atau visual. */
+export function AboutHero() {
+  const { hero } = aboutPage;
   return (
-    <Stagger
-      as="ol"
-      className="flex flex-col items-center gap-2 rounded-panel bg-surface p-4 sm:p-6"
-      stagger={0.18}
-    >
-      {flow.map((step, i) => (
-        <StaggerItem as="li" key={step.name} className="flex w-full flex-col items-center gap-2">
-          <div
-            className={cn(
-              "flex w-full items-center gap-4 rounded-card px-5 py-4.5 sm:px-6",
-              i === last ? "bg-brand-orange text-white shadow-float" : "bg-white",
-            )}
-          >
-            <span
-              className={cn(
-                "flex size-10 flex-none items-center justify-center rounded-full text-sm font-bold",
-                i === last ? "bg-white/20 text-white" : "bg-brand-linen text-brand-grey",
-              )}
-            >
-              {String(i + 1).padStart(2, "0")}
-            </span>
-            <div className="flex flex-col gap-0.5">
-              <span className="text-h3">{step.name}</span>
-              <span className={cn("text-[15px]", i === last ? "text-white/85" : "text-brand-charcoal")}>
-                {step.desc}
-              </span>
-            </div>
-          </div>
-          {i < last && (
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="text-brand-orange"
-              aria-hidden
-            >
-              <path d="M12 5v14M6 13l6 6 6-6" />
-            </svg>
-          )}
-        </StaggerItem>
-      ))}
-    </Stagger>
+    <section className="bg-white">
+      <Container className="pt-20 pb-20 sm:pt-28 lg:pt-36 lg:pb-32">
+        <Stagger
+          className="mx-auto flex max-w-[980px] flex-col items-center gap-6 text-center"
+          stagger={0.12}
+        >
+          <StaggerItem>
+            <Eyebrow>{hero.eyebrow}</Eyebrow>
+          </StaggerItem>
+          <StaggerItem>
+            <h1 className="text-display text-balance">
+              <HighlightText text={hero.title} highlight={hero.highlight} />
+            </h1>
+          </StaggerItem>
+          <StaggerItem>
+            <p className="max-w-[640px] text-lead text-pretty text-brand-charcoal">{hero.lead}</p>
+          </StaggerItem>
+        </Stagger>
+      </Container>
+    </section>
   );
 }
 
