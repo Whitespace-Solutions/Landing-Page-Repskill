@@ -9,6 +9,7 @@ import knowledgeChatScreenshot from "@/assets/images/mockups/knowledge-chat.webp
 import knowledgeUniverseScreenshot from "@/assets/images/mockups/knowledge-universe.webp";
 import learningPathScreenshot from "@/assets/images/mockups/learning-path.webp";
 import reflectionStudioPoster from "@/assets/images/mockups/reflection-studio-poster.webp";
+import scenarioStudioScreenshot from "@/assets/images/mockups/scenario-studio.webp";
 import type { VisualCtaLayout } from "@/components/sections/shared/visual-cta";
 import type { FeatureKey } from "./success-stories";
 import type { CtaData, FeatureBlockData, PageHeroData } from "./types";
@@ -96,15 +97,9 @@ export const practicePage: FeaturePage = {
         "Feedback right after every practice session",
       ],
       visual: {
-        type: "bars",
-        title: "Practice feedback",
-        meta: "Scenario complete",
-        items: [
-          { label: "Open questions", value: 80, tone: "strength", tag: "STRENGTH" },
-          { label: "Listening and summarizing", value: 70, tone: "strength", tag: "STRENGTH" },
-          { label: "Quantifying impact", value: 40, tone: "gap", tag: "GAP" },
-        ],
-        note: { label: "TRY NEXT", text: "Quantify the impact before discussing price." },
+        type: "screenshot",
+        image: scenarioStudioScreenshot,
+        alt: "Repskill Scenario Studio: rehearse the conversation that matters against an AI buyer trained on your own playbooks, with Create Scenario for a specific real meeting and Library Mode for ready-made team scenarios approved by your content team.",
       },
     },
     {
