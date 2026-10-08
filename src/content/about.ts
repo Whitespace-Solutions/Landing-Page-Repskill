@@ -8,7 +8,7 @@ export const aboutPage: {
     eyebrow: string;
     title: string;
     body: string;
-    /** Purpose sudah menjadi judul hero, jadi di sini cukup Vision & Mission. */
+    /** Vision & Mission (Purpose = tagline brand, sudah dipakai di Home). */
     statements: { id: string; key: string; text: string }[];
   };
   philosophy: {
@@ -23,9 +23,10 @@ export const aboutPage: {
 } = {
   hero: {
     eyebrow: "About Repskill",
-    title: "Make Great Sales Expertise Scalable",
-    highlight: "Scalable",
-    lead: "Repskill turns the knowledge of your best people into skills your whole sales team can build.",
+    // Spasi tak-putus: "Their Best" selalu satu baris, jadi baris pertama judul memanjang.
+    title: "We Help Sales Teams Learn From Their Best",
+    highlight: "Their Best",
+    lead: "Repskill is an AI-powered sales capability platform. We capture what your top performers know and turn it into learning, practice, and coaching for the whole team.",
   },
   why: {
     eyebrow: "Why Repskill Exists",

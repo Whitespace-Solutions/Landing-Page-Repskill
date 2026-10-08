@@ -7,7 +7,7 @@ import { aboutPage } from "@/content/about";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Repskill exists to make great sales expertise scalable. Learn about our purpose, vision, mission, and philosophy.",
+    "Repskill exists to make great sales expertise scalable. Learn about our vision, mission, philosophy, and approach.",
 };
 
 export default function AboutPage() {
