@@ -3,16 +3,6 @@ import Link from "next/link";
 import { ArrowRight } from "@/components/ui/button";
 import type { SuccessStory } from "@/content/success-stories";
 
-/** Penanda konten yang belum final — hilang otomatis saat `draft: false`. */
-export function DraftBadge({ show }: { show: boolean }) {
-  if (!show) return null;
-  return (
-    <span className="rounded-full border border-dashed border-brand-orange px-2.5 py-1 text-xs font-semibold text-brand-orange-deep">
-      Draft content
-    </span>
-  );
-}
-
 /**
  * Satu baris klien di halaman /success-stories/ (latar `surface`): judul hasil + ringkasan + tautan "Read Case Study",
  * kolom metrik, dan logo berwarna dalam kotak putih. Antar baris dipisah garis tipis.
@@ -22,7 +12,6 @@ export function StoryRow({ story }: { story: SuccessStory }) {
   return (
     <article className="grid gap-8 border-t border-line py-10 lg:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)_minmax(0,1fr)] lg:gap-12 lg:py-14">
       <div className="flex flex-col items-start gap-5">
-        <DraftBadge show={story.draft} />
         <h2 className="text-h2 text-balance text-brand-grey">
           {story.name}: {story.headline}
         </h2>

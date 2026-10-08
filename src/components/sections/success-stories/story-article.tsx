@@ -6,7 +6,6 @@ import { Container } from "@/components/ui/container";
 import { featureInfo } from "@/content/features";
 import type { SuccessStory } from "@/content/success-stories";
 import { successStoriesPage } from "@/content/success-stories-page";
-import { DraftBadge } from "./story-parts";
 import { StoryToc, type TocItem } from "./story-toc";
 
 const copy = successStoriesPage.detail;
@@ -29,16 +28,13 @@ export function StoryArticle({ story }: { story: SuccessStory }) {
     <>
       <Container className="pt-8 pb-12 lg:pt-12 lg:pb-16">
         <Reveal className="flex flex-col items-start gap-6">
-          <div className="flex flex-wrap items-center gap-4">
-            <Link
-              href={copy.back.href}
-              className="group inline-flex items-center gap-1.5 text-sm font-semibold text-brand-charcoal hover:text-brand-grey"
-            >
-              <ArrowRight size={15} className="rotate-180 transition-transform group-hover:-translate-x-1" />
-              {copy.back.label}
-            </Link>
-            <DraftBadge show={story.draft} />
-          </div>
+          <Link
+            href={copy.back.href}
+            className="group inline-flex items-center gap-1.5 text-sm font-semibold text-brand-charcoal hover:text-brand-grey"
+          >
+            <ArrowRight size={15} className="rotate-180 transition-transform group-hover:-translate-x-1" />
+            {copy.back.label}
+          </Link>
           <h1 className="max-w-[920px] text-h1 text-balance">{story.about.title}</h1>
         </Reveal>
       </Container>

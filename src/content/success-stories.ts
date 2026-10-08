@@ -29,6 +29,7 @@ export type SuccessStory = {
   headline: string;
   /** Satu kalimat untuk kartu & teaser */
   summary: string;
+  /** Status konten (tidak ditampilkan; badge "Draft content" dihapus atas permintaan user 2026-10-08) */
   draft: boolean;
   about: {
     title: string;
