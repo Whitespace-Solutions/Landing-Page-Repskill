@@ -37,10 +37,9 @@ export function Mockup({ data }: { data: MockupData }) {
 
 /**
  * Kartu "Where tokens go" seperti di platform: area, jumlah token tebal · persen, bar amber yang terisi pelan & halus
- * berurutan. Panjang bar relatif terhadap area terbesar (area terbesar = penuh).
+ * berurutan. Panjang bar = persentase area dari total (74% → bar terisi 74%).
  */
 function TokenUsageMockup({ title, meta, items, action }: Extract<MockupData, { type: "token-usage" }>) {
-  const max = Math.max(...items.map((item) => item.share));
   return (
     <div className="rounded-panel border border-line bg-white p-6 shadow-float sm:p-7">
       <p className="text-h3 text-brand-grey">{title}</p>
@@ -56,11 +55,11 @@ function TokenUsageMockup({ title, meta, items, action }: Extract<MockupData, { 
             </div>
             <span className="block h-2.5 overflow-hidden rounded-full bg-brand-linen">
               <AnimatedBar
-                value={(item.share / max) * 100}
+                value={item.share}
                 delay={0.3 + i * 0.18}
                 duration={1.6}
                 ease={EASE_SMOOTH}
-                className="min-w-2.5 bg-brand-amber"
+                className="bg-brand-amber"
               />
             </span>
           </li>

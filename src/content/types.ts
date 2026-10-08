@@ -49,7 +49,7 @@ export type MockupData =
       type: "token-usage";
       title: string;
       meta: string;
-      /** `share` = persen dari total; panjang bar relatif terhadap area terbesar */
+      /** `share` = persen dari total, sekaligus panjang bar */
       items: { label: string; tokens: string; share: number }[];
       /** Label tombol (tampilan saja, bukan tautan) */
       action?: string;
