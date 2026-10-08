@@ -4,6 +4,7 @@ import capturePortrait from "@/assets/images/cta/capture-portrait.webp";
 import learnPortrait from "@/assets/images/cta/learn-portrait.webp";
 import practicePortrait from "@/assets/images/cta/practice-portrait.webp";
 import knowledgeChatScreenshot from "@/assets/images/mockups/knowledge-chat.webp";
+import knowledgeUniverseScreenshot from "@/assets/images/mockups/knowledge-universe.webp";
 import reflectionStudioPoster from "@/assets/images/mockups/reflection-studio-poster.webp";
 import type { VisualCtaLayout } from "@/components/sections/shared/visual-cta";
 import type { FeatureKey } from "./success-stories";
@@ -266,7 +267,11 @@ export const learnPage: FeaturePage = {
         "Reviewed and approved before it is used",
         "Powers Learning Paths, Scenario Studio, and Reflection Studio",
       ],
-      visual: { type: "knowledge-universe" },
+      visual: {
+        type: "screenshot",
+        image: knowledgeUniverseScreenshot,
+        alt: "Repskill Knowledge Universe: 49 resources with a knowledge base search, filters for SOPs, non-SOPs, and bookmarks, and article cards such as executive sponsor alignment at a mid-market logistics company.",
+      },
     },
     {
       id: "chat",
