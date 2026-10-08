@@ -3,6 +3,7 @@ import { AnimatedBar } from "@/components/motion/animated-bar";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/reveal";
 import type { MockupData, Status } from "@/content/types";
 import { cn } from "@/lib/cn";
+import { ExpandableMedia } from "./expandable-media";
 import { VideoMockup } from "./video-mockup";
 
 /**
@@ -32,12 +33,29 @@ export function Mockup({ data }: { data: MockupData }) {
   }
 }
 
-/** Screenshot produk dalam bingkai yang sama dengan `VideoMockup`. */
+/** Screenshot produk dalam bingkai yang sama dengan `VideoMockup`; bisa dibuka layar penuh. */
 function ScreenshotMockup({ image, alt }: Extract<MockupData, { type: "screenshot" }>) {
   return (
-    <div className="overflow-hidden rounded-card border border-line bg-white shadow-float">
-      <Image src={image} alt={alt} className="block h-auto w-full" sizes="(min-width: 1024px) 700px, 100vw" />
-    </div>
+    <ExpandableMedia
+      label={alt}
+      expanded={
+        <Image
+          src={image}
+          alt={alt}
+          sizes="100vw"
+          className="h-auto max-h-full w-auto max-w-full rounded-card bg-white object-contain shadow-pop"
+        />
+      }
+    >
+      <div className="overflow-hidden rounded-card border border-line bg-white shadow-float">
+        <Image
+          src={image}
+          alt={alt}
+          className="block h-auto w-full"
+          sizes="(min-width: 1024px) 700px, 100vw"
+        />
+      </div>
+    </ExpandableMedia>
   );
 }
 
