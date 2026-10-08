@@ -105,12 +105,12 @@ export const practicePage: FeaturePage = {
     {
       id: "reflection-studio",
       eyebrow: "Reflection Studio",
-      title: "Turn every sales experience into an opportunity to improve",
-      body: "Reflect after practice and after real meetings. Understand strengths and gaps, and leave every reflection with a clear next action.",
+      title: "See how you performed after every sales meeting",
+      body: "After a meeting, upload the video or voice recording. Reflection Studio assesses your performance and shows your strengths and gaps, so you know what to improve before the next one.",
       points: [
-        "Guided reflection while the conversation is fresh",
-        "A clear, encouraging view of strengths and gaps",
-        "Strong reflections can become new best practices after review",
+        "Upload a video or voice-only recording once the meeting ends",
+        "Get an assessment of how you performed in the conversation",
+        "See your strengths and gaps, and know what to improve next",
       ],
       visual: {
         type: "video",
