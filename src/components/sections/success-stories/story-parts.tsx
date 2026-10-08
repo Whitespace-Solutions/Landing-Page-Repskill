@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Mockup } from "@/components/mockups/mockup";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/reveal";
-import { ArrowRight, ButtonLink } from "@/components/ui/button";
+import { ArrowRight } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Section } from "@/components/ui/section";
@@ -12,10 +12,15 @@ import type { SuccessStory } from "@/content/success-stories";
 import { cn } from "@/lib/cn";
 
 /** Penanda konten yang belum final — hilang otomatis saat `draft: false`. */
-export function DraftBadge({ show }: { show: boolean }) {
+export function DraftBadge({ show, dark = false }: { show: boolean; dark?: boolean }) {
   if (!show) return null;
   return (
-    <span className="rounded-full border border-dashed border-brand-orange px-2.5 py-1 text-xs font-semibold text-brand-orange-deep">
+    <span
+      className={cn(
+        "rounded-full border border-dashed border-brand-orange px-2.5 py-1 text-xs font-semibold",
+        dark ? "text-brand-orange" : "text-brand-orange-deep",
+      )}
+    >
       Draft content
     </span>
   );
@@ -47,46 +52,45 @@ export function MetricTiles({
 }
 
 /**
- * Kartu satu klien di halaman /success-stories/: judul hasil, ringkasan, metrik, tombol ke halaman detail,
- * dan logo di panel kanan.
+ * Satu baris klien di halaman /success-stories/ (section gelap): judul hasil + ringkasan + tautan "Read Case Study",
+ * kolom metrik, dan logo berwarna dalam kotak putih. Antar baris dipisah garis tipis.
  */
 export function StoryRow({ story }: { story: SuccessStory }) {
   const href = `/success-stories/${story.slug}/`;
   return (
-    <article className="grid items-center gap-8 rounded-panel border border-line bg-white p-6 sm:p-10 lg:grid-cols-[1.5fr_1fr] lg:gap-14">
-      <div className="flex flex-col gap-6">
-        <div className="flex flex-wrap items-center gap-3">
-          <span className="rounded-full border border-line bg-white px-2.5 py-1 text-xs font-semibold text-brand-charcoal">
-            {story.industry}
-          </span>
-          <DraftBadge show={story.draft} />
-        </div>
-        <div className="flex flex-col gap-4">
-          <h2 className="text-h2 text-balance">
-            {story.name}: {story.headline}
-          </h2>
-          <p className="max-w-[620px] text-lead text-pretty text-brand-charcoal">{story.summary}</p>
-        </div>
-        <dl className="flex flex-wrap gap-3">
-          {story.result.metrics.map((m) => (
-            <div key={m.label} className="flex flex-col gap-1 rounded-card bg-brand-linen px-5 py-4">
-              <dt className="order-last text-sm font-semibold text-brand-charcoal">{m.label}</dt>
-              <dd className="text-h3 text-brand-grey">{m.value}</dd>
-            </div>
-          ))}
-        </dl>
-        <ButtonLink href={href} withArrow className="self-start">
+    <article className="grid gap-8 border-t border-white/15 py-10 lg:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)_minmax(0,1fr)] lg:gap-12 lg:py-14">
+      <div className="flex flex-col items-start gap-5">
+        <DraftBadge show={story.draft} dark />
+        <h2 className="text-h2 text-balance text-white">
+          {story.name}: {story.headline}
+        </h2>
+        <p className="max-w-[620px] text-base leading-relaxed text-pretty text-line">{story.summary}</p>
+        <Link
+          href={href}
+          className="group mt-3 inline-flex items-center gap-3 border-b border-white/40 pb-3 text-eyebrow text-white uppercase transition-colors hover:border-brand-orange hover:text-brand-orange"
+        >
           Read Case Study
-        </ButtonLink>
+          <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+        </Link>
       </div>
+
+      <dl className="grid grid-cols-3 gap-6 lg:flex lg:flex-col lg:gap-8">
+        {story.result.metrics.map((m) => (
+          <div key={m.label} className="flex flex-col gap-2">
+            <dt className="order-last text-eyebrow text-line/70 uppercase">{m.label}</dt>
+            <dd className="text-h2 text-white">{m.value}</dd>
+          </div>
+        ))}
+      </dl>
 
       <Link
         href={href}
         tabIndex={-1}
         aria-hidden
-        className="order-first flex aspect-video items-center justify-center rounded-card border border-line bg-surface p-10 transition-colors hover:border-brand-amber lg:order-last"
+        className="order-first flex h-28 items-center justify-center rounded-card bg-white p-8 transition-shadow hover:shadow-glow lg:order-none lg:aspect-[2.2/1] lg:h-auto lg:self-start"
       >
-        <Image src={story.logo} alt="" className="h-auto max-h-24 w-auto max-w-[70%]" />
+        {/* Logo klien tetap berwarna penuh, jadi diberi kotak putih agar terbaca di Shadow Grey */}
+        <Image src={story.logo} alt="" className="h-auto max-h-14 w-auto max-w-[70%]" />
       </Link>
     </article>
   );
