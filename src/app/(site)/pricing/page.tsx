@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import {
   FeatureComparison,
-  PricingModel,
   PricingPlans,
   WhatsIncluded,
 } from "@/components/sections/pricing/pricing-sections";
+import { FeatureSplit } from "@/components/sections/shared/feature-split";
 import { PageHero } from "@/components/sections/shared/page-hero";
 import { VisualCta } from "@/components/sections/shared/visual-cta";
 import { pricingPage } from "@/content/pricing";
@@ -20,7 +20,7 @@ export default function PricingPage() {
     <>
       <PageHero {...pricingPage.hero} />
       <PricingPlans />
-      <PricingModel />
+      <FeatureSplit {...pricingPage.tokens} tone="linen" />
       <WhatsIncluded />
       <FeatureComparison />
       <VisualCta {...pricingPage.cta} visual={pricingPage.ctaVisual} />

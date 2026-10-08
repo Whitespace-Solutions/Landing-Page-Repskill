@@ -2,7 +2,7 @@
 import type { StaticImageData } from "next/image";
 import learnPortrait from "@/assets/images/cta/learn-portrait.webp";
 import type { VisualCtaLayout } from "@/components/sections/shared/visual-cta";
-import type { CtaData, Link, PageHeroData } from "./types";
+import type { CtaData, FeatureBlockData, Link, PageHeroData } from "./types";
 
 export type PricingPlan = {
   name: string;
@@ -22,15 +22,8 @@ export type PricingPlan = {
 export const pricingPage: {
   hero: PageHeroData;
   plans: { title: string; items: PricingPlan[] };
-  plan: {
-    eyebrow: string;
-    name: string;
-    title: string;
-    body: string;
-    includes: string[];
-    cta: { label: string; href: string };
-    factors: { title: string; items: { title: string; desc: string }[] };
-  };
+  /** Cara kerja token (data dari halaman Team tokens di platform) */
+  tokens: FeatureBlockData;
   included: {
     eyebrow: string;
     title: string;
@@ -90,25 +83,29 @@ export const pricingPage: {
       },
     ],
   },
-  plan: {
-    eyebrow: "Pricing Model",
-    name: "Repskill Platform",
-    title: "Pricing tailored to your organization's needs",
-    body: "One platform that includes every Repskill capability and your own Knowledge Universe.",
-    includes: [
-      "Capture Knowledge: Extraction Studio & content review",
-      "Learn Knowledge: Knowledge Universe, Chat & Learning Path",
-      "Practice: Scenario Studio & Reflection Studio",
-      "Onboarding and implementation support",
+  tokens: {
+    id: "tokens",
+    eyebrow: "Tokens",
+    title: "One token balance for your whole team",
+    body: "Tokens power everything your team does in Repskill, from roleplay practice to Chat and Reflection Studio. Admins see the balance, set limits, and know exactly where tokens go.",
+    points: [
+      "One shared balance, always shown with its rupiah value",
+      "Top up anytime at Rp 10.000 per 1,000 tokens",
+      "Set a monthly team limit and track usage against it",
+      "See where tokens go, and how long your balance will last",
     ],
-    cta: { label: "Talk to Sales", href: "/book-demo/" },
-    factors: {
-      title: "What shapes your plan",
+    visual: {
+      type: "bars",
+      title: "Where tokens go",
+      meta: "Example month, by area",
       items: [
-        { title: "Team size", desc: "How many people will learn and practice on Repskill." },
-        { title: "Knowledge scope", desc: "How much company and expert knowledge to capture." },
-        { title: "Rollout", desc: "The teams, regions, and timeline for your launch." },
+        { label: "Practice (roleplay)", value: 74, tone: "strength", tag: "74%" },
+        { label: "Scenario Studio", value: 11, tone: "strength", tag: "11%" },
+        { label: "Chat", value: 10, tone: "strength", tag: "10%" },
+        { label: "Reflection Studio", value: 2, tone: "strength", tag: "2%" },
+        { label: "Content", value: 2, tone: "strength", tag: "2%" },
       ],
+      note: { label: "BALANCE", text: "Lasts about 2.8 more months at this month's pace." },
     },
   },
   included: {

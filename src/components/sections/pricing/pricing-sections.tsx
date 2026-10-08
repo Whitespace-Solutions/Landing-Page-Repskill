@@ -3,7 +3,6 @@ import Link from "next/link";
 import repskillIcon from "@/assets/brand/repskill-icon.svg";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/reveal";
 import { ArrowRight, ButtonLink } from "@/components/ui/button";
-import { Eyebrow } from "@/components/ui/eyebrow";
 import { RichText } from "@/components/ui/rich-text";
 import { Section } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
@@ -106,61 +105,6 @@ function PlanCard({ plan }: { plan: PricingPlan }) {
         <span className="text-sm text-brand-charcoal">{plan.note}</span>
       </div>
     </article>
-  );
-}
-
-/** Plans / Pricing Model */
-export function PricingModel() {
-  const { plan } = pricingPage;
-  return (
-    <Section tone="surface">
-      <div className="grid gap-4 lg:grid-cols-[1.4fr_1fr]">
-        <Reveal className="flex flex-col gap-6 rounded-panel border border-line bg-white p-7 shadow-float sm:p-10">
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <Eyebrow>{plan.eyebrow}</Eyebrow>
-            <span className="rounded-full bg-brand-orange px-3 py-1 text-xs font-semibold text-white">
-              All capabilities included
-            </span>
-          </div>
-          <div className="flex flex-col gap-3">
-            <span className="text-h3 text-brand-charcoal">{plan.name}</span>
-            <h2 className="text-h2 text-balance">{plan.title}</h2>
-            <p className="text-lead text-pretty text-brand-charcoal">{plan.body}</p>
-          </div>
-          <ul className="grid gap-3 sm:grid-cols-2">
-            {plan.includes.map((item) => (
-              <li key={item} className="flex items-start gap-3 text-[15px] text-brand-grey">
-                <span className="mt-0.5 flex size-5 flex-none items-center justify-center rounded-full bg-brand-amber text-brand-grey">
-                  <Check />
-                </span>
-                {item}
-              </li>
-            ))}
-          </ul>
-          <ButtonLink href={plan.cta.href} size="lg" withArrow className="mt-2 self-start">
-            {plan.cta.label}
-          </ButtonLink>
-        </Reveal>
-
-        <Reveal
-          delay={0.15}
-          className="flex flex-col gap-5 rounded-panel bg-brand-grey p-7 text-white sm:p-10"
-        >
-          <span className="text-eyebrow text-brand-amber">{plan.factors.title.toUpperCase()}</span>
-          <Stagger as="ol" className="flex flex-col gap-5" stagger={0.1}>
-            {plan.factors.items.map((f, i) => (
-              <StaggerItem as="li" key={f.title} className="flex gap-4">
-                <span className="text-sm font-bold text-brand-amber">{String(i + 1).padStart(2, "0")}</span>
-                <div className="flex flex-col gap-1">
-                  <span className="font-bold">{f.title}</span>
-                  <span className="text-[15px] leading-relaxed text-line">{f.desc}</span>
-                </div>
-              </StaggerItem>
-            ))}
-          </Stagger>
-        </Reveal>
-      </div>
-    </Section>
   );
 }
 
