@@ -1,29 +1,23 @@
 import type { Metadata } from "next";
-import {
-  HowWeThink,
-  OurPhilosophy,
-  PurposeVisionMission,
-  WhyRepskill,
-} from "@/components/sections/about/about-sections";
-import { FinalCta } from "@/components/sections/shared/final-cta";
-import { PageHero } from "@/components/sections/shared/page-hero";
+import { AboutHero, OurPhilosophy, WhyRepskill } from "@/components/sections/about/about-sections";
+import { HomeCta } from "@/components/sections/home/home-cta";
+import { StepsTimeline } from "@/components/sections/shared/steps-timeline";
 import { aboutPage } from "@/content/about";
 
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Repskill exists to make great sales expertise scalable. Learn about our purpose, vision, mission, and philosophy.",
+    "Repskill exists to make great sales expertise scalable. Learn about our vision, mission, philosophy, and approach.",
 };
 
 export default function AboutPage() {
   return (
     <>
-      <PageHero {...aboutPage.hero} />
+      <AboutHero />
       <WhyRepskill />
-      <PurposeVisionMission />
       <OurPhilosophy />
-      <HowWeThink />
-      <FinalCta {...aboutPage.cta} />
+      <StepsTimeline {...aboutPage.approach} tone="light" />
+      <HomeCta {...aboutPage.cta} />
     </>
   );
 }

@@ -1,88 +1,123 @@
 /** Konten halaman About Us (sumber: brand guideline hal. 3–8). */
-import type { CtaData, PageHeroData } from "./types";
+import type { CtaData, StepsData } from "./types";
 
 export const aboutPage: {
-  hero: PageHeroData;
-  why: { eyebrow: string; title: string; body: string; flow: string[] };
-  pvm: { id: string; key: string; text: string }[];
+  /** Hero pernyataan: hanya kalimat pembuka, tanpa tombol atau visual. */
+  hero: { eyebrow: string; title: string; highlight?: string; lead: string };
+  why: {
+    eyebrow: string;
+    title: string;
+    body: string;
+    /** Vision & Mission (Purpose = tagline brand, sudah dipakai di Home). */
+    statements: { id: string; key: string; text: string }[];
+  };
   philosophy: {
     eyebrow: string;
     title: string;
     body: string;
     archetypes: { name: string; line: string; traits: string[] }[];
-    personality: { name: string; desc: string }[];
+    principles: { name: string; desc: string }[];
   };
-  thinking: { eyebrow: string; title: string; stages: { name: string; desc: string }[] };
+  approach: StepsData;
   cta: CtaData;
 } = {
   hero: {
     eyebrow: "About Repskill",
-    title: "Make Great Sales Expertise Scalable",
-    highlight: "Scalable",
-    lead: "Repskill turns the knowledge of your best people into skills your whole sales team can build.",
-    primary: { label: "Book Demo", href: "/book-demo/" },
-    secondary: { label: "How Repskill works", href: "/#how" },
+    // Spasi tak-putus: "Their Best" selalu satu baris, jadi baris pertama judul memanjang.
+    title: "We Help Sales Teams Learn From Their Best",
+    highlight: "Their Best",
+    lead: "Repskill is an AI-powered sales capability platform. We capture what your top performers know and turn it into learning, practice, and coaching for the whole team.",
   },
   why: {
     eyebrow: "Why Repskill Exists",
-    title: "Great sales expertise should not remain locked inside a few top performers",
+    title: "Great Sales Expertise Should Not Stay With a Few Top Performers",
     body: "Repskill helps organizations capture, structure, practice, and scale that expertise across the team.",
-    flow: ["Expertise", "Capability", "Performance"],
+    statements: [
+      {
+        id: "vision",
+        key: "Our Vision",
+        text: "A world where great sales expertise can be learned, practiced, and scaled.",
+      },
+      {
+        id: "mission",
+        key: "Our Mission",
+        text: "Help organizations capture their best sales knowledge and turn it into continuous learning, practice, and coaching.",
+      },
+    ],
   },
-  pvm: [
-    { id: "purpose", key: "Purpose", text: "Make great sales expertise scalable." },
-    {
-      id: "vision",
-      key: "Vision",
-      text: "A world where great sales expertise can be learned, practiced, and scaled.",
-    },
-    {
-      id: "mission",
-      key: "Mission",
-      text: "Help organizations capture their best sales knowledge and turn it into continuous learning, practice, and coaching.",
-    },
-  ],
   philosophy: {
     eyebrow: "Our Philosophy",
-    title: "Mentor × Builder",
-    body: "Repskill should feel like a knowledgeable mentor that helps organizations systematically build sales capability at scale.",
+    title: "Part Mentor, Part Builder",
+    body: "We guide people the way a trusted coach would, and we build capability the way a good system should: structured, repeatable, and ready to scale.",
     archetypes: [
       {
         name: "The Mentor",
-        line: "Guide people to become better at what they do.",
-        traits: ["Knowledgeable", "Supportive", "Experienced", "Guiding"],
+        line: "Help every rep get better at the conversations that matter.",
+        traits: ["Knowledgeable", "Supportive", "Guiding"],
       },
       {
         name: "The Builder",
-        line: "Build sales capability systematically at scale.",
-        traits: ["Structured", "Scalable", "Practical", "Performance-oriented"],
+        line: "Turn that guidance into a system that scales across the team.",
+        traits: ["Structured", "Scalable", "Performance-oriented"],
       },
     ],
-    personality: [
-      { name: "Smart", desc: "Intelligent, knowledgeable, credible." },
-      { name: "Practical", desc: "Focused on real-world application." },
-      { name: "Human", desc: "Supportive technology, not robotic." },
-      { name: "Confident", desc: "Professional, clear, and credible." },
-      { name: "Encouraging", desc: "Improves without judgment." },
-      { name: "Action-oriented", desc: "Always moves users toward the next step." },
+    principles: [
+      {
+        name: "Grounded in Your Knowledge",
+        desc: "Coaching draws on your company's reviewed and approved knowledge, not generic advice.",
+      },
+      {
+        name: "Built for Real Sales Moments",
+        desc: "Practice centers on situations reps actually face, from discovery calls to pricing objections.",
+      },
+      {
+        name: "Supportive, Not Judgmental",
+        desc: "Feedback shows the gap and how to close it, so reps keep improving with confidence.",
+      },
+      {
+        name: "Always a Next Step",
+        desc: "Every session points to what to learn or practice next.",
+      },
     ],
   },
-  thinking: {
-    eyebrow: "How We Think About Sales Capability",
+  approach: {
+    id: "approach",
+    eyebrow: "Our Approach",
     title: "Capture expertise. Build skills. Scale capability",
-    stages: [
-      { name: "Capture", desc: "Extract company & top-performer knowledge." },
-      { name: "Learn", desc: "Turn knowledge into structured learning." },
-      { name: "Practice", desc: "Simulate realistic sales situations." },
-      { name: "Reflect", desc: "Understand what happened and why." },
-      { name: "Improve", desc: "Build capability across the team." },
+    body: "Sales capability grows through a repeatable cycle, built on a Knowledge Universe your team has reviewed and approved.",
+    steps: [
+      {
+        name: "Capture",
+        message: "Extract company and top-performer knowledge.",
+        tag: "Extraction Studio",
+        href: "/features/capture-knowledge/",
+      },
+      {
+        name: "Learn",
+        message: "Turn knowledge into structured learning.",
+        tag: "Learning Path",
+        href: "/features/learn-knowledge/",
+      },
+      {
+        name: "Practice",
+        message: "Simulate realistic sales situations.",
+        tag: "Scenario Studio",
+        href: "/features/practice/#scenario-studio",
+      },
+      {
+        name: "Reflect",
+        message: "Understand what happened and why.",
+        tag: "Reflection Studio",
+        href: "/features/practice/#reflection-studio",
+      },
+      { name: "Improve", message: "Build capability across the team." },
     ],
   },
   cta: {
     eyebrow: "Get Started",
-    title: "Make Your Sales Expertise Scalable",
-    highlight: "Scalable",
-    body: "See how Repskill can help turn your organization's expertise into capability your whole sales team can build.",
+    title: "Put Your Best Sales Knowledge to Work",
+    highlight: "to Work",
+    body: "Book a demo to see how Repskill turns what your top performers know into skills your whole team can practice.",
     secondary: { label: "Read Success Stories", href: "/success-stories/" },
   },
 };
