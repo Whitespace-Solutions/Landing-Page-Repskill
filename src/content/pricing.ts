@@ -1,8 +1,27 @@
 /** Konten halaman Pricing. */
-import type { CtaData, PageHeroData, StepsData } from "./types";
+import type { StaticImageData } from "next/image";
+import learnPortrait from "@/assets/images/cta/learn-portrait.webp";
+import type { VisualCtaLayout } from "@/components/sections/shared/visual-cta";
+import type { CtaData, Link, PageHeroData } from "./types";
+
+export type PricingPlan = {
+  name: string;
+  /** Label di atas kartu, mis. "Save 20%"; kartu dengan badge ditonjolkan (border oranye, tombol primer) */
+  badge?: string;
+  currency: string;
+  price: string;
+  period: string;
+  /** Baris di bawah harga; `was` dicoret, `total` oranye tebal, lalu `text` */
+  billing: { text: string; was?: string; total?: string };
+  /** Boleh memakai `**tebal**` */
+  features: string[];
+  cta: Link;
+  note: string;
+};
 
 export const pricingPage: {
   hero: PageHeroData;
+  plans: { title: string; items: PricingPlan[] };
   plan: {
     eyebrow: string;
     name: string;
@@ -24,16 +43,52 @@ export const pricingPage: {
     columns: [string, string];
     rows: { label: string; values: [boolean | string, boolean | string] }[];
   };
-  implementation: StepsData;
   cta: CtaData;
+  ctaVisual: { image: StaticImageData; layout: VisualCtaLayout };
 } = {
   hero: {
     eyebrow: "Pricing",
-    title: "Build Sales Capability Around Your Organization",
-    highlight: "Your Organization",
-    lead: "Choose an approach that fits your organization's sales capability goals.",
-    primary: { label: "Talk to Sales", href: "/book-demo/" },
-    secondary: { label: "What's included", href: "#included" },
+    title: "Simple, transparent pricing",
+    highlight: "transparent pricing",
+    lead: "One plan, two ways to pay. Every team gets the full Repskill toolkit. Pick the billing rhythm that suits you.",
+  },
+  plans: {
+    title: "Pricing",
+    items: [
+      {
+        name: "Monthly",
+        currency: "Rp",
+        price: "3.000.000",
+        period: "/mth",
+        billing: { text: "Billed every month. Cancel anytime." },
+        features: [
+          "**100,000** tokens per month",
+          "Up to **15** team members",
+          "Knowledge Universe & Learning Path",
+          "Role Play & Reflection Studio",
+          "Standard chat and email support",
+        ],
+        cta: { label: "Get started", href: "/book-demo/" },
+        note: "14-day free trial · no card required",
+      },
+      {
+        name: "Annual",
+        badge: "Save 20%",
+        currency: "Rp",
+        price: "2.400.000",
+        period: "/mth",
+        billing: { was: "Rp 36.000.000", total: "Rp 28.800.000", text: "billed once a year" },
+        features: [
+          "Everything in Monthly, plus:",
+          "**1,300,000** tokens per year **+ rollover**",
+          "**Unlimited** team members",
+          "Team Dashboard & usage analytics",
+          "Priority support & onboarding call",
+        ],
+        cta: { label: "Get started", href: "/book-demo/" },
+        note: "14-day free trial · no card required",
+      },
+    ],
   },
   plan: {
     eyebrow: "Pricing Model",
@@ -105,24 +160,13 @@ export const pricingPage: {
       { label: "Continuous, not a one-off event", values: [false, true] },
     ],
   },
-  implementation: {
-    id: "implementation",
-    eyebrow: "Implementation",
-    title: "From first conversation to capability",
-    steps: [
-      { name: "Talk to Sales", message: "Share your goals and sales organization." },
-      { name: "Capture knowledge", message: "Bring in company and expert knowledge." },
-      { name: "Review & approve", message: "Build your curated Knowledge Universe." },
-      { name: "Launch", message: "Roll out Learning Paths and practice scenarios." },
-      { name: "Reflect & improve", message: "Build capability across the team." },
-    ],
-  },
   cta: {
     eyebrow: "Get Started",
     title: "Build Sales Capability Around Your Organization",
     highlight: "Your Organization",
-    body: "Pricing tailored to your organization's needs. Tell us about your team and goals.",
+    body: "Tell us about your team and goals.",
     primary: { label: "Talk to Sales", href: "/book-demo/" },
     secondary: { label: "Read Success Stories", href: "/success-stories/" },
   },
+  ctaVisual: { image: learnPortrait, layout: "learn" },
 };

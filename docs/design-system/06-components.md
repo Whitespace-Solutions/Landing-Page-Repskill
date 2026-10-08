@@ -23,6 +23,8 @@ Pakai komponen yang sudah ada sebelum membuat yang baru. Komponen baru yang reus
 | `PageHero`                         | `src/components/sections/shared/page-hero.tsx`              | Hero halaman turunan (data `PageHeroData`)                                                                                                                                                                                                                                                                  |
 | `FeatureSplit`                     | `src/components/sections/shared/feature-split.tsx`          | Pola Split dengan poin + mockup (data `FeatureBlockData`)                                                                                                                                                                                                                                                   |
 | `StepsTimeline`                    | `src/components/sections/shared/steps-timeline.tsx`         | Timeline bernomor, `tone="dark"` (default) atau `"light"`                                                                                                                                                                                                                                                   |
+| `PricingPlans`                     | `src/components/sections/pricing/pricing-sections.tsx`      | Kartu harga di `/pricing/` dari `pricingPage.plans`: ikon Repskill, nama paket oranye, harga `text-display`, baris tagihan (harga coret + total oranye), fitur (✓ amber, `**tebal**`), tombol + catatan. Kartu dengan `badge` = border oranye 2px, badge pil di atas, tombol primer                         |
+| `RichText`                         | `src/components/ui/rich-text.tsx`                           | Teks konten dengan `**tebal**` → `<strong>` (Guide, kartu harga)                                                                                                                                                                                                                                            |
 | `ClientLogos`                      | `src/components/sections/shared/client-logos.tsx`           | Section "Our Clients": marquee logo dari `src/content/clients.ts`                                                                                                                                                                                                                                           |
 | `StoryCard`                        | `src/components/sections/shared/story-card.tsx`             | Kartu ringkas success story                                                                                                                                                                                                                                                                                 |
 | `StoryRow`                         | `src/components/sections/success-stories/story-parts.tsx`   | Baris satu klien di `/success-stories/` (latar `surface`, dipisah garis tipis): "Nama: headline", ringkasan, tautan uppercase bergaris bawah "Read Case Study"; kolom metrik bertumpuk; logo berwarna di kotak putih                                                                                        |
@@ -77,23 +79,24 @@ State dalam list/progress: **done** = amber · **now/sedang berjalan** = oranye 
 
 Semua section mengikuti kerangka: **Eyebrow → Judul → Lead → Konten → (link/CTA)**.
 
-| Pola                     | Deskripsi                                                                                         | Komponen / contoh                              |
-| ------------------------ | ------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
-| **Hero Home**            | Eyebrow, `text-display`, 2 tombol; ilustrasi `HeroOrb` kanan + glow oranye 7% pojok kanan         | `home/hero.tsx`                                |
-| **Page hero**            | Teks kiri, mockup kanan                                                                           | `PageHero`                                     |
-| **Hero pernyataan**      | Eyebrow, judul `text-display`, lead; rata kiri selebar container, tanpa tombol/visual             | `AboutHero` (About Us)                         |
-| **Our Clients**          | Marquee logo klien berwarna (tanpa outline) kiri → kanan                                          | `ClientLogos`                                  |
-| **Split**                | Teks + poin di satu sisi, mockup di sisi lain; berselang-seling                                   | `FeatureSplit`                                 |
-| **Heading + grid kartu** | `SectionHeader` (+ tombol outline) lalu grid 3–4 kartu                                            | Platform Overview, What's Included             |
-| **Timeline**             | 5 langkah dengan garis atas + dot, langkah terakhir oranye                                        | `StepsTimeline` (How it works, Implementation) |
-| **Tabel perbandingan**   | Kolom Repskill disorot oranye muda, ✓ oranye                                                      | Pricing › Feature Comparison                   |
-| **Daftar success story** | Baris di latar `surface` (`StoryRow`): teks + tautan · metrik · logo, dipisah garis `line`        | `/success-stories/`                            |
-| **Metrik hasil**         | 3 tile Linen, angka oranye + label uppercase; "—" bila belum terverifikasi                        | `StoryArticle` › Results at a Glance           |
-| **Artikel case study**   | Headline tanpa gambar/tombol; 3 kolom (daftar isi · artikel maks. 760px · kotak CTA)              | `/success-stories/<slug>/` (`StoryArticle`)    |
-| **Banner CTA gradasi**   | Panel `rounded-panel` `bg-linear-to-b from-brand-orange/5 to-brand-orange/30`, 1 judul + 1 tombol | Akhir artikel case study                       |
-| **Help Center**          | Hero putih + pencarian, sidebar kiri (lg) / "Browse the guide" (mobile), artikel maks. 780px      | `/guide/` (`GuideShell`)                       |
-| **CTA penutup**          | Panel Shadow Grey membulat di latar putih, tepat di atas footer (lihat di bawah)                  | `shared/final-cta.tsx`                         |
-| **CTA penutup Home**     | Latar putih + glow oranye 7% kiri-kanan, teks di tengah diapit foto & heksagon melayang           | `home/home-cta.tsx`                            |
+| Pola                     | Deskripsi                                                                                         | Komponen / contoh                           |
+| ------------------------ | ------------------------------------------------------------------------------------------------- | ------------------------------------------- |
+| **Hero Home**            | Eyebrow, `text-display`, 2 tombol; ilustrasi `HeroOrb` kanan + glow oranye 7% pojok kanan         | `home/hero.tsx`                             |
+| **Page hero**            | Teks kiri, mockup kanan                                                                           | `PageHero`                                  |
+| **Hero pernyataan**      | Eyebrow, judul `text-display`, lead; rata kiri selebar container, tanpa tombol/visual             | `AboutHero` (About Us)                      |
+| **Our Clients**          | Marquee logo klien berwarna (tanpa outline) kiri → kanan                                          | `ClientLogos`                               |
+| **Split**                | Teks + poin di satu sisi, mockup di sisi lain; berselang-seling                                   | `FeatureSplit`                              |
+| **Heading + grid kartu** | `SectionHeader` (+ tombol outline) lalu grid 3–4 kartu                                            | Platform Overview, What's Included          |
+| **Timeline**             | 5 langkah dengan garis atas + dot, langkah terakhir oranye                                        | `StepsTimeline` (How it works)              |
+| **Kartu harga**          | 2 kartu (Monthly · Annual) di latar `surface`, paket unggulan ditonjolkan dengan badge            | `PricingPlans`                              |
+| **Tabel perbandingan**   | Kolom Repskill disorot oranye muda, ✓ oranye                                                      | Pricing › Feature Comparison                |
+| **Daftar success story** | Baris di latar `surface` (`StoryRow`): teks + tautan · metrik · logo, dipisah garis `line`        | `/success-stories/`                         |
+| **Metrik hasil**         | 3 tile Linen, angka oranye + label uppercase; "—" bila belum terverifikasi                        | `StoryArticle` › Results at a Glance        |
+| **Artikel case study**   | Headline tanpa gambar/tombol; 3 kolom (daftar isi · artikel maks. 760px · kotak CTA)              | `/success-stories/<slug>/` (`StoryArticle`) |
+| **Banner CTA gradasi**   | Panel `rounded-panel` `bg-linear-to-b from-brand-orange/5 to-brand-orange/30`, 1 judul + 1 tombol | Akhir artikel case study                    |
+| **Help Center**          | Hero putih + pencarian, sidebar kiri (lg) / "Browse the guide" (mobile), artikel maks. 780px      | `/guide/` (`GuideShell`)                    |
+| **CTA penutup**          | Panel Shadow Grey membulat di latar putih, tepat di atas footer (lihat di bawah)                  | `shared/final-cta.tsx`                      |
+| **CTA penutup Home**     | Latar putih + glow oranye 7% kiri-kanan, teks di tengah diapit foto & heksagon melayang           | `home/home-cta.tsx`                         |
 
 ### CTA penutup
 
@@ -107,7 +110,7 @@ heksagon garis oranye 50% dan heksagon isi oranye 20%, semuanya melayang + paral
 berubah jadi deretan kecil di atas eyebrow dan heksagon disembunyikan. Sejak 2026-10-08 halaman `/success-stories/` juga
 memakai `HomeCta` (copy dari `successStoriesPage.cta`), begitu juga `/about/` (`aboutPage.cta`). Halaman lain **tetap** memakai `FinalCta` sampai diputuskan lain.
 
-**Halaman fitur (Capture, Learn, Practice) memakai `VisualCta` (sejak 2026-10-07):** isi `ctaVisual: { image, layout }` di data
+**Halaman fitur (Capture, Learn, Practice) dan Pricing (sejak 2026-10-08) memakai `VisualCta` (sejak 2026-10-07):** isi `ctaVisual: { image, layout }` di data
 halaman fitur (`src/content/features.ts`) untuk mengganti `FinalCta` gelap dengan versi terang: teks rata kiri + tombol
 `primary` dan `outline`, di sebelahnya foto heksagon (`src/assets/images/cta/`), heksagon garis oranye 90%, dan heksagon
 isi oranye 25%. Posisinya mengikuti contoh desain tiap halaman (`layouts` di `visual-cta.tsx`):

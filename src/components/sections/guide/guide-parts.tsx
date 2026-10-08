@@ -1,8 +1,8 @@
-import { Fragment } from "react";
 import Link from "next/link";
 import { Mockup } from "@/components/mockups/mockup";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/reveal";
 import { ArrowRight, ButtonLink } from "@/components/ui/button";
+import { RichText } from "@/components/ui/rich-text";
 import {
   articleHref,
   featureRequest,
@@ -15,19 +15,6 @@ import {
   type GuideEntry,
 } from "@/content/guide";
 import { cn } from "@/lib/cn";
-
-/** Teks dengan `**tebal**` → <strong>. */
-function RichText({ text }: { text: string }) {
-  return text.split(/\*\*(.+?)\*\*/g).map((part, i) =>
-    i % 2 ? (
-      <strong key={i} className="font-semibold text-brand-grey">
-        {part}
-      </strong>
-    ) : (
-      <Fragment key={i}>{part}</Fragment>
-    ),
-  );
-}
 
 export function GuideBreadcrumb({ items }: { items: { label: string; href?: string }[] }) {
   return (
