@@ -1,14 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { FinalCta } from "@/components/sections/shared/final-cta";
-import {
-  StoryAbout,
-  StoryChallenge,
-  StoryHelp,
-  StoryResult,
-} from "@/components/sections/success-stories/story-parts";
+import { StoryArticle } from "@/components/sections/success-stories/story-article";
 import { getStory, successStories } from "@/content/success-stories";
-import { successStoriesPage } from "@/content/success-stories-page";
 
 // Semua halaman dibuat saat build dari src/content/success-stories.ts
 export const dynamicParams = false;
@@ -27,13 +20,5 @@ export default async function SuccessStoryPage({ params }: PageProps<"/success-s
   const story = getStory((await params).slug);
   if (!story) notFound();
 
-  return (
-    <>
-      <StoryAbout story={story} />
-      <StoryChallenge story={story} />
-      <StoryHelp story={story} />
-      <StoryResult story={story} />
-      <FinalCta {...successStoriesPage.storyCta} />
-    </>
-  );
+  return <StoryArticle story={story} />;
 }
