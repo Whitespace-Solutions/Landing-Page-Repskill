@@ -5,10 +5,11 @@ import learnPortrait from "@/assets/images/cta/learn-portrait.webp";
 import practicePortrait from "@/assets/images/cta/practice-portrait.webp";
 import knowledgeChatScreenshot from "@/assets/images/mockups/knowledge-chat.webp";
 import knowledgeUniverseScreenshot from "@/assets/images/mockups/knowledge-universe.webp";
+import learningPathScreenshot from "@/assets/images/mockups/learning-path.webp";
 import reflectionStudioPoster from "@/assets/images/mockups/reflection-studio-poster.webp";
 import type { VisualCtaLayout } from "@/components/sections/shared/visual-cta";
 import type { FeatureKey } from "./success-stories";
-import type { CtaData, FeatureBlockData, MockupData, PageHeroData } from "./types";
+import type { CtaData, FeatureBlockData, PageHeroData } from "./types";
 
 export const featureInfo: Record<
   FeatureKey,
@@ -44,17 +45,6 @@ export type FeaturePage = {
 };
 
 const BOOK_DEMO = { label: "Book Demo", href: "/book-demo/" };
-
-const progress: MockupData = {
-  type: "bars",
-  title: "Capability progress",
-  meta: "Last 4 practice sessions",
-  items: [
-    { label: "Discovery", value: 78, tone: "strength", tag: "+12" },
-    { label: "Objection handling", value: 64, tone: "strength", tag: "+18" },
-    { label: "Next-step commitment", value: 52, tone: "strength", tag: "+9" },
-  ],
-};
 
 export const practicePage: FeaturePage = {
   metadata: {
@@ -299,7 +289,11 @@ export const learnPage: FeaturePage = {
         "Each module connects to a practice scenario",
         "Progress shows how skills build over time",
       ],
-      visual: progress,
+      visual: {
+        type: "screenshot",
+        image: learningPathScreenshot,
+        alt: "Repskill Learning Path: a company and product onboarding path with a progress bar, a Start the next item button, and modules such as How we work with reading items.",
+      },
     },
   ],
   ctaVisual: { image: learnPortrait, layout: "learn" },
