@@ -48,8 +48,8 @@ export const pricingPage: {
 } = {
   hero: {
     eyebrow: "Pricing",
-    title: "Simple, transparent pricing",
-    highlight: "transparent pricing",
+    title: "Build Sales Capability Around Your Organization",
+    highlight: "Your Organization",
     lead: "One plan, two ways to pay. Every team gets the full Repskill toolkit. Pick the billing rhythm that suits you.",
   },
   plans: {

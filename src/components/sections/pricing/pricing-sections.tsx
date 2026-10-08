@@ -29,16 +29,15 @@ function Check({ className }: { className?: string }) {
   );
 }
 
-/** Dua kartu harga (Monthly · Annual) di bawah hero. Kartu dengan `badge` ditonjolkan. */
+/** Dua kartu harga (Monthly · Annual) langsung di bawah hero, tanpa judul terlihat. Kartu dengan `badge` ditonjolkan. */
 export function PricingPlans() {
   const { plans } = pricingPage;
   return (
     <Section id="plans" tone="surface">
-      <Reveal>
-        <h2 className="text-center text-h2">{plans.title}</h2>
-      </Reveal>
+      {/* Judul hanya untuk pembaca layar; secara visual kartu langsung tampil di bawah hero */}
+      <h2 className="sr-only">{plans.title}</h2>
       <Stagger
-        className="mx-auto mt-12 grid max-w-[1040px] items-start gap-10 md:grid-cols-2 md:gap-6 lg:mt-16"
+        className="mx-auto grid max-w-[1040px] items-start gap-10 md:grid-cols-2 md:gap-6"
         stagger={0.12}
       >
         {plans.items.map((plan) => (
