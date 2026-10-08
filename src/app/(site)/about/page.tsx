@@ -1,12 +1,8 @@
 import type { Metadata } from "next";
-import {
-  HowWeThink,
-  OurPhilosophy,
-  PurposeVisionMission,
-  WhyRepskill,
-} from "@/components/sections/about/about-sections";
+import { AboutFlow, OurPhilosophy, WhyRepskill } from "@/components/sections/about/about-sections";
 import { FinalCta } from "@/components/sections/shared/final-cta";
 import { PageHero } from "@/components/sections/shared/page-hero";
+import { StepsTimeline } from "@/components/sections/shared/steps-timeline";
 import { aboutPage } from "@/content/about";
 
 export const metadata: Metadata = {
@@ -18,11 +14,10 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <PageHero {...aboutPage.hero} />
+      <PageHero {...aboutPage.hero} aside={<AboutFlow />} />
       <WhyRepskill />
-      <PurposeVisionMission />
       <OurPhilosophy />
-      <HowWeThink />
+      <StepsTimeline {...aboutPage.approach} tone="light" />
       <FinalCta {...aboutPage.cta} />
     </>
   );
