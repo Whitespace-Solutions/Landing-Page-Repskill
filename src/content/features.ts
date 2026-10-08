@@ -3,6 +3,8 @@ import type { StaticImageData } from "next/image";
 import capturePortrait from "@/assets/images/cta/capture-portrait.webp";
 import learnPortrait from "@/assets/images/cta/learn-portrait.webp";
 import practicePortrait from "@/assets/images/cta/practice-portrait.webp";
+import addContentScreenshot from "@/assets/images/mockups/add-content.webp";
+import extractionStudioScreenshot from "@/assets/images/mockups/extraction-studio.webp";
 import knowledgeChatScreenshot from "@/assets/images/mockups/knowledge-chat.webp";
 import knowledgeUniverseScreenshot from "@/assets/images/mockups/knowledge-universe.webp";
 import learningPathScreenshot from "@/assets/images/mockups/learning-path.webp";
@@ -174,18 +176,9 @@ export const capturePage: FeaturePage = {
         "Structure expertise so it can power learning and practice",
       ],
       visual: {
-        type: "structure",
-        title: "Structured best practice",
-        status: "In review",
-        fields: [
-          { label: "TOPIC", value: "Handling early pricing questions" },
-          { label: "SITUATION", value: "Buyer asks for price before value is established" },
-          {
-            label: "BEST PRACTICE",
-            value: "Reconnect to the agreed problem, then confirm the decision process",
-          },
-          { label: "SOURCE", value: "Top performer · captured in Extraction Studio" },
-        ],
+        type: "screenshot",
+        image: extractionStudioScreenshot,
+        alt: "Repskill Extraction Studio: an AI-assisted interview that pulls tacit knowledge out of top performers, with a choice between a Free-form Interview and a Context-driven Interview and a Start interview panel.",
       },
     },
     {
@@ -199,14 +192,9 @@ export const capturePage: FeaturePage = {
         "Only approved content joins the Knowledge Universe",
       ],
       visual: {
-        type: "governance",
-        title: "Content review",
-        items: [
-          { label: "Content added", meta: "Done", status: "done" },
-          { label: "Review", meta: "Done", status: "done" },
-          { label: "Content Manager approval", meta: "Awaiting", status: "now" },
-          { label: "Knowledge Universe", meta: "After approval", status: "todo" },
-        ],
+        type: "screenshot",
+        image: addContentScreenshot,
+        alt: "Repskill Add Content: turn any source into content your team uses in three steps, pick type, upload, and review, choosing between a Document and a Video Learning.",
       },
     },
   ],
