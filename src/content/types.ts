@@ -43,6 +43,13 @@ export type MockupData =
       height: number;
       /** Deskripsi isi video untuk pembaca layar */
       label: string;
+    }
+  | {
+      /** Screenshot produk (WebP di `src/assets/images/mockups/`) */
+      type: "screenshot";
+      image: StaticImageData;
+      /** Deskripsi isi screenshot untuk pembaca layar */
+      alt: string;
     };
 
 export type PageHeroData = {

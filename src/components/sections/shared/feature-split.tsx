@@ -25,14 +25,14 @@ export function FeatureSplit({
   tone = "white",
   reverse = false,
 }: FeatureSplitProps) {
-  // Rekaman layar butuh ruang lebih: kolom visual lebih lebar dan bingkai panel lebih tipis.
-  const isVideo = visual.type === "video";
+  // Rekaman layar & screenshot butuh ruang lebih: kolom visual lebih lebar dan bingkai panel lebih tipis.
+  const isScreen = visual.type === "video" || visual.type === "screenshot";
   return (
     <Section id={id} tone={tone}>
       <div
         className={cn(
           "grid items-center gap-12",
-          isVideo
+          isScreen
             ? cn(
                 "lg:gap-14",
                 // reverse = visual di kolom kiri, jadi kolom lebar ada di depan
@@ -90,7 +90,7 @@ export function FeatureSplit({
           <div
             className={cn(
               "rounded-panel",
-              isVideo ? "p-2 sm:p-3" : "p-4 sm:p-8 lg:p-10",
+              isScreen ? "p-2 sm:p-3" : "p-4 sm:p-8 lg:p-10",
               tone === "white" ? "bg-brand-linen" : "bg-white",
             )}
           >

@@ -68,6 +68,10 @@ Foto orang di situasi kerja (tim sales, coaching), pencahayaan natural, tanpa fi
   tidak diputar dan kontrol muncul. Path di `src` tanpa basePath (ditambahkan otomatis). Isi `label` untuk pembaca layar.
   Di `FeatureSplit`, section dengan video memakai kolom visual lebih lebar (1.35fr : 1fr) dan bingkai panel tipis
   (`p-2 sm:p-3`). Potong juga elemen yang tidak boleh publik (mis. status bar browser berisi URL staging).
+- **Screenshot produk (mockup `screenshot`):** dipotong ke area fitur (tanpa sidebar navigasi aplikasi supaya teks
+  tetap terbaca), lebar 1400px WebP (±40 KB) di `src/assets/images/mockups/`; file asli di `docs/brand/screenshots/`.
+  Bingkai, kolom lebar, dan panel tipis sama dengan mockup `video`. Isi `alt` yang menjelaskan isi layar. Contoh:
+  Knowledge Chat di halaman Learn Knowledge.
 - Static export tidak mengoptimasi gambar: perkecil dulu ke ±2× ukuran tampil (foto hero: lebar 340px, <150 KB).
 - `alt` deskriptif untuk foto yang membawa informasi; `alt=""` bila dekoratif (seperti di ilustrasi hero yang seluruhnya
   `aria-hidden`).

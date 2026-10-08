@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { AnimatedBar } from "@/components/motion/animated-bar";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/reveal";
 import type { MockupData, Status } from "@/content/types";
@@ -26,7 +27,18 @@ export function Mockup({ data }: { data: MockupData }) {
       return <StructureMockup {...data} />;
     case "video":
       return <VideoMockup {...data} />;
+    case "screenshot":
+      return <ScreenshotMockup {...data} />;
   }
+}
+
+/** Screenshot produk dalam bingkai yang sama dengan `VideoMockup`. */
+function ScreenshotMockup({ image, alt }: Extract<MockupData, { type: "screenshot" }>) {
+  return (
+    <div className="overflow-hidden rounded-card border border-line bg-white shadow-float">
+      <Image src={image} alt={alt} className="block h-auto w-full" sizes="(min-width: 1024px) 700px, 100vw" />
+    </div>
+  );
 }
 
 function MockupCard({

@@ -3,6 +3,7 @@ import type { StaticImageData } from "next/image";
 import capturePortrait from "@/assets/images/cta/capture-portrait.webp";
 import learnPortrait from "@/assets/images/cta/learn-portrait.webp";
 import practicePortrait from "@/assets/images/cta/practice-portrait.webp";
+import knowledgeChatScreenshot from "@/assets/images/mockups/knowledge-chat.webp";
 import reflectionStudioPoster from "@/assets/images/mockups/reflection-studio-poster.webp";
 import type { VisualCtaLayout } from "@/components/sections/shared/visual-cta";
 import type { FeatureKey } from "./success-stories";
@@ -270,33 +271,17 @@ export const learnPage: FeaturePage = {
     {
       id: "chat",
       eyebrow: "Knowledge Chat",
-      title: "Ask questions. Get answers from approved knowledge",
-      body: "Reps ask about products, processes, and best practices in plain language and get answers grounded in your Knowledge Universe.",
+      title: "Turn company knowledge into instant sales guidance",
+      body: "Knowledge Chat gives reps reliable answers grounded in your company's approved knowledge, so they can prepare, respond, and sell with confidence.",
       points: [
-        "Answers drawn from approved company knowledge",
-        "Find the right best practice in seconds",
-        "Ready whenever a rep is preparing for a conversation",
+        "Find the right answer in seconds",
+        "Ask a specialist for negotiation, pitch, and ROI guidance",
+        "Keep every conversation consistent with approved knowledge",
       ],
       visual: {
-        type: "chat",
-        title: "Knowledge Chat",
-        meta: "Knowledge Universe",
-        messages: [
-          {
-            side: "right",
-            label: "YOU",
-            text: "How should I respond when a buyer asks for pricing on the first call?",
-          },
-          {
-            side: "left",
-            label: "REPSKILL AI",
-            text: "Reconnect to the problem you agreed on first, then confirm who else is part of the decision before discussing numbers.",
-          },
-        ],
-        chips: [
-          { text: "Source: Best practice · Pricing", tone: "good" },
-          { text: "Practice this scenario", tone: "next" },
-        ],
+        type: "screenshot",
+        image: knowledgeChatScreenshot,
+        alt: "Repskill Knowledge Chat: ask anything about your sales knowledge, with specialists such as Negotiation Coach, Pitch Mentor, and ROI Advisor, and suggested questions like how to respond when a buyer says you are 20% more expensive.",
       },
     },
     {
