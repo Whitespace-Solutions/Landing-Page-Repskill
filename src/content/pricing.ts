@@ -24,11 +24,6 @@ export const pricingPage: {
   plans: { title: string; items: PricingPlan[] };
   /** Cara kerja token (data dari halaman Team tokens di platform) */
   tokens: FeatureBlockData;
-  included: {
-    eyebrow: string;
-    title: string;
-    items: { stage: string; title: string; tools: string; desc: string; href: string; accent?: boolean }[];
-  };
   comparison: {
     eyebrow: string;
     title: string;
@@ -44,6 +39,7 @@ export const pricingPage: {
     title: "Build Sales Capability Around Your Organization",
     highlight: "Your Organization",
     lead: "One plan, two ways to pay. Every team gets the full Repskill toolkit. Pick the billing rhythm that suits you.",
+    layout: "side",
   },
   plans: {
     title: "Pricing",
@@ -107,41 +103,6 @@ export const pricingPage: {
       ],
       note: { label: "BALANCE", text: "Lasts about 2.8 more months at this month's pace." },
     },
-  },
-  included: {
-    eyebrow: "What's Included",
-    title: "Everything that turns expertise into capability",
-    items: [
-      {
-        stage: "CAPTURE",
-        title: "Capture Knowledge",
-        tools: "Extraction Studio · Add Content",
-        desc: "Capture and structure the expertise of your best people.",
-        href: "/features/capture-knowledge/",
-      },
-      {
-        stage: "LEARN",
-        title: "Learn Knowledge",
-        tools: "Chat · Learning Path",
-        desc: "Turn approved company knowledge into structured learning.",
-        href: "/features/learn-knowledge/",
-      },
-      {
-        stage: "PRACTICE",
-        title: "Practice",
-        tools: "Scenario Studio · Reflection Studio",
-        desc: "Roleplay real sales situations with AI, then reflect and improve.",
-        href: "/features/practice/",
-      },
-      {
-        stage: "FOUNDATION",
-        title: "Knowledge Universe",
-        tools: "Curated · Reviewed · Approved",
-        desc: "Your company-specific knowledge foundation for every capability.",
-        href: "/features/learn-knowledge/#knowledge-universe",
-        accent: true,
-      },
-    ],
   },
   comparison: {
     eyebrow: "Feature Comparison",

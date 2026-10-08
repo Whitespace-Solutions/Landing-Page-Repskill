@@ -79,24 +79,24 @@ State dalam list/progress: **done** = amber · **now/sedang berjalan** = oranye 
 
 Semua section mengikuti kerangka: **Eyebrow → Judul → Lead → Konten → (link/CTA)**.
 
-| Pola                     | Deskripsi                                                                                         | Komponen / contoh                           |
-| ------------------------ | ------------------------------------------------------------------------------------------------- | ------------------------------------------- |
-| **Hero Home**            | Eyebrow, `text-display`, 2 tombol; ilustrasi `HeroOrb` kanan + glow oranye 7% pojok kanan         | `home/hero.tsx`                             |
-| **Page hero**            | Teks kiri, mockup kanan                                                                           | `PageHero`                                  |
-| **Hero pernyataan**      | Eyebrow, judul `text-display`, lead; rata kiri selebar container, tanpa tombol/visual             | `AboutHero` (About Us)                      |
-| **Our Clients**          | Marquee logo klien berwarna (tanpa outline) kiri → kanan                                          | `ClientLogos`                               |
-| **Split**                | Teks + poin di satu sisi, mockup di sisi lain; berselang-seling                                   | `FeatureSplit`                              |
-| **Heading + grid kartu** | `SectionHeader` (+ tombol outline) lalu grid 3–4 kartu                                            | Platform Overview, What's Included          |
-| **Timeline**             | 5 langkah dengan garis atas + dot, langkah terakhir oranye                                        | `StepsTimeline` (How it works)              |
-| **Kartu harga**          | 2 kartu (Monthly · Annual) di latar `surface`, paket unggulan ditonjolkan dengan badge            | `PricingPlans`                              |
-| **Tabel perbandingan**   | Kolom Repskill disorot oranye muda, ✓ oranye                                                      | Pricing › Feature Comparison                |
-| **Daftar success story** | Baris di latar `surface` (`StoryRow`): teks + tautan · metrik · logo, dipisah garis `line`        | `/success-stories/`                         |
-| **Metrik hasil**         | 3 tile Linen, angka oranye + label uppercase; "—" bila belum terverifikasi                        | `StoryArticle` › Results at a Glance        |
-| **Artikel case study**   | Headline tanpa gambar/tombol; 3 kolom (daftar isi · artikel maks. 760px · kotak CTA)              | `/success-stories/<slug>/` (`StoryArticle`) |
-| **Banner CTA gradasi**   | Panel `rounded-panel` `bg-linear-to-b from-brand-orange/5 to-brand-orange/30`, 1 judul + 1 tombol | Akhir artikel case study                    |
-| **Help Center**          | Hero putih + pencarian, sidebar kiri (lg) / "Browse the guide" (mobile), artikel maks. 780px      | `/guide/` (`GuideShell`)                    |
-| **CTA penutup**          | Panel Shadow Grey membulat di latar putih, tepat di atas footer (lihat di bawah)                  | `shared/final-cta.tsx`                      |
-| **CTA penutup Home**     | Latar putih + glow oranye 7% kiri-kanan, teks di tengah diapit foto & heksagon melayang           | `home/home-cta.tsx`                         |
+| Pola                     | Deskripsi                                                                                             | Komponen / contoh                           |
+| ------------------------ | ----------------------------------------------------------------------------------------------------- | ------------------------------------------- |
+| **Hero Home**            | Eyebrow, `text-display`, 2 tombol; ilustrasi `HeroOrb` kanan + glow oranye 7% pojok kanan             | `home/hero.tsx`                             |
+| **Page hero**            | Teks kiri, mockup kanan; `layout: "side"` = judul kiri (2 baris) + lead kanan, tanpa tombol (Pricing) | `PageHero`                                  |
+| **Hero pernyataan**      | Eyebrow, judul `text-display`, lead; rata kiri selebar container, tanpa tombol/visual                 | `AboutHero` (About Us)                      |
+| **Our Clients**          | Marquee logo klien berwarna (tanpa outline) kiri → kanan                                              | `ClientLogos`                               |
+| **Split**                | Teks + poin di satu sisi, mockup di sisi lain; berselang-seling                                       | `FeatureSplit`                              |
+| **Heading + grid kartu** | `SectionHeader` (+ tombol outline) lalu grid 3–4 kartu                                                | Platform Overview, What's Included          |
+| **Timeline**             | 5 langkah dengan garis atas + dot, langkah terakhir oranye                                            | `StepsTimeline` (How it works)              |
+| **Kartu harga**          | 2 kartu (Monthly · Annual) di latar `surface`, paket unggulan ditonjolkan dengan badge                | `PricingPlans`                              |
+| **Tabel perbandingan**   | Kolom Repskill disorot oranye muda, ✓ oranye                                                          | Pricing › Feature Comparison                |
+| **Daftar success story** | Baris di latar `surface` (`StoryRow`): teks + tautan · metrik · logo, dipisah garis `line`            | `/success-stories/`                         |
+| **Metrik hasil**         | 3 tile Linen, angka oranye + label uppercase; "—" bila belum terverifikasi                            | `StoryArticle` › Results at a Glance        |
+| **Artikel case study**   | Headline tanpa gambar/tombol; 3 kolom (daftar isi · artikel maks. 760px · kotak CTA)                  | `/success-stories/<slug>/` (`StoryArticle`) |
+| **Banner CTA gradasi**   | Panel `rounded-panel` `bg-linear-to-b from-brand-orange/5 to-brand-orange/30`, 1 judul + 1 tombol     | Akhir artikel case study                    |
+| **Help Center**          | Hero putih + pencarian, sidebar kiri (lg) / "Browse the guide" (mobile), artikel maks. 780px          | `/guide/` (`GuideShell`)                    |
+| **CTA penutup**          | Panel Shadow Grey membulat di latar putih, tepat di atas footer (lihat di bawah)                      | `shared/final-cta.tsx`                      |
+| **CTA penutup Home**     | Latar putih + glow oranye 7% kiri-kanan, teks di tengah diapit foto & heksagon melayang               | `home/home-cta.tsx`                         |
 
 ### CTA penutup
 

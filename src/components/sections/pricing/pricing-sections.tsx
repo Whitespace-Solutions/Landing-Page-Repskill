@@ -1,8 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
 import repskillIcon from "@/assets/brand/repskill-icon.svg";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/reveal";
-import { ArrowRight, ButtonLink } from "@/components/ui/button";
+import { ButtonLink } from "@/components/ui/button";
 import { RichText } from "@/components/ui/rich-text";
 import { Section } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
@@ -105,64 +104,6 @@ function PlanCard({ plan }: { plan: PricingPlan }) {
         <span className="text-sm text-brand-charcoal">{plan.note}</span>
       </div>
     </article>
-  );
-}
-
-/** What's Included */
-export function WhatsIncluded() {
-  const { included } = pricingPage;
-  return (
-    <Section id="included">
-      <SectionHeader eyebrow={included.eyebrow} title={included.title} />
-      <Stagger className="mt-10 grid gap-4 sm:grid-cols-2 lg:mt-14 xl:grid-cols-4" stagger={0.08}>
-        {included.items.map((item) => (
-          <StaggerItem key={item.title}>
-            <Link
-              href={item.href}
-              className={cn(
-                "group flex h-full flex-col gap-3 rounded-card p-6 transition-[border-color,box-shadow,transform] duration-200 hover:-translate-y-0.5",
-                item.accent
-                  ? "bg-brand-amber text-brand-grey"
-                  : "border border-line bg-white hover:border-brand-amber hover:shadow-glow",
-              )}
-            >
-              <span
-                className={cn(
-                  "text-[11.5px] font-bold tracking-[0.12em]",
-                  item.accent ? "text-brand-grey/70" : "text-brand-orange",
-                )}
-              >
-                {item.stage}
-              </span>
-              <span className="text-h3">{item.title}</span>
-              <span
-                className={cn(
-                  "text-[13px] font-semibold",
-                  item.accent ? "text-brand-grey/70" : "text-brand-charcoal",
-                )}
-              >
-                {item.tools}
-              </span>
-              <span
-                className={cn(
-                  "text-[15px] leading-relaxed",
-                  item.accent ? "text-brand-grey" : "text-brand-charcoal",
-                )}
-              >
-                {item.desc}
-              </span>
-              <ArrowRight
-                size={16}
-                className={cn(
-                  "mt-auto transition-transform group-hover:translate-x-1",
-                  item.accent ? "text-brand-grey" : "text-brand-charcoal",
-                )}
-              />
-            </Link>
-          </StaggerItem>
-        ))}
-      </Stagger>
-    </Section>
   );
 }
 

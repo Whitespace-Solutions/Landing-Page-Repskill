@@ -61,6 +61,8 @@ export type PageHeroData = {
   primary?: Link;
   secondary?: Link;
   visual?: MockupData;
+  /** `side`: tanpa visual, judul di kiri dan lead di kanan (rata bawah) di lg+. Default `stack`. */
+  layout?: "stack" | "side";
 };
 
 export type FeatureBlockData = {
