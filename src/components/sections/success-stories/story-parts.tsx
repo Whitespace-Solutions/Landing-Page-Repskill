@@ -12,15 +12,10 @@ import type { SuccessStory } from "@/content/success-stories";
 import { cn } from "@/lib/cn";
 
 /** Penanda konten yang belum final — hilang otomatis saat `draft: false`. */
-export function DraftBadge({ show, dark = false }: { show: boolean; dark?: boolean }) {
+export function DraftBadge({ show }: { show: boolean }) {
   if (!show) return null;
   return (
-    <span
-      className={cn(
-        "rounded-full border border-dashed border-brand-orange px-2.5 py-1 text-xs font-semibold",
-        dark ? "text-brand-orange" : "text-brand-orange-deep",
-      )}
-    >
+    <span className="rounded-full border border-dashed border-brand-orange px-2.5 py-1 text-xs font-semibold text-brand-orange-deep">
       Draft content
     </span>
   );
@@ -52,22 +47,24 @@ export function MetricTiles({
 }
 
 /**
- * Satu baris klien di halaman /success-stories/ (section gelap): judul hasil + ringkasan + tautan "Read Case Study",
+ * Satu baris klien di halaman /success-stories/ (latar `surface`): judul hasil + ringkasan + tautan "Read Case Study",
  * kolom metrik, dan logo berwarna dalam kotak putih. Antar baris dipisah garis tipis.
  */
 export function StoryRow({ story }: { story: SuccessStory }) {
   const href = `/success-stories/${story.slug}/`;
   return (
-    <article className="grid gap-8 border-t border-white/15 py-10 lg:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)_minmax(0,1fr)] lg:gap-12 lg:py-14">
+    <article className="grid gap-8 border-t border-line py-10 lg:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)_minmax(0,1fr)] lg:gap-12 lg:py-14">
       <div className="flex flex-col items-start gap-5">
-        <DraftBadge show={story.draft} dark />
-        <h2 className="text-h2 text-balance text-white">
+        <DraftBadge show={story.draft} />
+        <h2 className="text-h2 text-balance text-brand-grey">
           {story.name}: {story.headline}
         </h2>
-        <p className="max-w-[620px] text-base leading-relaxed text-pretty text-line">{story.summary}</p>
+        <p className="max-w-[620px] text-base leading-relaxed text-pretty text-brand-charcoal">
+          {story.summary}
+        </p>
         <Link
           href={href}
-          className="group mt-3 inline-flex items-center gap-3 border-b border-white/40 pb-3 text-eyebrow text-white uppercase transition-colors hover:border-brand-orange hover:text-brand-orange"
+          className="group mt-3 inline-flex items-center gap-3 border-b border-brand-grey/30 pb-3 text-eyebrow text-brand-grey uppercase transition-colors hover:border-brand-orange hover:text-brand-orange"
         >
           Read Case Study
           <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
@@ -77,8 +74,8 @@ export function StoryRow({ story }: { story: SuccessStory }) {
       <dl className="grid grid-cols-3 gap-6 lg:flex lg:flex-col lg:gap-8">
         {story.result.metrics.map((m) => (
           <div key={m.label} className="flex flex-col gap-2">
-            <dt className="order-last text-eyebrow text-line/70 uppercase">{m.label}</dt>
-            <dd className="text-h2 text-white">{m.value}</dd>
+            <dt className="order-last text-eyebrow text-brand-charcoal uppercase">{m.label}</dt>
+            <dd className="text-h2 text-brand-grey">{m.value}</dd>
           </div>
         ))}
       </dl>
@@ -87,9 +84,8 @@ export function StoryRow({ story }: { story: SuccessStory }) {
         href={href}
         tabIndex={-1}
         aria-hidden
-        className="order-first flex h-28 items-center justify-center rounded-card bg-white p-8 transition-shadow hover:shadow-glow lg:order-none lg:aspect-[2.2/1] lg:h-auto lg:self-start"
+        className="order-first flex h-28 items-center justify-center rounded-card border border-line bg-white p-8 transition-colors hover:border-brand-amber lg:order-none lg:aspect-[2.2/1] lg:h-auto lg:self-start"
       >
-        {/* Logo klien tetap berwarna penuh, jadi diberi kotak putih agar terbaca di Shadow Grey */}
         <Image src={story.logo} alt="" className="h-auto max-h-14 w-auto max-w-[70%]" />
       </Link>
     </article>

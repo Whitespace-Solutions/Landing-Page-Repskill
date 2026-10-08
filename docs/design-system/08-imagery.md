@@ -84,8 +84,7 @@ Foto orang di situasi kerja (tim sales, coaching), pencahayaan natural, tanpa fi
   `otherClients`.
 - Logo wall ("Our Clients"): logo tampil **berwarna penuh, tanpa kotak/outline**, berjalan sebagai marquee
   kiri → kanan (lihat [07-motion.md](07-motion.md)). Logo sedikit membesar saat di-hover.
-- Di kartu success story dan halaman klien, logo tampil **berwarna penuh**. Di latar gelap (daftar `/success-stories/`)
-  logo diletakkan di kotak putih `rounded-card bg-white`, bukan diubah jadi putih/monokrom.
+- Di kartu success story dan halaman klien, logo tampil **berwarna penuh**.
 - Jangan recolor, stretch, atau memberi efek pada logo klien. Ukuran diatur lewat `max-h-*`, dengan lebar mengikuti
   proporsi aslinya.
 - Logo berlatar gelap (mis. ASCO) dibuat transparan dulu, dengan warna aslinya dipertahankan.

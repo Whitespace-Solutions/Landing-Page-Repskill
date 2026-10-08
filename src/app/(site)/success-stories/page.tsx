@@ -20,9 +20,9 @@ export default function SuccessStoriesPage() {
     <>
       <PageHero {...page.hero} />
       <ClientLogos {...page.clients} />
-      <Section id="case-studies" tone="dark">
-        <SectionHeader {...page.caseStudies} tone="dark" />
-        <div className="mt-10 border-b border-white/15 lg:mt-14">
+      <Section id="case-studies" tone="surface">
+        <SectionHeader {...page.caseStudies} />
+        <div className="mt-10 border-b border-line lg:mt-14">
           {successStories.map((story) => (
             <Reveal key={story.slug}>
               <StoryRow story={story} />
