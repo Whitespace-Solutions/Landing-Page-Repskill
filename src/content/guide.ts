@@ -3,7 +3,7 @@
  * Sumber: halaman Guide di landing Whitespace Talent (versi EN), visual ditulis ulang sebagai mockup Repskill.
  * Teks `**tebal**` dirender sebagai huruf tebal.
  */
-import type { CtaData, MockupData } from "./types";
+import type { MockupData } from "./types";
 
 export type GuideBlock =
   | { type: "p"; text: string }
@@ -432,15 +432,6 @@ export const guidePage = {
   readGuide: "Open guide",
   results: "Search Results",
   empty: "No articles match your search. Try a different term, or tell us what's missing.",
-};
-
-/** CTA penutup di semua halaman Guide (untuk pengunjung yang belum memakai Repskill). */
-export const guideCta: CtaData = {
-  eyebrow: "Get Started",
-  title: "Bring Repskill to Your Sales Team",
-  highlight: "Your Sales Team",
-  body: "See how Repskill turns the expertise of your best people into capability your whole sales team can build.",
-  secondary: { label: "Read Success Stories", href: "/success-stories/" },
 };
 
 export const featureRequest = {

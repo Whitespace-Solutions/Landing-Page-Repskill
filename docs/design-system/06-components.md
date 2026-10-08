@@ -97,7 +97,7 @@ Semua section mengikuti kerangka: **Eyebrow → Judul → Lead → Konten → (l
 
 ### CTA penutup
 
-Dipakai di semua halaman kecuali Book Demo (halaman tujuan CTA itu sendiri) dan detail case study (banner gradasi, lihat
+Dipakai di semua halaman kecuali Book Demo (halaman tujuan CTA itu sendiri), Guide (tanpa CTA penutup sejak 2026-10-08) dan detail case study (banner gradasi, lihat
 `StoryArticle`). Copy-nya ada di `src/content/` sebagai
 `CtaData`, tidak ditulis langsung di halaman.
 
