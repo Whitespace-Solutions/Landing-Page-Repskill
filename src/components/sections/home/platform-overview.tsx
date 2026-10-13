@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ScreenshotCarousel } from "@/components/mockups/screenshot-carousel";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/reveal";
 import { ArrowRight } from "@/components/ui/button";
 import { Section } from "@/components/ui/section";
@@ -6,10 +7,19 @@ import { SectionHeader } from "@/components/ui/section-header";
 import { featureInfo } from "@/content/features";
 import { platformOverview } from "@/content/home";
 import type { FeatureKey } from "@/content/success-stories";
+import { cn } from "@/lib/cn";
+
+const { captureShots, ...header } = platformOverview;
 
 // Urutan mengikuti alur produk di brand guideline: Capture → Learn → Practice.
-const ORDER: { key: FeatureKey; stage: string; preview: React.ReactNode }[] = [
-  { key: "capture", stage: "01 · CAPTURE", preview: <CapturePreview /> },
+// `bleed`: pratinjau memenuhi kotak tanpa padding (screenshot produk yang berganti).
+const ORDER: { key: FeatureKey; stage: string; preview: React.ReactNode; bleed?: boolean }[] = [
+  {
+    key: "capture",
+    stage: "01 · CAPTURE",
+    preview: <ScreenshotCarousel shots={captureShots} />,
+    bleed: true,
+  },
   { key: "learn", stage: "02 · LEARN", preview: <LearnPreview /> },
   { key: "practice", stage: "03 · PRACTICE & REFLECT", preview: <PracticePreview /> },
 ];
@@ -17,10 +27,10 @@ const ORDER: { key: FeatureKey; stage: string; preview: React.ReactNode }[] = [
 export function PlatformOverview() {
   return (
     <Section id="platform">
-      <SectionHeader {...platformOverview} />
+      <SectionHeader {...header} />
 
       <Stagger className="mt-10 grid gap-4 md:grid-cols-3 lg:mt-14" stagger={0.1}>
-        {ORDER.map(({ key, stage, preview }) => {
+        {ORDER.map(({ key, stage, preview, bleed }) => {
           const f = featureInfo[key];
           return (
             <StaggerItem key={key}>
@@ -28,7 +38,12 @@ export function PlatformOverview() {
                 href={f.href}
                 className="group flex h-full flex-col gap-4 rounded-card border border-line bg-white p-3.5 pb-6 transition-[border-color,box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:border-brand-amber hover:shadow-glow"
               >
-                <div className="flex h-44 flex-col justify-center gap-2.5 rounded-xl bg-surface p-4">
+                <div
+                  className={cn(
+                    "flex h-44 flex-col justify-center gap-2.5 overflow-hidden rounded-xl bg-surface",
+                    bleed ? "border border-line" : "p-4",
+                  )}
+                >
                   {preview}
                 </div>
                 <div className="flex flex-1 flex-col gap-2 px-2">
@@ -81,25 +96,6 @@ export function PlatformOverview() {
         </Link>
       </Reveal>
     </Section>
-  );
-}
-
-function CapturePreview() {
-  return (
-    <>
-      <div className="rounded-lg bg-white px-3 py-2.5 text-xs leading-snug text-brand-charcoal italic">
-        “I always confirm the decision process first…”
-      </div>
-      <div className="flex items-center gap-2 text-[10.5px] font-bold tracking-[0.1em] text-brand-charcoal">
-        <span className="h-px flex-1 bg-brand-amber" />
-        STRUCTURED
-      </div>
-      <div className="flex flex-col gap-1.5">
-        <span className="h-1.5 w-4/5 rounded-full bg-brand-amber" />
-        <span className="h-1.5 w-3/5 rounded-full bg-brand-amber" />
-        <span className="h-1.5 w-2/3 rounded-full bg-brand-linen" />
-      </div>
-    </>
   );
 }
 

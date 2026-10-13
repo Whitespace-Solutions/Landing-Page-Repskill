@@ -1,6 +1,9 @@
 /** Konten halaman Home. Teks dipisah dari komponen agar mudah diganti tanpa menyentuh layout. */
 import type { StaticImageData } from "next/image";
 import captureImage from "@/assets/images/hero/capture-woman.png";
+import captureAddContentShot from "@/assets/images/mockups/capture-add-content.webp";
+import captureContentApprovalShot from "@/assets/images/mockups/capture-content-approval.webp";
+import captureExtractionShot from "@/assets/images/mockups/capture-extraction-studio.webp";
 import learnImage from "@/assets/images/hero/learn-man.png";
 import practiceImage from "@/assets/images/hero/practice-woman.png";
 import type { FeatureIconName } from "@/components/ui/feature-icon";
@@ -63,6 +66,21 @@ export const platformOverview = {
   eyebrow: "Platform Overview",
   title: "One Platform to Capture, Learn, and Practice",
   lead: "A flight simulator for your sales team, built on your own playbook. Capture what your best people know, learn it, then practice and reflect until it sticks.",
+  /** Screenshot yang berganti di kartu Capture (urutan alat: Extraction Studio → Add Content → Content Manager) */
+  captureShots: [
+    {
+      image: captureExtractionShot,
+      alt: "Repskill Extraction Studio: choose a free-form or context-driven AI interview with a top performer.",
+    },
+    {
+      image: captureAddContentShot,
+      alt: "Repskill Add Content: turn any source into content your team uses, in three steps: pick type, upload, review.",
+    },
+    {
+      image: captureContentApprovalShot,
+      alt: "Repskill Content Approval: Knowledge Universe and Scenario Library items pending review, with content gaps and conflicting content.",
+    },
+  ],
 };
 
 /** Pembeda (sales deck, slide 23 & 26): dibangun untuk Indonesia, tata kelola kelas enterprise. */
