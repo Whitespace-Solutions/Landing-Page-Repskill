@@ -12,12 +12,12 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <ClientLogos {...clientsSection} />
       <Problem />
       <PlatformOverview />
       <StepsTimeline {...howItWorks} />
       <Differentiators />
       <CaseStudies />
+      <ClientLogos {...clientsSection} />
       <HomeCta />
     </>
   );

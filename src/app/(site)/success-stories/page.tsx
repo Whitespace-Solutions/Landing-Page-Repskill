@@ -19,7 +19,6 @@ export default function SuccessStoriesPage() {
   return (
     <>
       <PageHero {...page.hero} />
-      <ClientLogos {...page.clients} />
       <Section id="case-studies" tone="surface">
         <SectionHeader {...page.caseStudies} />
         <div className="mt-10 border-b border-line lg:mt-14">
@@ -30,6 +29,7 @@ export default function SuccessStoriesPage() {
           ))}
         </div>
       </Section>
+      <ClientLogos {...page.clients} />
       <HomeCta {...page.cta} />
     </>
   );
