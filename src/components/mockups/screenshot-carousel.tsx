@@ -63,20 +63,6 @@ export function ScreenshotCarousel({
           />
         </motion.div>
       </AnimatePresence>
-
-      {shots.length > 1 && (
-        <div className="absolute bottom-2.5 left-1/2 flex -translate-x-1/2 gap-1.5 rounded-full bg-white/85 px-2 py-1.5 shadow-float">
-          {shots.map((s, i) => (
-            <span
-              key={s.image.src}
-              className={cn(
-                "h-1.5 rounded-full transition-all duration-500",
-                i === (reduceMotion ? 0 : index) ? "w-4 bg-brand-orange" : "w-1.5 bg-brand-grey/25",
-              )}
-            />
-          ))}
-        </div>
-      )}
     </div>
   );
 }
