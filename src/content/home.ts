@@ -13,6 +13,7 @@ import practiceScenarioStudioShot from "@/assets/images/mockups/practice-scenari
 import learnImage from "@/assets/images/hero/learn-man.png";
 import practiceImage from "@/assets/images/hero/practice-woman.png";
 import type { CarouselShot } from "@/components/mockups/screenshot-carousel";
+import type { DuoIconName } from "@/components/ui/duo-icon";
 import type { FeatureIconName } from "@/components/ui/feature-icon";
 import type { FeatureKey } from "./success-stories";
 import type { CtaData, StepsData } from "./types";
@@ -46,18 +47,21 @@ export const problemSection = {
   lead: "Every sales team has a top rep everyone else depends on. Nobody can explain exactly how they do it, so the rest of the team learns on live customers. That's the most expensive classroom there is.",
   pains: [
     {
+      icon: "ramp",
       title: "Ramp is slow",
       body: "New reps take months to become productive, paid for in senior time and lost deals.",
     },
     {
+      icon: "pitch",
       title: "Pitch is uneven",
       body: "Same product, different story. What the customer hears depends on who picks up the phone.",
     },
     {
+      icon: "walkout",
       title: "Know-how walks out",
       body: "When a top rep resigns, their playbook leaves with them. The next hire starts from zero.",
     },
-  ],
+  ] satisfies { icon: DuoIconName; title: string; body: string }[],
   fixesLabel: "THE USUAL FIXES DON'T STICK",
   fixes: [
     { label: "Classroom training", verdict: "Heard once. Forgotten next month." },

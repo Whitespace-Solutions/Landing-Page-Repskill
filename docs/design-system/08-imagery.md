@@ -29,6 +29,9 @@ Aturan mockup:
   Di dropdown desktop tampil dalam kotak `size-10 rounded-xl bg-brand-orange/10 text-brand-orange`; di menu mobile 18px
   oranye di kiri label. Kalau butuh banyak ikon,
   pakai `lucide-react` (gaya yang sama).
+- Ikon dua warna (`DuoIcon`, `src/components/ui/duo-icon.tsx`): garis utama `stroke-brand-grey` + satu aksen
+  `stroke-brand-orange`, stroke 1,75, ukuran 40px di pojok kiri atas kartu. Dipakai di kartu The Problem (Home):
+  `ramp` (jam pasir), `pitch` (balon chat dengan bar tidak rata), `walkout` (pintu + panah keluar). Tetap garis, bukan isi.
 - Jangan pakai ikon solid/filled warna-warni atau emoji.
 
 ## Motif garis miring

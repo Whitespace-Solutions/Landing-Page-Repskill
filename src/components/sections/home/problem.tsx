@@ -1,4 +1,5 @@
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/reveal";
+import { DuoIcon } from "@/components/ui/duo-icon";
 import { HighlightText } from "@/components/ui/highlight-text";
 import { Section } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
@@ -18,9 +19,12 @@ export function Problem() {
             key={pain.title}
             className="flex h-full flex-col gap-3 rounded-card border border-line bg-white p-6 sm:p-7"
           >
-            <span className="text-caption font-bold tracking-[0.12em] text-brand-orange">
-              {String(i + 1).padStart(2, "0")}
-            </span>
+            <div className="mb-1 flex items-start justify-between gap-3">
+              <DuoIcon name={pain.icon} size={40} />
+              <span className="text-caption font-bold tracking-[0.12em] text-brand-orange">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+            </div>
             <span className="text-h3 text-brand-grey">{pain.title}</span>
             <span className="leading-relaxed text-brand-charcoal">{pain.body}</span>
           </StaggerItem>
