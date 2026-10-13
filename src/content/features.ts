@@ -257,12 +257,9 @@ export const capturePage: FeaturePage = {
         role: "Account Executive · Enterprise",
         parts: [
           { text: "When pricing comes up early, " },
-          { text: "I go back to the problem we agreed on", highlight: true },
-          { text: " and " },
-          { text: "confirm who else is part of the decision", highlight: true },
-          { text: " before I talk numbers." },
+          { text: "I go back to the problem we agreed on.", highlight: true },
         ],
-        tags: ["Objection handling", "Decision process"],
+        tags: ["Objection handling"],
       },
       popups: [
         { icon: "mic", label: "Extraction Studio", text: "Voice interview in progress", live: true },
