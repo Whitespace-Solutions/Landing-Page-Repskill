@@ -257,7 +257,7 @@ export const guides: Guide[] = [
               {
                 type: "steps",
                 items: [
-                  "**Knowledge Chat** — ask anything and get a grounded, cited answer.",
+                  "**AI Chat** — ask anything and get a grounded, cited answer.",
                   "**Scenario Studio** — practice a buyer role-play.",
                   "**Reflection Studio** — upload a real call for coaching.",
                   "**Learning Path** — follow the sequence your manager set.",

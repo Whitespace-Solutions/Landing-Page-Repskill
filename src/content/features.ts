@@ -21,19 +21,19 @@ export const featureInfo: Record<
   capture: {
     label: "Capture Knowledge",
     href: "/features/capture-knowledge/",
-    tools: "Extraction Studio · Add Content",
+    tools: "Extraction Studio · Add Content · Content Manager",
     description: "Capture and structure the expertise of your best people.",
   },
   learn: {
     label: "Learn Knowledge",
     href: "/features/learn-knowledge/",
-    tools: "Knowledge Universe · Chat · Learning Path",
+    tools: "Knowledge Universe · AI Chat · Learning Path",
     description: "Turn approved company knowledge into structured learning.",
   },
   practice: {
     label: "Practice",
     href: "/features/practice/",
-    tools: "Scenario Studio · Reflection Studio",
+    tools: "Scenario Studio · Reflection Studio · Team Dashboard",
     description: "Roleplay real sales situations with AI, then reflect and improve.",
   },
 };
@@ -53,13 +53,13 @@ export const practicePage: FeaturePage = {
   metadata: {
     title: "Practice — AI Sales Roleplay & Reflection",
     description:
-      "Simulate realistic sales situations with AI, get feedback, and reflect on every conversation with Scenario Studio and Reflection Studio.",
+      "Rehearse the meeting before it happens with an AI buyer that knows your products, review the real one after it happens, and score every call against your own playbook.",
   },
   hero: {
-    eyebrow: "Features · Practice",
+    eyebrow: "Features · Practice & Reflect",
     title: "Practice Before It Matters",
     highlight: "Before It Matters",
-    lead: "Simulate realistic sales situations with AI, get feedback right away, and reflect on every conversation, so your team walks into the real one prepared.",
+    lead: "Rehearse the meeting before it happens, with an AI buyer that knows your products. Review the real one after it happens. Every score traces back to your own playbook.",
     primary: BOOK_DEMO,
     secondary: { label: "See Scenario Studio", href: "#scenario-studio" },
     visual: {
@@ -89,12 +89,12 @@ export const practicePage: FeaturePage = {
     {
       id: "scenario-studio",
       eyebrow: "Scenario Studio",
-      title: "Practice real sales conversations before they happen",
-      body: "Rehearse against an AI buyer trained on your own playbooks. Build a scenario for an upcoming meeting, or practice ready-made scenarios your team has approved.",
+      title: "Describe the meeting. AI preps it",
+      body: "Describe an upcoming meeting in one to three sentences. The AI sets the objective, the buyer, and the context, grounded in your company facts, then writes the script. Or pick a ready-made scenario your team has approved.",
       points: [
-        "Set up a real meeting with its objective, buyer, and context",
-        "Practice live in your own voice, or flip roles and hear how a top rep handles your toughest objections",
-        "Learn from top performers with a demo call and a sales mentor podcast",
+        "Edit the script in one click: more casual, more detail, or more concise",
+        "Covers the whole call, from opening and discovery to objections and the close",
+        "Then choose how to practice it: listen, podcast, practice, or flip roles",
       ],
       visual: {
         type: "screenshot",
@@ -103,14 +103,76 @@ export const practicePage: FeaturePage = {
       },
     },
     {
+      id: "you-vs-ai",
+      eyebrow: "You vs AI",
+      title: "Rehearse the call before it counts",
+      body: "You are the sales rep, and the AI is a believable buyer with a name, a role, a company, and a pushback style. Speak, listen, and respond at a natural pace, in Bahasa Indonesia or English.",
+      points: [
+        "Buyers are briefed from your company facts and playbooks, but never see the grading rules",
+        "Flip Roles: you play the buyer, and an AI top rep shows how it's done",
+        "AI vs AI: hear the whole call end to end, then try it yourself",
+        "Podcast: an AI-voiced interview with a top performer on this exact scenario",
+      ],
+      visual: {
+        type: "chat",
+        title: "Practice call · Pak Budi Santoso",
+        meta: "Skeptical CFO · PT Maju Logistik",
+        messages: [
+          {
+            side: "left",
+            label: "PAK BUDI",
+            text: "Your price is 30% above what we pay now. Why should I even consider switching?",
+          },
+          {
+            side: "right",
+            label: "YOU",
+            text: "Fair question, Pak. Before price, what is a late delivery costing you today?",
+          },
+          { side: "left", label: "PAK BUDI", text: "Hmm. More than I'd like to admit. Go on." },
+        ],
+        chips: [
+          { text: "Asked before pitching", tone: "good" },
+          { text: "Next: quantify the cost", tone: "next" },
+        ],
+      },
+    },
+    {
+      id: "scorecard",
+      eyebrow: "Session Review",
+      title: "A scorecard traced to your standards",
+      body: "Every practice call is graded against rules the AI drafts from your own playbook, and nothing scores anyone until a manager approves the rule. Each criterion is met or missed, with the line from the transcript that proves it. No arbitrary numbers to game.",
+      points: [
+        "Coaching summary, full transcript, conversation flow, and analytics",
+        "See exactly why you were scored that way, and what to say next time",
+        "Every rule links back to the section of your playbook it came from",
+        "Company facts brief the AI buyer, but never change a score",
+      ],
+      visual: {
+        type: "bars",
+        title: "Scorecard · by section",
+        meta: "Cold outreach · 10 min 15 sec",
+        items: [
+          { label: "Opening", value: 75, tone: "strength", tag: "3 OF 4 MET" },
+          { label: "Value presentation", value: 50, tone: "strength", tag: "2 OF 4 MET" },
+          { label: "Need identification", value: 20, tone: "gap", tag: "1 OF 5 MET" },
+          { label: "Objection handling", value: 33, tone: "gap", tag: "1 OF 3 MET" },
+        ],
+        note: {
+          label: "WHY YOU WERE SCORED THIS WAY",
+          text: "At 6:14 the buyer said “that's expensive.” At 6:20 you offered 15% off. Next time, ask: expensive compared to what?",
+        },
+      },
+    },
+    {
       id: "reflection-studio",
       eyebrow: "Reflection Studio",
-      title: "See how you performed after every sales meeting",
-      body: "After a meeting, upload the video or voice recording. Reflection Studio assesses your performance and shows your strengths and gaps, so you know what to improve before the next one.",
+      title: "Every real meeting becomes coaching",
+      body: "After the meeting, upload the recording. Reflection Studio breaks it down into skill bands, buying signals, objections, talk share, and key moments. Weak spots become your next practice scenario.",
       points: [
-        "Upload a video or voice-only recording once the meeting ends",
-        "Get an assessment of how you performed in the conversation",
-        "See your strengths and gaps, and know what to improve next",
+        "Sales presentations: strengths, what to improve, and key moments",
+        "Coaching 1-on-1s: how well the manager coached, private to the coach",
+        "Team meetings: decisions, open items, owners, and due dates, with no one scored",
+        "Ask the AI anything about the session",
       ],
       visual: {
         type: "video",
@@ -120,6 +182,53 @@ export const practicePage: FeaturePage = {
         height: 536,
         label:
           "Screen recording of Repskill Reflection Studio: choosing the recording type and uploading a meeting recording for reflection.",
+      },
+    },
+    {
+      id: "team-dashboard",
+      eyebrow: "Team Dashboard",
+      title: "Know where your team really stands",
+      body: "See practice count, latest band, and per-skill trend for every rep, so you can coach the one who needs it before it shows up in the pipeline.",
+      points: [
+        "Assign a learning path with a graded roleplay, a due date, and automatic reminders",
+        "Spot who is improving, who is steady, and who has stalled",
+        "Privacy built in: managers see ratings and progress, never a practice recording or transcript",
+      ],
+      visual: {
+        type: "team",
+        title: "Team Dashboard · Roleplay review",
+        meta: "Illustrative data",
+        items: [
+          {
+            name: "Sari W.",
+            meta: "14 roleplays · On track",
+            band: "STRONG",
+            trend: "↗ Improving",
+            tone: "good",
+          },
+          {
+            name: "Andi P.",
+            meta: "11 roleplays · On track",
+            band: "SOLID",
+            trend: "↗ Improving",
+            tone: "good",
+          },
+          {
+            name: "Dimas K.",
+            meta: "4 roleplays · Stalled",
+            band: "FAIR",
+            trend: "↘ Slipping",
+            tone: "steady",
+          },
+          {
+            name: "Rina S.",
+            meta: "2 roleplays · Overdue",
+            band: "NEEDS WORK",
+            trend: "Needs coaching",
+            tone: "alert",
+          },
+        ],
+        note: "Practice recordings stay private to the rep",
       },
     },
   ],
@@ -137,15 +246,15 @@ export const capturePage: FeaturePage = {
   metadata: {
     title: "Capture Knowledge — Extraction Studio",
     description:
-      "Extract company and top-performer knowledge, structure it, and prepare it for review and use across the organization.",
+      "Interview your top performers, turn any file into review-ready content, and approve everything before your team or the AI uses it.",
   },
   hero: {
     eyebrow: "Features · Capture Knowledge",
     title: "Capture the Expertise Behind Your Best Sales Performance",
     highlight: "Best Sales Performance",
-    lead: "Extract company and top-performer knowledge, structure it, and prepare it for review and use across the organization.",
+    lead: "Interview your top performers, turn any file into review-ready content, and approve everything before your team or the AI uses it.",
     primary: BOOK_DEMO,
-    secondary: { label: "See how review works", href: "#add-content" },
+    secondary: { label: "See how review works", href: "#content-manager" },
     visual: {
       type: "quote",
       role: "Account Executive · Enterprise",
@@ -163,12 +272,13 @@ export const capturePage: FeaturePage = {
     {
       id: "extraction-studio",
       eyebrow: "Extraction Studio",
-      title: "Turn what top performers know into structured knowledge",
-      body: "Capture real approaches in the words of the people who use them, then extract and structure the practices behind strong performance.",
+      title: "Experts don't write. They talk",
+      body: "An AI-assisted voice interview pulls tacit knowledge out of your top performers in 15 to 25 minutes, then turns their answers into structured content your team can use.",
       points: [
-        "Capture from top performers, company knowledge, and field insights",
-        "Extract the specific practices behind strong performance",
-        "Structure expertise so it can power learning and practice",
+        "Choose a free-form interview for lived experience, or a context-driven one to go deep on a topic",
+        "The AI asks follow-up questions until it has the exact words and the moment to use them",
+        "Supervisors can assign a topic, such as how to handle “too expensive”",
+        "Every insight becomes a draft article, ready for review",
       ],
       visual: {
         type: "screenshot",
@@ -179,17 +289,56 @@ export const capturePage: FeaturePage = {
     {
       id: "add-content",
       eyebrow: "Add Content",
-      title: "Add knowledge. Review it. Approve it",
-      body: "Bring in company materials and new best practices. Nothing reaches your team until it has been reviewed, curated, and approved.",
+      title: "Drop it in. AI drafts it, you just check",
+      body: "Upload what you already have. The AI tidies documents into review-ready articles, transcribes audio and video, and suggests the title, department, category, and language.",
       points: [
-        "Add product, process, and positioning materials",
-        "Review and curation by your content managers",
-        "Only approved content joins the Knowledge Universe",
+        "PDF, Word, text, audio, and video, one file at a time or in bulk",
+        "Audio and video get a transcript, a seekable player, and an AI summary",
+        "Accept or edit every AI suggestion before you submit it for approval",
       ],
       visual: {
         type: "screenshot",
         image: addContentScreenshot,
         alt: "Repskill Add Content: turn any source into content your team uses in three steps, pick type, upload, and review, choosing between a Document and a Video Learning.",
+      },
+    },
+    {
+      id: "content-manager",
+      eyebrow: "Content Manager",
+      title: "Nothing goes live without review",
+      body: "Every new article, edit, and scenario waits in an approval queue. Until a reviewer approves it, it stays invisible to employees and to the AI, so answers, roleplays, and scores only use knowledge you trust.",
+      points: [
+        "Approve and publish, or send it back with a written reason the author can see",
+        "Questions the chat couldn't answer come back as content requests",
+        "AI flags conflicting documents, and outdated content is assigned for renewal",
+        "Merge duplicate articles while keeping the originals",
+      ],
+      visual: {
+        type: "approval-queue",
+        title: "Approval queue",
+        badge: "3 waiting",
+        actions: ["Approve & publish", "Send back"],
+        items: [
+          {
+            source: "EXTRACTION",
+            title: "Price objection: reframe to the cost of delay",
+            note: "From a senior rep's voice interview",
+          },
+          {
+            source: "EDIT",
+            title: "Location assessment criteria",
+            note: "Proposed change · current version stays live",
+          },
+          {
+            source: "SCENARIO",
+            title: "Renewal with an impatient VP",
+            note: "Submitted by a rep to the team library",
+          },
+        ],
+        note: {
+          label: "CONTENT GAP",
+          text: "“How do we price a multi-site rollout?” The chat couldn't answer, so it's now a content request.",
+        },
       },
     },
   ],
@@ -207,25 +356,25 @@ export const learnPage: FeaturePage = {
   metadata: {
     title: "Learn Knowledge — Knowledge Universe & Learning Path",
     description:
-      "One curated source of company knowledge, an AI chat grounded in it, and structured learning paths that build real sales skills.",
+      "Your playbook in one place, an AI chat that only knows your company, and learning paths that end in a test or a graded roleplay.",
   },
   hero: {
     eyebrow: "Features · Learn Knowledge",
     title: "Turn Knowledge Into Learning People Can Build On",
     highlight: "Learning",
-    lead: "Give your team one curated source of company knowledge, and structured ways to learn from it.",
+    lead: "A knowledge base and an e-learning platform in one place: your playbook, an AI chat that only knows your company, and learning paths that end in real practice.",
     primary: BOOK_DEMO,
     secondary: { label: "Explore the Knowledge Universe", href: "#knowledge-universe" },
     visual: {
       type: "checklist",
-      title: "Learning Path · Discovery fundamentals",
-      meta: "4 modules",
-      progress: 55,
+      title: "Learning Path · Onboarding Sales",
+      meta: "Required · assigned by your manager",
+      progress: 17,
       items: [
-        { label: "Know your buyer", meta: "Done", status: "done" },
-        { label: "Ask better discovery questions", meta: "Done", status: "done" },
-        { label: "Handle early pricing questions", meta: "In progress", status: "now" },
-        { label: "Practice: discovery call scenario", meta: "Next", status: "todo" },
+        { label: "Product overview", meta: "Article · Done", status: "done" },
+        { label: "Test: product basics", meta: "9/10", status: "done" },
+        { label: "Discovery call guide", meta: "In progress", status: "now" },
+        { label: "Graded roleplay: price objection", meta: "Module 3", status: "todo" },
       ],
     },
   },
@@ -233,12 +382,13 @@ export const learnPage: FeaturePage = {
     {
       id: "knowledge-universe",
       eyebrow: "Knowledge Universe",
-      title: "One curated knowledge foundation, built around your business",
-      body: "Company knowledge, product knowledge, sales expertise, and best practices, reviewed and approved before it powers learning, practice, and coaching.",
+      title: "Your playbook in one place",
+      body: "SOPs, playbooks, product demos, and voice memos from senior reps, organized by department and searchable with AI. Knowledge that stays with the company, not with the person.",
       points: [
-        "Company-specific, not generic content",
-        "Reviewed and approved before it is used",
-        "Powers Learning Paths, Scenario Studio, and Reflection Studio",
+        "Ask in plain language, like “How do we handle a price objection?”",
+        "Articles, videos, and audio side by side, by department",
+        "The same approved knowledge powers learning paths, roleplays, and scorecards",
+        "Only reviewed and approved content is ever visible",
       ],
       visual: {
         type: "screenshot",
@@ -248,29 +398,30 @@ export const learnPage: FeaturePage = {
     },
     {
       id: "chat",
-      eyebrow: "Knowledge Chat",
-      title: "Turn company knowledge into instant sales guidance",
-      body: "Knowledge Chat gives reps reliable answers grounded in your company's approved knowledge, so they can prepare, respond, and sell with confidence.",
+      eyebrow: "AI Chat",
+      title: "Like ChatGPT, but it only knows your company",
+      body: "Reps ask in plain language and get answers built from your approved knowledge. Files in a personal ChatGPT stay with one person. Here, the whole team asks the same source.",
       points: [
-        "Find the right answer in seconds",
-        "Ask a specialist for negotiation, pitch, and ROI guidance",
-        "Keep every conversation consistent with approved knowledge",
+        "Every answer shows its sources and a confidence level, one click from the original",
+        "Honest when it doesn't know: general knowledge is clearly labeled",
+        "Specialists on call: Negotiation Coach, Pitch Mentor, and ROI Advisor",
+        "Speak or type, with read-aloud in Bahasa Indonesia or English",
       ],
       visual: {
         type: "screenshot",
         image: knowledgeChatScreenshot,
-        alt: "Repskill Knowledge Chat: ask anything about your sales knowledge, with specialists such as Negotiation Coach, Pitch Mentor, and ROI Advisor, and suggested questions like how to respond when a buyer says you are 20% more expensive.",
+        alt: "Repskill AI Chat: ask anything about your sales knowledge, with specialists such as Negotiation Coach, Pitch Mentor, and ROI Advisor, and suggested questions like how to respond when a buyer says you are 20% more expensive.",
       },
     },
     {
       id: "learning-path",
       eyebrow: "Learning Path",
-      title: "Structured learning journeys that build real skills",
-      body: "Organize knowledge into modules that build on each other, each connected to a practice scenario, so learning turns into capability.",
+      title: "What every new hire must master",
+      body: "Managers assign a required path built from your own knowledge. Each module mixes formats and ends in a test or a graded roleplay, so learning turns into skill.",
       points: [
-        "Modules built from approved company knowledge",
-        "Each module connects to a practice scenario",
-        "Progress shows how skills build over time",
+        "Articles, videos, audio, tests, and graded roleplays in one path",
+        "Assigned with a due date and automatic reminders",
+        "Progress shows what's done and what to start next",
       ],
       visual: {
         type: "screenshot",

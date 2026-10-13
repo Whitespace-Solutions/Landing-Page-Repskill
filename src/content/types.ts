@@ -31,6 +31,34 @@ export type MockupData =
     }
   | { type: "knowledge-universe"; center?: string }
   | { type: "governance"; title: string; items: { label: string; meta: string; status: Status }[] }
+  | {
+      /** Antrean approval Content Manager: konten menunggu review, dengan asal & tombol (tampilan saja) */
+      type: "approval-queue";
+      title: string;
+      /** Badge kanan atas, mis. "3 waiting" */
+      badge: string;
+      items: { title: string; source: string; note: string }[];
+      /** Label tombol utama & sekunder di tiap item (tampilan saja, bukan tautan) */
+      actions: [string, string];
+      note?: { label: string; text: string };
+    }
+  | {
+      /** Team Dashboard manajer: satu baris per rep (inisial, jumlah latihan, band terakhir, tren) */
+      type: "team";
+      title: string;
+      meta?: string;
+      items: {
+        name: string;
+        /** mis. "14 roleplays · On track" */
+        meta: string;
+        band: string;
+        /** mis. "↗ Improving" */
+        trend: string;
+        /** `alert` = butuh coaching (oranye), `good` = amber, `steady` = netral */
+        tone: "good" | "steady" | "alert";
+      }[];
+      note?: string;
+    }
   | { type: "quote"; role: string; parts: { text: string; highlight?: boolean }[]; tags: string[] }
   | { type: "structure"; title: string; status: string; fields: { label: string; value: string }[] }
   | {

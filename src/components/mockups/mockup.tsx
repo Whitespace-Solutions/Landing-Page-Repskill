@@ -22,6 +22,10 @@ export function Mockup({ data }: { data: MockupData }) {
       return <KnowledgeUniverseMockup {...data} />;
     case "governance":
       return <GovernanceMockup {...data} />;
+    case "approval-queue":
+      return <ApprovalQueueMockup {...data} />;
+    case "team":
+      return <TeamMockup {...data} />;
     case "quote":
       return <QuoteMockup {...data} />;
     case "structure":
@@ -436,6 +440,147 @@ function GovernanceMockup({ title, items }: Extract<MockupData, { type: "governa
           </StaggerItem>
         ))}
       </Stagger>
+    </MockupCard>
+  );
+}
+
+// Antrean approval Content Manager (slide "Content Manager" di sales deck): item teratas sedang direview (oranye).
+function ApprovalQueueMockup({
+  title,
+  badge,
+  items,
+  actions,
+  note,
+}: Extract<MockupData, { type: "approval-queue" }>) {
+  return (
+    <MockupCard
+      title={title}
+      badge={
+        <span className="rounded-full bg-brand-orange/10 px-2.5 py-1 text-xs font-bold whitespace-nowrap text-brand-orange-deep">
+          {badge}
+        </span>
+      }
+    >
+      <Stagger className="flex flex-col gap-2.5" stagger={0.12}>
+        {items.map((item, i) => (
+          <StaggerItem
+            key={item.title}
+            className={cn(
+              "flex flex-col gap-2.5 rounded-xl border px-4 py-3.5",
+              i === 0 ? "border-brand-orange/40 bg-brand-orange/5" : "border-line bg-white",
+            )}
+          >
+            <div className="flex flex-col gap-1">
+              <span className="w-fit rounded-full bg-surface px-2 py-0.5 text-[10.5px] font-bold tracking-[0.1em] text-brand-charcoal">
+                {item.source}
+              </span>
+              <span className="text-sm font-bold text-brand-grey">{item.title}</span>
+              <span className="text-xs text-brand-charcoal">{item.note}</span>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <span
+                className={cn(
+                  "rounded-full px-3 py-1 text-xs font-semibold",
+                  i === 0 ? "bg-brand-orange text-white" : "bg-surface text-brand-grey",
+                )}
+              >
+                {actions[0]}
+              </span>
+              <span className="rounded-full border border-line px-3 py-1 text-xs font-semibold text-brand-charcoal">
+                {actions[1]}
+              </span>
+            </div>
+          </StaggerItem>
+        ))}
+        {note && (
+          <StaggerItem className="flex flex-col gap-1 rounded-xl bg-brand-linen px-4 py-3">
+            <span className="text-[11px] font-bold tracking-[0.12em] text-brand-grey/70">{note.label}</span>
+            <span className="text-sm leading-normal text-brand-grey">{note.text}</span>
+          </StaggerItem>
+        )}
+      </Stagger>
+    </MockupCard>
+  );
+}
+
+function initials(name: string) {
+  return name
+    .split(/\s+/)
+    .map((w) => w[0])
+    .join("")
+    .replace(/[^A-Za-z]/g, "")
+    .slice(0, 2)
+    .toUpperCase();
+}
+
+// Team Dashboard (slide "Know where your team really stands"): rep yang butuh coaching disorot oranye.
+function TeamMockup({ title, meta, items, note }: Extract<MockupData, { type: "team" }>) {
+  return (
+    <MockupCard title={title} meta={meta}>
+      <Stagger className="flex flex-col gap-1.5" stagger={0.1}>
+        {items.map((item) => (
+          <StaggerItem
+            key={item.name}
+            className={cn(
+              "flex items-center gap-3 rounded-xl px-3 py-2.5",
+              item.tone === "alert" && "bg-brand-orange/10",
+            )}
+          >
+            <span
+              className={cn(
+                "flex size-9 flex-none items-center justify-center rounded-full text-xs font-bold",
+                item.tone === "alert" ? "bg-brand-orange text-white" : "bg-brand-grey text-white",
+              )}
+            >
+              {initials(item.name)}
+            </span>
+            <div className="flex min-w-0 flex-1 flex-col">
+              <span className="truncate text-sm font-bold text-brand-grey">{item.name}</span>
+              <span className="truncate text-xs text-brand-charcoal">{item.meta}</span>
+            </div>
+            <div className="flex flex-col items-end gap-1">
+              <span
+                className={cn(
+                  "rounded-full px-2 py-0.5 text-[10.5px] font-bold tracking-[0.08em] whitespace-nowrap",
+                  item.tone === "good" && "bg-brand-amber/25 text-brand-grey",
+                  item.tone === "steady" && "bg-surface text-brand-grey",
+                  item.tone === "alert" && "bg-white text-brand-orange-deep",
+                )}
+              >
+                {item.band}
+              </span>
+              <span
+                className={cn(
+                  "text-xs font-semibold whitespace-nowrap",
+                  item.tone === "alert" ? "text-brand-orange-deep" : "text-brand-charcoal",
+                )}
+              >
+                {item.trend}
+              </span>
+            </div>
+          </StaggerItem>
+        ))}
+      </Stagger>
+      {note && (
+        <div className="mt-4 flex items-center gap-2.5 rounded-xl bg-brand-linen px-4 py-3 text-sm text-brand-grey">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="flex-none"
+            aria-hidden
+          >
+            <rect x="5" y="11" width="14" height="10" rx="2" />
+            <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+          </svg>
+          {note}
+        </div>
+      )}
     </MockupCard>
   );
 }

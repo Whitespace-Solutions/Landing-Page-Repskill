@@ -71,7 +71,7 @@ Foto orang di situasi kerja (tim sales, coaching), pencahayaan natural, tanpa fi
 - **Screenshot produk (mockup `screenshot`):** dipotong ke area fitur (tanpa sidebar navigasi aplikasi supaya teks
   tetap terbaca), lebar 1400px WebP (±40 KB) di `src/assets/images/mockups/`; file asli di `docs/brand/screenshots/`.
   Bingkai, kolom lebar, dan panel tipis sama dengan mockup `video`. Isi `alt` yang menjelaskan isi layar. Contoh:
-  Knowledge Chat di halaman Learn Knowledge.
+  AI Chat di halaman Learn Knowledge.
 - **Layar penuh:** semua mockup `screenshot` dan `video` otomatis bisa dibuka layar penuh (`ExpandableMedia`). Di dalam
   lightbox, video diputar dengan kontrol. Karena aset 1400px, tampil tajam di layar biasa; untuk layar retina lebar,
   siapkan versi lebih besar bila perlu.
