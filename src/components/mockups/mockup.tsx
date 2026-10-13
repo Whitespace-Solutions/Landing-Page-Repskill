@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { AnimatedBar, EASE_SMOOTH } from "@/components/motion/animated-bar";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/reveal";
+import { HexOutline } from "@/components/ui/wireframe";
 import type { MockupData, Status } from "@/content/types";
 import { cn } from "@/lib/cn";
 import { ExpandableMedia } from "./expandable-media";
@@ -617,22 +618,29 @@ function PopupIcon({ icon }: { icon: "mic" | "document" }) {
   );
 }
 
-// Hero Capture: foto heksagon kanan atas, kartu kutipan di depan (menumpuk bagian bawah foto), dua pop-up produk
-// yang melayang pelan di kiri atas dan kanan bawah. Pop-up berhenti melayang saat "reduce motion".
+// Hero Capture: foto heksagon kanan atas di lapisan depan (bagian bawah foto menumpuk sudut kanan atas kartu kutipan
+// yang ringkas), dua heksagon dekoratif sederhana, dan dua pop-up produk yang melayang pelan di kiri atas dan kanan
+// bawah. Pop-up berhenti melayang saat "reduce motion".
 function PersonaSceneMockup({ image, quote, popups }: Extract<MockupData, { type: "persona-scene" }>) {
   return (
-    <div className="relative pt-[46%] pb-16 sm:pt-[17%]">
-      {/* Foto di kanan; kartu kutipan hanya menutup sisi kiri bawahnya, jadi laptop (kanan bawah foto) tetap terlihat */}
-      <Reveal className="absolute top-0 right-[2%] w-[48%] max-w-[340px] sm:right-0 sm:w-[54%]">
-        <Image src={image} alt="" sizes="340px" className="block h-auto w-full drop-shadow-xl" />
+    <div className="relative pt-[50%] pb-16 sm:pt-[44%]">
+      {/* Dekorasi: heksagon garis oranye di belakang foto + heksagon isi lembut di kiri bawah */}
+      <HexOutline className="absolute top-[3%] right-[40%] w-[22%] max-w-[120px] rotate-90 text-brand-orange opacity-40" />
+      <HexOutline
+        strokeWidth={0}
+        className="absolute bottom-[2%] left-[4%] w-[9%] max-w-[48px] rotate-90 fill-brand-orange text-brand-orange opacity-20"
+      />
+
+      <Reveal className="absolute top-0 right-0 z-2 w-[50%] max-w-[330px] sm:w-[52%]">
+        <Image src={image} alt="" sizes="330px" className="block h-auto w-full drop-shadow-xl" />
       </Reveal>
 
-      <Reveal delay={0.15} className="relative z-1 sm:w-[72%]">
-        <QuoteMockup type="quote" {...quote} />
+      <Reveal delay={0.15} className="relative z-1 w-[82%] sm:w-[64%]">
+        <CompactQuote {...quote} />
       </Reveal>
 
       {popups.slice(0, POPUP_POSITIONS.length).map((popup, i) => (
-        <Reveal key={popup.label} delay={0.35 + i * 0.15} className={cn("absolute z-2", POPUP_POSITIONS[i])}>
+        <Reveal key={popup.label} delay={0.35 + i * 0.15} className={cn("absolute z-3", POPUP_POSITIONS[i])}>
           <div
             className="flex items-center gap-2.5 rounded-xl border border-line/80 bg-white/95 py-2 pr-3.5 pl-2 shadow-pop backdrop-blur-sm motion-safe:animate-float-soft"
             style={{ animationDuration: i === 0 ? "8s" : "9.5s", animationDelay: i === 0 ? "0s" : "-3s" }}
@@ -650,6 +658,47 @@ function PersonaSceneMockup({ image, quote, popups }: Extract<MockupData, { type
           </div>
         </Reveal>
       ))}
+    </div>
+  );
+}
+
+/** Versi ringkas kartu kutipan top performer untuk komposisi `persona-scene` (teks & padding lebih kecil). */
+function CompactQuote({ role, parts, tags }: Extract<MockupData, { type: "persona-scene" }>["quote"]) {
+  return (
+    <div className="rounded-card border border-line bg-white p-4 shadow-float sm:p-5">
+      <div className="flex items-center gap-2.5">
+        <span className="flex size-8 flex-none items-center justify-center rounded-full bg-brand-grey text-[11px] font-bold text-white shadow-[0_0_0_2px_var(--color-white),0_0_0_3.5px_var(--color-brand-orange)]">
+          TP
+        </span>
+        <div className="flex min-w-0 flex-col">
+          <span className="text-[10px] font-bold tracking-[0.14em] text-brand-orange">TOP PERFORMER</span>
+          <span className="text-xs leading-snug font-semibold text-brand-grey">{role}</span>
+        </div>
+      </div>
+      <p className="mt-3 text-sm leading-relaxed text-brand-grey">
+        “
+        {parts.map((p, i) =>
+          p.highlight ? (
+            <mark key={i} className="rounded bg-brand-linen px-0.5 text-brand-grey">
+              {p.text}
+            </mark>
+          ) : (
+            <span key={i}>{p.text}</span>
+          ),
+        )}
+        ”
+      </p>
+      <div className="mt-3 flex flex-wrap items-center gap-1.5 border-t border-line pt-3">
+        <span className="text-[10px] font-bold tracking-[0.12em] text-brand-charcoal">EXTRACTED</span>
+        {tags.map((t) => (
+          <span
+            key={t}
+            className="rounded-md bg-brand-linen px-1.5 py-0.5 text-[11px] font-semibold text-brand-grey"
+          >
+            {t}
+          </span>
+        ))}
+      </div>
     </div>
   );
 }
