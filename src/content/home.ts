@@ -27,10 +27,94 @@ export const clientsSection = {
   title: "Trusted by sales teams building capability",
 };
 
+/** Section masalah (sales deck, slide 2–4): tiga hal yang rusak + kenapa cara biasa tidak menempel. */
+export const problemSection = {
+  eyebrow: "The Problem",
+  title: "Your revenue rides on a few people",
+  highlight: "a few people",
+  lead: "Every sales team has a top rep everyone else depends on. Nobody can explain exactly how they do it, so the rest of the team learns on live customers. That's the most expensive classroom there is.",
+  pains: [
+    {
+      title: "Ramp is slow",
+      body: "New reps take months to become productive, paid for in senior time and lost deals.",
+    },
+    {
+      title: "Pitch is uneven",
+      body: "Same product, different story. What the customer hears depends on who picks up the phone.",
+    },
+    {
+      title: "Know-how walks out",
+      body: "When a top rep resigns, their playbook leaves with them. The next hire starts from zero.",
+    },
+  ],
+  fixesLabel: "THE USUAL FIXES DON'T STICK",
+  fixes: [
+    { label: "Classroom training", verdict: "Heard once. Forgotten next month." },
+    { label: "Roleplay with colleagues", verdict: "Awkward, rare, and unscored." },
+    { label: "Generic AI chatbot", verdict: "Doesn't know your product." },
+  ],
+  closing: {
+    text: "Selling is a skill. Skills are built by practice, not by more content.",
+    highlight: "practice",
+  },
+};
+
 export const platformOverview = {
   eyebrow: "Platform Overview",
   title: "One Platform to Capture, Learn, and Practice",
-  lead: "Repskill brings your best sales knowledge into one curated Knowledge Universe, then turns it into learning, practice, and reflection.",
+  lead: "A flight simulator for your sales team, built on your own playbook. Capture what your best people know, learn it, then practice and reflect until it sticks.",
+};
+
+/** Pembeda (sales deck, slide 23 & 26): dibangun untuk Indonesia, tata kelola kelas enterprise. */
+export const differentiators = {
+  eyebrow: "Why Repskill",
+  title: "Built for Indonesia. Governed for enterprise.",
+  highlight: "Indonesia",
+  lead: "Reps practice when it feels safe, and managers trust what the AI says. Both are designed in from the start.",
+  columns: [
+    {
+      kicker: "NOT TRANSLATED. BUILT.",
+      items: [
+        {
+          title: "Bahasa-native voices",
+          body: "Buyers speak natural Indonesian and address your rep as Pak or Bu.",
+        },
+        {
+          title: "Bilingual end to end",
+          body: "English and Bahasa Indonesia across screens, buyer voices, and reports.",
+        },
+        {
+          title: "Voice-first practice",
+          body: "A live spoken conversation with the buyer, not a text quiz.",
+        },
+        {
+          title: "Your company's voice",
+          body: "Describe the company once. Every AI feature sells your real products, your way.",
+        },
+      ],
+    },
+    {
+      kicker: "YOUR KNOWLEDGE STAYS YOURS.",
+      items: [
+        {
+          title: "A separate store per company",
+          body: "Each company's knowledge lives in its own isolated store, not just filtered.",
+        },
+        {
+          title: "Approval gates the AI",
+          body: "Unapproved content never appears in any answer, roleplay, or score.",
+        },
+        {
+          title: "Guardrails, roles, and secure sign-in",
+          body: "Set what the AI must never say, combine five roles, and sign in with Google or Microsoft and two-factor authentication.",
+        },
+        {
+          title: "Practice stays private",
+          body: "No role can listen to practice recordings, not even an admin.",
+        },
+      ],
+    },
+  ],
 };
 
 export const howItWorks: StepsData = {
