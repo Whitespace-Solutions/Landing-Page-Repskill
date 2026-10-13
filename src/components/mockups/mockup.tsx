@@ -616,39 +616,46 @@ function PopupIcon({ icon }: { icon: "mic" | "document" }) {
   );
 }
 
-// Hero Capture, komposisi mengikuti CTA Capture (`VisualCta` layout `capture`): foto heksagon kiri atas di lapisan
-// depan, kartu kutipan ringkas di kanan atas dengan pop-up pertama ("Extraction Studio") menempel di bawahnya, heksagon
-// garis oranye besar di kanan bawah, heksagon isi kecil di bawah foto, pop-up kedua ("Draft article ready") di kiri
-// bawah. Posisi vertikal memakai `cqw` (persen lebar wadah); tinggi wadah dari `pt-[%]` (padding % = persen lebar).
-// Di mobile kartu turun ke bawah foto. Pop-up berhenti melayang saat "reduce motion".
+// Hero Capture (contoh desain 2026-10-13): foto heksagon besar di kiri sebagai latar, kartu kutipan ringkas di kanan
+// atas menumpuk sisi kanan foto, pop-up "Extraction Studio" menempel di bawah kartu, pop-up "Draft article ready" di
+// bawah menumpuk bagian bawah foto, heksagon isi oranye kecil di kiri dan heksagon garis oranye kecil di kanan bawah.
+// Posisi memakai `cqw` (persen lebar wadah, diukur dari contoh desain); tinggi wadah dari `pt-[%]` (padding % = persen
+// lebar). `lg` (kolom sempit 1024–1279px): kartu lebih lebar dan pop-up bawah turun supaya tidak bertabrakan. Mobile:
+// kartu di bawah foto selebar hampir penuh. Pop-up berhenti melayang saat "reduce motion".
 function PersonaSceneMockup({ image, quote, popups }: Extract<MockupData, { type: "persona-scene" }>) {
   const [first, second] = popups;
   return (
-    <div className="@container relative pt-[150%] sm:pt-[92%] lg:pt-[114%] xl:pt-[92%]">
-      <HexOutline
-        strokeWidth={1.2}
-        className="absolute top-[6cqw] right-[4%] w-[32%] max-w-[180px] rotate-90 text-brand-orange opacity-80 sm:top-[52cqw] sm:right-[8%] sm:w-[30%] lg:top-[76cqw] xl:top-[52cqw]"
-      />
+    <div className="@container relative pt-[150%] sm:pt-[86%] lg:pt-[104%] xl:pt-[86%]">
       <HexOutline
         strokeWidth={0}
-        className="absolute top-[62cqw] left-[14%] hidden w-[10%] max-w-[56px] rotate-90 fill-brand-orange text-brand-orange opacity-25 sm:block"
+        className="absolute top-[59cqw] left-[3%] hidden w-[7%] max-w-[48px] rotate-90 fill-brand-orange text-brand-orange opacity-25 sm:block lg:top-[66cqw] xl:top-[59cqw]"
+      />
+      <HexOutline
+        strokeWidth={2.4}
+        className="absolute top-[10cqw] right-[6%] w-[16%] max-w-[72px] rotate-90 text-brand-orange opacity-80 sm:top-[62cqw] sm:right-auto sm:left-[79%] sm:w-[9%] lg:top-[90cqw] xl:top-[62cqw]"
       />
 
-      <Reveal className="absolute top-[2cqw] left-0 z-2 w-[54%] max-w-[330px] sm:w-[46%]">
-        <Image src={image} alt="" sizes="330px" className="block h-auto w-full drop-shadow-xl" />
+      <Reveal className="absolute top-0 left-0 w-[64%] max-w-[360px] sm:top-[12cqw] sm:left-[6%] sm:w-[50%]">
+        <Image src={image} alt="" sizes="360px" className="block h-auto w-full drop-shadow-xl" />
       </Reveal>
 
-      <Reveal delay={0.15} className="absolute top-[60cqw] right-0 z-1 w-[88%] sm:top-[4cqw] sm:w-[58%]">
+      <Reveal
+        delay={0.15}
+        className="absolute top-[56cqw] right-0 z-2 w-[88%] sm:top-[15cqw] sm:right-[5%] sm:w-[50%] lg:right-0 lg:w-[58%] xl:right-[5%] xl:w-[50%]"
+      >
         <CompactQuote {...quote} />
         {first && (
-          <div className="absolute top-full right-0 z-3 mt-3">
+          <div className="absolute top-full right-[4%] z-3 mt-4">
             <ScenePopup popup={first} duration="8s" delay="0s" />
           </div>
         )}
       </Reveal>
 
       {second && (
-        <Reveal delay={0.5} className="absolute bottom-0 left-0 z-3">
+        <Reveal
+          delay={0.5}
+          className="absolute bottom-0 left-0 z-3 sm:top-[64cqw] sm:bottom-auto sm:left-[16%] lg:top-[84cqw] lg:left-[4%] xl:top-[64cqw] xl:left-[16%]"
+        >
           <ScenePopup popup={second} duration="9.5s" delay="-3s" />
         </Reveal>
       )}
