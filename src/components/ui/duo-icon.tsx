@@ -1,9 +1,31 @@
 import { cn } from "@/lib/cn";
 
 /** Nama ikon dua warna (garis Shadow Grey + aksen oranye). */
-export type DuoIconName = "ramp" | "pitch" | "walkout";
+export type DuoIconName = "ramp" | "pitch" | "walkout" | "mentor" | "builder";
 
 const icons: Record<DuoIconName, { base: React.ReactNode; accent: React.ReactNode }> = {
+  // Orang + balon chat: mentor yang membimbing lewat percakapan
+  mentor: {
+    base: (
+      <>
+        <circle cx="9" cy="8.5" r="3.5" />
+        <path d="M3 20.5c0-3.3 2.7-6 6-6s6 2.7 6 6" />
+      </>
+    ),
+    accent: (
+      <path d="M15 3.5h5a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-2l-2 2v-2h-1a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1Z" />
+    ),
+  },
+  // Balok bertumpuk: builder yang menyusun sistem; balok teratas (aksen) menandai skala
+  builder: {
+    base: (
+      <>
+        <rect x="3" y="14" width="8" height="6.5" rx="1" />
+        <rect x="13" y="14" width="8" height="6.5" rx="1" />
+      </>
+    ),
+    accent: <rect x="8" y="5.5" width="8" height="6.5" rx="1" />,
+  },
   // Jam pasir: ramp rep baru lama, pasirnya (oranye) sudah habis turun
   ramp: {
     base: (
@@ -56,10 +78,13 @@ const icons: Record<DuoIconName, { base: React.ReactNode; accent: React.ReactNod
 export function DuoIcon({
   name,
   size = 36,
+  tone = "light",
   className,
 }: {
   name: DuoIconName;
   size?: number;
+  /** `dark`: untuk latar gelap — garis utama putih, aksen amber */
+  tone?: "light" | "dark";
   className?: string;
 }) {
   const { base, accent } = icons[name];
@@ -75,8 +100,8 @@ export function DuoIcon({
       className={cn("flex-none", className)}
       aria-hidden
     >
-      <g className="stroke-brand-grey">{base}</g>
-      <g className="stroke-brand-orange">{accent}</g>
+      <g className={tone === "dark" ? "stroke-white" : "stroke-brand-grey"}>{base}</g>
+      <g className={tone === "dark" ? "stroke-brand-amber" : "stroke-brand-orange"}>{accent}</g>
     </svg>
   );
 }

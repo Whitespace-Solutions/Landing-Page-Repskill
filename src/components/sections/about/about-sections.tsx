@@ -1,5 +1,6 @@
 import { Stagger, StaggerItem } from "@/components/motion/reveal";
 import { Container } from "@/components/ui/container";
+import { DuoIcon } from "@/components/ui/duo-icon";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { HighlightText } from "@/components/ui/highlight-text";
 import { Section } from "@/components/ui/section";
@@ -66,6 +67,7 @@ export function OurPhilosophy() {
       <Stagger className="mt-12 grid gap-4 md:grid-cols-2 lg:mt-16" stagger={0.12}>
         {philosophy.archetypes.map((a) => (
           <StaggerItem key={a.name} className="flex flex-col gap-4 rounded-card bg-white/10 p-7 lg:p-8">
+            <DuoIcon name={a.icon} size={44} tone="dark" className="mb-1" />
             <Eyebrow className="text-brand-amber">{a.name}</Eyebrow>
             <span className="text-h3 text-balance text-white">{a.line}</span>
             <div className="mt-auto flex flex-wrap gap-2 pt-2">

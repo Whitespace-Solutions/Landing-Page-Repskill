@@ -1,4 +1,5 @@
 /** Konten halaman About Us (sumber: brand guideline hal. 3–8). */
+import type { DuoIconName } from "@/components/ui/duo-icon";
 import type { CtaData, StepsData } from "./types";
 
 export const aboutPage: {
@@ -15,7 +16,7 @@ export const aboutPage: {
     eyebrow: string;
     title: string;
     body: string;
-    archetypes: { name: string; line: string; traits: string[] }[];
+    archetypes: { icon: DuoIconName; name: string; line: string; traits: string[] }[];
     principles: { name: string; desc: string }[];
   };
   approach: StepsData;
@@ -51,11 +52,13 @@ export const aboutPage: {
     body: "We guide people the way a trusted coach would, and we build capability the way a good system should: structured, repeatable, and ready to scale.",
     archetypes: [
       {
+        icon: "mentor",
         name: "The Mentor",
         line: "Help every rep get better at the conversations that matter.",
         traits: ["Knowledgeable", "Supportive", "Guiding"],
       },
       {
+        icon: "builder",
         name: "The Builder",
         line: "Turn that guidance into a system that scales across the team.",
         traits: ["Structured", "Scalable", "Performance-oriented"],
