@@ -28,6 +28,8 @@ export function Mockup({ data }: { data: MockupData }) {
       return <TeamMockup {...data} />;
     case "quote":
       return <QuoteMockup {...data} />;
+    case "persona-scene":
+      return <PersonaSceneMockup {...data} />;
     case "structure":
       return <StructureMockup {...data} />;
     case "video":
@@ -582,6 +584,73 @@ function TeamMockup({ title, meta, items, note }: Extract<MockupData, { type: "t
         </div>
       )}
     </MockupCard>
+  );
+}
+
+const POPUP_POSITIONS = ["left-0 top-[4%] sm:top-0", "right-0 bottom-0"];
+
+function PopupIcon({ icon }: { icon: "mic" | "document" }) {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      {icon === "mic" ? (
+        <>
+          <rect x="9" y="3" width="6" height="11" rx="3" />
+          <path d="M5 11a7 7 0 0 0 14 0M12 18v3" />
+        </>
+      ) : (
+        <>
+          <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
+          <path d="M14 3v5h5M9 13h6M9 17h4" />
+        </>
+      )}
+    </svg>
+  );
+}
+
+// Hero Capture: foto heksagon kanan atas, kartu kutipan di depan (menumpuk bagian bawah foto), dua pop-up produk
+// yang melayang pelan di kiri atas dan kanan bawah. Pop-up berhenti melayang saat "reduce motion".
+function PersonaSceneMockup({ image, quote, popups }: Extract<MockupData, { type: "persona-scene" }>) {
+  return (
+    <div className="relative pt-[46%] pb-16 sm:pt-[17%]">
+      {/* Foto di kanan; kartu kutipan hanya menutup sisi kiri bawahnya, jadi laptop (kanan bawah foto) tetap terlihat */}
+      <Reveal className="absolute top-0 right-[2%] w-[48%] max-w-[340px] sm:right-0 sm:w-[54%]">
+        <Image src={image} alt="" sizes="340px" className="block h-auto w-full drop-shadow-xl" />
+      </Reveal>
+
+      <Reveal delay={0.15} className="relative z-1 sm:w-[72%]">
+        <QuoteMockup type="quote" {...quote} />
+      </Reveal>
+
+      {popups.slice(0, POPUP_POSITIONS.length).map((popup, i) => (
+        <Reveal key={popup.label} delay={0.35 + i * 0.15} className={cn("absolute z-2", POPUP_POSITIONS[i])}>
+          <div
+            className="flex items-center gap-2.5 rounded-xl border border-line/80 bg-white/95 py-2 pr-3.5 pl-2 shadow-pop backdrop-blur-sm motion-safe:animate-float-soft"
+            style={{ animationDuration: i === 0 ? "8s" : "9.5s", animationDelay: i === 0 ? "0s" : "-3s" }}
+          >
+            <span className="flex size-8 flex-none items-center justify-center rounded-lg bg-brand-orange text-white">
+              <PopupIcon icon={popup.icon} />
+            </span>
+            <span className="flex flex-col">
+              <span className="flex items-center gap-1.5 text-[13px] font-bold text-brand-grey">
+                {popup.label}
+                {popup.live && <span className="size-1.5 animate-pulse rounded-full bg-brand-amber" />}
+              </span>
+              <span className="text-[11.5px] leading-snug text-brand-charcoal">{popup.text}</span>
+            </span>
+          </div>
+        </Reveal>
+      ))}
+    </div>
   );
 }
 

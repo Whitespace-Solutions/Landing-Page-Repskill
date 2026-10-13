@@ -251,16 +251,23 @@ export const capturePage: FeaturePage = {
     highlight: "Best Sales Performance",
     lead: "Interview your top performers, turn any file into review-ready content, and approve everything before your team or the AI uses it.",
     visual: {
-      type: "quote",
-      role: "Account Executive · Enterprise",
-      parts: [
-        { text: "When pricing comes up early, " },
-        { text: "I go back to the problem we agreed on", highlight: true },
-        { text: " and " },
-        { text: "confirm who else is part of the decision", highlight: true },
-        { text: " before I talk numbers." },
+      type: "persona-scene",
+      image: learnPortrait,
+      quote: {
+        role: "Account Executive · Enterprise",
+        parts: [
+          { text: "When pricing comes up early, " },
+          { text: "I go back to the problem we agreed on", highlight: true },
+          { text: " and " },
+          { text: "confirm who else is part of the decision", highlight: true },
+          { text: " before I talk numbers." },
+        ],
+        tags: ["Objection handling", "Decision process"],
+      },
+      popups: [
+        { icon: "mic", label: "Extraction Studio", text: "Voice interview in progress", live: true },
+        { icon: "document", label: "Draft article ready", text: "Sent to Content Manager for review" },
       ],
-      tags: ["Objection handling", "Decision process"],
     },
   },
   sections: [

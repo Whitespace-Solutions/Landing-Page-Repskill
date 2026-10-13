@@ -60,6 +60,14 @@ export type MockupData =
       note?: string;
     }
   | { type: "quote"; role: string; parts: { text: string; highlight?: boolean }[]; tags: string[] }
+  | {
+      /** Komposisi hero: foto heksagon + kartu kutipan top performer + pop-up produk yang melayang */
+      type: "persona-scene";
+      image: StaticImageData;
+      quote: { role: string; parts: { text: string; highlight?: boolean }[]; tags: string[] };
+      /** Maks. 2: yang pertama di kiri atas, yang kedua di kanan bawah */
+      popups: { icon: "mic" | "document"; label: string; text: string; live?: boolean }[];
+    }
   | { type: "structure"; title: string; status: string; fields: { label: string; value: string }[] }
   | {
       /** Rekaman layar produk (MP4 di `public/media/`, diputar otomatis tanpa suara, berulang) */

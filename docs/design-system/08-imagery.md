@@ -65,6 +65,10 @@ Foto orang di situasi kerja (tim sales, coaching), pencahayaan natural, tanpa fi
 - **Hero Home:** tiga potret berbingkai heksagon (PNG transparan, sumber `Logo Final Repskill/Image *.png`) di
   `src/assets/images/hero/`, masing-masing dipasangkan dengan kartu keterangan putih (ikon `FeatureIcon` dalam kotak
   oranye + judul + satu baris penjelasan). Urutan Capture (kiri atas) → Learn (kiri bawah) → Practice (kanan). Foto, kartu, dan heksagon **tidak boleh menabrak wireframe** yang berputar: kartu ditempatkan di sudut-sudut di luar lingkarannya (jarak ±20px di desktop), dan tiap kartu sedikit menumpuk fotonya (Capture di kanan atas foto, Learn di kanan bawah, Practice di bawah foto). Di mobile wireframe dikecilkan ke 64% supaya kartu tetap renggang. Di bawah layar `xl` kartu hanya menampilkan judul. Seluruh ilustrasi (termasuk kartu Practice) tetap di dalam batas lebar konten `Container` — di `lg` wadahnya 82% lebar kolom dan digeser 6% dari kiri — dan heksagon abu berada di luar ring orbit oranye.
+- **Hero Capture Knowledge (mockup `persona-scene`):** potret heksagon pria dengan laptop (`cta/learn-portrait.webp`)
+  di kanan atas, kartu kutipan top performer di depannya (lebar 72% mulai `sm`, hanya menutup sisi kiri bawah foto supaya
+  wajah dan laptop tetap terlihat), plus dua pop-up produk putih yang melayang pelan (`animate-float-soft`): kiri atas
+  "Extraction Studio" (ikon mic + titik amber berdenyut) dan kanan bawah "Draft article ready". Di mobile kartu selebar penuh.
 - **CTA halaman fitur (`VisualCta`):** potret heksagon besar (sumber sama: `Image Capture.png`, `Image Learn.png`,
   `Image Practice.png`) disimpan sebagai WebP 560–600px (30–40 KB, tidak diperbesar dari aslinya) di `src/assets/images/cta/`.
 - **Rekaman layar produk (mockup `video`):** GIF dari user dikonversi ke MP4 H.264 (dipotong ke jendela aplikasi, tanpa
