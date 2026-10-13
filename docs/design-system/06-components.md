@@ -140,12 +140,12 @@ memakai `tone="light"`.
 
 ## Template halaman
 
-| Jenis halaman       | Cara membuat                                                                                                                                                      |
-| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Halaman fitur       | Tambah objek `FeaturePage` di `src/content/features.ts` lalu render `<FeaturePageView page={…} />`                                                                |
-| Success story klien | Tambah objek di `src/content/success-stories.ts`; halaman, kartu, logo, link footer, dan sitemap otomatis. Menu header tidak punya dropdown klien                 |
-| Artikel Guide       | Tambah objek artikel di `src/content/guide.ts` (blok `p` · `h2` · `steps` · `callout` · `shot`); halaman, sidebar, pencarian, Previous/Next, dan sitemap otomatis |
-| Halaman lain        | `PageHero` + kombinasi pola di atas + `FinalCta`                                                                                                                  |
+| Jenis halaman       | Cara membuat                                                                                                                                                                    |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Halaman fitur       | Tambah objek `FeaturePage` di `src/content/features.ts` lalu render `<FeaturePageView page={…} />`. Hero tanpa tombol (sejak 2026-10-13); ajakan Book Demo cukup di CTA penutup |
+| Success story klien | Tambah objek di `src/content/success-stories.ts`; halaman, kartu, logo, link footer, dan sitemap otomatis. Menu header tidak punya dropdown klien                               |
+| Artikel Guide       | Tambah objek artikel di `src/content/guide.ts` (blok `p` · `h2` · `steps` · `callout` · `shot`); halaman, sidebar, pencarian, Previous/Next, dan sitemap otomatis               |
+| Halaman lain        | `PageHero` + kombinasi pola di atas + `FinalCta`                                                                                                                                |
 
 Contoh pola dari situs lama ada di `docs/legacy/pages/*.html`. Pakai sebagai referensi tata letak, lalu tulis ulang
 memakai token dan komponen di repo ini.

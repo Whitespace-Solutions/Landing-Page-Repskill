@@ -48,8 +48,6 @@ export type FeaturePage = {
   ctaVisual?: { image: StaticImageData; layout: VisualCtaLayout };
 };
 
-const BOOK_DEMO = { label: "Book Demo", href: "/book-demo/" };
-
 export const practicePage: FeaturePage = {
   metadata: {
     title: "Practice — AI Sales Roleplay & Reflection",
@@ -61,8 +59,6 @@ export const practicePage: FeaturePage = {
     title: "Practice Before It Matters",
     highlight: "Before It Matters",
     lead: "Rehearse the meeting before it happens, with an AI buyer that knows your products. Review the real one after it happens. Every score traces back to your own playbook.",
-    primary: BOOK_DEMO,
-    secondary: { label: "See Scenario Studio", href: "#scenario-studio" },
     visual: {
       type: "chat",
       title: "Scenario · Pricing objection",
@@ -254,8 +250,6 @@ export const capturePage: FeaturePage = {
     title: "Capture the Expertise Behind Your Best Sales Performance",
     highlight: "Best Sales Performance",
     lead: "Interview your top performers, turn any file into review-ready content, and approve everything before your team or the AI uses it.",
-    primary: BOOK_DEMO,
-    secondary: { label: "See how review works", href: "#content-manager" },
     visual: {
       type: "quote",
       role: "Account Executive · Enterprise",
@@ -342,8 +336,6 @@ export const learnPage: FeaturePage = {
     title: "Turn Knowledge Into Learning People Can Build On",
     highlight: "Learning",
     lead: "A knowledge base and an e-learning platform in one place: your playbook, an AI chat that only knows your company, and learning paths that end in real practice.",
-    primary: BOOK_DEMO,
-    secondary: { label: "Explore the Knowledge Universe", href: "#knowledge-universe" },
     visual: {
       type: "checklist",
       title: "Learning Path · Onboarding Sales",
