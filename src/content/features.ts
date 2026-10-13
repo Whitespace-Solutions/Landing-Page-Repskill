@@ -4,6 +4,7 @@ import capturePortrait from "@/assets/images/cta/capture-portrait.webp";
 import learnPortrait from "@/assets/images/cta/learn-portrait.webp";
 import practicePortrait from "@/assets/images/cta/practice-portrait.webp";
 import addContentScreenshot from "@/assets/images/mockups/add-content.webp";
+import contentManagerReviewScreenshot from "@/assets/images/mockups/content-manager-review.webp";
 import extractionStudioScreenshot from "@/assets/images/mockups/extraction-studio.webp";
 import knowledgeChatScreenshot from "@/assets/images/mockups/knowledge-chat.webp";
 import knowledgeUniverseScreenshot from "@/assets/images/mockups/knowledge-universe.webp";
@@ -314,31 +315,9 @@ export const capturePage: FeaturePage = {
         "Merge duplicate articles while keeping the originals",
       ],
       visual: {
-        type: "approval-queue",
-        title: "Approval queue",
-        badge: "3 waiting",
-        actions: ["Approve & publish", "Send back"],
-        items: [
-          {
-            source: "EXTRACTION",
-            title: "Price objection: reframe to the cost of delay",
-            note: "From a senior rep's voice interview",
-          },
-          {
-            source: "EDIT",
-            title: "Location assessment criteria",
-            note: "Proposed change · current version stays live",
-          },
-          {
-            source: "SCENARIO",
-            title: "Renewal with an impatient VP",
-            note: "Submitted by a rep to the team library",
-          },
-        ],
-        note: {
-          label: "CONTENT GAP",
-          text: "“How do we price a multi-site rollout?” The chat couldn't answer, so it's now a content request.",
-        },
+        type: "screenshot",
+        image: contentManagerReviewScreenshot,
+        alt: "Repskill Content Approval review panel: a pending item with its type, submitter, similar-content check, and body preview, with Approve & publish and a Send back button that requires a written reason the author sees.",
       },
     },
   ],
