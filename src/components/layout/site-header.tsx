@@ -54,18 +54,13 @@ export function SiteHeader() {
           scrolled ? "border-line shadow-[0_8px_24px_-20px_rgb(33_33_33/0.35)]" : "border-transparent",
         )}
       >
-        {/* lg+: grid 3 kolom supaya menu utama tepat di tengah (logo kiri, aksi kanan) */}
-        <Container className="flex h-[72px] items-center gap-6 lg:grid lg:grid-cols-[1fr_auto_1fr]">
-          <Link
-            href="/"
-            onClick={closeAll}
-            aria-label="Repskill home"
-            className="flex-none lg:justify-self-start"
-          >
+        {/* Logo kiri; di lg+ menu utama rata kanan, langsung bersebelahan dengan Log in + Book Demo */}
+        <Container className="flex h-[72px] items-center gap-6">
+          <Link href="/" onClick={closeAll} aria-label="Repskill home" className="flex-none">
             <Image src={logo} alt="Repskill" priority className="h-auto w-[126px]" />
           </Link>
 
-          <nav className="hidden items-center gap-0.5 lg:flex xl:gap-2" aria-label="Main">
+          <nav className="ml-auto hidden items-center gap-0.5 lg:flex xl:gap-2" aria-label="Main">
             {mainNav.map((item) =>
               item.children ? (
                 <DesktopDropdown
@@ -84,7 +79,7 @@ export function SiteHeader() {
             )}
           </nav>
 
-          <div className="ml-auto flex items-center gap-2 lg:ml-0 lg:justify-self-end">
+          <div className="ml-auto flex items-center gap-2 lg:ml-0">
             {/* Log in: aksi sekunder (teks), oranye tetap khusus untuk Book Demo */}
             <Link
               href={loginLink.href}
