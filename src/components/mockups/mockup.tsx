@@ -591,8 +591,8 @@ function TeamMockup({ title, meta, items, note }: Extract<MockupData, { type: "t
 function PopupIcon({ icon }: { icon: "mic" | "document" }) {
   return (
     <svg
-      width="16"
-      height="16"
+      width="50%"
+      height="50%"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -616,97 +616,181 @@ function PopupIcon({ icon }: { icon: "mic" | "document" }) {
   );
 }
 
-// Hero Capture (contoh desain 2026-10-13): foto heksagon besar di kiri sebagai latar, kartu kutipan ringkas di kanan
-// atas menumpuk sisi kanan foto, pop-up "Extraction Studio" menempel di bawah kartu, pop-up "Draft article ready" di
-// bawah menumpuk bagian bawah foto, heksagon isi oranye kecil di kiri dan heksagon garis oranye kecil di kanan bawah.
-// Posisi memakai `cqw` (persen lebar wadah, diukur dari contoh desain relatif ke lebar kolom visual); tinggi wadah dari
-// `pt-[%]` (padding % = persen lebar). `lg` (kolom sempit 1024–1279px): kartu lebih lebar dan pop-up bawah turun supaya
-// tidak bertabrakan. Mobile: kartu di bawah foto selebar hampir penuh. Pop-up berhenti melayang saat "reduce motion".
-function PersonaSceneMockup({ image, quote, popups }: Extract<MockupData, { type: "persona-scene" }>) {
+type PersonaScene = Extract<MockupData, { type: "persona-scene" }>;
+type ScenePopupData = PersonaScene["popups"][number];
+
+/**
+ * Hero Capture (contoh desain 2026-10-13). Mulai `sm` komposisi ini satu kesatuan yang diskalakan dengan lebar wadah:
+ * semua posisi, ukuran, dan teks memakai `cqw` (persen lebar wadah), diukur langsung dari contoh desain, jadi
+ * proporsinya sama persis di semua lebar. Foto heksagon besar di kiri sebagai latar, kartu kutipan di kanan atas
+ * menumpuk sisi kanan foto, pop-up "Extraction Studio" di bawah kartu, pop-up "Draft article ready" menumpuk bagian
+ * bawah foto, heksagon isi oranye kecil di kiri dan heksagon garis oranye kecil di kanan bawah. Di mobile (< `sm`)
+ * tampil versi bertumpuk. Pop-up berhenti melayang saat "reduce motion".
+ */
+function PersonaSceneMockup({ image, quote, popups }: PersonaScene) {
   const [first, second] = popups;
   return (
-    <div className="@container relative pt-[150%] sm:pt-[72%] lg:pt-[102%] xl:pt-[76%]">
-      <HexOutline
-        strokeWidth={0}
-        className="absolute top-[50cqw] left-0 hidden w-[6.6%] max-w-[48px] rotate-90 fill-brand-orange text-brand-orange opacity-30 sm:block lg:top-[62cqw] xl:top-[52cqw]"
-      />
-      <HexOutline
-        strokeWidth={2.6}
-        className="absolute top-[10cqw] right-[6%] w-[16%] max-w-[64px] rotate-90 text-brand-orange opacity-80 sm:top-[54cqw] sm:right-auto sm:left-[83%] sm:w-[9%] lg:top-[90cqw] xl:top-[60cqw]"
-      />
+    <>
+      {/* sm+: komposisi berskala (angka = cqw / % dari lebar wadah, diukur dari contoh desain) */}
+      <div className="@container relative hidden sm:block" style={{ paddingTop: "70%" }}>
+        <div className="pointer-events-none absolute" style={{ left: 0, top: "50.8cqw", width: "6.6%" }}>
+          <HexOutline
+            strokeWidth={0}
+            className="block h-auto w-full rotate-90 fill-brand-orange text-brand-orange opacity-30"
+          />
+        </div>
+        <div
+          className="pointer-events-none absolute"
+          style={{ left: "83.2%", top: "54.2cqw", width: "8.8%" }}
+        >
+          <HexOutline
+            strokeWidth={2.6}
+            className="block h-auto w-full rotate-90 text-brand-orange opacity-80"
+          />
+        </div>
 
-      <Reveal className="absolute top-0 left-0 w-[64%] max-w-[360px] sm:left-[4%] sm:w-[50%]">
-        <Image src={image} alt="" sizes="360px" className="block h-auto w-full drop-shadow-xl" />
-      </Reveal>
+        <div className="absolute" style={{ left: "4.1%", top: 0, width: "50.4%" }}>
+          <Reveal>
+            <Image src={image} alt="" sizes="360px" className="block h-auto w-full drop-shadow-xl" />
+          </Reveal>
+        </div>
 
-      <Reveal
-        delay={0.15}
-        className="absolute top-[56cqw] right-0 z-2 w-[88%] sm:top-[2.5cqw] sm:w-[55%] lg:w-[62%] xl:w-[58%]"
-      >
-        <CompactQuote {...quote} />
+        <div className="absolute z-2" style={{ left: "44.5%", top: "2.5cqw", width: "55%" }}>
+          <Reveal delay={0.15}>
+            <SceneQuote {...quote} fluid />
+          </Reveal>
+        </div>
+
         {first && (
-          <div className="absolute top-full right-[2.5%] z-3 mt-4 sm:mt-5">
-            <ScenePopup popup={first} duration="8s" delay="0s" />
+          <div className="absolute z-3" style={{ left: "56.8%", top: "37.4cqw" }}>
+            <Reveal delay={0.35}>
+              <ScenePopup popup={first} duration="8s" delay="0s" fluid />
+            </Reveal>
           </div>
         )}
-      </Reveal>
+        {second && (
+          <div className="absolute z-3" style={{ left: "13.2%", top: "56.6cqw" }}>
+            <Reveal delay={0.5}>
+              <ScenePopup popup={second} duration="9.5s" delay="-3s" fluid />
+            </Reveal>
+          </div>
+        )}
+      </div>
 
-      {second && (
-        <Reveal
-          delay={0.5}
-          className="absolute bottom-0 left-0 z-3 sm:top-[56cqw] sm:bottom-auto sm:left-[13%] lg:top-[86cqw] lg:left-0 xl:top-[61cqw] xl:left-[13%]"
-        >
-          <ScenePopup popup={second} duration="9.5s" delay="-3s" />
+      {/* Mobile: foto, kartu, lalu pop-up bertumpuk */}
+      <div className="@container relative sm:hidden">
+        <div className="pointer-events-none absolute" style={{ right: "6%", top: "10cqw", width: "16%" }}>
+          <HexOutline
+            strokeWidth={2.6}
+            className="block h-auto w-full rotate-90 text-brand-orange opacity-80"
+          />
+        </div>
+        <Reveal className="w-[64%]">
+          <Image src={image} alt="" sizes="260px" className="block h-auto w-full drop-shadow-xl" />
         </Reveal>
-      )}
-    </div>
+        <Reveal delay={0.15} className="relative z-2 -mt-[10cqw] ml-auto w-[88%]">
+          <SceneQuote {...quote} />
+        </Reveal>
+        <div className="mt-4 flex flex-col items-end gap-3">
+          {first && (
+            <Reveal delay={0.35} className="w-[66%]">
+              <ScenePopup popup={first} duration="8s" delay="0s" />
+            </Reveal>
+          )}
+          {second && (
+            <Reveal delay={0.5} className="w-[76%] self-start">
+              <ScenePopup popup={second} duration="9.5s" delay="-3s" />
+            </Reveal>
+          )}
+        </div>
+      </div>
+    </>
   );
 }
 
+/** `fluid`: ukuran ikut lebar wadah (`cqw`, komposisi sm+); tanpa itu ukuran tetap dalam px (mobile). */
+const sizer = (fluid?: boolean) => (px: number, cqw: number) => (fluid ? `${cqw}cqw` : `${px}px`);
+
+/** Pop-up produk di `persona-scene`. Ukuran dalam `cqw` mengikuti contoh desain (tinggi ±12% lebar wadah). */
 function ScenePopup({
   popup,
   duration,
   delay,
+  fluid,
 }: {
-  popup: Extract<MockupData, { type: "persona-scene" }>["popups"][number];
+  popup: ScenePopupData;
   duration: string;
   delay: string;
+  fluid?: boolean;
 }) {
+  const size = sizer(fluid);
   return (
     <div
-      className="flex w-max items-center gap-2.5 rounded-xl border border-line/80 bg-white/95 py-2 pr-3.5 pl-2 shadow-pop backdrop-blur-sm motion-safe:animate-float-soft sm:gap-3 sm:rounded-2xl sm:py-3 sm:pr-5 sm:pl-3"
-      style={{ animationDuration: duration, animationDelay: delay }}
+      className="flex w-max items-center border border-line/80 bg-white/95 shadow-pop backdrop-blur-sm motion-safe:animate-float-soft"
+      style={{
+        animationDuration: duration,
+        animationDelay: delay,
+        gap: `${size(10, 2)}`,
+        padding: `${size(8, 1.8)} ${size(14, 2.9)} ${size(8, 1.8)} ${size(8, 1.8)}`,
+        borderRadius: `${size(12, 2.2)}`,
+      }}
     >
-      <span className="flex size-8 flex-none items-center justify-center rounded-lg bg-brand-orange text-white sm:size-10 sm:rounded-xl">
+      <span
+        className="flex flex-none items-center justify-center bg-brand-orange text-white"
+        style={{ width: `${size(32, 6.7)}`, height: `${size(32, 6.7)}`, borderRadius: `${size(8, 1.6)}` }}
+      >
         <PopupIcon icon={popup.icon} />
       </span>
       <span className="flex flex-col">
-        <span className="flex items-center gap-1.5 text-[13px] font-bold text-brand-grey sm:text-sm">
+        <span
+          className="flex items-center gap-1.5 font-bold text-brand-grey"
+          style={{ fontSize: `${size(13, 2.35)}` }}
+        >
           {popup.label}
           {popup.live && <span className="size-1.5 animate-pulse rounded-full bg-brand-amber" />}
         </span>
-        <span className="text-[11.5px] leading-snug text-brand-charcoal sm:text-[13px]">{popup.text}</span>
+        <span className="leading-snug text-brand-charcoal" style={{ fontSize: `${size(11.5, 2.05)}` }}>
+          {popup.text}
+        </span>
       </span>
     </div>
   );
 }
 
-/** Versi ringkas kartu kutipan top performer untuk komposisi `persona-scene` (teks & padding lebih kecil). */
-function CompactQuote({ role, parts, tags }: Extract<MockupData, { type: "persona-scene" }>["quote"]) {
+/** Kartu kutipan top performer di `persona-scene`. Ukuran dalam `cqw` mengikuti contoh desain. */
+function SceneQuote({ role, parts, tags, fluid }: PersonaScene["quote"] & { fluid?: boolean }) {
+  const size = sizer(fluid);
   return (
-    <div className="rounded-card border border-line bg-white p-4 shadow-float sm:p-6">
-      <div className="flex items-center gap-2.5 sm:gap-3">
-        <span className="flex size-8 flex-none items-center justify-center rounded-full bg-brand-grey text-[11px] font-bold text-white shadow-[0_0_0_2px_var(--color-white),0_0_0_3.5px_var(--color-brand-orange)] sm:size-10 sm:text-xs">
+    <div
+      className="border border-line bg-white shadow-float"
+      style={{ padding: `${size(16, 3.2)}`, borderRadius: `${size(16, 3)}` }}
+    >
+      <div className="flex items-center" style={{ gap: `${size(10, 1.8)}` }}>
+        <span
+          className="flex flex-none items-center justify-center rounded-full bg-brand-grey font-bold text-white shadow-[0_0_0_2px_var(--color-white),0_0_0_3.5px_var(--color-brand-orange)]"
+          style={{ width: `${size(32, 6.4)}`, height: `${size(32, 6.4)}`, fontSize: `${size(11, 1.9)}` }}
+        >
           TP
         </span>
         <div className="flex min-w-0 flex-col">
-          <span className="text-[10px] font-bold tracking-[0.14em] text-brand-orange sm:text-[11.5px]">
+          <span
+            className="font-bold tracking-[0.14em] text-brand-orange"
+            style={{ fontSize: `${size(10, 1.85)}` }}
+          >
             TOP PERFORMER
           </span>
-          <span className="text-xs leading-snug font-semibold text-brand-grey sm:text-sm">{role}</span>
+          <span
+            className="leading-snug font-semibold text-brand-grey"
+            style={{ fontSize: `${size(12, 2.25)}` }}
+          >
+            {role}
+          </span>
         </div>
       </div>
-      <p className="mt-3 text-sm leading-relaxed text-brand-grey sm:mt-4 sm:text-base">
+      <p
+        className="leading-relaxed text-brand-grey"
+        style={{ marginTop: `${size(10, 2.2)}`, fontSize: `${size(14, 2.6)}` }}
+      >
         “
         {parts.map((p, i) =>
           p.highlight ? (
@@ -719,14 +803,21 @@ function CompactQuote({ role, parts, tags }: Extract<MockupData, { type: "person
         )}
         ”
       </p>
-      <div className="mt-3 flex flex-wrap items-center gap-1.5 border-t border-line pt-3 sm:mt-4 sm:gap-2 sm:pt-4">
-        <span className="text-[10px] font-bold tracking-[0.12em] text-brand-charcoal sm:text-[11px]">
+      <div
+        className="flex flex-wrap items-center border-t border-line"
+        style={{ marginTop: `${size(10, 2)}`, paddingTop: `${size(10, 2)}`, gap: `${size(6, 1.4)}` }}
+      >
+        <span
+          className="font-bold tracking-[0.12em] text-brand-charcoal"
+          style={{ fontSize: `${size(10, 1.8)}` }}
+        >
           EXTRACTED
         </span>
         {tags.map((t) => (
           <span
             key={t}
-            className="rounded-md bg-brand-linen px-1.5 py-0.5 text-[11px] font-semibold text-brand-grey sm:px-2 sm:py-1 sm:text-[13px]"
+            className="rounded-md bg-brand-linen font-semibold text-brand-grey"
+            style={{ fontSize: `${size(11, 2.05)}`, padding: `${size(2, 0.6)} ${size(6, 1.3)}` }}
           >
             {t}
           </span>

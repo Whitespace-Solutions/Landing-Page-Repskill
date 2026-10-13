@@ -52,7 +52,7 @@ export function PageHero({
           // Komposisi `persona-scene` (hero Capture) butuh kolom visual lebih lebar dan jarak ke teks lebih rapat
           visual &&
             (visual.type === "persona-scene"
-              ? "lg:grid-cols-[1fr_1.1fr] lg:gap-10"
+              ? "lg:grid-cols-[1fr_1.25fr] lg:gap-10"
               : "lg:grid-cols-[1.05fr_1fr]"),
         )}
       >
