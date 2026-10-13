@@ -85,11 +85,12 @@ export const practicePage: FeaturePage = {
       id: "scenario-studio",
       eyebrow: "Scenario Studio",
       title: "Describe the meeting. AI preps it",
-      body: "Describe an upcoming meeting in one to three sentences. The AI sets the objective, the buyer, and the context, grounded in your company facts, then writes the script. Or pick a ready-made scenario your team has approved.",
+      body: "Describe the meeting in a sentence or two. AI sets the buyer, goal, and script.",
       points: [
         "Edit the script in one click: more casual, more detail, or more concise",
         "Covers the whole call, from opening and discovery to objections and the close",
         "Then choose how to practice it: listen, podcast, practice, or flip roles",
+        "Or pick a ready-made scenario your team has already approved",
       ],
       visual: {
         type: "screenshot",
@@ -101,7 +102,7 @@ export const practicePage: FeaturePage = {
       id: "you-vs-ai",
       eyebrow: "You vs AI",
       title: "Rehearse the call before it counts",
-      body: "You are the sales rep, and the AI is a believable buyer with a name, a role, a company, and a pushback style. Speak, listen, and respond at a natural pace, in Bahasa Indonesia or English.",
+      body: "You play the rep. The AI plays a believable buyer who pushes back, in Bahasa Indonesia or English.",
       points: [
         "Buyers are briefed from your company facts and playbooks, but never see the grading rules",
         "Flip Roles: you play the buyer, and an AI top rep shows how it's done",
@@ -135,7 +136,7 @@ export const practicePage: FeaturePage = {
       id: "scorecard",
       eyebrow: "Session Review",
       title: "A scorecard traced to your standards",
-      body: "Every practice call is graded against rules the AI drafts from your own playbook, and nothing scores anyone until a manager approves the rule. Each criterion is met or missed, with the line from the transcript that proves it. No arbitrary numbers to game.",
+      body: "Every call is graded on manager-approved rules from your playbook, with the transcript line as proof.",
       points: [
         "Coaching summary, full transcript, conversation flow, and analytics",
         "See exactly why you were scored that way, and what to say next time",
@@ -162,7 +163,7 @@ export const practicePage: FeaturePage = {
       id: "reflection-studio",
       eyebrow: "Reflection Studio",
       title: "Every real meeting becomes coaching",
-      body: "After the meeting, upload the recording. Reflection Studio breaks it down into skill bands, buying signals, objections, talk share, and key moments. Weak spots become your next practice scenario.",
+      body: "Upload a real meeting. AI breaks it down, and weak spots become your next practice scenario.",
       points: [
         "Sales presentations: strengths, what to improve, and key moments",
         "Coaching 1-on-1s: how well the manager coached, private to the coach",
@@ -183,7 +184,7 @@ export const practicePage: FeaturePage = {
       id: "team-dashboard",
       eyebrow: "Team Dashboard",
       title: "Know where your team really stands",
-      body: "See practice count, latest band, and per-skill trend for every rep, so you can coach the one who needs it before it shows up in the pipeline.",
+      body: "See every rep's practice count, band, and skill trend, and coach before it shows up in the pipeline.",
       points: [
         "Assign a learning path with a graded roleplay, a due date, and automatic reminders",
         "Spot who is improving, who is steady, and who has stalled",
@@ -274,7 +275,7 @@ export const capturePage: FeaturePage = {
       id: "extraction-studio",
       eyebrow: "Extraction Studio",
       title: "Experts don't write. They talk",
-      body: "An AI-assisted voice interview pulls tacit knowledge out of your top performers in 15 to 25 minutes, then turns their answers into structured content your team can use.",
+      body: "A 15 to 25 minute AI voice interview turns what your top performers know into structured content.",
       points: [
         "Choose a free-form interview for lived experience, or a context-driven one to go deep on a topic",
         "The AI asks follow-up questions until it has the exact words and the moment to use them",
@@ -291,7 +292,7 @@ export const capturePage: FeaturePage = {
       id: "add-content",
       eyebrow: "Add Content",
       title: "Drop it in. AI drafts it, you just check",
-      body: "Upload what you already have. The AI tidies documents into review-ready articles, transcribes audio and video, and suggests the title, department, category, and language.",
+      body: "Upload what you already have. AI turns it into review-ready articles and suggests the details.",
       points: [
         "PDF, Word, text, audio, and video, one file at a time or in bulk",
         "Audio and video get a transcript, a seekable player, and an AI summary",
@@ -307,7 +308,7 @@ export const capturePage: FeaturePage = {
       id: "content-manager",
       eyebrow: "Content Manager",
       title: "Nothing goes live without review",
-      body: "Every new article, edit, and scenario waits in an approval queue. Until a reviewer approves it, it stays invisible to employees and to the AI, so answers, roleplays, and scores only use knowledge you trust.",
+      body: "Every change waits for approval, hidden from your team and the AI until then.",
       points: [
         "Approve and publish, or send it back with a written reason the author can see",
         "Questions the chat couldn't answer come back as content requests",
@@ -367,7 +368,7 @@ export const learnPage: FeaturePage = {
       id: "knowledge-universe",
       eyebrow: "Knowledge Universe",
       title: "Your playbook in one place",
-      body: "SOPs, playbooks, product demos, and voice memos from senior reps, organized by department and searchable with AI. Knowledge that stays with the company, not with the person.",
+      body: "SOPs, playbooks, and demos in one place, so knowledge stays with the company.",
       points: [
         "Ask in plain language, like “How do we handle a price objection?”",
         "Articles, videos, and audio side by side, by department",
@@ -384,7 +385,7 @@ export const learnPage: FeaturePage = {
       id: "chat",
       eyebrow: "AI Chat",
       title: "Like ChatGPT, but it only knows your company",
-      body: "Reps ask in plain language and get answers built from your approved knowledge. Files in a personal ChatGPT stay with one person. Here, the whole team asks the same source.",
+      body: "Reps ask in plain language and get answers from your approved knowledge only.",
       points: [
         "Every answer shows its sources and a confidence level, one click from the original",
         "Honest when it doesn't know: general knowledge is clearly labeled",
@@ -401,7 +402,7 @@ export const learnPage: FeaturePage = {
       id: "learning-path",
       eyebrow: "Learning Path",
       title: "What every new hire must master",
-      body: "Managers assign a required path built from your own knowledge. Each module mixes formats and ends in a test or a graded roleplay, so learning turns into skill.",
+      body: "Assign a path built from your knowledge. Each module ends in a test or roleplay.",
       points: [
         "Articles, videos, audio, tests, and graded roleplays in one path",
         "Assigned with a due date and automatic reminders",

@@ -687,14 +687,14 @@ function PersonaSceneMockup({ image, quote, popups }: PersonaScene) {
           </Reveal>
         </div>
 
-        <div className="absolute z-2" style={{ left: "44.5%", top: "2.5cqw", width: "55%" }}>
+        <div className="absolute z-2" style={{ left: "49.5%", top: "2.5cqw", width: "50%" }}>
           <Reveal delay={0.15}>
             <SceneQuote {...quote} fluid />
           </Reveal>
         </div>
 
         {first && (
-          <div className="absolute z-3" style={{ left: "56.8%", top: "37.4cqw" }}>
+          <div className="absolute z-3" style={{ left: "56.8%", top: "34.4cqw" }}>
             <Reveal delay={0.35}>
               <ScenePopup popup={first} duration="8s" delay="0s" fluid />
             </Reveal>
@@ -804,33 +804,30 @@ function SceneQuote({
   return (
     <div
       className="border border-line bg-white shadow-float"
-      style={{ padding: `${size(16, 3.2)}`, borderRadius: `${size(16, 3)}` }}
+      style={{ padding: `${size(16, 2.9)}`, borderRadius: `${size(16, 2.7)}` }}
     >
-      <div className="flex items-center" style={{ gap: `${size(10, 1.8)}` }}>
+      <div className="flex items-center" style={{ gap: `${size(10, 1.6)}` }}>
         <span
           className="flex flex-none items-center justify-center rounded-full bg-brand-grey font-bold text-white shadow-[0_0_0_2px_var(--color-white),0_0_0_3.5px_var(--color-brand-orange)]"
-          style={{ width: `${size(32, 6.4)}`, height: `${size(32, 6.4)}`, fontSize: `${size(11, 1.9)}` }}
+          style={{ width: `${size(32, 5.8)}`, height: `${size(32, 5.8)}`, fontSize: `${size(11, 1.7)}` }}
         >
           {badge}
         </span>
         <div className="flex min-w-0 flex-col">
           <span
             className="font-bold tracking-[0.14em] text-brand-orange"
-            style={{ fontSize: `${size(10, 1.85)}` }}
+            style={{ fontSize: `${size(10, 1.65)}` }}
           >
             {kicker}
           </span>
-          <span
-            className="leading-snug font-semibold text-brand-grey"
-            style={{ fontSize: `${size(12, 2.25)}` }}
-          >
+          <span className="leading-snug font-semibold text-brand-grey" style={{ fontSize: `${size(12, 2)}` }}>
             {role}
           </span>
         </div>
       </div>
       <p
         className="leading-relaxed text-brand-grey"
-        style={{ marginTop: `${size(10, 2.2)}`, fontSize: `${size(14, 2.6)}` }}
+        style={{ marginTop: `${size(10, 2)}`, fontSize: `${size(14, 2.35)}` }}
       >
         {quoted && "“"}
         {parts.map((p, i) =>
@@ -846,11 +843,11 @@ function SceneQuote({
       </p>
       <div
         className="flex flex-wrap items-center border-t border-line"
-        style={{ marginTop: `${size(10, 2)}`, paddingTop: `${size(10, 2)}`, gap: `${size(6, 1.4)}` }}
+        style={{ marginTop: `${size(10, 1.8)}`, paddingTop: `${size(10, 1.8)}`, gap: `${size(6, 1.25)}` }}
       >
         <span
           className="font-bold tracking-[0.12em] text-brand-charcoal"
-          style={{ fontSize: `${size(10, 1.8)}` }}
+          style={{ fontSize: `${size(10, 1.6)}` }}
         >
           {footerLabel}
         </span>
@@ -858,7 +855,7 @@ function SceneQuote({
           <span
             key={t}
             className="rounded-md bg-brand-linen font-semibold text-brand-grey"
-            style={{ fontSize: `${size(11, 2.05)}`, padding: `${size(2, 0.6)} ${size(6, 1.3)}` }}
+            style={{ fontSize: `${size(11, 1.85)}`, padding: `${size(2, 0.55)} ${size(6, 1.2)}` }}
           >
             {t}
           </span>
