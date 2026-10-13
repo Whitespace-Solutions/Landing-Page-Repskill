@@ -76,6 +76,9 @@ Foto orang di situasi kerja (tim sales, coaching), pencahayaan natural, tanpa fi
   pratinjau kartu Platform Overview), lebar 800px WebP (±20–30 KB). Jangan sertakan data uji (mis. judul "Zz Validate…")
   di area potongan, juga sorotan teks (blok seleksi biru): potong di bawahnya atau ambil ulang screenshot. Nama file
   `<fitur>-<layar>.webp`, mis. `capture-extraction-studio`, `learn-ai-chat`, `practice-reflection-studio`.
+- **Screenshot satu kartu/panel aplikasi** (mis. panel review Content Manager): potong tepat di dalam border kartunya,
+  tanpa latar abu aplikasi dan tanpa border kartu itu sendiri, supaya bingkai `screenshot` situs jadi satu-satunya border.
+  Tutup scrollbar aplikasi dengan warna latar kartu.
 - **Layar penuh:** semua mockup `screenshot` dan `video` otomatis bisa dibuka layar penuh (`ExpandableMedia`). Di dalam
   lightbox, video diputar dengan kontrol. Karena aset 1400px, tampil tajam di layar biasa; untuk layar retina lebar,
   siapkan versi lebih besar bila perlu.
