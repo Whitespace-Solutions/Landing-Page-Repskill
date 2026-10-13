@@ -65,12 +65,12 @@ Foto orang di situasi kerja (tim sales, coaching), pencahayaan natural, tanpa fi
 - **Hero Home:** tiga potret berbingkai heksagon (PNG transparan, sumber `Logo Final Repskill/Image *.png`) di
   `src/assets/images/hero/`, masing-masing dipasangkan dengan kartu keterangan putih (ikon `FeatureIcon` dalam kotak
   oranye + judul + satu baris penjelasan). Urutan Capture (kiri atas) → Learn (kiri bawah) → Practice (kanan). Foto, kartu, dan heksagon **tidak boleh menabrak wireframe** yang berputar: kartu ditempatkan di sudut-sudut di luar lingkarannya (jarak ±20px di desktop), dan tiap kartu sedikit menumpuk fotonya (Capture di kanan atas foto, Learn di kanan bawah, Practice di bawah foto). Di mobile wireframe dikecilkan ke 64% supaya kartu tetap renggang. Di bawah layar `xl` kartu hanya menampilkan judul. Seluruh ilustrasi (termasuk kartu Practice) tetap di dalam batas lebar konten `Container` — di `lg` wadahnya 82% lebar kolom dan digeser 6% dari kiri — dan heksagon abu berada di luar ring orbit oranye.
-- **Hero Capture Knowledge (mockup `persona-scene`):** komposisi mengikuti CTA Capture (`VisualCta` layout `capture`):
-  potret heksagon pria dengan laptop (`cta/learn-portrait.webp`) di kiri atas di lapisan depan, heksagon garis oranye
-  besar di kanan atas, heksagon isi oranye 25% kecil di bawah foto. Kartu kutipan ringkas (`CompactQuote`, satu kalimat,
-  satu tag) di kanan bawah; bawah foto menumpuk sudut kiri atasnya. Pop-up melayang (`animate-float-soft`): "Extraction
-  Studio" di atas kartu, "Draft article ready" di kiri bawah. Posisi vertikal anak memakai `cqw` (wadah `@container`);
-  padding wadah memakai `%` (cqw di elemen container sendiri dihitung dari viewport).
+- **Hero Capture Knowledge (mockup `persona-scene`):** potret heksagon pria dengan laptop (`cta/learn-portrait.webp`)
+  di kiri atas di lapisan depan; kartu kutipan ringkas (`CompactQuote`, satu kalimat, satu tag) di kanan atas dengan pop-up
+  "Extraction Studio" menempel di bawahnya; heksagon garis oranye besar di kanan bawah; heksagon isi oranye 25% kecil di
+  bawah foto; pop-up "Draft article ready" di kiri bawah. Pop-up melayang pelan (`animate-float-soft`). Di mobile kartu
+  turun ke bawah foto dan heksagon garis pindah ke kanan atas. Posisi vertikal anak memakai `cqw` (wadah `@container`);
+  tinggi wadah dari padding `%` (cqw di elemen container sendiri dihitung dari viewport).
 - **CTA halaman fitur (`VisualCta`):** potret heksagon besar (sumber sama: `Image Capture.png`, `Image Learn.png`,
   `Image Practice.png`) disimpan sebagai WebP 560–600px (30–40 KB, tidak diperbesar dari aslinya) di `src/assets/images/cta/`.
 - **Rekaman layar produk (mockup `video`):** GIF dari user dikonversi ke MP4 H.264 (dipotong ke jendela aplikasi, tanpa

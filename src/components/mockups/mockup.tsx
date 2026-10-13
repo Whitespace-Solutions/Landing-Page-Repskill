@@ -588,8 +588,6 @@ function TeamMockup({ title, meta, items, note }: Extract<MockupData, { type: "t
   );
 }
 
-const POPUP_POSITIONS = ["right-0 top-[38cqw] sm:top-[31cqw]", "left-0 bottom-2"];
-
 function PopupIcon({ icon }: { icon: "mic" | "document" }) {
   return (
     <svg
@@ -618,50 +616,70 @@ function PopupIcon({ icon }: { icon: "mic" | "document" }) {
   );
 }
 
-// Hero Capture, komposisi mengikuti CTA Capture (`VisualCta` layout `capture`): foto heksagon kiri atas di lapisan depan,
-// heksagon garis oranye besar di kanan atas, heksagon isi kecil di bawah foto. Kartu kutipan ringkas di kanan bawah;
-// bagian bawah foto (laptop) menumpuk sudut kiri atasnya. Pop-up: "Extraction Studio" di atas kartu (menumpuk bawah
-// heksagon garis), "Draft article ready" di kiri bawah. Posisi vertikal memakai `cqw` (persen lebar wadah) supaya
-// proporsinya sama di semua lebar. Pop-up berhenti melayang saat "reduce motion".
+// Hero Capture, komposisi mengikuti CTA Capture (`VisualCta` layout `capture`): foto heksagon kiri atas di lapisan
+// depan, kartu kutipan ringkas di kanan atas dengan pop-up pertama ("Extraction Studio") menempel di bawahnya, heksagon
+// garis oranye besar di kanan bawah, heksagon isi kecil di bawah foto, pop-up kedua ("Draft article ready") di kiri
+// bawah. Posisi vertikal memakai `cqw` (persen lebar wadah); tinggi wadah dari `pt-[%]` (padding % = persen lebar).
+// Di mobile kartu turun ke bawah foto. Pop-up berhenti melayang saat "reduce motion".
 function PersonaSceneMockup({ image, quote, popups }: Extract<MockupData, { type: "persona-scene" }>) {
+  const [first, second] = popups;
   return (
-    <div className="@container relative pt-[56%] pb-24 sm:pt-[44%] sm:pb-20">
+    <div className="@container relative pt-[150%] sm:pt-[92%] lg:pt-[114%] xl:pt-[92%]">
       <HexOutline
         strokeWidth={1.2}
-        className="absolute top-0 right-[2%] w-[34%] max-w-[180px] rotate-90 text-brand-orange opacity-80 sm:w-[30%]"
+        className="absolute top-[6cqw] right-[4%] w-[32%] max-w-[180px] rotate-90 text-brand-orange opacity-80 sm:top-[52cqw] sm:right-[8%] sm:w-[30%] lg:top-[76cqw] xl:top-[52cqw]"
       />
       <HexOutline
         strokeWidth={0}
-        className="absolute top-[60cqw] left-[14%] hidden w-[10%] max-w-[56px] rotate-90 fill-brand-orange text-brand-orange opacity-25 sm:block"
+        className="absolute top-[62cqw] left-[14%] hidden w-[10%] max-w-[56px] rotate-90 fill-brand-orange text-brand-orange opacity-25 sm:block"
       />
 
       <Reveal className="absolute top-[2cqw] left-0 z-2 w-[54%] max-w-[330px] sm:w-[46%]">
         <Image src={image} alt="" sizes="330px" className="block h-auto w-full drop-shadow-xl" />
       </Reveal>
 
-      <Reveal delay={0.15} className="relative z-1 ml-auto w-[88%] sm:w-[60%]">
+      <Reveal delay={0.15} className="absolute top-[60cqw] right-0 z-1 w-[88%] sm:top-[4cqw] sm:w-[58%]">
         <CompactQuote {...quote} />
+        {first && (
+          <div className="absolute top-full right-0 z-3 mt-3">
+            <ScenePopup popup={first} duration="8s" delay="0s" />
+          </div>
+        )}
       </Reveal>
 
-      {popups.slice(0, POPUP_POSITIONS.length).map((popup, i) => (
-        <Reveal key={popup.label} delay={0.35 + i * 0.15} className={cn("absolute z-3", POPUP_POSITIONS[i])}>
-          <div
-            className="flex items-center gap-2.5 rounded-xl border border-line/80 bg-white/95 py-2 pr-3.5 pl-2 shadow-pop backdrop-blur-sm motion-safe:animate-float-soft"
-            style={{ animationDuration: i === 0 ? "8s" : "9.5s", animationDelay: i === 0 ? "0s" : "-3s" }}
-          >
-            <span className="flex size-8 flex-none items-center justify-center rounded-lg bg-brand-orange text-white">
-              <PopupIcon icon={popup.icon} />
-            </span>
-            <span className="flex flex-col">
-              <span className="flex items-center gap-1.5 text-[13px] font-bold text-brand-grey">
-                {popup.label}
-                {popup.live && <span className="size-1.5 animate-pulse rounded-full bg-brand-amber" />}
-              </span>
-              <span className="text-[11.5px] leading-snug text-brand-charcoal">{popup.text}</span>
-            </span>
-          </div>
+      {second && (
+        <Reveal delay={0.5} className="absolute bottom-0 left-0 z-3">
+          <ScenePopup popup={second} duration="9.5s" delay="-3s" />
         </Reveal>
-      ))}
+      )}
+    </div>
+  );
+}
+
+function ScenePopup({
+  popup,
+  duration,
+  delay,
+}: {
+  popup: Extract<MockupData, { type: "persona-scene" }>["popups"][number];
+  duration: string;
+  delay: string;
+}) {
+  return (
+    <div
+      className="flex w-max items-center gap-2.5 rounded-xl border border-line/80 bg-white/95 py-2 pr-3.5 pl-2 shadow-pop backdrop-blur-sm motion-safe:animate-float-soft"
+      style={{ animationDuration: duration, animationDelay: delay }}
+    >
+      <span className="flex size-8 flex-none items-center justify-center rounded-lg bg-brand-orange text-white">
+        <PopupIcon icon={popup.icon} />
+      </span>
+      <span className="flex flex-col">
+        <span className="flex items-center gap-1.5 text-[13px] font-bold text-brand-grey">
+          {popup.label}
+          {popup.live && <span className="size-1.5 animate-pulse rounded-full bg-brand-amber" />}
+        </span>
+        <span className="text-[11.5px] leading-snug text-brand-charcoal">{popup.text}</span>
+      </span>
     </div>
   );
 }

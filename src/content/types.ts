@@ -65,7 +65,7 @@ export type MockupData =
       type: "persona-scene";
       image: StaticImageData;
       quote: { role: string; parts: { text: string; highlight?: boolean }[]; tags: string[] };
-      /** Maks. 2: yang pertama di kiri atas, yang kedua di kanan bawah */
+      /** Maks. 2: yang pertama menempel di bawah kartu kutipan, yang kedua di kiri bawah */
       popups: { icon: "mic" | "document"; label: string; text: string; live?: boolean }[];
     }
   | { type: "structure"; title: string; status: string; fields: { label: string; value: string }[] }
