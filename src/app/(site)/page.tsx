@@ -18,7 +18,7 @@ export default function HomePage() {
       <Differentiators />
       <CaseStudies />
       <ClientLogos {...clientsSection} />
-      <HomeCta />
+      <HomeCta singleLineTitle />
     </>
   );
 }

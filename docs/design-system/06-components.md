@@ -108,8 +108,10 @@ Dipakai di semua halaman kecuali Book Demo (halaman tujuan CTA itu sendiri), Gui
 
 **Home memakai varian sendiri (`HomeCta`, sejak 2026-10-07):** section putih terang (bukan panel gelap), teks rata
 tengah, tombol `primary` + `outline`. Di kiri dua foto heksagon (Capture, Learn) dan di kanan satu (Practice), dikelilingi
-heksagon garis oranye 50% dan heksagon isi oranye 20%, semuanya melayang + parallax seperti hero. Di bawah `xl` foto
-berubah jadi deretan kecil di atas eyebrow dan heksagon disembunyikan. Sejak 2026-10-08 halaman `/success-stories/` juga
+heksagon garis oranye 50% dan heksagon isi oranye 20%, semuanya melayang + parallax seperti hero. Sejak 2026-10-13 foto
+ditaruh di tepi kiri/kanan (Capture & Practice menempel tepi) dan sudah menyebar mulai `lg`; tanpa heksagon garis besar
+di kiri bawah. Di bawah `lg` foto berubah jadi deretan kecil di atas eyebrow dan heksagon disembunyikan. Prop
+`singleLineTitle` membuat judul satu baris mulai `lg` (dipakai Home; judul panjang seperti Success Stories tetap dua baris). Sejak 2026-10-08 halaman `/success-stories/` juga
 memakai `HomeCta` (copy dari `successStoriesPage.cta`), begitu juga `/about/` (`aboutPage.cta`). Halaman lain **tetap** memakai `FinalCta` sampai diputuskan lain.
 
 **Halaman fitur (Capture, Learn, Practice) dan Pricing (sejak 2026-10-08) memakai `VisualCta` (sejak 2026-10-07):** isi `ctaVisual: { image, layout }` di data

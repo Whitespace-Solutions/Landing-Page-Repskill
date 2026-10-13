@@ -18,34 +18,33 @@ import { cn } from "@/lib/cn";
  * Diambil dari contoh desain CTA Home: dua foto di kiri, satu di kanan, heksagon garis & isi di sekelilingnya.
  */
 const photoLayout = [
-  // Capture: kiri atas
-  { className: "left-[3.5%] top-[20%]", depth: 36, duration: "8s", delay: "0s" },
+  // Capture: kiri atas, di tepi
+  { className: "left-0 top-[16%]", depth: 36, duration: "8s", delay: "0s" },
   // Learn: kiri bawah, sedikit masuk ke tengah
-  { className: "left-[9.5%] top-[53%]", depth: 52, duration: "9.5s", delay: "-3s" },
-  // Practice: kanan
-  { className: "left-[81%] top-[30%]", depth: 44, duration: "8.5s", delay: "-5s" },
+  { className: "left-[5%] top-[54%]", depth: 52, duration: "9.5s", delay: "-3s" },
+  // Practice: kanan atas, di tepi
+  { className: "right-0 top-[22%]", depth: 44, duration: "8.5s", delay: "-5s" },
 ];
 
 const hexLayout = [
   // Garis kecil kiri atas
-  { className: "left-[15.5%] top-[15%] w-[44px]", filled: false, depth: 24, duration: "9s", delay: "0s" },
+  { className: "left-[12%] top-[8%] w-[44px]", filled: false, depth: 24, duration: "9s", delay: "0s" },
   // Isi lembut kiri
-  { className: "left-0 top-[41%] w-[38px]", filled: true, depth: 60, duration: "7.5s", delay: "-2s" },
-  // Garis besar kiri bawah
-  { className: "left-0 top-[64%] w-[82px]", filled: false, depth: 30, duration: "10s", delay: "-4s" },
-  // Garis besar kanan
-  { className: "right-0 top-[40%] w-[82px]", filled: false, depth: 30, duration: "9.5s", delay: "-1s" },
+  { className: "left-[1%] top-[48%] w-[38px]", filled: true, depth: 60, duration: "7.5s", delay: "-2s" },
+  // Garis besar kanan bawah
+  { className: "right-[4%] top-[58%] w-[82px]", filled: false, depth: 30, duration: "9.5s", delay: "-1s" },
   // Isi lembut kanan
-  { className: "right-[7%] top-[60%] w-[38px]", filled: true, depth: 60, duration: "8s", delay: "-6s" },
+  { className: "right-[12%] top-[12%] w-[38px]", filled: true, depth: 60, duration: "8s", delay: "-6s" },
 ];
 
 /**
  * CTA penutup khusus Home: teks di tengah di atas latar putih dengan cahaya oranye tipis di kiri-kanan, diapit foto
  * heksagon Capture / Learn / Practice dan heksagon dekoratif yang melayang + parallax kursor (sama seperti hero).
- * Di bawah xl foto menjadi deretan kecil di atas eyebrow dan heksagon disembunyikan. Dekorasi `aria-hidden`.
+ * Di bawah lg foto menjadi deretan kecil di atas eyebrow dan heksagon disembunyikan. Dekorasi `aria-hidden`.
  * Copy default `homeCta`; halaman lain (mis. Success Stories) bisa mengirim `CtaData` sendiri.
+ * `singleLineTitle`: judul satu baris mulai lg (hanya untuk judul pendek, mis. Home).
  */
-export function HomeCta(props: Partial<CtaData>) {
+export function HomeCta({ singleLineTitle, ...props }: Partial<CtaData> & { singleLineTitle?: boolean }) {
   const { mx, my, handlers } = usePointerParallax();
   const { eyebrow, title, highlight, body, primary = primaryCta, secondary } = { ...homeCta, ...props };
 
@@ -62,17 +61,22 @@ export function HomeCta(props: Partial<CtaData>) {
       />
 
       <Container className="relative py-20 lg:py-28 xl:py-32">
-        <Reveal className="pointer-events-none absolute inset-0 hidden xl:block" delay={0.15}>
+        <Reveal className="pointer-events-none absolute inset-0 hidden lg:block" delay={0.15}>
           <Decorations mx={mx} my={my} />
         </Reveal>
 
-        <Reveal className="relative mx-auto flex max-w-2xl flex-col items-center gap-6 text-center">
+        <Reveal className="relative mx-auto flex flex-col items-center gap-6 text-center">
           <PhotoRow mx={mx} my={my} />
           {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
-          <h2 className="text-h1 text-balance">
+          <h2
+            className={cn(
+              "max-w-2xl text-h1 text-balance",
+              singleLineTitle && "lg:max-w-none lg:whitespace-nowrap",
+            )}
+          >
             <HighlightText text={title} highlight={highlight} />
           </h2>
-          <p className="text-lead text-pretty text-brand-charcoal">{body}</p>
+          <p className="max-w-2xl text-lead text-pretty text-brand-charcoal">{body}</p>
           <div className="mt-2 flex flex-wrap justify-center gap-3">
             <ButtonLink href={primary.href} size="lg" withArrow>
               {primary.label}
@@ -89,7 +93,7 @@ export function HomeCta(props: Partial<CtaData>) {
   );
 }
 
-/** Foto & heksagon di kiri-kanan teks (xl+). */
+/** Foto & heksagon di kiri-kanan teks (lg+). */
 function Decorations({ mx, my }: Pointer) {
   return (
     <div className="absolute inset-x-5 inset-y-0 sm:inset-x-8 lg:inset-x-16" aria-hidden>
@@ -133,10 +137,10 @@ function Decorations({ mx, my }: Pointer) {
   );
 }
 
-/** Di bawah xl: tiga foto kecil berderet di atas eyebrow, tetap melayang pelan. */
+/** Di bawah lg: tiga foto kecil berderet di atas eyebrow, tetap melayang pelan. */
 function PhotoRow({ mx, my }: Pointer) {
   return (
-    <div className="relative flex h-24 w-56 justify-center xl:hidden" aria-hidden>
+    <div className="relative flex h-24 w-56 justify-center lg:hidden" aria-hidden>
       {heroPersonas.map((persona, i) => (
         <Floating
           key={persona.title}
