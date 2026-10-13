@@ -7,21 +7,15 @@ import { SectionHeader } from "@/components/ui/section-header";
 import { featureInfo } from "@/content/features";
 import { platformOverview } from "@/content/home";
 import type { FeatureKey } from "@/content/success-stories";
-import { cn } from "@/lib/cn";
 
-const { captureShots, ...header } = platformOverview;
+const { shots, ...header } = platformOverview;
 
 // Urutan mengikuti alur produk di brand guideline: Capture → Learn → Practice.
-// `bleed`: pratinjau memenuhi kotak tanpa padding (screenshot produk yang berganti).
-const ORDER: { key: FeatureKey; stage: string; preview: React.ReactNode; bleed?: boolean }[] = [
-  {
-    key: "capture",
-    stage: "01 · CAPTURE",
-    preview: <ScreenshotCarousel shots={captureShots} />,
-    bleed: true,
-  },
-  { key: "learn", stage: "02 · LEARN", preview: <LearnPreview /> },
-  { key: "practice", stage: "03 · PRACTICE & REFLECT", preview: <PracticePreview /> },
+// Tiap kartu menampilkan screenshot produk yang berganti; mulainya digeser 1 dtk per kartu supaya tidak serempak.
+const ORDER: { key: FeatureKey; stage: string }[] = [
+  { key: "capture", stage: "01 · CAPTURE" },
+  { key: "learn", stage: "02 · LEARN" },
+  { key: "practice", stage: "03 · PRACTICE & REFLECT" },
 ];
 
 export function PlatformOverview() {
@@ -30,7 +24,7 @@ export function PlatformOverview() {
       <SectionHeader {...header} />
 
       <Stagger className="mt-10 grid gap-4 md:grid-cols-3 lg:mt-14" stagger={0.1}>
-        {ORDER.map(({ key, stage, preview, bleed }) => {
+        {ORDER.map(({ key, stage }, i) => {
           const f = featureInfo[key];
           return (
             <StaggerItem key={key}>
@@ -38,13 +32,8 @@ export function PlatformOverview() {
                 href={f.href}
                 className="group flex h-full flex-col gap-4 rounded-card border border-line bg-white p-3.5 pb-6 transition-[border-color,box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:border-brand-amber hover:shadow-glow"
               >
-                <div
-                  className={cn(
-                    "flex h-44 flex-col justify-center gap-2.5 overflow-hidden rounded-xl bg-surface",
-                    bleed ? "border border-line" : "p-4",
-                  )}
-                >
-                  {preview}
+                <div className="h-44 overflow-hidden rounded-xl border border-line bg-surface">
+                  <ScreenshotCarousel shots={shots[key]} offset={i * 1000} />
                 </div>
                 <div className="flex flex-1 flex-col gap-2 px-2">
                   <span className="text-[11.5px] font-bold tracking-[0.12em] text-brand-orange">{stage}</span>
@@ -96,48 +85,5 @@ export function PlatformOverview() {
         </Link>
       </Reveal>
     </Section>
-  );
-}
-
-function LearnPreview() {
-  const rows = [
-    { w: "w-3/5", s: "done" },
-    { w: "w-1/2", s: "done" },
-    { w: "w-2/3", s: "now" },
-    { w: "w-2/5", s: "todo" },
-  ];
-  return (
-    <>
-      {rows.map((r, i) => (
-        <div key={i} className="flex items-center gap-2.5">
-          <span
-            className={
-              r.s === "done"
-                ? "size-4 rounded-full bg-brand-amber"
-                : r.s === "now"
-                  ? "size-4 rounded-full border-[2.5px] border-brand-orange bg-white"
-                  : "size-4 rounded-full border-2 border-line bg-white"
-            }
-          />
-          <span className={`h-1.5 rounded-full ${r.w} ${r.s === "todo" ? "bg-line" : "bg-brand-grey"}`} />
-        </div>
-      ))}
-    </>
-  );
-}
-
-function PracticePreview() {
-  return (
-    <>
-      <div className="max-w-[80%] self-start rounded-[10px_10px_10px_2px] bg-white px-3 py-2 text-xs leading-snug text-brand-charcoal">
-        We already have a vendor for this.
-      </div>
-      <div className="max-w-[80%] self-end rounded-[10px_10px_2px_10px] bg-brand-linen px-3 py-2 text-xs leading-snug text-brand-grey">
-        What would need to change for you to look again?
-      </div>
-      <span className="self-start rounded-full bg-brand-orange px-2.5 py-1 text-[11px] font-bold text-white">
-        Feedback ready
-      </span>
-    </>
   );
 }

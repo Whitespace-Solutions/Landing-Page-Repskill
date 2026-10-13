@@ -74,7 +74,8 @@ Foto orang di situasi kerja (tim sales, coaching), pencahayaan natural, tanpa fi
   AI Chat di halaman Learn Knowledge.
 - **Screenshot berganti di kartu kecil (`ScreenshotCarousel`):** dipotong ke area fitur dengan rasio ±2,1:1 (rasio kotak
   pratinjau kartu Platform Overview), lebar 800px WebP (±20–30 KB). Jangan sertakan data uji (mis. judul "Zz Validate…")
-  di area potongan. Contoh: `capture-extraction-studio` → `capture-add-content` → `capture-content-approval`.
+  di area potongan, juga sorotan teks (blok seleksi biru): potong di bawahnya atau ambil ulang screenshot. Nama file
+  `<fitur>-<layar>.webp`, mis. `capture-extraction-studio`, `learn-ai-chat`, `practice-reflection-studio`.
 - **Layar penuh:** semua mockup `screenshot` dan `video` otomatis bisa dibuka layar penuh (`ExpandableMedia`). Di dalam
   lightbox, video diputar dengan kontrol. Karena aset 1400px, tampil tajam di layar biasa; untuk layar retina lebar,
   siapkan versi lebih besar bila perlu.

@@ -4,9 +4,17 @@ import captureImage from "@/assets/images/hero/capture-woman.png";
 import captureAddContentShot from "@/assets/images/mockups/capture-add-content.webp";
 import captureContentApprovalShot from "@/assets/images/mockups/capture-content-approval.webp";
 import captureExtractionShot from "@/assets/images/mockups/capture-extraction-studio.webp";
+import learnAiChatShot from "@/assets/images/mockups/learn-ai-chat.webp";
+import learnKnowledgeUniverseShot from "@/assets/images/mockups/learn-knowledge-universe.webp";
+import learnLearningPathShot from "@/assets/images/mockups/learn-learning-path.webp";
+import practiceReflectionStudioShot from "@/assets/images/mockups/practice-reflection-studio.webp";
+import practiceScenarioReadyShot from "@/assets/images/mockups/practice-scenario-ready.webp";
+import practiceScenarioStudioShot from "@/assets/images/mockups/practice-scenario-studio.webp";
 import learnImage from "@/assets/images/hero/learn-man.png";
 import practiceImage from "@/assets/images/hero/practice-woman.png";
+import type { CarouselShot } from "@/components/mockups/screenshot-carousel";
 import type { FeatureIconName } from "@/components/ui/feature-icon";
+import type { FeatureKey } from "./success-stories";
 import type { CtaData, StepsData } from "./types";
 
 export const heroHeadline = {
@@ -66,21 +74,51 @@ export const platformOverview = {
   eyebrow: "Platform Overview",
   title: "One Platform to Capture, Learn, and Practice",
   lead: "A flight simulator for your sales team, built on your own playbook. Capture what your best people know, learn it, then practice and reflect until it sticks.",
-  /** Screenshot yang berganti di kartu Capture (urutan alat: Extraction Studio → Add Content → Content Manager) */
-  captureShots: [
-    {
-      image: captureExtractionShot,
-      alt: "Repskill Extraction Studio: choose a free-form or context-driven AI interview with a top performer.",
-    },
-    {
-      image: captureAddContentShot,
-      alt: "Repskill Add Content: turn any source into content your team uses, in three steps: pick type, upload, review.",
-    },
-    {
-      image: captureContentApprovalShot,
-      alt: "Repskill Content Approval: Knowledge Universe and Scenario Library items pending review, with content gaps and conflicting content.",
-    },
-  ],
+  /** Screenshot yang berganti di tiap kartu, urut sesuai baris alat kartu itu (`featureInfo[key].tools`) */
+  shots: {
+    capture: [
+      {
+        image: captureExtractionShot,
+        alt: "Repskill Extraction Studio: choose a free-form or context-driven AI interview with a top performer.",
+      },
+      {
+        image: captureAddContentShot,
+        alt: "Repskill Add Content: turn any source into content your team uses, in three steps: pick type, upload, review.",
+      },
+      {
+        image: captureContentApprovalShot,
+        alt: "Repskill Content Approval: Knowledge Universe and Scenario Library items pending review, with content gaps and conflicting content.",
+      },
+    ],
+    learn: [
+      {
+        image: learnKnowledgeUniverseShot,
+        alt: "Repskill Knowledge Universe: search the knowledge base and pick up where you left off.",
+      },
+      {
+        image: learnAiChatShot,
+        alt: "Repskill AI Chat: an answer grounded in your Knowledge Universe, with sources and match confidence.",
+      },
+      {
+        image: learnLearningPathShot,
+        alt: "Repskill Learning Path: a required Objection Handling path assigned by your manager, with progress.",
+      },
+    ],
+    practice: [
+      {
+        image: practiceScenarioStudioShot,
+        alt: "Repskill Scenario Studio: create a scenario for a real meeting, or practice ready-made team scenarios.",
+      },
+      {
+        image: practiceScenarioReadyShot,
+        alt: "Repskill scenario ready: practice the sales call live, challenge an AI top rep, or learn from a demo call and podcast.",
+      },
+      {
+        image: practiceReflectionStudioShot,
+        alt: "Repskill Reflection Studio: choose the recording type, such as a sales presentation or coaching session, then upload the file.",
+      },
+    ],
+  } satisfies Record<FeatureKey, CarouselShot[]>,
 };
 
 /** Pembeda (sales deck, slide 23 & 26): dibangun untuk Indonesia, tata kelola kelas enterprise. */

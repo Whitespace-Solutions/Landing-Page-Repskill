@@ -15,11 +15,14 @@ export type CarouselShot = { image: StaticImageData; alt: string };
 export function ScreenshotCarousel({
   shots,
   interval = 3200,
+  offset = 0,
   className,
 }: {
   shots: CarouselShot[];
   /** Lama tiap screenshot tampil, dalam ms */
   interval?: number;
+  /** Jeda tambahan sebelum pergantian pertama (ms), supaya beberapa carousel berdampingan tidak berganti serempak */
+  offset?: number;
   className?: string;
 }) {
   const reduceMotion = useReducedMotion();
@@ -27,9 +30,17 @@ export function ScreenshotCarousel({
 
   useEffect(() => {
     if (reduceMotion || shots.length < 2) return;
-    const id = setInterval(() => setIndex((i) => (i + 1) % shots.length), interval);
-    return () => clearInterval(id);
-  }, [reduceMotion, shots.length, interval]);
+    const next = () => setIndex((i) => (i + 1) % shots.length);
+    let id: ReturnType<typeof setInterval> | undefined;
+    const start = setTimeout(() => {
+      next();
+      id = setInterval(next, interval);
+    }, interval + offset);
+    return () => {
+      clearTimeout(start);
+      clearInterval(id);
+    };
+  }, [reduceMotion, shots.length, interval, offset]);
 
   const shot = shots[reduceMotion ? 0 : index];
 
