@@ -70,7 +70,8 @@ Foto orang di situasi kerja (tim sales, coaching), pencahayaan natural, tanpa fi
   foto, pop-up "Extraction Studio" menempel di bawah kartu, pop-up "Draft article ready" di bawah menumpuk bagian bawah
   foto; heksagon isi oranye 25% kecil di kiri dan heksagon garis oranye kecil di kanan bawah. Posisi dalam `cqw` (diukur
   dari contoh desain, wadah `@container`), tinggi wadah dari padding `%`. Kolom sempit `lg` (1024–1279px): kartu lebih
-  lebar, pop-up bawah turun. Mobile: kartu di bawah foto.
+  lebar, pop-up bawah turun. Mobile: kartu di bawah foto. `PageHero` memberi komposisi ini kolom visual lebih lebar
+  (`lg:grid-cols-[1fr_1.1fr]`, `gap-10`); teks kartu & pop-up membesar mulai `sm`.
 - **CTA halaman fitur (`VisualCta`):** potret heksagon besar (sumber sama: `Image Capture.png`, `Image Learn.png`,
   `Image Practice.png`) disimpan sebagai WebP 560–600px (30–40 KB, tidak diperbesar dari aslinya) di `src/assets/images/cta/`.
 - **Rekaman layar produk (mockup `video`):** GIF dari user dikonversi ke MP4 H.264 (dipotong ke jendela aplikasi, tanpa

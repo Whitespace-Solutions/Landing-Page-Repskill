@@ -619,33 +619,33 @@ function PopupIcon({ icon }: { icon: "mic" | "document" }) {
 // Hero Capture (contoh desain 2026-10-13): foto heksagon besar di kiri sebagai latar, kartu kutipan ringkas di kanan
 // atas menumpuk sisi kanan foto, pop-up "Extraction Studio" menempel di bawah kartu, pop-up "Draft article ready" di
 // bawah menumpuk bagian bawah foto, heksagon isi oranye kecil di kiri dan heksagon garis oranye kecil di kanan bawah.
-// Posisi memakai `cqw` (persen lebar wadah, diukur dari contoh desain); tinggi wadah dari `pt-[%]` (padding % = persen
-// lebar). `lg` (kolom sempit 1024–1279px): kartu lebih lebar dan pop-up bawah turun supaya tidak bertabrakan. Mobile:
-// kartu di bawah foto selebar hampir penuh. Pop-up berhenti melayang saat "reduce motion".
+// Posisi memakai `cqw` (persen lebar wadah, diukur dari contoh desain relatif ke lebar kolom visual); tinggi wadah dari
+// `pt-[%]` (padding % = persen lebar). `lg` (kolom sempit 1024–1279px): kartu lebih lebar dan pop-up bawah turun supaya
+// tidak bertabrakan. Mobile: kartu di bawah foto selebar hampir penuh. Pop-up berhenti melayang saat "reduce motion".
 function PersonaSceneMockup({ image, quote, popups }: Extract<MockupData, { type: "persona-scene" }>) {
   const [first, second] = popups;
   return (
-    <div className="@container relative pt-[150%] sm:pt-[86%] lg:pt-[104%] xl:pt-[86%]">
+    <div className="@container relative pt-[150%] sm:pt-[72%] lg:pt-[102%] xl:pt-[76%]">
       <HexOutline
         strokeWidth={0}
-        className="absolute top-[59cqw] left-[3%] hidden w-[7%] max-w-[48px] rotate-90 fill-brand-orange text-brand-orange opacity-25 sm:block lg:top-[66cqw] xl:top-[59cqw]"
+        className="absolute top-[50cqw] left-0 hidden w-[6.6%] max-w-[48px] rotate-90 fill-brand-orange text-brand-orange opacity-30 sm:block lg:top-[62cqw] xl:top-[52cqw]"
       />
       <HexOutline
-        strokeWidth={2.4}
-        className="absolute top-[10cqw] right-[6%] w-[16%] max-w-[72px] rotate-90 text-brand-orange opacity-80 sm:top-[62cqw] sm:right-auto sm:left-[79%] sm:w-[9%] lg:top-[90cqw] xl:top-[62cqw]"
+        strokeWidth={2.6}
+        className="absolute top-[10cqw] right-[6%] w-[16%] max-w-[64px] rotate-90 text-brand-orange opacity-80 sm:top-[54cqw] sm:right-auto sm:left-[83%] sm:w-[9%] lg:top-[90cqw] xl:top-[60cqw]"
       />
 
-      <Reveal className="absolute top-0 left-0 w-[64%] max-w-[360px] sm:top-[12cqw] sm:left-[6%] sm:w-[50%]">
+      <Reveal className="absolute top-0 left-0 w-[64%] max-w-[360px] sm:left-[4%] sm:w-[50%]">
         <Image src={image} alt="" sizes="360px" className="block h-auto w-full drop-shadow-xl" />
       </Reveal>
 
       <Reveal
         delay={0.15}
-        className="absolute top-[56cqw] right-0 z-2 w-[88%] sm:top-[15cqw] sm:right-[5%] sm:w-[50%] lg:right-0 lg:w-[58%] xl:right-[5%] xl:w-[50%]"
+        className="absolute top-[56cqw] right-0 z-2 w-[88%] sm:top-[2.5cqw] sm:w-[55%] lg:w-[62%] xl:w-[58%]"
       >
         <CompactQuote {...quote} />
         {first && (
-          <div className="absolute top-full right-[4%] z-3 mt-4">
+          <div className="absolute top-full right-[2.5%] z-3 mt-4 sm:mt-5">
             <ScenePopup popup={first} duration="8s" delay="0s" />
           </div>
         )}
@@ -654,7 +654,7 @@ function PersonaSceneMockup({ image, quote, popups }: Extract<MockupData, { type
       {second && (
         <Reveal
           delay={0.5}
-          className="absolute bottom-0 left-0 z-3 sm:top-[64cqw] sm:bottom-auto sm:left-[16%] lg:top-[84cqw] lg:left-[4%] xl:top-[64cqw] xl:left-[16%]"
+          className="absolute bottom-0 left-0 z-3 sm:top-[56cqw] sm:bottom-auto sm:left-[13%] lg:top-[86cqw] lg:left-0 xl:top-[61cqw] xl:left-[13%]"
         >
           <ScenePopup popup={second} duration="9.5s" delay="-3s" />
         </Reveal>
@@ -674,18 +674,18 @@ function ScenePopup({
 }) {
   return (
     <div
-      className="flex w-max items-center gap-2.5 rounded-xl border border-line/80 bg-white/95 py-2 pr-3.5 pl-2 shadow-pop backdrop-blur-sm motion-safe:animate-float-soft"
+      className="flex w-max items-center gap-2.5 rounded-xl border border-line/80 bg-white/95 py-2 pr-3.5 pl-2 shadow-pop backdrop-blur-sm motion-safe:animate-float-soft sm:gap-3 sm:rounded-2xl sm:py-3 sm:pr-5 sm:pl-3"
       style={{ animationDuration: duration, animationDelay: delay }}
     >
-      <span className="flex size-8 flex-none items-center justify-center rounded-lg bg-brand-orange text-white">
+      <span className="flex size-8 flex-none items-center justify-center rounded-lg bg-brand-orange text-white sm:size-10 sm:rounded-xl">
         <PopupIcon icon={popup.icon} />
       </span>
       <span className="flex flex-col">
-        <span className="flex items-center gap-1.5 text-[13px] font-bold text-brand-grey">
+        <span className="flex items-center gap-1.5 text-[13px] font-bold text-brand-grey sm:text-sm">
           {popup.label}
           {popup.live && <span className="size-1.5 animate-pulse rounded-full bg-brand-amber" />}
         </span>
-        <span className="text-[11.5px] leading-snug text-brand-charcoal">{popup.text}</span>
+        <span className="text-[11.5px] leading-snug text-brand-charcoal sm:text-[13px]">{popup.text}</span>
       </span>
     </div>
   );
@@ -694,17 +694,19 @@ function ScenePopup({
 /** Versi ringkas kartu kutipan top performer untuk komposisi `persona-scene` (teks & padding lebih kecil). */
 function CompactQuote({ role, parts, tags }: Extract<MockupData, { type: "persona-scene" }>["quote"]) {
   return (
-    <div className="rounded-card border border-line bg-white p-4 shadow-float sm:p-5">
-      <div className="flex items-center gap-2.5">
-        <span className="flex size-8 flex-none items-center justify-center rounded-full bg-brand-grey text-[11px] font-bold text-white shadow-[0_0_0_2px_var(--color-white),0_0_0_3.5px_var(--color-brand-orange)]">
+    <div className="rounded-card border border-line bg-white p-4 shadow-float sm:p-6">
+      <div className="flex items-center gap-2.5 sm:gap-3">
+        <span className="flex size-8 flex-none items-center justify-center rounded-full bg-brand-grey text-[11px] font-bold text-white shadow-[0_0_0_2px_var(--color-white),0_0_0_3.5px_var(--color-brand-orange)] sm:size-10 sm:text-xs">
           TP
         </span>
         <div className="flex min-w-0 flex-col">
-          <span className="text-[10px] font-bold tracking-[0.14em] text-brand-orange">TOP PERFORMER</span>
-          <span className="text-xs leading-snug font-semibold text-brand-grey">{role}</span>
+          <span className="text-[10px] font-bold tracking-[0.14em] text-brand-orange sm:text-[11.5px]">
+            TOP PERFORMER
+          </span>
+          <span className="text-xs leading-snug font-semibold text-brand-grey sm:text-sm">{role}</span>
         </div>
       </div>
-      <p className="mt-3 text-sm leading-relaxed text-brand-grey">
+      <p className="mt-3 text-sm leading-relaxed text-brand-grey sm:mt-4 sm:text-base">
         “
         {parts.map((p, i) =>
           p.highlight ? (
@@ -717,12 +719,14 @@ function CompactQuote({ role, parts, tags }: Extract<MockupData, { type: "person
         )}
         ”
       </p>
-      <div className="mt-3 flex flex-wrap items-center gap-1.5 border-t border-line pt-3">
-        <span className="text-[10px] font-bold tracking-[0.12em] text-brand-charcoal">EXTRACTED</span>
+      <div className="mt-3 flex flex-wrap items-center gap-1.5 border-t border-line pt-3 sm:mt-4 sm:gap-2 sm:pt-4">
+        <span className="text-[10px] font-bold tracking-[0.12em] text-brand-charcoal sm:text-[11px]">
+          EXTRACTED
+        </span>
         {tags.map((t) => (
           <span
             key={t}
-            className="rounded-md bg-brand-linen px-1.5 py-0.5 text-[11px] font-semibold text-brand-grey"
+            className="rounded-md bg-brand-linen px-1.5 py-0.5 text-[11px] font-semibold text-brand-grey sm:px-2 sm:py-1 sm:text-[13px]"
           >
             {t}
           </span>

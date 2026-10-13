@@ -49,7 +49,11 @@ export function PageHero({
       <Container
         className={cn(
           "relative grid items-center gap-12 pt-14 pb-16 sm:pt-20 lg:gap-16 lg:pt-24 lg:pb-24",
-          visual && "lg:grid-cols-[1.05fr_1fr]",
+          // Komposisi `persona-scene` (hero Capture) butuh kolom visual lebih lebar dan jarak ke teks lebih rapat
+          visual &&
+            (visual.type === "persona-scene"
+              ? "lg:grid-cols-[1fr_1.1fr] lg:gap-10"
+              : "lg:grid-cols-[1.05fr_1fr]"),
         )}
       >
         <Stagger className="flex max-w-[720px] flex-col gap-6" stagger={0.1}>
