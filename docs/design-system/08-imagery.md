@@ -65,7 +65,7 @@ Foto orang di situasi kerja (tim sales, coaching), pencahayaan natural, tanpa fi
 - **Hero Home:** tiga potret berbingkai heksagon (PNG transparan, sumber `Logo Final Repskill/Image *.png`) di
   `src/assets/images/hero/`, masing-masing dipasangkan dengan kartu keterangan putih (ikon `FeatureIcon` dalam kotak
   oranye + judul + satu baris penjelasan). Urutan Capture (kiri atas) → Learn (kiri bawah) → Practice (kanan). Foto, kartu, dan heksagon **tidak boleh menabrak wireframe** yang berputar: kartu ditempatkan di sudut-sudut di luar lingkarannya (jarak ±20px di desktop), dan tiap kartu sedikit menumpuk fotonya (Capture di kanan atas foto, Learn di kanan bawah, Practice di bawah foto). Di mobile wireframe dikecilkan ke 64% supaya kartu tetap renggang. Di bawah layar `xl` kartu hanya menampilkan judul. Seluruh ilustrasi (termasuk kartu Practice) tetap di dalam batas lebar konten `Container` — di `lg` wadahnya 82% lebar kolom dan digeser 6% dari kiri — dan heksagon abu berada di luar ring orbit oranye.
-- **Hero Capture Knowledge (mockup `persona-scene`, contoh desain 2026-10-13):** mulai `sm` komposisi ini **satu
+- **Hero halaman fitur (mockup `persona-scene`, contoh desain 2026-10-13; Capture, Learn, Practice):** mulai `sm` komposisi ini **satu
   kesatuan yang diskalakan** dengan lebar wadah (`@container`): semua posisi, ukuran elemen, dan ukuran teks memakai `cqw`
   yang diukur langsung dari contoh desain, jadi proporsinya sama persis di semua lebar (tanpa varian per breakpoint).
   Isinya: foto heksagon besar pria dengan laptop (`cta/learn-portrait.webp`) di kiri sebagai latar, kartu kutipan
@@ -73,6 +73,11 @@ Foto orang di situasi kerja (tim sales, coaching), pencahayaan natural, tanpa fi
   ready" menumpuk bagian bawah foto, heksagon isi oranye kecil di kiri dan heksagon garis oranye kecil di kanan bawah.
   `PageHero` memberi komposisi ini kolom visual lebih lebar (`lg:grid-cols-[1fr_1.25fr]`, `gap-10`). Di mobile (< `sm`)
   versi bertumpuk dengan ukuran teks tetap (px). Untuk mengubah posisi, ubah angka `cqw`/`%` di `PersonaSceneMockup`.
+  Foto dan isi per halaman: Capture = pria dengan laptop (`cta/learn-portrait`), kartu kutipan top performer; Learn =
+  wanita dengan laptop (`cta/capture-portrait`), kartu AI Chat + sumber, pop-up Learning Path & Test passed; Practice =
+  wanita berhijab dengan tablet (`cta/practice-portrait`), kartu AI buyer + coach tip, pop-up Live roleplay & Scorecard.
+  Kartu (`SceneQuote`) diisi data: `badge` (teks di lingkaran), `kicker`, `role`, `parts`, `quoted`, `footerLabel`, `tags`.
+  Ikon pop-up: `mic` · `document` · `path` · `check` · `chart`. Jaga `role` cukup pendek agar satu baris.
 - **CTA halaman fitur (`VisualCta`):** potret heksagon besar (sumber sama: `Image Capture.png`, `Image Learn.png`,
   `Image Practice.png`) disimpan sebagai WebP 560–600px (30–40 KB, tidak diperbesar dari aslinya) di `src/assets/images/cta/`.
 - **Rekaman layar produk (mockup `video`):** GIF dari user dikonversi ke MP4 H.264 (dipotong ke jendela aplikasi, tanpa

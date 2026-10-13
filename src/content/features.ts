@@ -60,25 +60,23 @@ export const practicePage: FeaturePage = {
     highlight: "Before It Matters",
     lead: "Rehearse the meeting before it happens, with an AI buyer that knows your products. Review the real one after it happens. Every score traces back to your own playbook.",
     visual: {
-      type: "chat",
-      title: "Scenario · Pricing objection",
-      meta: "Mid-market",
-      messages: [
-        {
-          side: "left",
-          label: "AI BUYER",
-          text: "We already work with another vendor. Why would we change now?",
-        },
-        {
-          side: "right",
-          label: "YOU",
-          text: "Fair question. What would need to be true for a change to be worth it?",
-        },
-        { side: "left", label: "AI BUYER", text: "Honestly, onboarding time. Our last rollout took months." },
-      ],
-      chips: [
-        { text: "Asked an open question", tone: "good" },
-        { text: "Try: quantify the impact", tone: "next" },
+      type: "persona-scene",
+      image: practicePortrait,
+      quote: {
+        badge: "AI",
+        kicker: "AI BUYER · IMPATIENT VP",
+        role: "Renewal call · burned by us before",
+        parts: [
+          { text: "Last time your team delivered late. " },
+          { text: "Why would this be different?", highlight: true },
+        ],
+        quoted: true,
+        footerLabel: "COACH TIP",
+        tags: ["Acknowledge first, then ask"],
+      },
+      popups: [
+        { icon: "mic", label: "Live roleplay", text: "Voice · Bahasa Indonesia", live: true },
+        { icon: "chart", label: "Scorecard ready", text: "Opening · 3 of 4 met" },
       ],
     },
   },
@@ -254,6 +252,10 @@ export const capturePage: FeaturePage = {
       type: "persona-scene",
       image: learnPortrait,
       quote: {
+        badge: "TP",
+        kicker: "TOP PERFORMER",
+        quoted: true,
+        footerLabel: "EXTRACTED",
         role: "Account Executive · Enterprise",
         parts: [
           { text: "When pricing comes up early, " },
@@ -341,15 +343,22 @@ export const learnPage: FeaturePage = {
     highlight: "Learning",
     lead: "A knowledge base and an e-learning platform in one place: your playbook, an AI chat that only knows your company, and learning paths that end in real practice.",
     visual: {
-      type: "checklist",
-      title: "Learning Path · Onboarding Sales",
-      meta: "Required · assigned by your manager",
-      progress: 17,
-      items: [
-        { label: "Product overview", meta: "Article · Done", status: "done" },
-        { label: "Test: product basics", meta: "9/10", status: "done" },
-        { label: "Discovery call guide", meta: "In progress", status: "now" },
-        { label: "Graded roleplay: price objection", meta: "Module 3", status: "todo" },
+      type: "persona-scene",
+      image: capturePortrait,
+      quote: {
+        badge: "AI",
+        kicker: "AI CHAT",
+        role: "Grounded in your playbook",
+        parts: [
+          { text: "Open with their operational pain, then " },
+          { text: "close with a dated next step.", highlight: true },
+        ],
+        footerLabel: "SOURCE",
+        tags: ["Sales playbook · 94%"],
+      },
+      popups: [
+        { icon: "path", label: "Learning Path", text: "Onboarding Sales · 2 of 12 done" },
+        { icon: "check", label: "Test passed", text: "Product basics · 9/10" },
       ],
     },
   },

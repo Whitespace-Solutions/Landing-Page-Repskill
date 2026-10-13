@@ -64,9 +64,24 @@ export type MockupData =
       /** Komposisi hero: foto heksagon + kartu kutipan top performer + pop-up produk yang melayang */
       type: "persona-scene";
       image: StaticImageData;
-      quote: { role: string; parts: { text: string; highlight?: boolean }[]; tags: string[] };
-      /** Maks. 2: yang pertama menempel di bawah kartu kutipan, yang kedua di kiri bawah */
-      popups: { icon: "mic" | "document"; label: string; text: string; live?: boolean }[];
+      /** Kartu kanan atas: lingkaran `badge` (mis. "TP", "AI") + `kicker` oranye + `role`, isi, lalu label + tag */
+      quote: {
+        badge: string;
+        kicker: string;
+        role: string;
+        parts: { text: string; highlight?: boolean }[];
+        /** Isi diapit tanda kutip (kutipan orang) */
+        quoted?: boolean;
+        footerLabel: string;
+        tags: string[];
+      };
+      /** Maks. 2: yang pertama di bawah kartu, yang kedua di kiri bawah menumpuk foto */
+      popups: {
+        icon: "mic" | "document" | "path" | "check" | "chart";
+        label: string;
+        text: string;
+        live?: boolean;
+      }[];
     }
   | { type: "structure"; title: string; status: string; fields: { label: string; value: string }[] }
   | {

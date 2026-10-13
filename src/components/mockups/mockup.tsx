@@ -588,7 +588,49 @@ function TeamMockup({ title, meta, items, note }: Extract<MockupData, { type: "t
   );
 }
 
-function PopupIcon({ icon }: { icon: "mic" | "document" }) {
+const POPUP_ICONS: Record<
+  Extract<MockupData, { type: "persona-scene" }>["popups"][number]["icon"],
+  React.ReactNode
+> = {
+  // Mikrofon: wawancara/roleplay suara
+  mic: (
+    <>
+      <rect x="9" y="3" width="6" height="11" rx="3" />
+      <path d="M5 11a7 7 0 0 0 14 0M12 18v3" />
+    </>
+  ),
+  // Dokumen: draf artikel
+  document: (
+    <>
+      <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
+      <path d="M14 3v5h5M9 13h6M9 17h4" />
+    </>
+  ),
+  // Jalur berkelok dengan titik awal & akhir: learning path
+  path: (
+    <>
+      <circle cx="6" cy="19" r="2" />
+      <circle cx="18" cy="5" r="2" />
+      <path d="M8 19h8.5a3.5 3.5 0 0 0 0-7h-9a3.5 3.5 0 0 1 0-7H16" />
+    </>
+  ),
+  // Lingkaran centang: tes lulus
+  check: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M8 12.5l2.5 2.5L16 9.5" />
+    </>
+  ),
+  // Grafik batang: scorecard
+  chart: (
+    <>
+      <path d="M4 20h16" />
+      <path d="M7 16v-4M12 16V7M17 16v-6" />
+    </>
+  ),
+};
+
+function PopupIcon({ icon }: { icon: keyof typeof POPUP_ICONS }) {
   return (
     <svg
       width="50%"
@@ -601,17 +643,7 @@ function PopupIcon({ icon }: { icon: "mic" | "document" }) {
       strokeLinejoin="round"
       aria-hidden
     >
-      {icon === "mic" ? (
-        <>
-          <rect x="9" y="3" width="6" height="11" rx="3" />
-          <path d="M5 11a7 7 0 0 0 14 0M12 18v3" />
-        </>
-      ) : (
-        <>
-          <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
-          <path d="M14 3v5h5M9 13h6M9 17h4" />
-        </>
-      )}
+      {POPUP_ICONS[icon]}
     </svg>
   );
 }
@@ -758,7 +790,16 @@ function ScenePopup({
 }
 
 /** Kartu kutipan top performer di `persona-scene`. Ukuran dalam `cqw` mengikuti contoh desain. */
-function SceneQuote({ role, parts, tags, fluid }: PersonaScene["quote"] & { fluid?: boolean }) {
+function SceneQuote({
+  badge,
+  kicker,
+  role,
+  parts,
+  quoted,
+  footerLabel,
+  tags,
+  fluid,
+}: PersonaScene["quote"] & { fluid?: boolean }) {
   const size = sizer(fluid);
   return (
     <div
@@ -770,14 +811,14 @@ function SceneQuote({ role, parts, tags, fluid }: PersonaScene["quote"] & { flui
           className="flex flex-none items-center justify-center rounded-full bg-brand-grey font-bold text-white shadow-[0_0_0_2px_var(--color-white),0_0_0_3.5px_var(--color-brand-orange)]"
           style={{ width: `${size(32, 6.4)}`, height: `${size(32, 6.4)}`, fontSize: `${size(11, 1.9)}` }}
         >
-          TP
+          {badge}
         </span>
         <div className="flex min-w-0 flex-col">
           <span
             className="font-bold tracking-[0.14em] text-brand-orange"
             style={{ fontSize: `${size(10, 1.85)}` }}
           >
-            TOP PERFORMER
+            {kicker}
           </span>
           <span
             className="leading-snug font-semibold text-brand-grey"
@@ -791,7 +832,7 @@ function SceneQuote({ role, parts, tags, fluid }: PersonaScene["quote"] & { flui
         className="leading-relaxed text-brand-grey"
         style={{ marginTop: `${size(10, 2.2)}`, fontSize: `${size(14, 2.6)}` }}
       >
-        “
+        {quoted && "“"}
         {parts.map((p, i) =>
           p.highlight ? (
             <mark key={i} className="rounded bg-brand-linen px-0.5 text-brand-grey">
@@ -801,7 +842,7 @@ function SceneQuote({ role, parts, tags, fluid }: PersonaScene["quote"] & { flui
             <span key={i}>{p.text}</span>
           ),
         )}
-        ”
+        {quoted && "”"}
       </p>
       <div
         className="flex flex-wrap items-center border-t border-line"
@@ -811,7 +852,7 @@ function SceneQuote({ role, parts, tags, fluid }: PersonaScene["quote"] & { flui
           className="font-bold tracking-[0.12em] text-brand-charcoal"
           style={{ fontSize: `${size(10, 1.8)}` }}
         >
-          EXTRACTED
+          {footerLabel}
         </span>
         {tags.map((t) => (
           <span
