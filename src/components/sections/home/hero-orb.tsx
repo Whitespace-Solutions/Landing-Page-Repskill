@@ -1,11 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useTransform } from "motion/react";
 import repskillIcon from "@/assets/brand/repskill-icon.svg";
 import { Floating, type Pointer } from "@/components/motion/parallax";
+import { Orb } from "@/components/sections/shared/orb";
 import { FeatureIcon } from "@/components/ui/feature-icon";
-import { HexOutline, Wireframe } from "@/components/ui/wireframe";
+import { HexOutline } from "@/components/ui/wireframe";
 import { heroPersonas } from "@/content/home";
 import { cn } from "@/lib/cn";
 
@@ -43,40 +43,17 @@ const personaLayout = [
  * Seluruh ilustrasi dekoratif (`aria-hidden`): isinya sudah dijelaskan oleh judul, paragraf, dan menu Features.
  */
 export function HeroOrb({ mx, my }: Pointer) {
-  const wx = useTransform(mx, (v) => v * 24);
-  const wy = useTransform(my, (v) => v * 24);
-
   return (
-    <div
-      className="relative mx-auto mt-14 grid aspect-square w-full max-w-[270px] place-items-center sm:max-w-[380px] lg:mt-0 lg:ml-[6%] lg:aspect-auto lg:min-h-[clamp(340px,40vw,466px)] lg:w-[82%] lg:max-w-none"
-      aria-hidden
+    <Orb
+      mx={mx}
+      my={my}
+      center={
+        // Logo di tengah: di luar wadah putar, jadi hanya melayang
+        <div className="w-[28%] motion-safe:animate-float-soft" style={{ animationDuration: "7s" }}>
+          <Image src={repskillIcon} alt="" className="h-auto w-full drop-shadow-xl" priority />
+        </div>
+      }
     >
-      <div className="absolute aspect-square w-4/5 rounded-full bg-orb-glow motion-safe:animate-orb-glow" />
-      <svg
-        viewBox="0 0 400 400"
-        fill="none"
-        className="absolute h-auto w-full max-w-[460px] overflow-visible text-brand-orange opacity-60"
-      >
-        <circle cx="200" cy="200" r="194" stroke="currentColor" strokeOpacity={0.3} />
-        <circle cx="200" cy="200" r="146" stroke="currentColor" strokeOpacity={0.2} />
-        <ellipse cx="200" cy="200" rx="194" ry="70" stroke="currentColor" strokeOpacity={0.16} />
-        <ellipse cx="200" cy="200" rx="70" ry="194" stroke="currentColor" strokeOpacity={0.16} />
-      </svg>
-
-      <motion.div className="relative z-1 w-[64%] sm:w-[min(72%,332px)]" style={{ x: wx, y: wy }}>
-        <div className="motion-safe:animate-orb-spin">
-          <div className="motion-safe:animate-orb-breathe">
-            <Wireframe className="block h-auto w-full text-brand-orange" />
-          </div>
-        </div>
-        {/* Logo di tengah: di luar wadah putar, jadi hanya melayang */}
-        <div className="absolute inset-0 grid place-items-center">
-          <div className="w-[28%] motion-safe:animate-float-soft" style={{ animationDuration: "7s" }}>
-            <Image src={repskillIcon} alt="" className="h-auto w-full drop-shadow-xl" priority />
-          </div>
-        </div>
-      </motion.div>
-
       <Floating
         className="top-[2%] right-[7%] aspect-square w-[52px] text-brand-orange opacity-50"
         animation="motion-safe:animate-hex-float"
@@ -134,6 +111,6 @@ export function HeroOrb({ mx, my }: Pointer) {
           </Floating>
         );
       })}
-    </div>
+    </Orb>
   );
 }

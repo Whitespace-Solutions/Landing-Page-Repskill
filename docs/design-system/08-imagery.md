@@ -51,7 +51,10 @@ Grafik garis poligon (komponen `Wireframe`, diambil dari referensi Whitespace Ta
   ±65% bentuknya terlihat (sisanya terpotong tepi footer), di belakang teks.
 - Dipakai di hero Home sebagai ilustrasi utama (`HeroOrb`): wireframe `text-brand-orange` penuh, dengan glow oranye lembut
   (`bg-orb-glow`), ring orbit oranye tipis, heksagon garis (`HexOutline`; satu oranye kanan atas, satu Shadow Grey di atas foto Learn), dan logo Repskill (`src/assets/brand/repskill-icon.svg`, file resmi, tidak diubah) di tengah.
-- Selain dua tempat itu, wireframe hanya dipakai sebagai latar dekoratif di section gelap, dengan teks selalu di atasnya.
+- Dipakai juga di hero Success Stories (`ClientOrb` + `StoriesHero`): orb yang sama (komponen bersama `Orb`,
+  `src/components/sections/shared/orb.tsx`) **tanpa** logo Repskill di tengah, dikelilingi 5 kartu putih berisi logo
+  klien (`clients`) yang melayang + parallax di sudut-sudut luar wireframe, plus heksagon garis oranye dan abu.
+- Selain tempat-tempat itu, wireframe hanya dipakai sebagai latar dekoratif di section gelap, dengan teks selalu di atasnya.
 - Maksimal satu motif dekoratif per section. Jangan sampai menutupi teks.
 
 ## Foto

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { HomeCta } from "@/components/sections/home/home-cta";
 import { ClientLogos } from "@/components/sections/shared/client-logos";
-import { PageHero } from "@/components/sections/shared/page-hero";
+import { StoriesHero } from "@/components/sections/success-stories/stories-hero";
 import { Reveal } from "@/components/motion/reveal";
 import { StoryRow } from "@/components/sections/success-stories/story-parts";
 import { Section } from "@/components/ui/section";
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export default function SuccessStoriesPage() {
   return (
     <>
-      <PageHero {...page.hero} />
+      <StoriesHero {...page.hero} />
       <Section id="case-studies" tone="surface">
         <SectionHeader {...page.caseStudies} />
         <div className="mt-10 border-b border-line lg:mt-14">
