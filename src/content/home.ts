@@ -210,12 +210,6 @@ export const howItWorks: StepsData = {
       tag: "Reflection Studio",
       href: "/features/practice/#reflection-studio",
     },
-    {
-      name: "Improve",
-      message: "Build capability your whole sales team can use.",
-      tag: "See success stories",
-      href: "/success-stories/",
-    },
   ],
 };
 
