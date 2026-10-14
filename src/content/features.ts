@@ -3,9 +3,9 @@ import type { StaticImageData } from "next/image";
 import capturePortrait from "@/assets/images/cta/capture-portrait.webp";
 import learnPortrait from "@/assets/images/cta/learn-portrait.webp";
 import practicePortrait from "@/assets/images/cta/practice-portrait.webp";
-import addContentScreenshot from "@/assets/images/mockups/add-content.webp";
-import contentManagerReviewScreenshot from "@/assets/images/mockups/content-manager-review.webp";
-import extractionStudioScreenshot from "@/assets/images/mockups/extraction-studio.webp";
+import captureAddContentPoster from "@/assets/images/mockups/capture-add-content-poster.webp";
+import captureContentManagerPoster from "@/assets/images/mockups/capture-content-manager-poster.webp";
+import captureExtractionStudioPoster from "@/assets/images/mockups/capture-extraction-studio-poster.webp";
 import learnAiChatPoster from "@/assets/images/mockups/learn-ai-chat-poster.webp";
 import learnKnowledgeUniversePoster from "@/assets/images/mockups/learn-knowledge-universe-poster.webp";
 import learnLearningPathPoster from "@/assets/images/mockups/learn-learning-path-poster.webp";
@@ -283,9 +283,13 @@ export const capturePage: FeaturePage = {
         "Every insight becomes a draft article, ready for review",
       ],
       visual: {
-        type: "screenshot",
-        image: extractionStudioScreenshot,
-        alt: "Repskill Extraction Studio: an AI-assisted interview that pulls tacit knowledge out of top performers, with a choice between a Free-form Interview and a Context-driven Interview and a Start interview panel.",
+        type: "video",
+        src: "/media/capture-extraction-studio.mp4",
+        poster: captureExtractionStudioPoster,
+        width: 1280,
+        height: 720,
+        label:
+          "Screen recording of Repskill Extraction Studio: choosing a free-form interview, starting a voice interview, and the AI capturing insights such as objection handling and best practices from a rep's answer.",
       },
     },
     {
@@ -299,9 +303,13 @@ export const capturePage: FeaturePage = {
         "Accept or edit every AI suggestion before you submit it for approval",
       ],
       visual: {
-        type: "screenshot",
-        image: addContentScreenshot,
-        alt: "Repskill Add Content: turn any source into content your team uses in three steps, pick type, upload, and review, choosing between a Document and a Video Learning.",
+        type: "video",
+        src: "/media/capture-add-content.mp4",
+        poster: captureAddContentPoster,
+        width: 1280,
+        height: 720,
+        label:
+          "Screen recording of Repskill Add Content: uploading a sales playbook PDF, the AI preparing a draft article, and the draft becoming ready to review.",
       },
     },
     {
@@ -316,9 +324,13 @@ export const capturePage: FeaturePage = {
         "Merge duplicate articles while keeping the originals",
       ],
       visual: {
-        type: "screenshot",
-        image: contentManagerReviewScreenshot,
-        alt: "Repskill Content Approval review panel: a pending item with its type, submitter, similar-content check, and body preview, with Approve & publish and a Send back button that requires a written reason the author sees.",
+        type: "video",
+        src: "/media/capture-content-manager.mp4",
+        poster: captureContentManagerPoster,
+        width: 1280,
+        height: 720,
+        label:
+          "Screen recording of Repskill Manage Content: opening the Content Library of published, draft, and unpublished items, then reviewing an article with options to change its topic or type or unpublish it.",
       },
     },
   ],
