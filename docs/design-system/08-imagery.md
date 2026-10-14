@@ -94,7 +94,7 @@ Foto orang di situasi kerja (tim sales, coaching), pencahayaan natural, tanpa fi
   Bingkai, kolom lebar, dan panel tipis sama dengan mockup `video`. Isi `alt` yang menjelaskan isi layar. Contoh:
   AI Chat di halaman Learn Knowledge.
 - **Screenshot berganti di kartu kecil (`ScreenshotCarousel`):** dipotong ke area fitur dengan rasio ±2,1:1 (rasio kotak
-  pratinjau kartu Platform Overview), lebar 800px WebP (±20–30 KB). Jangan sertakan data uji (mis. judul "Zz Validate…")
+  pratinjau kartu The Solution di Home), lebar 800px WebP (±20–30 KB). Jangan sertakan data uji (mis. judul "Zz Validate…")
   di area potongan, juga sorotan teks (blok seleksi biru): potong di bawahnya atau ambil ulang screenshot. Nama file
   `<fitur>-<layar>.webp`, mis. `capture-extraction-studio`, `learn-ai-chat`, `practice-reflection-studio`.
 - **Screenshot satu kartu/panel aplikasi** (mis. panel review Content Manager): potong tepat di dalam border kartunya,

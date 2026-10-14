@@ -9,7 +9,7 @@ import { cn } from "@/lib/cn";
 export type CarouselShot = { image: StaticImageData; alt: string };
 
 /**
- * Screenshot produk yang berganti otomatis (crossfade + zoom halus), mis. pratinjau kartu Capture di Platform Overview.
+ * Screenshot produk yang berganti otomatis (crossfade + zoom halus), mis. pratinjau kartu Capture di section The Solution (Home).
  * Gambar memenuhi wadah (`object-cover`, rata kiri atas). Saat "reduce motion" hanya screenshot pertama yang tampil.
  */
 export function ScreenshotCarousel({

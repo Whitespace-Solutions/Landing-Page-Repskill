@@ -61,7 +61,7 @@ export function Hero() {
             <ButtonLink href={primaryCta.href} size="lg" withArrow>
               {primaryCta.label}
             </ButtonLink>
-            <ButtonLink href="#platform" size="lg" variant="outline">
+            <ButtonLink href="#solution" size="lg" variant="outline">
               Explore Repskill
             </ButtonLink>
           </motion.div>

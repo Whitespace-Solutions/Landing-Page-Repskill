@@ -5,10 +5,10 @@ import { ArrowRight } from "@/components/ui/button";
 import { Section } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
 import { featureInfo } from "@/content/features";
-import { platformOverview } from "@/content/home";
+import { solutionSection } from "@/content/home";
 import type { FeatureKey } from "@/content/success-stories";
 
-const { shots, ...header } = platformOverview;
+const { shots, ...header } = solutionSection;
 
 // Urutan mengikuti alur produk di brand guideline: Capture → Learn → Practice.
 // Tiap kartu menampilkan screenshot produk yang berganti; mulainya digeser 1 dtk per kartu supaya tidak serempak.
@@ -18,9 +18,9 @@ const ORDER: { key: FeatureKey; stage: string }[] = [
   { key: "practice", stage: "03 · PRACTICE & REFLECT" },
 ];
 
-export function PlatformOverview() {
+export function Solution() {
   return (
-    <Section id="platform">
+    <Section id="solution">
       <SectionHeader {...header} />
 
       <Stagger className="mt-10 grid gap-4 md:grid-cols-3 lg:mt-14" stagger={0.1}>
