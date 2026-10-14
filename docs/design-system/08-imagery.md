@@ -89,13 +89,13 @@ Foto orang di situasi kerja (tim sales, coaching), pencahayaan natural, tanpa fi
   tidak diputar dan kontrol muncul. Path di `src` tanpa basePath (ditambahkan otomatis). Isi `label` untuk pembaca layar.
   Di `FeatureSplit`, section dengan video memakai kolom visual lebih lebar (1.35fr : 1fr) dan bingkai panel tipis
   (`p-2 sm:p-3`). Potong juga elemen yang tidak boleh publik (mis. status bar browser berisi URL staging).
-  **Walkthrough MP4 yang sudah diedit** (dengan zoom/pan, mis. tiga section di halaman Capture dan Learn Knowledge) tidak dipotong:
+  **Walkthrough MP4 yang sudah diedit** (dengan zoom/pan, mis. section di halaman Capture, Learn Knowledge, dan Practice) tidak dipotong:
   cukup kompres ke 1280×720, H.264 CRF 26, `yuv420p`, `+faststart`, tanpa audio (±1,2–1,8 MB per 15 dtk). Nama file
   `<fitur>-<layar>.mp4` + poster `<fitur>-<layar>-poster.webp`.
 - **Screenshot produk (mockup `screenshot`):** dipotong ke area fitur (tanpa sidebar navigasi aplikasi supaya teks
   tetap terbaca), lebar 1400px WebP (±40 KB) di `src/assets/images/mockups/`; file asli di `docs/brand/screenshots/`.
-  Bingkai, kolom lebar, dan panel tipis sama dengan mockup `video`. Isi `alt` yang menjelaskan isi layar. Contoh:
-  Scenario Studio di halaman Practice.
+  Bingkai, kolom lebar, dan panel tipis sama dengan mockup `video`. Isi `alt` yang menjelaskan isi layar. Saat ini
+  tidak dipakai: section fitur yang punya rekaman produk memakai video walkthrough.
 - **Screenshot berganti di kartu kecil (`ScreenshotCarousel`):** dipotong ke area fitur dengan rasio ±2,1:1 (rasio kotak
   pratinjau kartu The Solution di Home), lebar 800px WebP (±20–30 KB). Jangan sertakan data uji (mis. judul "Zz Validate…")
   di area potongan, juga sorotan teks (blok seleksi biru): potong di bawahnya atau ambil ulang screenshot. Nama file

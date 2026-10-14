@@ -87,7 +87,7 @@ export type MockupData =
   | {
       /** Rekaman layar produk (MP4 di `public/media/`, diputar otomatis tanpa suara, berulang) */
       type: "video";
-      /** Path di `public/`, tanpa basePath, mis. "/media/reflection-studio.mp4" */
+      /** Path di `public/`, tanpa basePath, mis. "/media/practice-reflection-studio.mp4" */
       src: string;
       poster: StaticImageData;
       width: number;

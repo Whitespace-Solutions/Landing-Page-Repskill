@@ -9,8 +9,10 @@ import captureExtractionStudioPoster from "@/assets/images/mockups/capture-extra
 import learnAiChatPoster from "@/assets/images/mockups/learn-ai-chat-poster.webp";
 import learnKnowledgeUniversePoster from "@/assets/images/mockups/learn-knowledge-universe-poster.webp";
 import learnLearningPathPoster from "@/assets/images/mockups/learn-learning-path-poster.webp";
-import reflectionStudioPoster from "@/assets/images/mockups/reflection-studio-poster.webp";
-import scenarioStudioScreenshot from "@/assets/images/mockups/scenario-studio.webp";
+import practiceReflectionStudioPoster from "@/assets/images/mockups/practice-reflection-studio-poster.webp";
+import practiceScenarioStudioPoster from "@/assets/images/mockups/practice-scenario-studio-poster.webp";
+import practiceTeamDashboardPoster from "@/assets/images/mockups/practice-team-dashboard-poster.webp";
+import practiceYouVsAiPoster from "@/assets/images/mockups/practice-you-vs-ai-poster.webp";
 import type { VisualCtaLayout } from "@/components/sections/shared/visual-cta";
 import type { FeatureKey } from "./success-stories";
 import type { CtaData, FeatureBlockData, PageHeroData } from "./types";
@@ -93,9 +95,13 @@ export const practicePage: FeaturePage = {
         "Or pick a ready-made scenario your team has already approved",
       ],
       visual: {
-        type: "screenshot",
-        image: scenarioStudioScreenshot,
-        alt: "Repskill Scenario Studio: rehearse the conversation that matters against an AI buyer trained on your own playbooks, with Create Scenario for a specific real meeting and Library Mode for ready-made team scenarios approved by your content team.",
+        type: "video",
+        src: "/media/practice-scenario-studio.mp4",
+        poster: practiceScenarioStudioPoster,
+        width: 1280,
+        height: 720,
+        label:
+          "Screen recording of Repskill Scenario Studio: choosing Create Scenario instead of Library Mode and describing the real meeting to rehearse.",
       },
     },
     {
@@ -110,26 +116,13 @@ export const practicePage: FeaturePage = {
         "Podcast: an AI-voiced interview with a top performer on this exact scenario",
       ],
       visual: {
-        type: "chat",
-        title: "Practice call · Pak Budi Santoso",
-        meta: "Skeptical CFO · PT Maju Logistik",
-        messages: [
-          {
-            side: "left",
-            label: "PAK BUDI",
-            text: "Your price is 30% above what we pay now. Why should I even consider switching?",
-          },
-          {
-            side: "right",
-            label: "YOU",
-            text: "Fair question, Pak. Before price, what is a late delivery costing you today?",
-          },
-          { side: "left", label: "PAK BUDI", text: "Hmm. More than I'd like to admit. Go on." },
-        ],
-        chips: [
-          { text: "Asked before pitching", tone: "good" },
-          { text: "Next: quantify the cost", tone: "next" },
-        ],
+        type: "video",
+        src: "/media/practice-you-vs-ai.mp4",
+        poster: practiceYouVsAiPoster,
+        width: 1280,
+        height: 720,
+        label:
+          "Screen recording of Repskill You vs AI: a product demo scenario with a skeptical CFO buyer, choosing to practice the sales call live, and joining the call with the AI buyer.",
       },
     },
     {
@@ -172,12 +165,12 @@ export const practicePage: FeaturePage = {
       ],
       visual: {
         type: "video",
-        src: "/media/reflection-studio.mp4",
-        poster: reflectionStudioPoster,
-        width: 1112,
-        height: 536,
+        src: "/media/practice-reflection-studio.mp4",
+        poster: practiceReflectionStudioPoster,
+        width: 1280,
+        height: 720,
         label:
-          "Screen recording of Repskill Reflection Studio: choosing the recording type and uploading a meeting recording for reflection.",
+          "Screen recording of Repskill Reflection Studio: choosing the recording type, uploading a meeting, and reviewing a team meeting summary with topics, decisions, and action items.",
       },
     },
     {
@@ -191,40 +184,13 @@ export const practicePage: FeaturePage = {
         "Privacy built in: managers see ratings and progress, never a practice recording or transcript",
       ],
       visual: {
-        type: "team",
-        title: "Team Dashboard · Roleplay review",
-        meta: "Illustrative data",
-        items: [
-          {
-            name: "Sari W.",
-            meta: "14 roleplays · On track",
-            band: "STRONG",
-            trend: "↗ Improving",
-            tone: "good",
-          },
-          {
-            name: "Andi P.",
-            meta: "11 roleplays · On track",
-            band: "SOLID",
-            trend: "↗ Improving",
-            tone: "good",
-          },
-          {
-            name: "Dimas K.",
-            meta: "4 roleplays · Stalled",
-            band: "FAIR",
-            trend: "↘ Slipping",
-            tone: "steady",
-          },
-          {
-            name: "Rina S.",
-            meta: "2 roleplays · Overdue",
-            band: "NEEDS WORK",
-            trend: "Needs coaching",
-            tone: "alert",
-          },
-        ],
-        note: "Practice recordings stay private to the rep",
+        type: "video",
+        src: "/media/practice-team-dashboard.mp4",
+        poster: practiceTeamDashboardPoster,
+        width: 1280,
+        height: 720,
+        label:
+          "Screen recording of Repskill Manage my team: the direct reports a supervisor assigns work to, and the roleplays the team finished, filtered by needs coaching, slipping, or improving, with ratings only.",
       },
     },
   ],
