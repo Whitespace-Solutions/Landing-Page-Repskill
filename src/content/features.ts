@@ -6,9 +6,9 @@ import practicePortrait from "@/assets/images/cta/practice-portrait.webp";
 import addContentScreenshot from "@/assets/images/mockups/add-content.webp";
 import contentManagerReviewScreenshot from "@/assets/images/mockups/content-manager-review.webp";
 import extractionStudioScreenshot from "@/assets/images/mockups/extraction-studio.webp";
-import knowledgeChatScreenshot from "@/assets/images/mockups/knowledge-chat.webp";
-import knowledgeUniverseScreenshot from "@/assets/images/mockups/knowledge-universe.webp";
-import learningPathScreenshot from "@/assets/images/mockups/learning-path.webp";
+import learnAiChatPoster from "@/assets/images/mockups/learn-ai-chat-poster.webp";
+import learnKnowledgeUniversePoster from "@/assets/images/mockups/learn-knowledge-universe-poster.webp";
+import learnLearningPathPoster from "@/assets/images/mockups/learn-learning-path-poster.webp";
 import reflectionStudioPoster from "@/assets/images/mockups/reflection-studio-poster.webp";
 import scenarioStudioScreenshot from "@/assets/images/mockups/scenario-studio.webp";
 import type { VisualCtaLayout } from "@/components/sections/shared/visual-cta";
@@ -376,9 +376,13 @@ export const learnPage: FeaturePage = {
         "Only reviewed and approved content is ever visible",
       ],
       visual: {
-        type: "screenshot",
-        image: knowledgeUniverseScreenshot,
-        alt: "Repskill Knowledge Universe: 49 resources with a knowledge base search, filters for SOPs, non-SOPs, and bookmarks, and article cards such as executive sponsor alignment at a mid-market logistics company.",
+        type: "video",
+        src: "/media/learn-knowledge-universe.mp4",
+        poster: learnKnowledgeUniversePoster,
+        width: 1280,
+        height: 720,
+        label:
+          "Screen recording of Repskill Knowledge Universe: searching the knowledge base, browsing 49 resources across 17 topics, and opening Content & Campaigns to filter articles and SOPs.",
       },
     },
     {
@@ -393,9 +397,13 @@ export const learnPage: FeaturePage = {
         "Speak or type, with read-aloud in Bahasa Indonesia or English",
       ],
       visual: {
-        type: "screenshot",
-        image: knowledgeChatScreenshot,
-        alt: "Repskill AI Chat: ask anything about your sales knowledge, with specialists such as Negotiation Coach, Pitch Mentor, and ROI Advisor, and suggested questions like how to respond when a buyer says you are 20% more expensive.",
+        type: "video",
+        src: "/media/learn-ai-chat.mp4",
+        poster: learnAiChatPoster,
+        width: 1280,
+        height: 720,
+        label:
+          "Screen recording of Repskill AI Chat: picking a suggested question about what to check before sending a contract for approval, and getting a step-by-step answer from company knowledge.",
       },
     },
     {
@@ -409,9 +417,13 @@ export const learnPage: FeaturePage = {
         "Progress shows what's done and what to start next",
       ],
       visual: {
-        type: "screenshot",
-        image: learningPathScreenshot,
-        alt: "Repskill Learning Path: a company and product onboarding path with a progress bar, a Start the next item button, and modules such as How we work with reading items.",
+        type: "video",
+        src: "/media/learn-learning-path.mp4",
+        poster: learnLearningPathPoster,
+        width: 1280,
+        height: 720,
+        label:
+          "Screen recording of Repskill Learning Path: opening an Objection Handling path assigned by the manager, viewing its modules, and reading the first item with an AI summary.",
       },
     },
   ],
