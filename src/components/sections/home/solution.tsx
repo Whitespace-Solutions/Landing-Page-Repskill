@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ScreenshotCarousel } from "@/components/mockups/screenshot-carousel";
-import { Reveal, Stagger, StaggerItem } from "@/components/motion/reveal";
+import { Stagger, StaggerItem } from "@/components/motion/reveal";
 import { ArrowRight } from "@/components/ui/button";
 import { Section } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
@@ -50,40 +50,6 @@ export function Solution() {
           );
         })}
       </Stagger>
-
-      <Reveal className="mt-4 flex flex-wrap items-center justify-between gap-4 rounded-card bg-brand-linen px-6 py-5 text-brand-grey">
-        <div className="flex items-center gap-3">
-          <span className="flex size-9 items-center justify-center rounded-full bg-brand-amber">
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden
-            >
-              <rect x="5" y="11" width="14" height="10" rx="2" />
-              <path d="M8 11V7a4 4 0 0 1 8 0v4" />
-            </svg>
-          </span>
-          <div className="flex flex-col">
-            <span className="text-[11px] font-bold tracking-[0.14em] text-brand-grey/70">
-              SHARED FOUNDATION
-            </span>
-            <span className="font-bold">Knowledge Universe: reviewed and approved before it is used.</span>
-          </div>
-        </div>
-        <Link
-          href="/features/learn-knowledge/#knowledge-universe"
-          className="group inline-flex items-center gap-1.5 text-sm font-semibold text-brand-charcoal hover:text-brand-orange"
-        >
-          How it works
-          <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
-        </Link>
-      </Reveal>
     </Section>
   );
 }
