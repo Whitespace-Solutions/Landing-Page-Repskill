@@ -14,6 +14,7 @@ import ascoLogo from "@/assets/clients/asco.png";
 import bammsLogo from "@/assets/clients/bamms.png";
 import rechargeLogo from "@/assets/clients/recharge.png";
 import trilogyLogo from "@/assets/clients/trilogy.png";
+import type { DuoIconName } from "@/components/ui/duo-icon";
 import type { MockupData } from "./types";
 
 /** Urutan baku mengikuti alur produk: Capture → Learn → Practice. */
@@ -41,16 +42,21 @@ export type SuccessStory = {
   result: {
     title: string;
     body: string;
-    metrics: { value: string; label: string }[];
+    /** `icon`: ikon dua warna di kiri angka (daftar /success-stories/) */
+    metrics: { value: string; label: string; icon: DuoIconName }[];
     quote?: { text: string; author: string; role: string };
   };
 };
 
 /** DUMMY: [capability outcome, practice activity, business outcome] */
-const dummyMetrics = (capability: string, practice: string, business: string) => [
-  { value: capability, label: "Capability outcome" },
-  { value: practice, label: "Practice activity" },
-  { value: business, label: "Business outcome" },
+const dummyMetrics = (
+  capability: string,
+  practice: string,
+  business: string,
+): SuccessStory["result"]["metrics"] => [
+  { value: capability, label: "Capability outcome", icon: "growth" },
+  { value: practice, label: "Practice activity", icon: "practice" },
+  { value: business, label: "Business outcome", icon: "business" },
 ];
 
 /** DUMMY: profil klien di halaman detail (Industry · Sales team · Region) */

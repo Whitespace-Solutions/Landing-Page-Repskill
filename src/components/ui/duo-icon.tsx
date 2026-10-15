@@ -1,7 +1,8 @@
 import { cn } from "@/lib/cn";
 
 /** Nama ikon dua warna (garis Shadow Grey + aksen oranye). */
-export type DuoIconName = "ramp" | "pitch" | "walkout" | "mentor" | "builder";
+export type DuoIconName =
+  "ramp" | "pitch" | "walkout" | "mentor" | "builder" | "growth" | "practice" | "business";
 
 const icons: Record<DuoIconName, { base: React.ReactNode; accent: React.ReactNode }> = {
   // Orang + balon chat: mentor yang membimbing lewat percakapan
@@ -68,6 +69,37 @@ const icons: Record<DuoIconName, { base: React.ReactNode; accent: React.ReactNod
         <path d="M18 9l3 3-3 3" />
       </>
     ),
+  },
+  // Bar naik: hasil kapabilitas; bar tertinggi (aksen) = peningkatan
+  growth: {
+    base: (
+      <>
+        <path d="M5 20v-5" />
+        <path d="M10.5 20v-8.5" />
+        <path d="M3 20.5h18" />
+      </>
+    ),
+    accent: <path d="M16 20V5" />,
+  },
+  // Dua orang: aktivitas latihan tim; orang di depan (aksen) sedang berlatih
+  practice: {
+    base: (
+      <>
+        <circle cx="16.5" cy="7.5" r="2.5" />
+        <path d="M15 13.6c.5-.1 1-.1 1.5-.1 2.5 0 4.5 2 4.5 4.5" />
+      </>
+    ),
+    accent: (
+      <>
+        <circle cx="9" cy="8" r="3.5" />
+        <path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6" />
+      </>
+    ),
+  },
+  // Diagram pie: hasil bisnis; potongan yang keluar (aksen) = bagian yang bertambah
+  business: {
+    base: <path d="M11 4a8.5 8.5 0 1 0 9 9h-9Z" />,
+    accent: <path d="M14 2.5a7.5 7.5 0 0 1 7.5 7.5H14Z" />,
   },
 };
 

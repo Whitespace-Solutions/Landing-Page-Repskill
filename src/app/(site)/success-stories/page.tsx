@@ -21,7 +21,7 @@ export default function SuccessStoriesPage() {
       <StoriesHero {...page.hero} />
       <Section id="case-studies" tone="surface">
         <SectionHeader {...page.caseStudies} />
-        <div className="mt-10 border-b border-line lg:mt-14">
+        <div className="mt-10 flex flex-col gap-5 lg:mt-14">
           {successStories.map((story) => (
             <Reveal key={story.slug}>
               <StoryRow story={story} />
