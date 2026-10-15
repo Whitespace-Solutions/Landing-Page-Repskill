@@ -36,13 +36,13 @@ export function PricingPlans() {
     <Section id="plans" tone="surface">
       {/* Judul hanya untuk pembaca layar; secara visual kartu langsung tampil di bawah hero */}
       <h2 className="sr-only">{plans.title}</h2>
-      <Stagger className="grid items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3" stagger={0.12}>
+      <Stagger className="grid items-stretch gap-6 md:grid-cols-2 xl:grid-cols-3" stagger={0.12}>
         {plans.items.map((plan) => (
           <StaggerItem key={plan.name} className="h-full">
             <PlanCard plan={plan} includedLabel={plans.includedLabel} />
           </StaggerItem>
         ))}
-        <StaggerItem className="h-full md:col-span-2 lg:col-span-1">
+        <StaggerItem className="h-full md:col-span-2 xl:col-span-1">
           <TokenAddOnCard addOn={plans.addOn} />
         </StaggerItem>
       </Stagger>
@@ -55,7 +55,7 @@ function PlanCard({ plan, includedLabel }: { plan: PricingPlan; includedLabel: s
   return (
     <article
       className={cn(
-        "flex h-full flex-col rounded-panel border bg-white p-6 sm:p-8",
+        "flex h-full flex-col rounded-panel border bg-white p-6 sm:p-7",
         featured ? "border-brand-orange shadow-float" : "border-line",
       )}
     >
@@ -69,26 +69,26 @@ function PlanCard({ plan, includedLabel }: { plan: PricingPlan; includedLabel: s
         )}
       </div>
 
-      <p className="mt-5 flex items-baseline gap-1 text-brand-grey">
-        <span className="text-h3 text-brand-charcoal">{plan.currency}</span>
-        <span className="text-h1">{plan.price}</span>
-        <span className="text-base text-brand-charcoal">{plan.period}</span>
+      <p className="mt-4 flex flex-wrap items-baseline gap-x-1 text-brand-grey">
+        <span className="text-base font-bold text-brand-charcoal">{plan.currency}</span>
+        <span className="text-h2">{plan.price}</span>
+        <span className="text-sm text-brand-charcoal">{plan.period}</span>
       </p>
-      <p className="mt-2 text-base text-brand-charcoal">
+      <p className="mt-1.5 text-sm text-brand-charcoal">
         {plan.billing.was && <s className="mr-2 whitespace-nowrap">{plan.billing.was}</s>}
         {plan.billing.total && (
           <strong className="mr-1 whitespace-nowrap text-brand-grey">{plan.billing.total}</strong>
         )}
         {plan.billing.text}
       </p>
-      {plan.savings && <p className="mt-2 text-base font-bold text-brand-orange">{plan.savings}</p>}
+      {plan.savings && <p className="mt-1.5 text-sm font-bold text-brand-orange">{plan.savings}</p>}
 
-      <div className="mt-6 border-t border-line pt-6">
+      <div className="mt-5 border-t border-line pt-5">
         <span className="text-eyebrow text-brand-charcoal uppercase">{includedLabel}</span>
-        <ul className="mt-4 flex flex-col gap-3">
+        <ul className="mt-3.5 flex flex-col gap-2.5">
           {plan.features.map((feature) => (
-            <li key={feature} className="flex items-start gap-3 text-base text-brand-charcoal">
-              <span className="mt-0.5 flex size-6 flex-none items-center justify-center rounded-full bg-brand-amber text-brand-grey">
+            <li key={feature} className="flex items-start gap-2.5 text-sm text-brand-charcoal">
+              <span className="flex size-5 flex-none items-center justify-center rounded-full bg-brand-amber text-brand-grey">
                 <Check />
               </span>
               <span>
@@ -99,7 +99,7 @@ function PlanCard({ plan, includedLabel }: { plan: PricingPlan; includedLabel: s
         </ul>
       </div>
 
-      <div className="mt-auto flex flex-col items-center gap-3 pt-8">
+      <div className="mt-auto flex flex-col items-center gap-2.5 pt-7">
         <ButtonLink
           href={plan.cta.href}
           size="lg"
@@ -108,7 +108,7 @@ function PlanCard({ plan, includedLabel }: { plan: PricingPlan; includedLabel: s
         >
           {plan.cta.label}
         </ButtonLink>
-        <span className="text-sm text-brand-charcoal">{plan.note}</span>
+        <span className="text-caption text-brand-charcoal">{plan.note}</span>
       </div>
     </article>
   );
