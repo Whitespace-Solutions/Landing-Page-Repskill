@@ -10,10 +10,9 @@ type StepsTimelineProps = StepsData & {
   tone?: "dark" | "light";
 };
 
-/** Pola "Alur / timeline": langkah bernomor dengan garis atas, langkah terakhir oranye. */
+/** Pola "Alur / timeline": langkah bernomor dengan garis atas; semua garis & titik amber (seragam, tanpa oranye). */
 export function StepsTimeline({ id, eyebrow, title, body, steps, note, tone = "dark" }: StepsTimelineProps) {
   const dark = tone === "dark";
-  const last = steps.length - 1;
 
   return (
     <Section id={id} tone={dark ? "dark" : "linen"} size="lg">
@@ -37,7 +36,7 @@ export function StepsTimeline({ id, eyebrow, title, body, steps, note, tone = "d
             key={step.name}
             className={cn(
               "relative flex flex-col gap-3.5 border-t-2 py-7 pr-6",
-              i === last ? "border-brand-orange" : dark ? "border-brand-amber/55" : "border-brand-amber/30",
+              dark ? "border-brand-amber/55" : "border-brand-amber/30",
             )}
           >
             <span
@@ -46,7 +45,7 @@ export function StepsTimeline({ id, eyebrow, title, body, steps, note, tone = "d
                 dark
                   ? "shadow-[0_0_0_4px_var(--color-brand-grey)]"
                   : "shadow-[0_0_0_4px_var(--color-brand-linen)]",
-                i === last ? "bg-brand-orange" : "bg-brand-amber",
+                "bg-brand-amber",
               )}
               aria-hidden
             />
@@ -58,7 +57,7 @@ export function StepsTimeline({ id, eyebrow, title, body, steps, note, tone = "d
             >
               {String(i + 1).padStart(2, "0")}
             </span>
-            <span className={cn("text-h3 lg:text-2xl", i === last && "text-brand-orange")}>{step.name}</span>
+            <span className="text-h3 lg:text-2xl">{step.name}</span>
             <span
               className={cn(
                 "text-[15px] leading-relaxed lg:min-h-[70px]",
