@@ -1,12 +1,14 @@
-import { Reveal, Stagger, StaggerItem } from "@/components/motion/reveal";
+import { Reveal } from "@/components/motion/reveal";
 import { ButtonLink } from "@/components/ui/button";
 import { RichText } from "@/components/ui/rich-text";
 import { Section } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
 import { pricingPage, type PricingPlan } from "@/content/pricing";
 import { cn } from "@/lib/cn";
+import { PlanCheck, PlanTag } from "./plan-parts";
 import { TokenAddOnCard } from "./token-addon";
 
+/** Centang di dalam lingkaran untuk tabel perbandingan */
 function Check({ className }: { className?: string }) {
   return (
     <svg
@@ -27,85 +29,64 @@ function Check({ className }: { className?: string }) {
 }
 
 /**
- * Tiga kartu langsung di bawah hero, tanpa judul terlihat: Monthly · Annual (langganan) · Add-on token. Kartu dengan
- * `badge` (Annual) memakai tombol primer dan bayangan; kartu lain bergaris tipis.
+ * Satu panel putih langsung di bawah hero (tanpa judul terlihat), dibagi 3 kolom dengan garis tipis: Monthly · Annual
+ * (langganan) · Add-on token. Mulai `lg` berjejer; di bawahnya bertumpuk. Warna minimal: hanya tombol paket `badge`
+ * (Annual) yang oranye.
  */
 export function PricingPlans() {
   const { plans } = pricingPage;
   return (
     <Section id="plans" tone="surface">
-      {/* Judul hanya untuk pembaca layar; secara visual kartu langsung tampil di bawah hero */}
+      {/* Judul hanya untuk pembaca layar; secara visual panel langsung tampil di bawah hero */}
       <h2 className="sr-only">{plans.title}</h2>
-      <Stagger className="grid items-stretch gap-6 md:grid-cols-2 xl:grid-cols-3" stagger={0.12}>
+      <Reveal className="grid divide-y divide-line overflow-hidden rounded-panel border border-line bg-white lg:grid-cols-3 lg:divide-x lg:divide-y-0">
         {plans.items.map((plan) => (
-          <StaggerItem key={plan.name} className="h-full">
-            <PlanCard plan={plan} includedLabel={plans.includedLabel} />
-          </StaggerItem>
+          <PlanColumn key={plan.name} plan={plan} />
         ))}
-        <StaggerItem className="h-full md:col-span-2 xl:col-span-1">
-          <TokenAddOnCard addOn={plans.addOn} />
-        </StaggerItem>
-      </Stagger>
+        <TokenAddOnCard addOn={plans.addOn} />
+      </Reveal>
     </Section>
   );
 }
 
-function PlanCard({ plan, includedLabel }: { plan: PricingPlan; includedLabel: string }) {
+function PlanColumn({ plan }: { plan: PricingPlan }) {
   const featured = Boolean(plan.badge);
   return (
-    <article
-      className={cn(
-        "flex h-full flex-col rounded-panel border bg-white p-6 sm:p-7",
-        featured ? "border-brand-orange shadow-float" : "border-line",
-      )}
-    >
-      <span className="text-eyebrow text-brand-charcoal uppercase">{plan.eyebrow}</span>
-      <div className="mt-2 flex flex-wrap items-center gap-2.5">
+    <article className="flex min-w-0 flex-col p-6 sm:p-8 lg:p-7 xl:p-8">
+      {/* Satu label per kolom supaya nama + label tetap satu baris: badge (Recommended) menggantikan eyebrow */}
+      <div className="flex flex-wrap items-center justify-between gap-2">
         <h3 className="text-h3 text-brand-grey">{plan.name}</h3>
-        {plan.badge && (
-          <span className="rounded-lg border border-brand-orange/30 bg-brand-linen px-2.5 py-1 text-caption font-semibold text-brand-orange">
-            {plan.badge}
-          </span>
-        )}
+        {plan.badge ? <PlanTag strong>{plan.badge}</PlanTag> : <PlanTag>{plan.eyebrow}</PlanTag>}
       </div>
 
-      <p className="mt-4 flex flex-wrap items-baseline gap-x-1 text-brand-grey">
-        <span className="text-base font-bold text-brand-charcoal">{plan.currency}</span>
+      <p className="mt-5 flex flex-wrap items-baseline gap-x-1 text-brand-grey">
+        <span className="text-base font-bold">{plan.currency}</span>
         <span className="text-h2">{plan.price}</span>
         <span className="text-sm text-brand-charcoal">{plan.period}</span>
       </p>
-      <p className="mt-1.5 text-sm text-brand-charcoal">
-        {plan.billing.was && <s className="mr-2 whitespace-nowrap">{plan.billing.was}</s>}
+      <p className="mt-1 text-sm text-brand-charcoal">
+        {/* Spasi sungguhan (bukan margin) supaya baris bisa patah di antara bagian-bagiannya */}
+        {plan.billing.was && <s className="whitespace-nowrap">{plan.billing.was}</s>}{" "}
         {plan.billing.total && (
-          <strong className="mr-1 whitespace-nowrap text-brand-grey">{plan.billing.total}</strong>
-        )}
+          <strong className="whitespace-nowrap text-brand-grey">{plan.billing.total}</strong>
+        )}{" "}
         {plan.billing.text}
+        {plan.savings && <span className="block font-semibold text-brand-grey">{plan.savings}</span>}
       </p>
-      {plan.savings && <p className="mt-1.5 text-sm font-bold text-brand-orange">{plan.savings}</p>}
 
-      <div className="mt-5 border-t border-line pt-5">
-        <span className="text-eyebrow text-brand-charcoal uppercase">{includedLabel}</span>
-        <ul className="mt-3.5 flex flex-col gap-2.5">
-          {plan.features.map((feature) => (
-            <li key={feature} className="flex items-start gap-2.5 text-sm text-brand-charcoal">
-              <span className="flex size-5 flex-none items-center justify-center rounded-full bg-brand-amber text-brand-grey">
-                <Check />
-              </span>
-              <span>
-                <RichText text={feature} />
-              </span>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <ul className="mt-6 flex flex-col gap-3 border-t border-line pt-6">
+        {plan.features.map((feature) => (
+          <li key={feature} className="flex items-start gap-2.5 text-sm text-brand-charcoal">
+            <PlanCheck />
+            <span>
+              <RichText text={feature} />
+            </span>
+          </li>
+        ))}
+      </ul>
 
-      <div className="mt-auto flex flex-col items-center gap-2.5 pt-7">
-        <ButtonLink
-          href={plan.cta.href}
-          size="lg"
-          variant={featured ? "primary" : "outline"}
-          className="w-full"
-        >
+      <div className="mt-auto flex flex-col items-center gap-2.5 pt-8">
+        <ButtonLink href={plan.cta.href} variant={featured ? "primary" : "outline"} className="w-full">
           {plan.cta.label}
         </ButtonLink>
         <span className="text-caption text-brand-charcoal">{plan.note}</span>

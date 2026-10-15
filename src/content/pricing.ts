@@ -5,17 +5,17 @@ import type { VisualCtaLayout } from "@/components/sections/shared/visual-cta";
 import type { CtaData, Link, PageHeroData } from "./types";
 
 export type PricingPlan = {
-  /** Label kecil di atas nama, mis. "Subscription" */
+  /** Label kecil di kanan nama, mis. "Subscription" */
   eyebrow: string;
   name: string;
-  /** Chip di samping nama, mis. "Recommended"; kartu dengan badge memakai tombol primer */
+  /** Label isi gelap di kanan nama, mis. "Recommended"; paket dengan badge memakai tombol primer */
   badge?: string;
   currency: string;
   price: string;
   period: string;
   /** Baris di bawah harga; `was` dicoret, `total` tebal, lalu `text` */
   billing: { text: string; was?: string; total?: string };
-  /** Baris hemat oranye di bawah billing, mis. "You save Rp 7.200.000 a year" */
+  /** Baris hemat di bawah billing, mis. "You save Rp 7.200.000 a year" */
   savings?: string;
   /** Boleh memakai `**tebal**` */
   features: string[];
@@ -39,7 +39,7 @@ export type TokenAddOn = {
 
 export const pricingPage: {
   hero: PageHeroData;
-  plans: { title: string; includedLabel: string; items: PricingPlan[]; addOn: TokenAddOn };
+  plans: { title: string; items: PricingPlan[]; addOn: TokenAddOn };
   comparison: {
     eyebrow: string;
     title: string;
@@ -59,7 +59,6 @@ export const pricingPage: {
   },
   plans: {
     title: "Pricing",
-    includedLabel: "What's included",
     items: [
       {
         eyebrow: "Subscription",
