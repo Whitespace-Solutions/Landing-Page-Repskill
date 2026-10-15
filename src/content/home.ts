@@ -77,8 +77,8 @@ export const problemSection = {
 /** Jawaban atas section The Problem: satu platform Capture → Learn → Practice & Reflect. */
 export const solutionSection = {
   eyebrow: "The Solution",
-  /** Tampil satu baris mulai layar `lg` (`singleLineTitle` di `Solution`) */
-  title: "Meet Repskill the One Platform to Capture, Learn, and Practice",
+  /** Mulai layar `lg` tepat dua baris: `\n` memisah baris, `singleLineTitle` (di `Solution`) menjaga tiap baris utuh */
+  title: "Meet Repskill the One Platform to Capture,\nLearn, and Practice",
   highlight: "Repskill",
   lead: "A flight simulator for your sales team, built on your own playbook. Capture what your best people know, learn it, then practice and reflect until it sticks.",
   /** Screenshot yang berganti di tiap kartu, urut sesuai baris alat kartu itu (`featureInfo[key].tools`) */
