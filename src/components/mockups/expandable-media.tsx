@@ -3,8 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 
 /**
- * Bungkus screenshot / rekaman layar produk agar bisa dibuka layar penuh (lightbox). Klik aset atau tombol "Full screen"
- * di pojoknya → `<dialog>` modal bawaan browser (fokus terkunci, Esc menutup) dengan latar Shadow Grey buram. Tutup lewat
+ * Bungkus screenshot / rekaman layar produk agar bisa dibuka layar penuh (lightbox). Klik aset atau tombol ikon bulat
+ * (tanpa teks) di pojok kanan bawah → `<dialog>` modal bawaan browser (fokus terkunci, Esc menutup) dengan latar Shadow Grey buram. Tutup lewat
  * tombol ×, Esc, atau klik di luar aset. Isi besar (`expanded`) baru dirender saat dibuka.
  */
 export function ExpandableMedia({
@@ -51,10 +51,10 @@ export function ExpandableMedia({
           }}
           aria-haspopup="dialog"
           aria-label={`View full screen: ${label}`}
-          className="absolute top-3 right-3 flex items-center gap-1.5 rounded-full bg-brand-grey/80 px-3 py-1.5 text-xs font-semibold text-white shadow-pop backdrop-blur-sm transition-colors group-hover:bg-brand-grey focus-visible:bg-brand-grey"
+          title="Full screen"
+          className="absolute right-3 bottom-3 flex size-9 items-center justify-center rounded-full bg-brand-grey/80 text-white shadow-pop backdrop-blur-sm transition-colors group-hover:bg-brand-grey focus-visible:bg-brand-grey"
         >
           <ExpandIcon />
-          Full screen
         </button>
       </div>
 
@@ -97,8 +97,8 @@ export function ExpandableMedia({
 function ExpandIcon() {
   return (
     <svg
-      width="13"
-      height="13"
+      width="16"
+      height="16"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
