@@ -20,8 +20,8 @@ export function TokenAddOnCard({ addOn }: { addOn: TokenAddOn }) {
         <h3 className="text-h3 text-brand-grey">{addOn.title}</h3>
         <PlanTag>{addOn.eyebrow}</PlanTag>
       </div>
-      <p className="mt-5 text-sm text-pretty text-brand-charcoal">{addOn.body}</p>
-      <p className="mt-1 text-sm font-semibold text-brand-grey">{addOn.rate}</p>
+      <p className="mt-5 text-sm font-semibold text-brand-grey">{addOn.rate}</p>
+      <p className="mt-1 text-sm text-pretty text-brand-charcoal">{addOn.body}</p>
 
       <fieldset className="mt-6 flex min-w-0 flex-col gap-2 border-t border-line pt-6">
         <legend className="sr-only">{addOn.title}</legend>

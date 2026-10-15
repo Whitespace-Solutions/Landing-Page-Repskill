@@ -66,7 +66,7 @@ export const pricingPage: {
         currency: "Rp",
         price: "3.000.000",
         period: "/mth",
-        billing: { text: "Billed every month" },
+        billing: { text: "Billed monthly" },
         features: [
           "**100,000** tokens per month",
           "Up to **15** team members",
@@ -75,7 +75,7 @@ export const pricingPage: {
           "Standard chat and email support",
         ],
         cta: { label: "Choose Monthly", href: "/book-demo/" },
-        note: "Billed in rupiah. Prices before PPN.",
+        note: "Prices before PPN",
       },
       {
         eyebrow: "Subscription",
@@ -84,8 +84,7 @@ export const pricingPage: {
         currency: "Rp",
         price: "2.400.000",
         period: "/mth",
-        billing: { was: "Rp 36.000.000", total: "Rp 28.800.000", text: "billed once a year" },
-        savings: "You save Rp 7.200.000 a year",
+        billing: { total: "Rp 28.800.000", text: "billed yearly · save 20%" },
         features: [
           "**1,300,000** tokens per year **+ rollover**",
           "Everything in Monthly, plus:",
@@ -94,13 +93,13 @@ export const pricingPage: {
           "Priority support & onboarding call",
         ],
         cta: { label: "Choose Annual", href: "/book-demo/" },
-        note: "Billed in rupiah. Prices before PPN.",
+        note: "Prices before PPN",
       },
     ],
     addOn: {
       eyebrow: "Add-on",
       title: "Need more tokens?",
-      body: "Tokens land in your balance as soon as the payment is recorded. Unused tokens carry over.",
+      body: "One-time top-up. Unused tokens carry over.",
       rate: "Rp 10.000 per 1,000 tokens",
       options: [
         { tokens: "50,000", price: "Rp 500.000" },
@@ -109,7 +108,7 @@ export const pricingPage: {
       ],
       ctaLabel: "Buy {tokens} tokens",
       href: "/book-demo/",
-      note: "Prices before PPN. Pay once, no subscription.",
+      note: "Prices before PPN",
     },
   },
   comparison: {
