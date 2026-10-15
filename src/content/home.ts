@@ -77,7 +77,7 @@ export const problemSection = {
 /** Jawaban atas section The Problem: satu platform Capture → Learn → Practice & Reflect. */
 export const solutionSection = {
   eyebrow: "The Solution",
-  title: "Meet Repskill. One Platform to Capture, Learn, and Practice.",
+  title: "Meet Repskill, the One Platform to Capture, Learn, and Practice",
   highlight: "Repskill",
   lead: "A flight simulator for your sales team, built on your own playbook. Capture what your best people know, learn it, then practice and reflect until it sticks.",
   /** Screenshot yang berganti di tiap kartu, urut sesuai baris alat kartu itu (`featureInfo[key].tools`) */
@@ -130,7 +130,7 @@ export const solutionSection = {
 /** Pembeda (sales deck, slide 23 & 26): dibangun untuk Indonesia, tata kelola kelas enterprise. */
 export const differentiators = {
   eyebrow: "Why Repskill",
-  title: "Built for Indonesia. Governed for enterprise.",
+  title: "Built for Indonesia and governed for enterprise",
   highlight: "Indonesia",
   lead: "Reps practice when it feels safe, and managers trust what the AI says. Both are designed in from the start.",
   columns: [
