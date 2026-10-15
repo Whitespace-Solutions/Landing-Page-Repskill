@@ -22,13 +22,15 @@ export function FeatureSplit({
   points,
   link,
   visual,
+  continued = false,
   tone = "white",
   reverse = false,
 }: FeatureSplitProps) {
   // Rekaman layar & screenshot butuh ruang lebih: kolom visual lebih lebar dan bingkai panel lebih tipis.
   const isScreen = visual.type === "video" || visual.type === "screenshot";
   return (
-    <Section id={id} tone={tone}>
+    // Blok lanjutan menempel ke blok sebelumnya: jarak antar blok = padding bawah blok sebelumnya saja.
+    <Section id={id} tone={tone} containerClassName={cn(continued && "pt-0 lg:pt-0")}>
       <div
         className={cn(
           "grid items-center gap-12",

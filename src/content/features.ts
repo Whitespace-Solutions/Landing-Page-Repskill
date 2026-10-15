@@ -12,6 +12,7 @@ import learnLearningPathPoster from "@/assets/images/mockups/learn-learning-path
 import practiceReflectionStudioPoster from "@/assets/images/mockups/practice-reflection-studio-poster.webp";
 import practiceScenarioStudioPoster from "@/assets/images/mockups/practice-scenario-studio-poster.webp";
 import practiceTeamDashboardPoster from "@/assets/images/mockups/practice-team-dashboard-poster.webp";
+import practiceYouVsAiPoster from "@/assets/images/mockups/practice-you-vs-ai-poster.webp";
 import type { VisualCtaLayout } from "@/components/sections/shared/visual-cta";
 import type { FeatureKey } from "./success-stories";
 import type { CtaData, FeatureBlockData, PageHeroData } from "./types";
@@ -85,14 +86,12 @@ export const practicePage: FeaturePage = {
     {
       id: "scenario-studio",
       eyebrow: "Scenario Studio",
-      title: "Practice real sales calls with an AI buyer before they count",
-      body: "Describe the meeting and AI builds the scenario. Then practice the call live and get scored on your playbook.",
+      title: "Turn any sales meeting into a practice scenario",
+      body: "Describe the meeting in a sentence or two. AI sets the buyer, goal, and script.",
       points: [
-        "AI sets the buyer, goal, and script from a sentence or two",
-        "Practice out loud in Bahasa Indonesia or English",
-        "Buyers know your playbooks, not the grading rules",
-        "Flip roles or hear an AI top rep run the call",
-        "Get scored on your rubric and see what to say next",
+        "Pick the buyer persona and the goal of the call",
+        "Rewrite the script in one click",
+        "Or pick a ready-made, team-approved scenario",
       ],
       visual: {
         type: "video",
@@ -101,8 +100,30 @@ export const practicePage: FeaturePage = {
         width: 1280,
         height: 720,
         label:
-          "Screen recording of Repskill Scenario Studio: creating a product demo scenario with a skeptical CFO buyer, practicing the sales call live, and reviewing the score with transcript and what to improve.",
+          "Screen recording of Repskill Scenario Studio: describing a product demo meeting, choosing a skeptical CFO buyer persona, and getting a ready scenario.",
       },
+    },
+    {
+      id: "you-vs-ai",
+      eyebrow: "You vs AI",
+      title: "Practice the call live with an AI buyer before it counts",
+      body: "You play the rep. The AI plays a believable buyer who pushes back, then scores the call on your playbook.",
+      points: [
+        "Practice out loud in Bahasa Indonesia or English",
+        "Buyers know your playbooks, not the grading rules",
+        "Flip roles or hear an AI top rep run the call",
+        "Get scored on your rubric and see what to say next",
+      ],
+      visual: {
+        type: "video",
+        src: "/media/practice-you-vs-ai.mp4",
+        poster: practiceYouVsAiPoster,
+        width: 1280,
+        height: 720,
+        label:
+          "Screen recording of Repskill You vs AI: starting a live practice sales call with the AI buyer, ending and scoring the session, and reviewing the transcript with what to improve.",
+      },
+      continued: true,
     },
     {
       id: "reflection-studio",

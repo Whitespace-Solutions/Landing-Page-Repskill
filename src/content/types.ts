@@ -134,6 +134,8 @@ export type FeatureBlockData = {
   points?: string[];
   link?: Link;
   visual: MockupData;
+  /** Lanjutan blok sebelumnya di halaman fitur: latar & sisi visual sama, tanpa jarak atas penuh (mis. You vs AI setelah Scenario Studio) */
+  continued?: boolean;
 };
 
 /** CTA penutup (`FinalCta`). `primary` default ke `primaryCta` (Book Demo). */
