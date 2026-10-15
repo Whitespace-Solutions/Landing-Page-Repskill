@@ -16,7 +16,7 @@ import type { CarouselShot } from "@/components/mockups/screenshot-carousel";
 import type { DuoIconName } from "@/components/ui/duo-icon";
 import type { FeatureIconName } from "@/components/ui/feature-icon";
 import type { FeatureKey } from "./success-stories";
-import type { CtaData, StepsData } from "./types";
+import type { CtaData } from "./types";
 
 export const heroHeadline = {
   /** Baris pertama, lalu kata yang selalu satu baris dengan kata bergantian (mulai layar xl) */
@@ -176,40 +176,6 @@ export const differentiators = {
           body: "No role can listen to practice recordings, not even an admin.",
         },
       ],
-    },
-  ],
-};
-
-export const howItWorks: StepsData = {
-  id: "how",
-  eyebrow: "How It Works",
-  title: "From Expertise to Capability",
-  body: "Capture what your best people know. Turn it into learning and practice. Reflect on performance. Build capability across the team.",
-  note: "A continuous cycle: reflection can surface new best practices, which return to review and the Knowledge Universe.",
-  steps: [
-    {
-      name: "Capture",
-      message: "Capture the expertise that makes your best people successful.",
-      tag: "Capture Knowledge",
-      href: "/features/capture-knowledge/",
-    },
-    {
-      name: "Learn",
-      message: "Turn knowledge into learning people can build on.",
-      tag: "Learn Knowledge",
-      href: "/features/learn-knowledge/",
-    },
-    {
-      name: "Practice",
-      message: "Practice realistic sales situations before they matter.",
-      tag: "Scenario Studio",
-      href: "/features/practice/#scenario-studio",
-    },
-    {
-      name: "Reflect",
-      message: "Turn every sales experience into an opportunity to improve.",
-      tag: "Reflection Studio",
-      href: "/features/practice/#reflection-studio",
     },
   ],
 };
