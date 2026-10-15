@@ -89,10 +89,10 @@ export const practicePage: FeaturePage = {
       title: "Describe the meeting and AI preps it",
       body: "Describe the meeting in a sentence or two. AI sets the buyer, goal, and script.",
       points: [
-        "Edit the script in one click: more casual, more detail, or more concise",
-        "Covers the whole call, from opening and discovery to objections and the close",
-        "Then choose how to practice it: listen, podcast, practice, or flip roles",
-        "Or pick a ready-made scenario your team has already approved",
+        "Rewrite the script in one click",
+        "Covers the whole call, from opening to close",
+        "Then listen, practice live, or flip roles",
+        "Or pick a ready-made, team-approved scenario",
       ],
       visual: {
         type: "video",
@@ -110,10 +110,10 @@ export const practicePage: FeaturePage = {
       title: "Rehearse the call before it counts",
       body: "You play the rep. The AI plays a believable buyer who pushes back, in Bahasa Indonesia or English.",
       points: [
-        "Buyers are briefed from your company facts and playbooks, but never see the grading rules",
-        "Flip Roles: you play the buyer, and an AI top rep shows how it's done",
-        "AI vs AI: hear the whole call end to end, then try it yourself",
-        "Podcast: an AI-voiced interview with a top performer on this exact scenario",
+        "Buyers know your playbooks, not the grading rules",
+        "Flip Roles: an AI top rep sells to you",
+        "AI vs AI: hear a full call, then try it yourself",
+        "Podcast: a top performer talks through the scenario",
       ],
       visual: {
         type: "video",
@@ -131,10 +131,10 @@ export const practicePage: FeaturePage = {
       title: "A scorecard traced to your standards",
       body: "Every call is graded on manager-approved rules from your playbook, with the transcript line as proof.",
       points: [
-        "Coaching summary, full transcript, conversation flow, and analytics",
-        "See exactly why you were scored that way, and what to say next time",
-        "Every rule links back to the section of your playbook it came from",
-        "Company facts brief the AI buyer, but never change a score",
+        "Coaching summary, transcript, and analytics",
+        "See why you scored that way and what to say next",
+        "Every rule links back to your playbook",
+        "Company facts shape the buyer, never the score",
       ],
       visual: {
         type: "bars",
@@ -158,9 +158,9 @@ export const practicePage: FeaturePage = {
       title: "Every real meeting becomes coaching",
       body: "Upload a real meeting. AI breaks it down, and weak spots become your next practice scenario.",
       points: [
-        "Sales presentations: strengths, what to improve, and key moments",
-        "Coaching 1-on-1s: how well the manager coached, private to the coach",
-        "Team meetings: decisions, open items, owners, and due dates, with no one scored",
+        "Sales presentations: strengths, gaps, and key moments",
+        "Coaching 1-on-1s: private feedback for the coach",
+        "Team meetings: decisions and action items, no scores",
         "Ask the AI anything about the session",
       ],
       visual: {
@@ -179,9 +179,9 @@ export const practicePage: FeaturePage = {
       title: "Know where your team really stands",
       body: "See every rep's practice count, band, and skill trend, and coach before it shows up in the pipeline.",
       points: [
-        "Assign a learning path with a graded roleplay, a due date, and automatic reminders",
-        "Spot who is improving, who is steady, and who has stalled",
-        "Privacy built in: managers see ratings and progress, never a practice recording or transcript",
+        "Assign learning paths with due dates and reminders",
+        "See who is improving and who has stalled",
+        "Managers see ratings, never recordings or transcripts",
       ],
       visual: {
         type: "video",
@@ -243,10 +243,10 @@ export const capturePage: FeaturePage = {
       title: "Experts talk instead of writing",
       body: "A 15 to 25 minute AI voice interview turns what your top performers know into structured content.",
       points: [
-        "Choose a free-form interview for lived experience, or a context-driven one to go deep on a topic",
-        "The AI asks follow-up questions until it has the exact words and the moment to use them",
-        "Supervisors can assign a topic, such as how to handle “too expensive”",
-        "Every insight becomes a draft article, ready for review",
+        "Free-form or topic-focused interviews",
+        "AI follow-ups capture the exact words that work",
+        "Supervisors can assign topics, like “too expensive”",
+        "Every insight becomes a draft article for review",
       ],
       visual: {
         type: "video",
@@ -264,9 +264,9 @@ export const capturePage: FeaturePage = {
       title: "Drop it in and let AI draft it for you to check",
       body: "Upload what you already have. AI turns it into review-ready articles and suggests the details.",
       points: [
-        "PDF, Word, text, audio, and video, one file at a time or in bulk",
-        "Audio and video get a transcript, a seekable player, and an AI summary",
-        "Accept or edit every AI suggestion before you submit it for approval",
+        "Documents, audio, and video, one by one or in bulk",
+        "Audio and video get a transcript and AI summary",
+        "Review every AI suggestion before you submit",
       ],
       visual: {
         type: "video",
@@ -284,10 +284,10 @@ export const capturePage: FeaturePage = {
       title: "Nothing goes live without review",
       body: "Every change waits for approval, hidden from your team and the AI until then.",
       points: [
-        "Approve and publish, or send it back with a written reason the author can see",
-        "Questions the chat couldn't answer come back as content requests",
-        "AI flags conflicting documents, and outdated content is assigned for renewal",
-        "Merge duplicate articles while keeping the originals",
+        "Approve, or send back with a written reason",
+        "Unanswered chat questions become content requests",
+        "AI flags conflicting and outdated content",
+        "Merge duplicates and keep the originals",
       ],
       visual: {
         type: "video",
@@ -348,10 +348,10 @@ export const learnPage: FeaturePage = {
       title: "Your playbook in one place",
       body: "SOPs, playbooks, and demos in one place, so knowledge stays with the company.",
       points: [
-        "Ask in plain language, like “How do we handle a price objection?”",
-        "Articles, videos, and audio side by side, by department",
-        "The same approved knowledge powers learning paths, roleplays, and scorecards",
-        "Only reviewed and approved content is ever visible",
+        "Search in plain language",
+        "Articles, videos, and audio by department",
+        "Powers learning paths, roleplays, and scorecards",
+        "Only approved content is ever visible",
       ],
       visual: {
         type: "video",
@@ -369,10 +369,10 @@ export const learnPage: FeaturePage = {
       title: "Like ChatGPT, but it only knows your company",
       body: "Reps ask in plain language and get answers from your approved knowledge only.",
       points: [
-        "Every answer shows its sources and a confidence level, one click from the original",
-        "Honest when it doesn't know: general knowledge is clearly labeled",
-        "Specialists on call: Negotiation Coach, Pitch Mentor, and ROI Advisor",
-        "Speak or type, with read-aloud in Bahasa Indonesia or English",
+        "Every answer shows its sources and confidence",
+        "General knowledge is clearly labeled",
+        "Specialists like Negotiation Coach and ROI Advisor",
+        "Speak or type in Bahasa Indonesia or English",
       ],
       visual: {
         type: "video",
@@ -390,9 +390,9 @@ export const learnPage: FeaturePage = {
       title: "What every new hire must master",
       body: "Assign a path built from your knowledge. Each module ends in a test or roleplay.",
       points: [
-        "Articles, videos, audio, tests, and graded roleplays in one path",
-        "Assigned with a due date and automatic reminders",
-        "Progress shows what's done and what to start next",
+        "Content, tests, and graded roleplays in one path",
+        "Due dates with automatic reminders",
+        "Progress shows what to do next",
       ],
       visual: {
         type: "video",
