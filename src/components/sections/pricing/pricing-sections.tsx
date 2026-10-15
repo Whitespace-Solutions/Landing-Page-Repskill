@@ -1,5 +1,3 @@
-import Image from "next/image";
-import repskillIcon from "@/assets/brand/repskill-icon.svg";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/reveal";
 import { ButtonLink } from "@/components/ui/button";
 import { RichText } from "@/components/ui/rich-text";
@@ -7,6 +5,7 @@ import { Section } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
 import { pricingPage, type PricingPlan } from "@/content/pricing";
 import { cn } from "@/lib/cn";
+import { TokenAddOnCard } from "./token-addon";
 
 function Check({ className }: { className?: string }) {
   return (
@@ -27,72 +26,80 @@ function Check({ className }: { className?: string }) {
   );
 }
 
-/** Dua kartu harga (Monthly · Annual) langsung di bawah hero, tanpa judul terlihat. Kartu dengan `badge` ditonjolkan. */
+/**
+ * Tiga kartu langsung di bawah hero, tanpa judul terlihat: Monthly · Annual (langganan) · Add-on token. Kartu dengan
+ * `badge` (Annual) memakai tombol primer dan bayangan; kartu lain bergaris tipis.
+ */
 export function PricingPlans() {
   const { plans } = pricingPage;
   return (
     <Section id="plans" tone="surface">
       {/* Judul hanya untuk pembaca layar; secara visual kartu langsung tampil di bawah hero */}
       <h2 className="sr-only">{plans.title}</h2>
-      <Stagger
-        className="mx-auto grid max-w-[1040px] items-start gap-10 md:grid-cols-2 md:gap-6"
-        stagger={0.12}
-      >
+      <Stagger className="grid items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3" stagger={0.12}>
         {plans.items.map((plan) => (
           <StaggerItem key={plan.name} className="h-full">
-            <PlanCard plan={plan} />
+            <PlanCard plan={plan} includedLabel={plans.includedLabel} />
           </StaggerItem>
         ))}
+        <StaggerItem className="h-full md:col-span-2 lg:col-span-1">
+          <TokenAddOnCard addOn={plans.addOn} />
+        </StaggerItem>
       </Stagger>
     </Section>
   );
 }
 
-function PlanCard({ plan }: { plan: PricingPlan }) {
+function PlanCard({ plan, includedLabel }: { plan: PricingPlan; includedLabel: string }) {
   const featured = Boolean(plan.badge);
   return (
     <article
       className={cn(
-        "relative flex h-full flex-col items-center rounded-panel bg-white px-6 pt-10 pb-8 text-center sm:px-10",
-        featured ? "border-2 border-brand-orange shadow-float" : "border border-line",
+        "flex h-full flex-col rounded-panel border bg-white p-6 sm:p-8",
+        featured ? "border-brand-orange shadow-float" : "border-line",
       )}
     >
-      {plan.badge && (
-        <span className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-brand-orange px-4 py-1.5 text-eyebrow whitespace-nowrap text-white uppercase">
-          {plan.badge}
-        </span>
-      )}
-      <span className="flex size-16 items-center justify-center rounded-card border border-line bg-white">
-        <Image src={repskillIcon} alt="" className="size-9" />
-      </span>
-      <h3 className="mt-5 text-h3 text-brand-orange">{plan.name}</h3>
-      <p className="mt-2 flex items-baseline justify-center gap-1 text-brand-grey">
+      <span className="text-eyebrow text-brand-charcoal uppercase">{plan.eyebrow}</span>
+      <div className="mt-2 flex flex-wrap items-center gap-2.5">
+        <h3 className="text-h3 text-brand-grey">{plan.name}</h3>
+        {plan.badge && (
+          <span className="rounded-lg border border-brand-orange/30 bg-brand-linen px-2.5 py-1 text-caption font-semibold text-brand-orange">
+            {plan.badge}
+          </span>
+        )}
+      </div>
+
+      <p className="mt-5 flex items-baseline gap-1 text-brand-grey">
         <span className="text-h3 text-brand-charcoal">{plan.currency}</span>
-        <span className="text-display">{plan.price}</span>
-        <span className="text-lead text-brand-charcoal">{plan.period}</span>
+        <span className="text-h1">{plan.price}</span>
+        <span className="text-base text-brand-charcoal">{plan.period}</span>
       </p>
-      <p className="mt-3 text-base text-brand-charcoal">
+      <p className="mt-2 text-base text-brand-charcoal">
         {plan.billing.was && <s className="mr-2 whitespace-nowrap">{plan.billing.was}</s>}
         {plan.billing.total && (
-          <strong className="mr-1 whitespace-nowrap text-brand-orange">{plan.billing.total}</strong>
+          <strong className="mr-1 whitespace-nowrap text-brand-grey">{plan.billing.total}</strong>
         )}
         {plan.billing.text}
       </p>
+      {plan.savings && <p className="mt-2 text-base font-bold text-brand-orange">{plan.savings}</p>}
 
-      <ul className="mt-8 flex w-full flex-col gap-4 border-t border-line pt-8 text-left">
-        {plan.features.map((feature) => (
-          <li key={feature} className="flex items-start gap-3 text-base text-brand-charcoal">
-            <span className="mt-0.5 flex size-6 flex-none items-center justify-center rounded-full bg-brand-amber text-brand-grey">
-              <Check />
-            </span>
-            <span>
-              <RichText text={feature} />
-            </span>
-          </li>
-        ))}
-      </ul>
+      <div className="mt-6 border-t border-line pt-6">
+        <span className="text-eyebrow text-brand-charcoal uppercase">{includedLabel}</span>
+        <ul className="mt-4 flex flex-col gap-3">
+          {plan.features.map((feature) => (
+            <li key={feature} className="flex items-start gap-3 text-base text-brand-charcoal">
+              <span className="mt-0.5 flex size-6 flex-none items-center justify-center rounded-full bg-brand-amber text-brand-grey">
+                <Check />
+              </span>
+              <span>
+                <RichText text={feature} />
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
 
-      <div className="mt-auto flex w-full flex-col items-center gap-4 pt-10">
+      <div className="mt-auto flex flex-col items-center gap-3 pt-8">
         <ButtonLink
           href={plan.cta.href}
           size="lg"
