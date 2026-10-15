@@ -9,7 +9,7 @@ export function Differentiators() {
   const { columns, ...header } = differentiators;
 
   return (
-    <Section id="why-repskill">
+    <Section id="why-repskill" tone="surface">
       <SectionHeader {...header} layout="side" />
 
       <Stagger className="mt-10 grid gap-4 lg:mt-14 lg:grid-cols-2" stagger={0.12}>
@@ -18,7 +18,7 @@ export function Differentiators() {
             key={column.kicker}
             className={cn(
               "flex h-full flex-col gap-6 rounded-card p-6 sm:p-8",
-              c === 0 ? "bg-brand-linen" : "border border-line bg-surface",
+              c === 0 ? "bg-brand-linen" : "border border-line bg-white",
             )}
           >
             <span className="text-caption font-bold tracking-[0.12em] text-brand-grey/70">

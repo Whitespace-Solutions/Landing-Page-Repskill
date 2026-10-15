@@ -7,7 +7,7 @@ import { successStories } from "@/content/success-stories";
 
 export function CaseStudies() {
   return (
-    <Section tone="surface">
+    <Section>
       <SectionHeader {...caseStudiesSection} />
       <Stagger className="mt-10 grid gap-4 sm:grid-cols-2 lg:mt-14 xl:grid-cols-4" stagger={0.08}>
         {successStories.map((story) => (
