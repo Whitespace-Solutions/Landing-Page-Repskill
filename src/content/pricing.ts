@@ -2,7 +2,7 @@
 import type { StaticImageData } from "next/image";
 import learnPortrait from "@/assets/images/cta/learn-portrait.webp";
 import type { VisualCtaLayout } from "@/components/sections/shared/visual-cta";
-import type { CtaData, FeatureBlockData, Link, PageHeroData } from "./types";
+import type { CtaData, Link, PageHeroData } from "./types";
 
 export type PricingPlan = {
   name: string;
@@ -22,8 +22,6 @@ export type PricingPlan = {
 export const pricingPage: {
   hero: PageHeroData;
   plans: { title: string; items: PricingPlan[] };
-  /** Cara kerja token (data dari halaman Team tokens di platform) */
-  tokens: FeatureBlockData;
   comparison: {
     eyebrow: string;
     title: string;
@@ -78,32 +76,6 @@ export const pricingPage: {
         note: "14-day free trial · no card required",
       },
     ],
-  },
-  tokens: {
-    id: "tokens",
-    eyebrow: "Tokens",
-    title: "One token balance for your whole team",
-    body: "Tokens power everything your team does in Repskill, from roleplay practice to Chat and Reflection Studio. Admins see the balance, set limits, and know exactly where tokens go.",
-    points: [
-      "One shared balance, always shown with its rupiah value",
-      "Top up anytime at Rp 10.000 per 1,000 tokens",
-      "Set a monthly team limit and track usage against it",
-      "See where tokens go, and how long your balance will last",
-    ],
-    visual: {
-      type: "token-usage",
-      title: "Where tokens go",
-      meta: "October 2026, by area",
-      items: [
-        { label: "Practice (roleplay)", tokens: "6,051", share: 74 },
-        { label: "Scenario Studio", tokens: "890", share: 11 },
-        { label: "Chat", tokens: "781", share: 10 },
-        { label: "Reflection Studio", tokens: "199", share: 2 },
-        { label: "Content", tokens: "179", share: 2 },
-        { label: "Other areas", tokens: "60", share: 1 },
-      ],
-      action: "See usage details",
-    },
   },
   comparison: {
     eyebrow: "Feature Comparison",
