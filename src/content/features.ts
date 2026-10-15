@@ -86,7 +86,7 @@ export const practicePage: FeaturePage = {
     {
       id: "scenario-studio",
       eyebrow: "Scenario Studio",
-      title: "Describe the meeting. AI preps it",
+      title: "Describe the meeting and AI preps it",
       body: "Describe the meeting in a sentence or two. AI sets the buyer, goal, and script.",
       points: [
         "Edit the script in one click: more casual, more detail, or more concise",
@@ -240,7 +240,7 @@ export const capturePage: FeaturePage = {
     {
       id: "extraction-studio",
       eyebrow: "Extraction Studio",
-      title: "Experts don't write. They talk",
+      title: "Experts talk instead of writing",
       body: "A 15 to 25 minute AI voice interview turns what your top performers know into structured content.",
       points: [
         "Choose a free-form interview for lived experience, or a context-driven one to go deep on a topic",
@@ -261,7 +261,7 @@ export const capturePage: FeaturePage = {
     {
       id: "add-content",
       eyebrow: "Add Content",
-      title: "Drop it in. AI drafts it, you just check",
+      title: "Drop it in and let AI draft it for you to check",
       body: "Upload what you already have. AI turns it into review-ready articles and suggests the details.",
       points: [
         "PDF, Word, text, audio, and video, one file at a time or in bulk",

@@ -25,8 +25,10 @@ Tombol memakai 15–16px semibold (sudah diatur di komponen `ButtonLink`).
 - **Satu titik masuk per section.** Hierarki harus terlihat sebelum kata-katanya dibaca.
 - Hanya **satu** `text-display` per halaman, yaitu `<h1>` di hero.
 - Urutan semantik heading harus benar (`h1` → `h2` → `h3`). Ukuran visual boleh beda dari level tag.
-- **Judul tanpa titik di akhir** (semua heading, termasuk hero dan CTA). Titik di tengah judul boleh. `highlight` harus
-  sama persis dengan potongan judulnya, jadi ikut tanpa titik.
+- **Judul tanpa titik di akhir** (semua heading, termasuk hero dan CTA). `highlight` harus sama persis dengan potongan
+  judulnya, jadi ikut tanpa titik.
+- **Judul section = satu kalimat utuh**, tanpa titik di tengah (keputusan user 15 Okt 2026). Bukan "Experts don't write.
+  They talk", tapi "Experts talk instead of writing". Hindari juga koma yang memecah judul jadi dua klausa.
 - Highlight **satu frasa** di judul dengan `text-brand-orange` (misalnya "Scalable"). Maksimal satu highlight per judul.
 - Tambahkan `text-balance` di judul dan `text-pretty` di paragraf supaya baris tidak menggantung.
 - Kalau satu frasa judul harus selalu utuh di baris pertama, tulis `\n` di teks judul. `HighlightText` memindah baris
