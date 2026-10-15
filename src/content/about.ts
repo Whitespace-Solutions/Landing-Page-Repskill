@@ -113,7 +113,6 @@ export const aboutPage: {
         tag: "Reflection Studio",
         href: "/features/practice/#reflection-studio",
       },
-      { name: "Improve", message: "Build capability across the team." },
     ],
   },
   cta: {
