@@ -366,7 +366,7 @@ export const learnPage: FeaturePage = {
     {
       id: "chat",
       eyebrow: "AI Chat",
-      title: "Like ChatGPT, but it only knows your company",
+      title: "Like AI Chat, but it only knows your company",
       body: "Reps ask in plain language and get answers from your approved knowledge only.",
       points: [
         "Every answer shows its sources and confidence",
