@@ -21,7 +21,7 @@ const ORDER: { key: FeatureKey; stage: string }[] = [
 export function Solution() {
   return (
     <Section id="solution">
-      <SectionHeader {...header} />
+      <SectionHeader {...header} singleLineTitle />
 
       <Stagger className="mt-10 grid gap-4 md:grid-cols-3 lg:mt-14" stagger={0.1}>
         {ORDER.map(({ key, stage }, i) => {

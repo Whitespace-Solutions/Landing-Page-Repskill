@@ -29,9 +29,11 @@ Tombol memakai 15–16px semibold (sudah diatur di komponen `ButtonLink`).
   sama persis dengan potongan judulnya, jadi ikut tanpa titik.
 - Highlight **satu frasa** di judul dengan `text-brand-orange` (misalnya "Scalable"). Maksimal satu highlight per judul.
 - Tambahkan `text-balance` di judul dan `text-pretty` di paragraf supaya baris tidak menggantung.
-- Kalau satu frasa judul harus selalu utuh di baris pertama, tulis `\n` di teks judul (mis. section The Solution di
-  Home: `"Meet Repskill, the One Platform\nto Capture, Learn, and Practice"`). `HighlightText` memindah baris mulai
-  layar `sm`; di HP `\n` jadi spasi biasa karena frasa panjang tidak muat satu baris di ukuran `text-h2` minimum.
+- Kalau satu frasa judul harus selalu utuh di baris pertama, tulis `\n` di teks judul. `HighlightText` memindah baris
+  mulai layar `sm`; di HP `\n` jadi spasi biasa karena frasa panjang tidak muat satu baris di ukuran `text-h2` minimum.
+- Judul yang harus **satu baris penuh** di desktop: `SectionHeader singleLineTitle` (mulai `lg`, lead tetap maks.
+  720px; mis. The Solution di Home) atau `HomeCta singleLineTitle`. Hanya untuk judul yang muat di lebar `lg`; di HP
+  judul tetap turun baris alami.
 - Lebar baris paragraf maksimal ±620–680px (`max-w-[620px]` / `max-w-2xl`).
 - Warna: judul `text-brand-grey` (terang) atau `text-white` (gelap), paragraf `text-brand-charcoal` atau `text-line` (gelap).
 

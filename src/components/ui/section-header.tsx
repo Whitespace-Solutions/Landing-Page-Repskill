@@ -15,6 +15,8 @@ type SectionHeaderProps = {
   layout?: "stack" | "side";
   size?: "h1" | "h2";
   tone?: "light" | "dark";
+  /** Judul satu baris mulai `lg` (layout `stack`; hanya untuk judul yang muat, mis. The Solution di Home). */
+  singleLineTitle?: boolean;
   className?: string;
 };
 
@@ -28,6 +30,7 @@ export function SectionHeader({
   layout = "stack",
   size = "h2",
   tone = "light",
+  singleLineTitle = false,
   className,
 }: SectionHeaderProps) {
   const dark = tone === "dark";
@@ -36,6 +39,7 @@ export function SectionHeader({
       className={cn(
         size === "h1" ? "text-h1" : "text-h2",
         "text-balance",
+        singleLineTitle && "lg:whitespace-nowrap",
         dark ? "text-white" : "text-brand-grey",
       )}
     >
@@ -43,7 +47,15 @@ export function SectionHeader({
     </h2>
   );
   const leadText = lead && (
-    <p className={cn("text-lead text-pretty", dark ? "text-line" : "text-brand-charcoal")}>{lead}</p>
+    <p
+      className={cn(
+        "text-lead text-pretty",
+        singleLineTitle && "max-w-[720px]",
+        dark ? "text-line" : "text-brand-charcoal",
+      )}
+    >
+      {lead}
+    </p>
   );
   const eyebrowEl = <Eyebrow className={dark ? "text-brand-amber" : undefined}>{eyebrow}</Eyebrow>;
 
@@ -61,7 +73,7 @@ export function SectionHeader({
 
   return (
     <Reveal className={cn("flex flex-wrap items-end justify-between gap-x-10 gap-y-6", className)}>
-      <div className="flex max-w-[720px] flex-col gap-5">
+      <div className={cn("flex max-w-[720px] flex-col gap-5", singleLineTitle && "lg:max-w-none")}>
         {eyebrowEl}
         {heading}
         {leadText}
