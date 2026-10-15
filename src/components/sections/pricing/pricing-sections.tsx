@@ -36,7 +36,8 @@ function Check({ className }: { className?: string }) {
 export function PricingPlans() {
   const { plans } = pricingPage;
   return (
-    <Section id="plans" tone="surface">
+    // Plans dan Feature Comparison sama-sama `surface`: padding bawah Plans saja yang jadi jarak (Comparison tanpa padding atas)
+    <Section id="plans" tone="surface" containerClassName="pb-16 lg:pb-20">
       {/* Judul hanya untuk pembaca layar; secara visual panel langsung tampil di bawah hero */}
       <h2 className="sr-only">{plans.title}</h2>
       <Reveal className="grid divide-y divide-line overflow-hidden rounded-panel border border-line bg-white lg:grid-cols-3 lg:divide-x lg:divide-y-0">
@@ -121,7 +122,7 @@ function ComparisonValue({ value, highlight }: { value: boolean | string; highli
 export function FeatureComparison() {
   const { comparison } = pricingPage;
   return (
-    <Section tone="surface">
+    <Section tone="surface" containerClassName="pt-0 lg:pt-0">
       <SectionHeader eyebrow={comparison.eyebrow} title={comparison.title} lead={comparison.lead} />
       <Reveal className="mt-10 overflow-x-auto rounded-card border border-line bg-white lg:mt-14">
         <table className="w-full min-w-[560px] border-collapse text-left">
