@@ -69,7 +69,7 @@ export const problemSection = {
     { label: "Generic AI chatbot", verdict: "Doesn't know your product." },
   ],
   closing: {
-    text: "Selling is a skill. Skills are built by practice, not by more content.",
+    text: "Selling is a skill. Skills are built by practice rather than more content.",
     highlight: "practice",
   },
 };
