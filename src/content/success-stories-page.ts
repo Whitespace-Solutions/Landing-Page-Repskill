@@ -13,8 +13,6 @@ export const successStoriesPage: {
     /** Judul tiap bagian artikel; `{name}` diganti nama klien */
     sections: { about: string; challenge: string; help: string; result: string };
     aside: { title: string; cta: Link };
-    /** Banner CTA bergradasi oranye di bawah artikel */
-    banner: { title: string; cta: Link };
   };
 } = {
   hero: {
@@ -48,9 +46,5 @@ export const successStoriesPage: {
       result: "Results at a Glance",
     },
     aside: { title: "Want to see Repskill in action?", cta: { label: "Book Demo", href: "/book-demo/" } },
-    banner: {
-      title: "See how Repskill can make your team's sales expertise scalable.",
-      cta: { label: "Book Demo", href: "/book-demo/" },
-    },
   },
 };

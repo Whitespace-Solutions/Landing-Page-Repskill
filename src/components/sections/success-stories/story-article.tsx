@@ -16,7 +16,7 @@ const centerOnMobile = "text-center lg:text-left";
 
 /**
  * Halaman detail success story dalam format artikel (latar putih): tautan kembali + headline saja di atas, lalu tiga
- * kolom di lg+ (daftar isi menempel · artikel · kotak Book Demo menempel) dan banner CTA bergradasi oranye di bawah.
+ * kolom di lg+ (daftar isi menempel · artikel · kotak Book Demo menempel), tanpa CTA penutup.
  * Di bawah lg hanya kolom artikel yang tampil.
  */
 export function StoryArticle({ story }: { story: SuccessStory }) {
@@ -43,7 +43,7 @@ export function StoryArticle({ story }: { story: SuccessStory }) {
         </Reveal>
       </Container>
 
-      <Container className="grid items-start gap-12 pb-20 lg:grid-cols-[220px_minmax(0,1fr)_220px] xl:grid-cols-[260px_minmax(0,1fr)_260px]">
+      <Container className="grid items-start gap-12 pb-20 lg:pb-28 lg:grid-cols-[220px_minmax(0,1fr)_220px] xl:grid-cols-[260px_minmax(0,1fr)_260px]">
         <div className="sticky top-24 hidden lg:block">
           <StoryToc label={copy.tocLabel} items={toc} />
         </div>
@@ -135,8 +135,6 @@ export function StoryArticle({ story }: { story: SuccessStory }) {
           </div>
         </aside>
       </Container>
-
-      <StoryCtaBanner />
     </>
   );
 }
@@ -152,19 +150,5 @@ function ArticleSection({ id, title, children }: { id: string; title: string; ch
         {children}
       </section>
     </Reveal>
-  );
-}
-
-/** Banner CTA sederhana: panel membulat bergradasi oranye lembut (atas → bawah), satu kalimat + satu tombol. */
-function StoryCtaBanner() {
-  return (
-    <Container className="pb-20 lg:pb-28">
-      <Reveal className="mx-auto flex max-w-[960px] flex-col items-center gap-6 rounded-panel bg-linear-to-b from-brand-orange/5 to-brand-orange/30 px-6 py-12 text-center sm:px-12 sm:py-14">
-        <h2 className="max-w-[640px] text-h2 text-balance">{copy.banner.title}</h2>
-        <ButtonLink href={copy.banner.cta.href} size="lg" withArrow>
-          {copy.banner.cta.label}
-        </ButtonLink>
-      </Reveal>
-    </Container>
   );
 }
