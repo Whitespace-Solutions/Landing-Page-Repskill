@@ -31,7 +31,7 @@ export function Section({
 }: SectionProps) {
   return (
     <section id={id} className={cn("scroll-mt-[72px]", tones[tone], className)}>
-      <Container className={cn(size === "lg" ? "py-20 lg:py-32" : "py-20 lg:py-28", containerClassName)}>
+      <Container className={cn(size === "lg" ? "py-16 lg:py-32" : "py-16 lg:py-28", containerClassName)}>
         {children}
       </Container>
     </section>

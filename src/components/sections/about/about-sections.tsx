@@ -12,7 +12,7 @@ export function AboutHero() {
   const { hero } = aboutPage;
   return (
     <section className="bg-white">
-      <Container className="pt-14 pb-16 sm:pt-20 lg:pt-24 lg:pb-24">
+      <Container className="pt-14 pb-12 sm:pt-20 lg:pt-24 lg:pb-24">
         <Stagger
           className="flex flex-col items-center gap-6 text-center lg:items-start lg:text-left"
           stagger={0.12}

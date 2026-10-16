@@ -29,7 +29,7 @@ export function PageHero({
   if (layout === "side") {
     return (
       <section className="relative overflow-hidden bg-white">
-        <Container className="grid gap-6 pt-14 pb-16 sm:pt-20 lg:grid-cols-[minmax(0,1fr)_minmax(0,380px)] lg:items-end lg:gap-16 lg:pt-24 lg:pb-24">
+        <Container className="grid gap-6 pt-14 pb-12 sm:pt-20 lg:grid-cols-[minmax(0,1fr)_minmax(0,380px)] lg:items-end lg:gap-16 lg:pt-24 lg:pb-24">
           <Stagger
             className={cn(
               "flex flex-col gap-6",
@@ -65,7 +65,7 @@ export function PageHero({
     <section className="relative overflow-hidden bg-white">
       <Container
         className={cn(
-          "relative grid items-center gap-12 pt-14 pb-16 sm:pt-20 lg:gap-16 lg:pt-24 lg:pb-24",
+          "relative grid items-center gap-12 pt-14 pb-12 sm:pt-20 lg:gap-16 lg:pt-24 lg:pb-24",
           // Komposisi `persona-scene` (hero Capture) butuh kolom visual lebih lebar dan jarak ke teks lebih rapat
           visual &&
             (visual.type === "persona-scene"

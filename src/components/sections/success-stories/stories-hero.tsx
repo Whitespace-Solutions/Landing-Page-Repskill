@@ -34,7 +34,7 @@ export function StoriesHero({ eyebrow, title, highlight, lead, primary, secondar
         className="pointer-events-none absolute -top-32 -right-32 size-[360px] rounded-full bg-brand-orange opacity-7 blur-[100px] lg:-top-48 lg:-right-40 lg:size-[640px] lg:blur-[140px]"
         aria-hidden
       />
-      <Container className="relative grid items-center gap-2 pt-14 pb-20 sm:pt-20 sm:pb-24 lg:grid-cols-[minmax(0,1.18fr)_minmax(0,0.82fr)] lg:gap-12 lg:pt-26 lg:pb-32">
+      <Container className="relative grid items-center gap-2 pt-14 pb-16 sm:pt-20 sm:pb-24 lg:grid-cols-[minmax(0,1.18fr)_minmax(0,0.82fr)] lg:gap-12 lg:pt-26 lg:pb-32">
         <motion.div
           variants={intro}
           initial="hidden"

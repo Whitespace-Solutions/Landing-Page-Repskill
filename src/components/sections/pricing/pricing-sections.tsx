@@ -37,7 +37,7 @@ export function PricingPlans() {
   const { plans } = pricingPage;
   return (
     // Plans dan Feature Comparison sama-sama `surface`: padding bawah Plans saja yang jadi jarak (Comparison tanpa padding atas)
-    <Section id="plans" tone="surface" containerClassName="pb-16 lg:pb-20">
+    <Section id="plans" tone="surface" containerClassName="pb-12 lg:pb-20">
       {/* Judul hanya untuk pembaca layar; secara visual panel langsung tampil di bawah hero */}
       <h2 className="sr-only">{plans.title}</h2>
       <Reveal className="grid divide-y divide-line overflow-hidden rounded-panel border border-line bg-white lg:grid-cols-3 lg:divide-x lg:divide-y-0">

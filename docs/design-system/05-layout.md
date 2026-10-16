@@ -9,9 +9,12 @@ Semua konten section dibungkus [`<Container>`](../../src/components/ui/container
 
 | Jenis section            | Padding vertikal                            |
 | ------------------------ | ------------------------------------------- |
-| Section standar          | `py-20 lg:py-28` (80px → 112px)             |
-| Section unggulan / gelap | `py-20 lg:py-32` (80px → 128px)             |
-| Hero                     | `pt-14 sm:pt-20 lg:pt-26`, `pb-14 lg:pb-24` |
+| Section standar          | `py-16 lg:py-28` (64px → 112px)             |
+| Section unggulan / gelap | `py-16 lg:py-32` (64px → 128px)             |
+| Hero                     | `pt-14 sm:pt-20 lg:pt-26`, `pb-12 lg:pb-24` |
+
+Di HP (di bawah `lg`) jarak dibuat lebih rapat sejak 2026-10-16: pergantian warna latar sudah memisahkan section, jadi
+hero → section berikutnya cukup ±112px (48 + 64). Hero dengan visual di bawah teks boleh `pb-16`.
 
 Jarak di dalam section:
 

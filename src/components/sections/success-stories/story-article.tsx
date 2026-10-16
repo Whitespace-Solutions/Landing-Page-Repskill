@@ -43,7 +43,7 @@ export function StoryArticle({ story }: { story: SuccessStory }) {
         </Reveal>
       </Container>
 
-      <Container className="grid items-start gap-12 pb-20 lg:pb-28 lg:grid-cols-[220px_minmax(0,1fr)_220px] xl:grid-cols-[260px_minmax(0,1fr)_260px]">
+      <Container className="grid items-start gap-12 pb-16 lg:pb-28 lg:grid-cols-[220px_minmax(0,1fr)_220px] xl:grid-cols-[260px_minmax(0,1fr)_260px]">
         <div className="sticky top-24 hidden lg:block">
           <StoryToc label={copy.tocLabel} items={toc} />
         </div>

@@ -45,7 +45,7 @@ export function VisualCta({
         aria-hidden
       />
 
-      <Container className="relative grid items-center gap-14 py-20 lg:grid-cols-2 lg:gap-12 lg:py-28 xl:py-32">
+      <Container className="relative grid items-center gap-14 py-16 lg:grid-cols-2 lg:gap-12 lg:py-28 xl:py-32">
         <Reveal
           className={cn(
             "flex max-w-xl flex-col items-start gap-6",

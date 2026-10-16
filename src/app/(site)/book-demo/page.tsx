@@ -17,7 +17,7 @@ export default function BookDemoPage() {
         className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/0 from-30% to-surface"
         aria-hidden
       />
-      <Container className="relative grid items-start gap-12 pt-14 pb-20 sm:pt-20 lg:grid-cols-[1fr_1.15fr] lg:gap-16 lg:pt-24 lg:pb-28">
+      <Container className="relative grid items-start gap-12 pt-14 pb-16 sm:pt-20 lg:grid-cols-[1fr_1.15fr] lg:gap-16 lg:pt-24 lg:pb-28">
         <Stagger className="flex flex-col gap-6 lg:sticky lg:top-28" stagger={0.1}>
           <StaggerItem className="text-center lg:text-left">
             <Eyebrow>{page.eyebrow}</Eyebrow>

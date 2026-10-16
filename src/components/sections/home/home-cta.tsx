@@ -60,7 +60,7 @@ export function HomeCta({ singleLineTitle, ...props }: Partial<CtaData> & { sing
         aria-hidden
       />
 
-      <Container className="relative py-20 lg:py-28 xl:py-32">
+      <Container className="relative py-16 lg:py-28 xl:py-32">
         <Reveal className="pointer-events-none absolute inset-0 hidden lg:block" delay={0.15}>
           <Decorations mx={mx} my={my} />
         </Reveal>

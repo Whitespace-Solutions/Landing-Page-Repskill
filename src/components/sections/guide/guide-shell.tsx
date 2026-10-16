@@ -63,7 +63,7 @@ export function GuideShell({ children }: { children: React.ReactNode }) {
     <>
       <section className="border-b border-line bg-white">
         {isIndex ? (
-          <Container className="pt-14 pb-14 sm:pt-20 lg:pt-24 lg:pb-20">
+          <Container className="pt-14 pb-12 sm:pt-20 lg:pt-24 lg:pb-20">
             <Stagger className="flex flex-col gap-6" stagger={0.1}>
               <StaggerItem className="text-center lg:text-left">
                 <Eyebrow>{guidePage.eyebrow}</Eyebrow>
@@ -87,7 +87,7 @@ export function GuideShell({ children }: { children: React.ReactNode }) {
         )}
       </section>
 
-      <Container className="grid gap-6 pt-8 pb-20 lg:grid-cols-[260px_minmax(0,1fr)] lg:gap-14 lg:pt-12 lg:pb-28">
+      <Container className="grid gap-6 pt-8 pb-16 lg:grid-cols-[260px_minmax(0,1fr)] lg:gap-14 lg:pt-12 lg:pb-28">
         <aside className="lg:sticky lg:top-[96px] lg:self-start">
           <button
             type="button"
