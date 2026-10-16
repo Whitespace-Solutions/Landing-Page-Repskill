@@ -98,7 +98,7 @@ const draftStory = (
     ],
   },
   help: {
-    title: `How Repskill helped ${name}`,
+    title: `The rollout at ${name}`,
     body: "Describe which Repskill capabilities were used and how the rollout worked.",
     features,
     visual,
