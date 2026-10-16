@@ -13,10 +13,10 @@ export const metadata: Metadata = {
 export default function PricingPage() {
   return (
     <>
-      <PageHero {...pricingPage.hero} />
+      <PageHero {...pricingPage.hero} centerOnMobile />
       <PricingPlans />
       <FeatureComparison />
-      <VisualCta {...pricingPage.cta} visual={pricingPage.ctaVisual} />
+      <VisualCta {...pricingPage.cta} visual={pricingPage.ctaVisual} centerOnMobile />
     </>
   );
 }

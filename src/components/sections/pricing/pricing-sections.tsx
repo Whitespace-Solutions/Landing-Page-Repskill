@@ -123,17 +123,23 @@ export function FeatureComparison() {
   const { comparison } = pricingPage;
   return (
     <Section tone="surface" containerClassName="pt-0 lg:pt-0">
-      <SectionHeader eyebrow={comparison.eyebrow} title={comparison.title} lead={comparison.lead} />
+      <SectionHeader
+        eyebrow={comparison.eyebrow}
+        title={comparison.title}
+        lead={comparison.lead}
+        centerOnMobile
+      />
+      {/* Di bawah `sm` kolom nilai menyempit (judul kolom boleh dua baris) supaya tabel muat di layar ponsel tanpa geser */}
       <Reveal className="mt-10 overflow-x-auto rounded-card border border-line bg-white lg:mt-14">
-        <table className="w-full min-w-[560px] border-collapse text-left">
+        <table className="w-full border-collapse text-left">
           <thead>
             <tr className="border-b border-line">
-              <th className="px-6 py-5 text-eyebrow text-brand-charcoal">CAPABILITY</th>
+              <th className="px-4 py-5 text-eyebrow text-brand-charcoal sm:px-6">CAPABILITY</th>
               {comparison.columns.map((col, i) => (
                 <th
                   key={col}
                   className={cn(
-                    "w-40 px-6 py-5 text-center text-sm font-bold",
+                    "w-22 px-2 py-5 text-center text-sm font-bold sm:w-40 sm:px-6",
                     i === 1 ? "bg-brand-orange/10 text-brand-orange-deep" : "text-brand-charcoal",
                   )}
                 >
@@ -145,9 +151,9 @@ export function FeatureComparison() {
           <tbody>
             {comparison.rows.map((row) => (
               <tr key={row.label} className="border-b border-line last:border-b-0">
-                <td className="px-6 py-4 text-[15px] font-medium text-brand-grey">{row.label}</td>
+                <td className="px-4 py-4 text-[15px] font-medium text-brand-grey sm:px-6">{row.label}</td>
                 {row.values.map((value, i) => (
-                  <td key={i} className={cn("px-6 py-4", i === 1 && "bg-brand-orange/5")}>
+                  <td key={i} className={cn("px-2 py-4 sm:px-6", i === 1 && "bg-brand-orange/5")}>
                     <div className="flex justify-center">
                       <ComparisonValue value={value} highlight={i === 1} />
                     </div>

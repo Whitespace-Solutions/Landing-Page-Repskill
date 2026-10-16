@@ -23,6 +23,7 @@ export function StepsTimeline({ id, eyebrow, title, body, steps, note, tone = "d
         layout="side"
         size="h1"
         tone={dark ? "dark" : "light"}
+        centerOnMobile
       />
 
       <Stagger

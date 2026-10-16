@@ -7,13 +7,16 @@ import { Section } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
 import { aboutPage } from "@/content/about";
 
-/** Hero About: satu pernyataan kuat rata kiri selebar container, tanpa tombol atau visual. */
+/** Hero About: satu pernyataan kuat selebar container, tanpa tombol atau visual. Rata tengah di bawah `lg`. */
 export function AboutHero() {
   const { hero } = aboutPage;
   return (
     <section className="bg-white">
       <Container className="pt-14 pb-16 sm:pt-20 lg:pt-24 lg:pb-24">
-        <Stagger className="flex flex-col gap-6" stagger={0.12}>
+        <Stagger
+          className="flex flex-col items-center gap-6 text-center lg:items-start lg:text-left"
+          stagger={0.12}
+        >
           <StaggerItem>
             <Eyebrow>{hero.eyebrow}</Eyebrow>
           </StaggerItem>
@@ -36,7 +39,7 @@ export function WhyRepskill() {
   const { why } = aboutPage;
   return (
     <Section tone="surface">
-      <SectionHeader eyebrow={why.eyebrow} title={why.title} lead={why.body} layout="side" />
+      <SectionHeader eyebrow={why.eyebrow} title={why.title} lead={why.body} layout="side" centerOnMobile />
       <Stagger className="mt-10 grid gap-4 md:grid-cols-2 lg:mt-14" stagger={0.12}>
         {why.statements.map((item) => (
           <StaggerItem key={item.id} className="flex flex-col gap-4 rounded-card bg-white p-7 lg:p-9">
@@ -63,6 +66,7 @@ export function OurPhilosophy() {
         layout="side"
         size="h1"
         tone="dark"
+        centerOnMobile
       />
       <Stagger className="mt-12 grid gap-4 md:grid-cols-2 lg:mt-16" stagger={0.12}>
         {philosophy.archetypes.map((a) => (

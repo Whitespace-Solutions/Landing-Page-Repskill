@@ -23,14 +23,20 @@ export function PageHero({
   layout,
   centerOnMobile = false,
 }: PageHeroData & {
-  /** Teks & tombol rata tengah di bawah `lg` (satu kolom), rata kiri mulai `lg`. Dipakai halaman fitur. */
+  /** Teks & tombol rata tengah di bawah `lg` (satu kolom), rata kiri mulai `lg`. Dipakai halaman fitur & Pricing. */
   centerOnMobile?: boolean;
 }) {
   if (layout === "side") {
     return (
       <section className="relative overflow-hidden bg-white">
         <Container className="grid gap-6 pt-14 pb-16 sm:pt-20 lg:grid-cols-[minmax(0,1fr)_minmax(0,380px)] lg:items-end lg:gap-16 lg:pt-24 lg:pb-24">
-          <Stagger className="flex flex-col gap-6" stagger={0.1}>
+          <Stagger
+            className={cn(
+              "flex flex-col gap-6",
+              centerOnMobile && "items-center text-center lg:items-start lg:text-left",
+            )}
+            stagger={0.1}
+          >
             <StaggerItem>
               <Eyebrow>{eyebrow}</Eyebrow>
             </StaggerItem>
@@ -41,7 +47,14 @@ export function PageHero({
             </StaggerItem>
           </Stagger>
           <Reveal delay={0.25}>
-            <p className="text-lead text-pretty text-brand-charcoal lg:pb-2">{lead}</p>
+            <p
+              className={cn(
+                "text-lead text-pretty text-brand-charcoal lg:pb-2",
+                centerOnMobile && "text-center lg:text-left",
+              )}
+            >
+              {lead}
+            </p>
           </Reveal>
         </Container>
       </section>
