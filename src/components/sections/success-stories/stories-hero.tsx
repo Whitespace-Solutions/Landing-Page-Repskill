@@ -39,7 +39,8 @@ export function StoriesHero({ eyebrow, title, highlight, lead, primary, secondar
           variants={intro}
           initial="hidden"
           animate="show"
-          className="flex max-w-[820px] flex-col gap-6"
+          // Mobile & tablet (satu kolom): teks rata tengah; mulai lg kembali rata kiri di samping orb
+          className="mx-auto flex max-w-[820px] flex-col items-center gap-6 text-center lg:mx-0 lg:items-start lg:text-left"
         >
           <motion.div variants={rise}>
             <Eyebrow>{eyebrow}</Eyebrow>
@@ -51,7 +52,7 @@ export function StoriesHero({ eyebrow, title, highlight, lead, primary, secondar
             {lead}
           </motion.p>
           {(primary || secondary) && (
-            <motion.div variants={rise} className="mt-2 flex flex-wrap gap-3">
+            <motion.div variants={rise} className="mt-2 flex flex-wrap justify-center gap-3 lg:justify-start">
               {primary && (
                 <ButtonLink href={primary.href} size="lg" withArrow>
                   {primary.label}

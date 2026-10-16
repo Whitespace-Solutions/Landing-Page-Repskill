@@ -12,7 +12,8 @@ export function StoryRow({ story }: { story: SuccessStory }) {
   const href = `/success-stories/${story.slug}/`;
   return (
     <article className="grid gap-8 rounded-card border border-line bg-white p-6 sm:p-8 lg:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)_minmax(0,1fr)] lg:gap-12 lg:p-10">
-      <div className="flex flex-col items-start gap-5">
+      {/* Mobile & tablet: judul, ringkasan, dan tautan rata tengah; mulai lg rata kiri */}
+      <div className="flex flex-col items-center gap-5 text-center lg:items-start lg:text-left">
         <h2 className="text-h2 text-balance text-brand-grey">
           {story.name}: {story.headline}
         </h2>
