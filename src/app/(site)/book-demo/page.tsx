@@ -23,7 +23,10 @@ export default function BookDemoPage() {
             <Eyebrow>{page.eyebrow}</Eyebrow>
           </StaggerItem>
           <StaggerItem>
-            <h1 className="text-center text-display text-balance lg:text-left">{page.title}</h1>
+            {/* HP: text-display-mobile + baris dipatah di `\n` supaya tepat dua baris; mulai sm ukuran & alur normal */}
+            <h1 className="text-center text-display-mobile text-balance whitespace-pre-line sm:text-display sm:whitespace-normal lg:text-left">
+              {page.title}
+            </h1>
           </StaggerItem>
           <StaggerItem>
             <p className="text-center text-lead text-pretty text-brand-charcoal lg:text-left">{page.lead}</p>

@@ -2,7 +2,8 @@
 
 export const bookDemoPage = {
   eyebrow: "Book Demo",
-  title: "Let's Talk About Your Sales Capability",
+  /** `\n` = patah baris di HP saja (dua baris); mulai `sm` jadi spasi biasa */
+  title: "Let's Talk About Your\nSales Capability",
   lead: "Tell us a little about your organization and what you'd like to improve. Our team will be in touch to arrange a Repskill demo.",
   expectations: [
     "A conversation about your sales team and goals",
