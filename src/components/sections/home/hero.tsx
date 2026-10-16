@@ -36,7 +36,8 @@ export function Hero() {
           variants={intro}
           initial="hidden"
           animate="show"
-          className="flex max-w-[820px] flex-col gap-6"
+          // Mobile & tablet (satu kolom): teks rata tengah; mulai lg kembali rata kiri di samping orb
+          className="mx-auto flex max-w-[820px] flex-col items-center gap-6 text-center lg:mx-0 lg:items-start lg:text-left"
         >
           <motion.div variants={rise}>
             <Eyebrow>AI-Powered Sales Capability Platform</Eyebrow>
@@ -50,14 +51,18 @@ export function Hero() {
             {heroHeadline.lead}{" "}
             <span className="xl:whitespace-nowrap">
               {heroHeadline.lastWord}{" "}
-              <RotatingWords words={heroHeadline.rotatingWords} className="text-brand-orange" />
+              {/* Lebar dikunci ke kata terpanjang: kata yang tampil ikut rata tengah di mobile */}
+              <RotatingWords
+                words={heroHeadline.rotatingWords}
+                className="justify-items-center text-brand-orange lg:justify-items-start"
+              />
             </span>
           </motion.h1>
           <motion.p variants={rise} className="max-w-[620px] text-lead text-pretty text-brand-charcoal">
             Repskill is AI sales coaching that turns your best people’s knowledge into sales skills your whole
             team can build.
           </motion.p>
-          <motion.div variants={rise} className="mt-2 flex flex-wrap gap-3">
+          <motion.div variants={rise} className="mt-2 flex flex-wrap justify-center gap-3 lg:justify-start">
             <ButtonLink href={primaryCta.href} size="lg" withArrow>
               {primaryCta.label}
             </ButtonLink>
