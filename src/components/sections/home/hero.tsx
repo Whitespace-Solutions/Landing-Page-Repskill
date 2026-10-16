@@ -44,9 +44,9 @@ export function Hero() {
           </motion.div>
           <motion.h1
             variants={rise}
-            // Mobile: text-h2 (tebal display) supaya pas dua baris "Make Sales" / "Expertise Scalable", termasuk kata
+            // Mobile: text-display-mobile (30px) supaya pas dua baris "Make Sales" / "Expertise Scalable", termasuk kata
             // terpanjang yang bergantian; mulai sm ukuran display
-            className="text-h2 font-extrabold text-balance sm:text-display"
+            className="text-display-mobile text-balance sm:text-display"
             // Nama tetap untuk pembaca layar: "Make Sales Expertise Scalable" (kata pertama), tanpa ikut berganti
             aria-label={`${heroHeadline.lead} ${heroHeadline.lastWord} ${heroHeadline.rotatingWords[0]}`}
           >
