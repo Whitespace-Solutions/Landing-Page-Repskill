@@ -84,7 +84,7 @@ export function SiteHeader() {
             <Link
               href={loginLink.href}
               onClick={closeAll}
-              className="hidden rounded-lg px-2.5 py-2.5 text-base font-medium whitespace-nowrap text-brand-charcoal transition-colors hover:text-brand-orange lg:inline-flex xl:px-3 xl:text-[17px]"
+              className="hidden rounded-lg px-2.5 py-2.5 text-nav font-medium whitespace-nowrap text-brand-charcoal transition-colors hover:text-brand-orange lg:inline-flex xl:px-3"
             >
               {loginLink.label}
             </Link>
@@ -92,7 +92,7 @@ export function SiteHeader() {
               <ButtonLink
                 href={primaryCta.href}
                 onClick={closeAll}
-                className="whitespace-nowrap max-lg:h-11 max-lg:px-3.5 max-lg:text-sm"
+                className="whitespace-nowrap max-lg:h-11 max-lg:px-3.5 max-lg:text-sm lg:py-2.5"
               >
                 {primaryCta.label}
               </ButtonLink>
@@ -142,7 +142,7 @@ function NavTopLink({
     <Link
       href={href}
       className={cn(
-        "relative rounded-lg px-2.5 py-2.5 text-base font-medium whitespace-nowrap transition-colors hover:text-brand-orange xl:px-3 xl:text-[17px]",
+        "relative rounded-lg px-2.5 py-2.5 text-nav font-medium whitespace-nowrap transition-colors hover:text-brand-orange xl:px-3",
         active ? "text-brand-orange" : "text-brand-charcoal",
       )}
     >
@@ -190,7 +190,7 @@ function DesktopDropdown({
         onClick={() => onOpenChange(!open)}
         aria-expanded={open}
         className={cn(
-          "relative flex items-center gap-1.5 rounded-lg px-2.5 py-2.5 text-base font-medium whitespace-nowrap transition-colors hover:text-brand-orange xl:px-3 xl:text-[17px]",
+          "relative flex items-center gap-1.5 rounded-lg px-2.5 py-2.5 text-nav font-medium whitespace-nowrap transition-colors hover:text-brand-orange xl:px-3",
           active || open ? "text-brand-orange" : "text-brand-charcoal",
         )}
       >

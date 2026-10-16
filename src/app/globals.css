@@ -50,6 +50,8 @@
   --text-h3--font-weight: 700;
   --text-lead: clamp(1.125rem, 1.6vw, 1.25rem); /* 18–20px, paragraf pembuka */
   --text-lead--line-height: 1.6;
+  --text-nav: 0.9375rem; /* 15px, menu header desktop & Log in */
+  --text-nav--line-height: 1.5;
   --text-caption: 0.8125rem; /* 13px */
   --text-caption--line-height: 1.45;
   --text-eyebrow: 0.8125rem; /* 13px, label uppercase di atas judul */

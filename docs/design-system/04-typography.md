@@ -16,6 +16,7 @@ Setiap token sudah membawa ukuran responsif, line-height, letter-spacing, dan we
 | `text-h3`             | 20–24px       | 700    | Judul kartu / sub-section                                                                              | Scenario Studio                 |
 | `text-lead`           | 18–20px       | 400    | Paragraf pembuka di bawah judul                                                                        |                                 |
 | `text-base`           | 16px          | 400    | Body umum                                                                                              |                                 |
+| `text-nav`            | 15px          | 500    | Menu header desktop & Log in (di bawah body supaya header tetap tenang); menu HP tidak memakai ini     | Features · Pricing · Log in     |
 | `text-caption`        | 13px          | 400    | Catatan, meta, legal                                                                                   | Last updated · 01 Oct 2026      |
 | `text-eyebrow`        | 13px, +0.14em | 700    | Label UPPERCASE di atas judul (komponen `Eyebrow`)                                                     | HOW REPSKILL WORKS              |
 
