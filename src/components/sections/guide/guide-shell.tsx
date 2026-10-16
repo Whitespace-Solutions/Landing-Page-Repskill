@@ -55,7 +55,7 @@ export function GuideShell({ children }: { children: React.ReactNode }) {
     <SearchBox
       value={query}
       onChange={setQuery}
-      className={isIndex ? "mt-8 max-w-2xl" : "w-full lg:max-w-xl lg:flex-1"}
+      className={isIndex ? "mx-auto mt-8 max-w-2xl lg:mx-0" : "w-full lg:max-w-xl lg:flex-1"}
     />
   );
 
@@ -65,14 +65,16 @@ export function GuideShell({ children }: { children: React.ReactNode }) {
         {isIndex ? (
           <Container className="pt-14 pb-14 sm:pt-20 lg:pt-24 lg:pb-20">
             <Stagger className="flex flex-col gap-6" stagger={0.1}>
-              <StaggerItem>
+              <StaggerItem className="text-center lg:text-left">
                 <Eyebrow>{guidePage.eyebrow}</Eyebrow>
               </StaggerItem>
               <StaggerItem>
-                <h1 className="text-display text-balance">{guidePage.title}</h1>
+                <h1 className="text-center text-display text-balance lg:text-left">{guidePage.title}</h1>
               </StaggerItem>
               <StaggerItem>
-                <p className="max-w-[620px] text-lead text-pretty text-brand-charcoal">{guidePage.lead}</p>
+                <p className="mx-auto max-w-[620px] text-center text-lead text-pretty text-brand-charcoal lg:mx-0 lg:text-left">
+                  {guidePage.lead}
+                </p>
                 {search}
               </StaggerItem>
             </Stagger>
