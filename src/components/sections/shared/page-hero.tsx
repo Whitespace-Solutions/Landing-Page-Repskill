@@ -84,7 +84,8 @@ export function PageHero({
             <Eyebrow>{eyebrow}</Eyebrow>
           </StaggerItem>
           <StaggerItem>
-            <h1 className="text-display text-balance">
+            {/* HP: text-display-mobile (30–35px) seperti hero Home & Book Demo, supaya judul panjang tidak jadi 4+ baris */}
+            <h1 className={cn("text-display text-balance", centerOnMobile && "text-display-mobile sm:text-display")}>
               <HighlightText text={title} highlight={highlight} />
             </h1>
           </StaggerItem>
