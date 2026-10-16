@@ -33,7 +33,7 @@ export default function BookDemoPage() {
             <ul className="flex flex-col gap-3">
               {page.expectations.map((item) => (
                 <li key={item} className="flex items-start gap-3 text-brand-grey">
-                  <span className="mt-2 h-1 w-3 flex-none -skew-x-[38deg] bg-brand-orange" aria-hidden />
+                  <span className="mt-2.5 size-1.5 flex-none rounded-full bg-brand-grey" aria-hidden />
                   {item}
                 </li>
               ))}
