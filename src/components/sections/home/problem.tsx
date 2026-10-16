@@ -11,7 +11,7 @@ export function Problem() {
 
   return (
     <Section id="problem" tone="surface">
-      <SectionHeader {...header} />
+      <SectionHeader {...header} centerOnMobile />
 
       <Stagger className="mt-10 grid gap-4 md:grid-cols-3 lg:mt-14" stagger={0.1}>
         {pains.map((pain, i) => (

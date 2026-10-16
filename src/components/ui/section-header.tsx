@@ -17,6 +17,8 @@ type SectionHeaderProps = {
   tone?: "light" | "dark";
   /** Judul satu baris mulai `lg` (layout `stack`; hanya untuk judul yang muat, mis. The Solution di Home). */
   singleLineTitle?: boolean;
+  /** Rata tengah di bawah `lg` (mobile & tablet), rata kiri mulai `lg`. Dipakai di section Home. */
+  centerOnMobile?: boolean;
   className?: string;
 };
 
@@ -31,9 +33,13 @@ export function SectionHeader({
   size = "h2",
   tone = "light",
   singleLineTitle = false,
+  centerOnMobile = false,
   className,
 }: SectionHeaderProps) {
   const dark = tone === "dark";
+  // Wadah: teks & tombol ke tengah di mobile; kolom teks: isinya ke tengah
+  const centerWrap = centerOnMobile && "justify-center text-center lg:justify-between lg:text-left";
+  const centerColumn = centerOnMobile && "items-center lg:items-start";
   const heading = (
     <h2
       className={cn(
@@ -61,8 +67,10 @@ export function SectionHeader({
 
   if (layout === "side") {
     return (
-      <Reveal className={cn("flex flex-wrap items-end justify-between gap-x-16 gap-y-6", className)}>
-        <div className="flex flex-[1_1_520px] flex-col gap-5">
+      <Reveal
+        className={cn("flex flex-wrap items-end justify-between gap-x-16 gap-y-6", centerWrap, className)}
+      >
+        <div className={cn("flex flex-[1_1_520px] flex-col gap-5", centerColumn)}>
           {eyebrowEl}
           {heading}
         </div>
@@ -72,8 +80,12 @@ export function SectionHeader({
   }
 
   return (
-    <Reveal className={cn("flex flex-wrap items-end justify-between gap-x-10 gap-y-6", className)}>
-      <div className={cn("flex max-w-[720px] flex-col gap-5", singleLineTitle && "lg:max-w-none")}>
+    <Reveal
+      className={cn("flex flex-wrap items-end justify-between gap-x-10 gap-y-6", centerWrap, className)}
+    >
+      <div
+        className={cn("flex max-w-[720px] flex-col gap-5", singleLineTitle && "lg:max-w-none", centerColumn)}
+      >
         {eyebrowEl}
         {heading}
         {leadText}

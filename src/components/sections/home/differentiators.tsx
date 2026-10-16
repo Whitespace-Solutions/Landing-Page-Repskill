@@ -10,7 +10,7 @@ export function Differentiators() {
 
   return (
     <Section id="why-repskill" tone="surface">
-      <SectionHeader {...header} layout="side" />
+      <SectionHeader {...header} layout="side" centerOnMobile />
 
       <Stagger className="mt-10 grid gap-4 lg:mt-14 lg:grid-cols-2" stagger={0.12}>
         {columns.map((column, c) => (
