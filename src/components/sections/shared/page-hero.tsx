@@ -21,7 +21,11 @@ export function PageHero({
   secondary,
   visual,
   layout,
-}: PageHeroData) {
+  centerOnMobile = false,
+}: PageHeroData & {
+  /** Teks & tombol rata tengah di bawah `lg` (satu kolom), rata kiri mulai `lg`. Dipakai halaman fitur. */
+  centerOnMobile?: boolean;
+}) {
   if (layout === "side") {
     return (
       <section className="relative overflow-hidden bg-white">
@@ -56,7 +60,13 @@ export function PageHero({
               : "lg:grid-cols-[1.05fr_1fr]"),
         )}
       >
-        <Stagger className="flex max-w-[720px] flex-col gap-6" stagger={0.1}>
+        <Stagger
+          className={cn(
+            "flex max-w-[720px] flex-col gap-6",
+            centerOnMobile && "mx-auto items-center text-center lg:mx-0 lg:items-start lg:text-left",
+          )}
+          stagger={0.1}
+        >
           <StaggerItem>
             <Eyebrow>{eyebrow}</Eyebrow>
           </StaggerItem>
@@ -69,7 +79,9 @@ export function PageHero({
             <p className="max-w-[620px] text-lead text-pretty text-brand-charcoal">{lead}</p>
           </StaggerItem>
           {(primary || secondary) && (
-            <StaggerItem className="mt-2 flex flex-wrap gap-3">
+            <StaggerItem
+              className={cn("mt-2 flex flex-wrap gap-3", centerOnMobile && "justify-center lg:justify-start")}
+            >
               {primary && (
                 <ButtonLink href={primary.href} size="lg" withArrow>
                   {primary.label}

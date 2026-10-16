@@ -25,7 +25,12 @@ export function VisualCta({
   primary = primaryCta,
   secondary,
   visual,
-}: CtaData & { visual: { image: StaticImageData; layout: VisualCtaLayout } }) {
+  centerOnMobile = false,
+}: CtaData & {
+  visual: { image: StaticImageData; layout: VisualCtaLayout };
+  /** Teks & tombol rata tengah di bawah `lg` (satu kolom), rata kiri mulai `lg`. Dipakai halaman fitur. */
+  centerOnMobile?: boolean;
+}) {
   const { mx, my, handlers } = usePointerParallax();
 
   return (
@@ -41,13 +46,20 @@ export function VisualCta({
       />
 
       <Container className="relative grid items-center gap-14 py-20 lg:grid-cols-2 lg:gap-12 lg:py-28 xl:py-32">
-        <Reveal className="flex max-w-xl flex-col items-start gap-6">
+        <Reveal
+          className={cn(
+            "flex max-w-xl flex-col items-start gap-6",
+            centerOnMobile && "mx-auto items-center text-center lg:mx-0 lg:items-start lg:text-left",
+          )}
+        >
           {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
           <h2 className="text-h1 text-balance">
             <HighlightText text={title} highlight={highlight} />
           </h2>
           <p className="text-lead text-pretty text-brand-charcoal">{body}</p>
-          <div className="mt-2 flex flex-wrap gap-3">
+          <div
+            className={cn("mt-2 flex flex-wrap gap-3", centerOnMobile && "justify-center lg:justify-start")}
+          >
             <ButtonLink href={primary.href} size="lg" withArrow>
               {primary.label}
             </ButtonLink>

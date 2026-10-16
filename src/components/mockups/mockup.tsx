@@ -657,7 +657,8 @@ type ScenePopupData = PersonaScene["popups"][number];
  * proporsinya sama persis di semua lebar. Foto heksagon besar di kiri sebagai latar, kartu kutipan di kanan atas
  * menumpuk sisi kanan foto, pop-up "Extraction Studio" di bawah kartu, pop-up "Draft article ready" menumpuk bagian
  * bawah foto, heksagon isi oranye kecil di kiri dan heksagon garis oranye kecil di kanan bawah. Di mobile (< `sm`)
- * tampil versi bertumpuk. Pop-up berhenti melayang saat "reduce motion".
+ * foto di tengah dengan pop-up menumpuk kiri atas & kanan, kartu kutipan di bawah. Pop-up berhenti melayang saat
+ * "reduce motion".
  */
 function PersonaSceneMockup({ image, quote, popups }: PersonaScene) {
   const [first, second] = popups;
@@ -709,32 +710,46 @@ function PersonaSceneMockup({ image, quote, popups }: PersonaScene) {
         )}
       </div>
 
-      {/* Mobile: foto, kartu, lalu pop-up bertumpuk */}
-      <div className="@container relative sm:hidden">
-        <div className="pointer-events-none absolute" style={{ right: "6%", top: "10cqw", width: "16%" }}>
+      {/* Mobile (sketsa 2026-10-16): pop-up kedua di kiri atas di atas foto, foto di tengah, pop-up pertama menumpuk
+          sisi kanan foto, heksagon garis di kanan atas dan heksagon isi di kiri, kartu kutipan di bawah foto.
+          Angka dalam cqw: foto 64% lebar dengan tinggi ±70cqw, mulai 12cqw dari atas. */}
+      <div className="@container relative flex flex-col items-center pt-[12cqw] sm:hidden">
+        <div className="pointer-events-none absolute" style={{ left: "5%", top: "50cqw", width: "8%" }}>
+          <HexOutline
+            strokeWidth={0}
+            className="block h-auto w-full rotate-90 fill-brand-orange text-brand-orange opacity-30"
+          />
+        </div>
+        <div className="pointer-events-none absolute" style={{ right: "4%", top: "20cqw", width: "12%" }}>
           <HexOutline
             strokeWidth={2.6}
             className="block h-auto w-full rotate-90 text-brand-orange opacity-80"
           />
         </div>
-        <Reveal className="w-[64%]">
-          <Image src={image} alt="" sizes="260px" className="block h-auto w-full drop-shadow-xl" />
-        </Reveal>
-        <Reveal delay={0.15} className="relative z-2 -mt-[10cqw] ml-auto w-[88%]">
-          <SceneQuote {...quote} />
-        </Reveal>
-        <div className="mt-4 flex flex-col items-end gap-3">
+        <div className="relative w-[64%]">
+          <Reveal>
+            <Image src={image} alt="" sizes="260px" className="block h-auto w-full drop-shadow-xl" />
+          </Reveal>
           {first && (
-            <Reveal delay={0.35} className="w-[66%]">
-              <ScenePopup popup={first} duration="8s" delay="0s" />
-            </Reveal>
-          )}
-          {second && (
-            <Reveal delay={0.5} className="w-[76%] self-start">
-              <ScenePopup popup={second} duration="9.5s" delay="-3s" />
-            </Reveal>
+            // Diukur dari bawah foto (tinggi foto beda per halaman) supaya tidak menutup wajah model;
+            // -18cqw = rapat ke tepi kanan wadah (foto 64% di tengah)
+            <div className="absolute z-3" style={{ right: "-18cqw", bottom: "10cqw" }}>
+              <Reveal delay={0.35}>
+                <ScenePopup popup={first} duration="8s" delay="0s" />
+              </Reveal>
+            </div>
           )}
         </div>
+        {second && (
+          <div className="absolute top-0 left-0 z-3">
+            <Reveal delay={0.5}>
+              <ScenePopup popup={second} duration="9.5s" delay="-3s" />
+            </Reveal>
+          </div>
+        )}
+        <Reveal delay={0.15} className="relative z-2 -mt-[4cqw] w-full">
+          <SceneQuote {...quote} />
+        </Reveal>
       </div>
     </>
   );

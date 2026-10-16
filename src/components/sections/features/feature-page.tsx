@@ -14,16 +14,22 @@ export function FeaturePageView({ page }: { page: FeaturePage }) {
 
   return (
     <>
-      <PageHero {...page.hero} />
+      {/* Mobile & tablet (satu kolom): eyebrow, judul, dan paragraf rata tengah; mulai lg rata kiri */}
+      <PageHero {...page.hero} centerOnMobile />
       {page.sections.map((section, i) => (
         <FeatureSplit
           key={section.id ?? section.title}
           {...section}
+          centerOnMobile
           tone={groups[i] % 2 === 0 ? "surface" : "white"}
           reverse={groups[i] % 2 === 1}
         />
       ))}
-      {page.ctaVisual ? <VisualCta {...page.cta} visual={page.ctaVisual} /> : <FinalCta {...page.cta} />}
+      {page.ctaVisual ? (
+        <VisualCta {...page.cta} visual={page.ctaVisual} centerOnMobile />
+      ) : (
+        <FinalCta {...page.cta} />
+      )}
     </>
   );
 }

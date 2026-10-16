@@ -11,6 +11,8 @@ type FeatureSplitProps = FeatureBlockData & {
   tone?: SectionTone;
   /** Visual di kiri (dipakai berselang-seling antar section) */
   reverse?: boolean;
+  /** Eyebrow, judul, dan paragraf rata tengah di bawah `lg`; poin tetap rata kiri. Rata kiri mulai `lg`. */
+  centerOnMobile?: boolean;
 };
 
 /** Pola "Split": teks + poin di satu sisi, mockup produk di sisi lain. */
@@ -25,6 +27,7 @@ export function FeatureSplit({
   continued = false,
   tone = "white",
   reverse = false,
+  centerOnMobile = false,
 }: FeatureSplitProps) {
   // Rekaman layar & screenshot butuh ruang lebih: kolom visual lebih lebar dan bingkai panel lebih tipis.
   const isScreen = visual.type === "video" || visual.type === "screenshot";
@@ -45,8 +48,13 @@ export function FeatureSplit({
             : "lg:grid-cols-2 lg:gap-20",
         )}
       >
-        <div className="flex flex-col gap-5">
-          <Reveal className="flex flex-col gap-5">
+        <div className={cn("flex flex-col gap-5", centerOnMobile && "items-center lg:items-stretch")}>
+          <Reveal
+            className={cn(
+              "flex flex-col gap-5",
+              centerOnMobile && "items-center text-center lg:items-start lg:text-left",
+            )}
+          >
             <Eyebrow>{eyebrow}</Eyebrow>
             <h2 className="text-h2 text-balance">{title}</h2>
             <p className="text-lead text-pretty text-brand-charcoal">{body}</p>
