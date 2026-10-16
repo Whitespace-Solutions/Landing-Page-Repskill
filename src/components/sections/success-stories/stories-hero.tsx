@@ -45,7 +45,8 @@ export function StoriesHero({ eyebrow, title, highlight, lead, primary, secondar
           <motion.div variants={rise}>
             <Eyebrow>{eyebrow}</Eyebrow>
           </motion.div>
-          <motion.h1 variants={rise} className="text-display text-balance">
+          {/* Mobile: text-h1 supaya judul pas dua baris ("See Expertise" / "Become Capability"); mulai sm ukuran display */}
+          <motion.h1 variants={rise} className="text-h1 text-balance sm:text-display">
             <HighlightText text={title} highlight={highlight} />
           </motion.h1>
           <motion.p variants={rise} className="max-w-[620px] text-lead text-pretty text-brand-charcoal">
