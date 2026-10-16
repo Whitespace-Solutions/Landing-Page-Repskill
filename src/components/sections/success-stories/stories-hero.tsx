@@ -52,14 +52,27 @@ export function StoriesHero({ eyebrow, title, highlight, lead, primary, secondar
             {lead}
           </motion.p>
           {(primary || secondary) && (
-            <motion.div variants={rise} className="mt-2 flex flex-wrap justify-center gap-3 lg:justify-start">
+            <motion.div
+              variants={rise}
+              className="mt-2 grid w-full max-w-[440px] grid-cols-2 gap-3 sm:flex sm:w-auto sm:max-w-none sm:flex-wrap sm:justify-center lg:justify-start"
+            >
               {primary && (
-                <ButtonLink href={primary.href} size="lg" withArrow>
+                <ButtonLink
+                  href={primary.href}
+                  size="lg"
+                  withArrow
+                  className="w-full px-3 text-sm whitespace-nowrap sm:w-auto sm:px-6 sm:text-base"
+                >
                   {primary.label}
                 </ButtonLink>
               )}
               {secondary && (
-                <ButtonLink href={secondary.href} size="lg" variant="outline">
+                <ButtonLink
+                  href={secondary.href}
+                  size="lg"
+                  variant="outline"
+                  className="w-full px-3 text-sm whitespace-nowrap sm:w-auto sm:px-6 sm:text-base"
+                >
                   {secondary.label}
                 </ButtonLink>
               )}

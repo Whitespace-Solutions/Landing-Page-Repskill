@@ -62,11 +62,24 @@ export function Hero() {
             Repskill is AI sales coaching that turns your best people’s knowledge into sales skills your whole
             team can build.
           </motion.p>
-          <motion.div variants={rise} className="mt-2 flex flex-wrap justify-center gap-3 lg:justify-start">
-            <ButtonLink href={primaryCta.href} size="lg" withArrow>
+          <motion.div
+            variants={rise}
+            className="mt-2 grid w-full max-w-[440px] grid-cols-2 gap-3 sm:flex sm:w-auto sm:max-w-none sm:flex-wrap sm:justify-center lg:justify-start"
+          >
+            <ButtonLink
+              href={primaryCta.href}
+              size="lg"
+              withArrow
+              className="w-full px-3 text-sm whitespace-nowrap sm:w-auto sm:px-6 sm:text-base"
+            >
               {primaryCta.label}
             </ButtonLink>
-            <ButtonLink href="#solution" size="lg" variant="outline">
+            <ButtonLink
+              href="#solution"
+              size="lg"
+              variant="outline"
+              className="w-full px-3 text-sm whitespace-nowrap sm:w-auto sm:px-6 sm:text-base"
+            >
               Explore Repskill
             </ButtonLink>
           </motion.div>
