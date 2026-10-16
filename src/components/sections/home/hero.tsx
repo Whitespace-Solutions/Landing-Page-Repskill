@@ -44,13 +44,15 @@ export function Hero() {
           </motion.div>
           <motion.h1
             variants={rise}
-            // Mobile: text-display-mobile (30px) supaya pas dua baris "Make Sales" / "Expertise Scalable", termasuk kata
+            // Mobile: text-display-mobile (30–35px, ikut lebar layar) supaya pas dua baris "Make Sales" / "Expertise Scalable", termasuk kata
             // terpanjang yang bergantian; mulai sm ukuran display
             className="text-display-mobile text-balance sm:text-display"
             // Nama tetap untuk pembaca layar: "Make Sales Expertise Scalable" (kata pertama), tanpa ikut berganti
             aria-label={`${heroHeadline.lead} ${heroHeadline.lastWord} ${heroHeadline.rotatingWords[0]}`}
           >
             {heroHeadline.lead}{" "}
+            {/* Di bawah sm selalu dua baris, juga di layar HP yang lebar (mis. landscape) */}
+            <br className="sm:hidden" />
             <span className="whitespace-nowrap lg:whitespace-normal xl:whitespace-nowrap">
               {heroHeadline.lastWord}{" "}
               {/* Lebar dikunci ke kata terpanjang; kata rata kiri di kotaknya supaya tidak ada celah setelah "Expertise" */}

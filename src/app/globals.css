@@ -28,7 +28,11 @@
   --text-display--letter-spacing: -0.035em;
   --text-display--font-weight: 800;
   /* Hero di HP (di bawah sm) bila judul harus pas dua baris, mis. hero Home dengan kata yang bergantian */
-  --text-display-mobile: 1.875rem; /* 30px */
+  --text-display-mobile: clamp(
+    1.875rem,
+    8.8vw,
+    2.1875rem
+  ); /* 30–35px: ±32px di HP 360, ±34px di 390, 35px mulai ±400 */
   --text-display-mobile--line-height: 1.08;
   --text-display-mobile--letter-spacing: -0.03em;
   --text-display-mobile--font-weight: 800;

@@ -7,17 +7,17 @@ Dimuat lewat `next/font` di [`src/app/layout.tsx`](../../src/app/layout.tsx). Ja
 
 Setiap token sudah membawa ukuran responsif, line-height, letter-spacing, dan weight. Cukup satu class.
 
-| Token                 | Ukuran        | Weight | Dipakai untuk                                                                        | Contoh                          |
-| --------------------- | ------------- | ------ | ------------------------------------------------------------------------------------ | ------------------------------- |
-| `text-display`        | 42–64px       | 800    | H1 hero (1× per halaman)                                                             | Make Sales Expertise Scalable   |
-| `text-display-mobile` | 30px          | 800    | H1 hero di HP (di bawah `sm`) bila judul harus pas dua baris, lalu `sm:text-display` | Make Sales / Expertise Scalable |
-| `text-h1`             | 36–48px       | 800    | Judul besar section utama / CTA                                                      | From Expertise to Capability.   |
-| `text-h2`             | 28–36px       | 700    | Judul section standar                                                                | Learn. Practice. Reflect.       |
-| `text-h3`             | 20–24px       | 700    | Judul kartu / sub-section                                                            | Scenario Studio                 |
-| `text-lead`           | 18–20px       | 400    | Paragraf pembuka di bawah judul                                                      |                                 |
-| `text-base`           | 16px          | 400    | Body umum                                                                            |                                 |
-| `text-caption`        | 13px          | 400    | Catatan, meta, legal                                                                 | Last updated · 01 Oct 2026      |
-| `text-eyebrow`        | 13px, +0.14em | 700    | Label UPPERCASE di atas judul (komponen `Eyebrow`)                                   | HOW REPSKILL WORKS              |
+| Token                 | Ukuran        | Weight | Dipakai untuk                                                                                          | Contoh                          |
+| --------------------- | ------------- | ------ | ------------------------------------------------------------------------------------------------------ | ------------------------------- |
+| `text-display`        | 42–64px       | 800    | H1 hero (1× per halaman)                                                                               | Make Sales Expertise Scalable   |
+| `text-display-mobile` | 30–35px       | 800    | H1 hero di HP (di bawah `sm`), ikut lebar layar (`8.8vw`) supaya pas dua baris; lalu `sm:text-display` | Make Sales / Expertise Scalable |
+| `text-h1`             | 36–48px       | 800    | Judul besar section utama / CTA                                                                        | From Expertise to Capability.   |
+| `text-h2`             | 28–36px       | 700    | Judul section standar                                                                                  | Learn. Practice. Reflect.       |
+| `text-h3`             | 20–24px       | 700    | Judul kartu / sub-section                                                                              | Scenario Studio                 |
+| `text-lead`           | 18–20px       | 400    | Paragraf pembuka di bawah judul                                                                        |                                 |
+| `text-base`           | 16px          | 400    | Body umum                                                                                              |                                 |
+| `text-caption`        | 13px          | 400    | Catatan, meta, legal                                                                                   | Last updated · 01 Oct 2026      |
+| `text-eyebrow`        | 13px, +0.14em | 700    | Label UPPERCASE di atas judul (komponen `Eyebrow`)                                                     | HOW REPSKILL WORKS              |
 
 Tombol memakai 15–16px semibold (sudah diatur di komponen `ButtonLink`).
 
