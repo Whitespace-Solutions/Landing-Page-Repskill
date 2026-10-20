@@ -42,34 +42,34 @@ export const clientsSection = {
 /** Section masalah (sales deck, slide 2–4): tiga hal yang rusak + kenapa cara biasa tidak menempel. */
 export const problemSection = {
   eyebrow: "The Problem",
-  title: "Your revenue rides on a few people",
-  highlight: "a few people",
-  lead: "Every sales team has a top rep everyone else depends on. Nobody can explain exactly how they do it, so the rest of the team learns on live customers. That's the most expensive classroom there is.",
+  title: "The gap between top reps and the rest is costing you sales",
+  highlight: "costing you sales",
+  lead: "Top reps close deals, but winning skills are hard to share, so the rest of the team learns slowly on real customers.",
   pains: [
     {
       icon: "ramp",
-      title: "Ramp is slow",
-      body: "New reps take months to become productive, paid for in senior time and lost deals.",
+      title: "Slow to learn",
+      body: "New reps need months to get good, and every week costs deals.",
     },
     {
       icon: "pitch",
-      title: "Pitch is uneven",
-      body: "Same product, different story. What the customer hears depends on who picks up the phone.",
+      title: "Mixed messages",
+      body: "Same product, but customers hear a different story from each rep.",
     },
     {
       icon: "walkout",
-      title: "Know-how walks out",
-      body: "When a top rep resigns, their playbook leaves with them. The next hire starts from zero.",
+      title: "Skills walk out",
+      body: "When a top rep leaves, their know-how leaves too.",
     },
   ] satisfies { icon: DuoIconName; title: string; body: string }[],
-  fixesLabel: "THE USUAL FIXES DON'T STICK",
+  fixesLabel: "WHY THE USUAL FIXES FAIL",
   fixes: [
-    { label: "Classroom training", verdict: "Heard once. Forgotten next month." },
-    { label: "Roleplay with colleagues", verdict: "Awkward, rare, and unscored." },
-    { label: "Generic AI chatbot", verdict: "Doesn't know your product." },
+    { label: "Classroom training", verdict: "Easy to forget and hard to use." },
+    { label: "Roleplay with coworkers", verdict: "Awkward, rare, and never scored." },
+    { label: "Generic AI", verdict: "Sounds smart but doesn't know the business." },
   ],
   closing: {
-    text: "Selling is a skill. Skills are built by practice rather than more content.",
+    text: "Selling is a skill, and you get better by practice, not by reading more.",
     highlight: "practice",
   },
 };
