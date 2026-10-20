@@ -43,6 +43,8 @@ jobs:
           NEXT_PUBLIC_SITE_URL: ${{ vars.SITE_URL || steps.pages.outputs.base_url }}
           # Endpoint penerima formulir Book Demo (Settings → Secrets and variables → Actions → Variables)
           NEXT_PUBLIC_FORM_ENDPOINT: ${{ vars.FORM_ENDPOINT }}
+          # Access key Web3Forms (opsional; default ada di src/lib/submit-form.ts)
+          NEXT_PUBLIC_WEB3FORMS_KEY: ${{ vars.WEB3FORMS_KEY }}
           # Alamat login aplikasi Repskill untuk menu "Log in" di header
           NEXT_PUBLIC_LOGIN_URL: ${{ vars.LOGIN_URL }}
 

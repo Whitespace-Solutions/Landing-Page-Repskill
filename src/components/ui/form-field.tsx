@@ -91,6 +91,62 @@ export function TextAreaField({
   );
 }
 
+/** Dropdown native dengan label, placeholder "Select…", dan ikon chevron. */
+export function SelectField({
+  label,
+  name,
+  value,
+  onChange,
+  error,
+  optional,
+  placeholder = "Select…",
+  options,
+}: BaseProps & { options: readonly string[] }) {
+  return (
+    <label className="flex flex-col gap-2">
+      <Label label={label} optional={optional} />
+      <span className="relative">
+        <select
+          name={name}
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          aria-invalid={!!error}
+          className={cn(
+            control,
+            "h-12 w-full appearance-none bg-white pr-11 pl-4",
+            !value && "text-brand-charcoal/60",
+            controlState(error),
+          )}
+        >
+          <option value="" disabled>
+            {placeholder}
+          </option>
+          {options.map((option) => (
+            <option key={option} value={option} className="text-brand-grey">
+              {option}
+            </option>
+          ))}
+        </select>
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="pointer-events-none absolute top-1/2 right-4 -translate-y-1/2 text-brand-charcoal"
+          aria-hidden
+        >
+          <path d="M6 9l6 6 6-6" />
+        </svg>
+      </span>
+      <ErrorText error={error} />
+    </label>
+  );
+}
+
 /** Pesan error kirim formulir (di atas tombol submit). */
 export function FormError({ children }: { children: React.ReactNode }) {
   return (
@@ -104,7 +160,18 @@ export function FormError({ children }: { children: React.ReactNode }) {
 }
 
 /** Tampilan sukses setelah formulir terkirim: centang amber + judul + teks. */
-export function FormSuccess({ title, body, className }: { title: string; body: string; className?: string }) {
+export function FormSuccess({
+  title,
+  body,
+  className,
+  children,
+}: {
+  title: string;
+  body: string;
+  className?: string;
+  /** Aksi lanjutan di bawah teks, mis. tombol tambah ke kalender */
+  children?: React.ReactNode;
+}) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 12 }}
@@ -134,6 +201,7 @@ export function FormSuccess({ title, body, className }: { title: string; body: s
       </motion.span>
       <h2 className="text-h3">{title}</h2>
       <p className="text-brand-charcoal">{body}</p>
+      {children}
     </motion.div>
   );
 }

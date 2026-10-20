@@ -88,10 +88,14 @@ sitemap ikut terbuat otomatis. Set `draft: false` setelah kontennya disetujui kl
 
 ### Formulir Book Demo
 
-Website ini statis, jadi data formulir dikirim (POST JSON) ke layanan penerima formulir, misalnya Formspree, Web3Forms,
-HubSpot, atau API sendiri. Isi URL endpoint-nya di GitHub: **Settings → Secrets and variables → Actions → Variables →
-`FORM_ENDPOINT`**. Untuk lokal, buat file `.env.local` berisi `NEXT_PUBLIC_FORM_ENDPOINT=https://…`.
-Selama endpoint belum diisi, formulir menampilkan pesan error dan tidak menyimpan data.
+Website ini statis, jadi formulir Book Demo dan Feature Request dikirim ke **Web3Forms**, yang meneruskannya ke email
+yang didaftarkan saat membuat access key (saat ini sanusi.goocel@gmail.com; ubah di dashboard web3forms.com). Access key
+ada di `src/lib/submit-form.ts` (memang publik) dan bisa diganti lewat GitHub variable **`WEB3FORMS_KEY`**. Untuk
+memakai penerima lain (Formspree, HubSpot, API sendiri; POST JSON), isi variable **`FORM_ENDPOINT`**. Web3Forms
+menolak kiriman dari server/terminal; tes lewat browser.
+
+Book Demo mengirim dua email: **New demo request** setelah langkah 2, dan **Demo booked** setelah pengunjung memilih jadwal
+(berisi link `addToGoogleCalendar` untuk membuat acara + mengundang pengunjung).
 
 ### Animasi
 

@@ -1,148 +1,356 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { FormError, FormSuccess, TextAreaField, TextField } from "@/components/ui/form-field";
-import { bookDemoPage } from "@/content/book-demo";
+import { EASE_OUT } from "@/components/motion/reveal";
+import { ArrowRight } from "@/components/ui/button";
+import { FormError, FormSuccess, SelectField, TextField } from "@/components/ui/form-field";
+import { bookDemoPage, demoSchedule } from "@/content/book-demo";
+import { type CalendarEvent, downloadIcs, googleCalendarUrl } from "@/lib/calendar";
 import { cn } from "@/lib/cn";
 import { submitForm } from "@/lib/submit-form";
+import { DemoScheduler, formatSlot } from "./demo-scheduler";
 
-type Field = "name" | "email" | "company" | "role" | "teamSize" | "improve";
-type Values = Record<Field, string>;
+const SOURCE = "repskill.ai/book-demo";
 
-const EMPTY: Values = { name: "", email: "", company: "", role: "", teamSize: "", improve: "" };
+type Values = {
+  email: string;
+  firstName: string;
+  lastName: string;
+  company: string;
+  businessModel: string;
+  reps: string;
+  heardFrom: string;
+};
+type Field = keyof Values;
+type Errors = Partial<Record<Field, string>>;
 
-function validate(v: Values) {
-  const errors: Partial<Record<Field, string>> = {};
-  if (!v.name.trim()) errors.name = "Please enter your name.";
-  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v.email)) errors.email = "Please enter a valid work email.";
+const EMPTY: Values = {
+  email: "",
+  firstName: "",
+  lastName: "",
+  company: "",
+  businessModel: "",
+  reps: "",
+  heardFrom: "",
+};
+
+function validateContact(v: Values) {
+  const errors: Errors = {};
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v.email.trim())) errors.email = "Please enter a valid work email.";
+  if (!v.firstName.trim()) errors.firstName = "Please enter your first name.";
+  if (!v.lastName.trim()) errors.lastName = "Please enter your last name.";
   if (!v.company.trim()) errors.company = "Please enter your company.";
-  if (!v.role.trim()) errors.role = "Please enter your job title or role.";
   return errors;
 }
 
-export function DemoForm() {
-  const { form } = bookDemoPage;
-  const [values, setValues] = useState<Values>(EMPTY);
-  const [errors, setErrors] = useState<Partial<Record<Field, string>>>({});
-  const [state, setState] = useState<"idle" | "sending" | "done" | "error">("idle");
+function validateTeam(v: Values) {
+  const errors: Errors = {};
+  if (!v.businessModel) errors.businessModel = "Please choose your business model.";
+  if (!v.reps) errors.reps = "Please choose the size of your team.";
+  return errors;
+}
 
-  const set = (field: Field, value: string) => {
+/** Data lead sebagai teks datar untuk email. */
+function leadPayload(v: Values) {
+  return {
+    name: `${v.firstName.trim()} ${v.lastName.trim()}`,
+    email: v.email.trim(),
+    company: v.company.trim(),
+    businessModel: v.businessModel,
+    customerFacingReps: v.reps,
+    heardFrom: v.heardFrom.trim(),
+  };
+}
+
+/**
+ * Book Demo tiga langkah: (1) email & nama → (2) pertanyaan tim → kirim lead → (3) pilih jadwal → kirim booking.
+ * Lead sudah terkirim di akhir langkah 2, jadi tidak hilang walau pengunjung tidak memilih jadwal.
+ */
+export function DemoForm() {
+  const { form, meeting } = bookDemoPage;
+  const [step, setStep] = useState(0);
+  const [values, setValues] = useState<Values>(EMPTY);
+  const [errors, setErrors] = useState<Errors>({});
+  const [state, setState] = useState<"idle" | "sending" | "error">("idle");
+  const [done, setDone] = useState<{ title: string; body: string; event?: CalendarEvent } | null>(null);
+  const panel = useRef<HTMLDivElement>(null);
+  const moved = useRef(false);
+
+  // Setelah pindah langkah, fokus ke judul langkah (pembaca layar & keyboard) dan pastikan panel terlihat di HP
+  useEffect(() => {
+    if (!moved.current) return;
+    panel.current?.querySelector<HTMLElement>("[data-step-title]")?.focus({ preventScroll: true });
+    const top = panel.current?.getBoundingClientRect().top ?? 0;
+    if (top < 0) panel.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [step, done]);
+
+  const set = <K extends Field>(field: K, value: Values[K]) => {
     setValues((v) => ({ ...v, [field]: value }));
     setErrors((e) => ({ ...e, [field]: undefined }));
   };
 
+  const go = (next: number) => {
+    moved.current = true;
+    setState("idle");
+    setStep(next);
+  };
+
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const found = validate(values);
+    if (step === 0) {
+      const found = validateContact(values);
+      setErrors(found);
+      if (!Object.keys(found).length) go(1);
+      return;
+    }
+
+    const found = validateTeam(values);
     setErrors(found);
     if (Object.keys(found).length) return;
 
     setState("sending");
-    const ok = await submitForm("repskill.ai/book-demo", values);
-    setState(ok ? "done" : "error");
+    const lead = leadPayload(values);
+    const ok = await submitForm(
+      SOURCE,
+      { stage: "Demo request (time not picked yet)", ...lead },
+      { subject: `New demo request: ${lead.name}, ${lead.company}`, replyTo: lead.email },
+    );
+    if (ok) go(2);
+    else setState("error");
+  }
+
+  async function onBook(slot: Date, timeZone: string) {
+    const lead = leadPayload(values);
+    const visitorTime = formatSlot(slot, timeZone);
+    const hostTime = formatSlot(slot, demoSchedule.hostTimeZone);
+    // Untuk tim: klik link di email → Save di Google Calendar → undangan otomatis terkirim ke pengunjung
+    const teamEvent: CalendarEvent = {
+      title: `Repskill Demo · ${lead.company}`,
+      start: slot,
+      durationMinutes: demoSchedule.durationMinutes,
+      details: [
+        `Demo with ${lead.name} (${lead.email}), ${lead.company}.`,
+        `Business model: ${lead.businessModel}`,
+        `Sales reps: ${lead.customerFacingReps}`,
+        lead.heardFrom && `Heard from: ${lead.heardFrom}`,
+      ]
+        .filter(Boolean)
+        .join("\n"),
+      guests: [lead.email],
+    };
+    const ok = await submitForm(
+      SOURCE,
+      {
+        stage: "Demo booked",
+        meetingTime: hostTime,
+        visitorTime,
+        meetingStartUtc: slot.toISOString(),
+        addToGoogleCalendar: googleCalendarUrl(teamEvent),
+        ...lead,
+      },
+      { subject: `Demo booked: ${lead.name}, ${lead.company} · ${hostTime}`, replyTo: lead.email },
+    );
+    if (ok) {
+      moved.current = true;
+      setDone({
+        title: form.booked.title,
+        body: form.booked.body(visitorTime, lead.email),
+        event: {
+          title: meeting.title,
+          start: slot,
+          durationMinutes: demoSchedule.durationMinutes,
+          details: meeting.calendarDetails,
+        },
+      });
+    }
+    return ok;
+  }
+
+  function onSkip() {
+    moved.current = true;
+    setDone(form.requested);
   }
 
   return (
-    <div className="rounded-panel border border-line bg-white p-6 shadow-float sm:p-10">
-      <AnimatePresence mode="wait" initial={false}>
-        {state === "done" ? (
-          <FormSuccess
-            key="done"
-            title={form.success.title}
-            body={form.success.body}
-            className="min-h-[420px]"
-          />
-        ) : (
-          <motion.form
-            key="form"
-            exit={{ opacity: 0, y: -12 }}
-            onSubmit={onSubmit}
-            noValidate
-            className="flex flex-col gap-5"
-          >
-            <div className="grid gap-5 sm:grid-cols-2">
-              <TextField
-                label="Name"
-                name="name"
-                autoComplete="name"
-                value={values.name}
-                error={errors.name}
-                onChange={(v) => set("name", v)}
-              />
-              <TextField
-                label="Work Email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                value={values.email}
-                error={errors.email}
-                onChange={(v) => set("email", v)}
-              />
-              <TextField
-                label="Company"
-                name="company"
-                autoComplete="organization"
-                value={values.company}
-                error={errors.company}
-                onChange={(v) => set("company", v)}
-              />
-              <TextField
-                label="Job Title / Role"
-                name="role"
-                autoComplete="organization-title"
-                value={values.role}
-                error={errors.role}
-                onChange={(v) => set("role", v)}
-              />
+    <div
+      ref={panel}
+      className="scroll-mt-28 rounded-panel border border-line bg-white p-6 shadow-float sm:p-10"
+    >
+      {done ? (
+        <FormSuccess title={done.title} body={done.body} className="min-h-[420px]">
+          {done.event && (
+            <div className="mt-2 flex flex-wrap justify-center gap-3">
+              <a
+                href={googleCalendarUrl(done.event)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-button bg-brand-orange px-5 py-3 text-base font-semibold text-white transition-colors hover:bg-brand-orange-hover"
+              >
+                {meeting.addToGoogle}
+              </a>
+              <button
+                type="button"
+                onClick={() => downloadIcs(done.event!)}
+                className="inline-flex items-center justify-center rounded-button border-[1.5px] border-line px-5 py-3 text-base font-semibold text-brand-grey transition-colors hover:border-brand-grey"
+              >
+                {meeting.downloadIcs}
+              </button>
             </div>
-
-            <fieldset className="flex flex-col gap-2">
-              <legend className="mb-2 text-sm font-semibold text-brand-grey">Team Size</legend>
-              <div className="flex flex-wrap gap-2">
-                {form.teamSizes.map((size) => {
-                  const active = values.teamSize === size;
-                  return (
-                    <button
-                      key={size}
-                      type="button"
-                      aria-pressed={active}
-                      onClick={() => set("teamSize", active ? "" : size)}
-                      className={cn(
-                        "rounded-button border px-4 py-2.5 text-sm font-semibold transition-colors",
-                        active
-                          ? "border-brand-grey bg-brand-grey text-white"
-                          : "border-line bg-white text-brand-charcoal hover:border-brand-grey",
-                      )}
-                    >
-                      {size}
-                    </button>
-                  );
-                })}
-              </div>
-            </fieldset>
-
-            <TextAreaField
-              label="What are you looking to improve?"
-              name="improve"
-              optional
-              value={values.improve}
-              onChange={(v) => set("improve", v)}
-            />
-
-            {state === "error" && <FormError>{form.error}</FormError>}
-
-            <button
-              type="submit"
-              disabled={state === "sending"}
-              className="mt-1 inline-flex items-center justify-center gap-2 rounded-button bg-brand-orange px-6 py-4 text-base font-semibold text-white transition-colors hover:bg-brand-orange-hover disabled:opacity-60"
+          )}
+        </FormSuccess>
+      ) : (
+        <div className="flex flex-col gap-8">
+          <StepIndicator steps={form.steps} current={step} />
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={step}
+              initial={{ opacity: 0, x: 24 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -24 }}
+              transition={{ duration: 0.3, ease: EASE_OUT }}
             >
-              {state === "sending" ? "Sending…" : form.submit}
-            </button>
-            <p className="text-caption text-brand-charcoal">{form.consent}</p>
-          </motion.form>
-        )}
-      </AnimatePresence>
+              {step === 2 ? (
+                <div className="flex flex-col gap-6">
+                  <StepTitle>{form.steps[2]}</StepTitle>
+                  <DemoScheduler onConfirm={onBook} onSkip={onSkip} />
+                </div>
+              ) : (
+                <form onSubmit={onSubmit} noValidate className="flex flex-col gap-5">
+                  {step === 0 ? (
+                    <>
+                      <StepTitle>{form.contact.title}</StepTitle>
+                      <TextField
+                        label="Work Email"
+                        name="email"
+                        type="email"
+                        autoComplete="email"
+                        value={values.email}
+                        error={errors.email}
+                        onChange={(v) => set("email", v)}
+                      />
+                      <div className="grid gap-5 sm:grid-cols-2">
+                        <TextField
+                          label="First Name"
+                          name="firstName"
+                          autoComplete="given-name"
+                          value={values.firstName}
+                          error={errors.firstName}
+                          onChange={(v) => set("firstName", v)}
+                        />
+                        <TextField
+                          label="Last Name"
+                          name="lastName"
+                          autoComplete="family-name"
+                          value={values.lastName}
+                          error={errors.lastName}
+                          onChange={(v) => set("lastName", v)}
+                        />
+                      </div>
+                      <TextField
+                        label="Company"
+                        name="company"
+                        autoComplete="organization"
+                        value={values.company}
+                        error={errors.company}
+                        onChange={(v) => set("company", v)}
+                      />
+                      <button
+                        type="submit"
+                        className="mt-2 inline-flex items-center justify-center gap-2 self-start rounded-button bg-brand-orange px-6 py-4 text-base font-semibold text-white transition-colors hover:bg-brand-orange-hover"
+                      >
+                        {form.contact.next}
+                        <ArrowRight />
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <StepTitle>{form.team.title}</StepTitle>
+                      <SelectField
+                        label={form.team.businessModel.label}
+                        name="businessModel"
+                        options={form.team.businessModel.options}
+                        value={values.businessModel}
+                        error={errors.businessModel}
+                        onChange={(v) => set("businessModel", v)}
+                      />
+                      <SelectField
+                        label={form.team.reps.label}
+                        name="reps"
+                        options={form.team.reps.options}
+                        value={values.reps}
+                        error={errors.reps}
+                        onChange={(v) => set("reps", v)}
+                      />
+                      <TextField
+                        label={form.team.source.label}
+                        name="heardFrom"
+                        optional
+                        value={values.heardFrom}
+                        onChange={(v) => set("heardFrom", v)}
+                      />
+
+                      {state === "error" && <FormError>{form.error}</FormError>}
+
+                      <div className="mt-2 flex items-center justify-between gap-3">
+                        <button
+                          type="button"
+                          onClick={() => go(0)}
+                          className="rounded-button border-[1.5px] border-line px-6 py-4 text-base font-semibold text-brand-grey transition-colors hover:border-brand-grey"
+                        >
+                          {form.team.back}
+                        </button>
+                        <button
+                          type="submit"
+                          disabled={state === "sending"}
+                          className="inline-flex items-center justify-center gap-2 rounded-button bg-brand-orange px-6 py-4 text-base font-semibold text-white transition-colors hover:bg-brand-orange-hover disabled:opacity-60"
+                        >
+                          {state === "sending" ? form.sending : form.team.submit}
+                          {state !== "sending" && <ArrowRight />}
+                        </button>
+                      </div>
+                      <p className="text-caption text-brand-charcoal">{form.consent}</p>
+                    </>
+                  )}
+                </form>
+              )}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function StepTitle({ children }: { children: React.ReactNode }) {
+  return (
+    <h2 data-step-title tabIndex={-1} className="text-h3 outline-none">
+      {children}
+    </h2>
+  );
+}
+
+/** "Step 1 of 3" + tiga segmen: selesai = amber, sekarang = oranye, belum = line. */
+function StepIndicator({ steps, current }: { steps: string[]; current: number }) {
+  return (
+    <div className="flex flex-col gap-3">
+      <p className="text-caption font-semibold text-brand-charcoal">
+        Step {current + 1} of {steps.length} · <span className="text-brand-grey">{steps[current]}</span>
+      </p>
+      <ol className="grid gap-2" style={{ gridTemplateColumns: `repeat(${steps.length}, minmax(0, 1fr))` }}>
+        {steps.map((label, i) => (
+          <li
+            key={label}
+            aria-current={i === current ? "step" : undefined}
+            className={cn(
+              "h-1.5 rounded-full transition-colors duration-300",
+              i < current ? "bg-brand-amber" : i === current ? "bg-brand-orange" : "bg-line",
+            )}
+          >
+            <span className="sr-only">{label}</span>
+          </li>
+        ))}
+      </ol>
     </div>
   );
 }
