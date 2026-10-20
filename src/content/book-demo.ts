@@ -51,7 +51,10 @@ export const bookDemoPage = {
     confirm: "Confirm Booking",
     skip: "Skip for now, contact me by email",
     addToGoogle: "Add to Google Calendar",
-    downloadIcs: "Download .ics",
+    /** Label tombol setelah diklik */
+    addedToGoogle: "Added to Calendar",
+    icsHint: "Using Outlook or Apple Calendar?",
+    downloadIcs: "Download the invite",
     /** Detail acara di kalender pengunjung */
     calendarDetails: "Intro call with the Repskill team. We will send the meeting link by email.",
   },

@@ -74,6 +74,7 @@ export function DemoForm() {
   const [errors, setErrors] = useState<Errors>({});
   const [state, setState] = useState<"idle" | "sending" | "error">("idle");
   const [done, setDone] = useState<{ title: string; body: string; event?: CalendarEvent } | null>(null);
+  const [added, setAdded] = useState(false);
   const panel = useRef<HTMLDivElement>(null);
   const moved = useRef(false);
 
@@ -180,22 +181,47 @@ export function DemoForm() {
       {done ? (
         <FormSuccess title={done.title} body={done.body} className="min-h-[420px]">
           {done.event && (
-            <div className="mt-2 flex flex-wrap justify-center gap-3">
+            <div className="mt-2 flex flex-col items-center gap-4">
+              {/* Setelah diklik: state "selesai" (amber + centang); tetap bisa diklik lagi */}
               <a
                 href={googleCalendarUrl(done.event)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-button bg-brand-orange px-5 py-3 text-base font-semibold text-white transition-colors hover:bg-brand-orange-hover"
+                onClick={() => setAdded(true)}
+                className={cn(
+                  "inline-flex items-center justify-center gap-2 rounded-button px-5 py-3 text-base font-semibold transition-colors",
+                  added
+                    ? "bg-brand-amber text-brand-grey"
+                    : "bg-brand-orange text-white hover:bg-brand-orange-hover",
+                )}
               >
-                {meeting.addToGoogle}
+                {added && (
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.6"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden
+                  >
+                    <path d="M5 12l5 5L20 7" />
+                  </svg>
+                )}
+                {added ? meeting.addedToGoogle : meeting.addToGoogle}
               </a>
-              <button
-                type="button"
-                onClick={() => downloadIcs(done.event!)}
-                className="inline-flex items-center justify-center rounded-button border-[1.5px] border-line px-5 py-3 text-base font-semibold text-brand-grey transition-colors hover:border-brand-grey"
-              >
-                {meeting.downloadIcs}
-              </button>
+              <p className="text-sm text-brand-charcoal">
+                {meeting.icsHint}{" "}
+                <button
+                  type="button"
+                  onClick={() => downloadIcs(done.event!)}
+                  className="font-semibold text-brand-grey underline underline-offset-4 hover:text-brand-orange"
+                >
+                  {meeting.downloadIcs}
+                </button>
+              </p>
             </div>
           )}
         </FormSuccess>
