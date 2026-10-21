@@ -63,7 +63,7 @@ export const primaryCta: NavLink = { label: "Book Demo", href: "/book-demo/" };
  */
 export const loginLink: NavLink = {
   label: "Log in",
-  href: process.env.NEXT_PUBLIC_LOGIN_URL || "/book-demo/",
+  href: process.env.NEXT_PUBLIC_LOGIN_URL || "http://app.repskill.ai/",
 };
 
 export const mainNav: NavItem[] = [
