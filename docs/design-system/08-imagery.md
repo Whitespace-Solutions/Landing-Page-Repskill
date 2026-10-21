@@ -84,6 +84,7 @@ Foto orang di situasi kerja (tim sales, coaching), pencahayaan natural, tanpa fi
   Ikon pop-up: `mic` · `document` · `path` · `check` · `chart`. Jaga `role` cukup pendek agar satu baris.
 - **CTA halaman fitur (`VisualCta`):** potret heksagon besar (sumber sama: `Image Capture.png`, `Image Learn.png`,
   `Image Practice.png`) disimpan sebagai WebP 560–600px (30–40 KB, tidak diperbesar dari aslinya) di `src/assets/images/cta/`.
+  Foto CTA Learn sama dengan foto hero Learn: wanita dengan laptop (`cta/capture-portrait`), keputusan user 2026-10-21.
 - **Rekaman layar produk (mockup `video`):** GIF dari user dikonversi ke MP4 H.264 (dipotong ke jendela aplikasi, tanpa
   margin putih, tanpa suara) di `public/media/`, plus poster WebP dari frame pertama di `src/assets/images/mockups/`.
   Jangan memakai GIF mentah: Reflection Studio 7,9 MB GIF → 1,4 MB MP4. Ditampilkan `VideoMockup` di kartu

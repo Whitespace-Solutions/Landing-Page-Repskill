@@ -378,7 +378,7 @@ export const learnPage: FeaturePage = {
       },
     },
   ],
-  ctaVisual: { image: learnPortrait, layout: "learn" },
+  ctaVisual: { image: capturePortrait, layout: "learn" },
   cta: {
     eyebrow: "Get Started",
     title: "Build Learning Around Your Own Expertise",
