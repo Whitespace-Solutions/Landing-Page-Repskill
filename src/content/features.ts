@@ -273,7 +273,7 @@ export const capturePage: FeaturePage = {
       },
     },
   ],
-  ctaVisual: { image: capturePortrait, layout: "capture" },
+  ctaVisual: { image: learnPortrait, layout: "capture" },
   cta: {
     eyebrow: "Get Started",
     title: "Make Your Best People's Expertise Scalable",
