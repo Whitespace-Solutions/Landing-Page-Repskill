@@ -140,19 +140,19 @@ export const differentiators = {
       items: [
         {
           title: "Bahasa-native voices",
-          body: "Buyers speak natural Indonesian and address your rep as Pak or Bu.",
+          body: "Buyers speak natural Indonesian and address your rep as Pak or Bu, just like a real customer would.",
         },
         {
           title: "Bilingual end to end",
-          body: "English and Bahasa Indonesia across screens, buyer voices, and reports.",
+          body: "English and Bahasa Indonesia across screens, buyer voices, and reports, so every rep feels at home.",
         },
         {
           title: "Voice-first practice",
-          body: "A live spoken conversation with the buyer, not a text quiz.",
+          body: "A live spoken conversation with the buyer, not a text quiz, so reps build real confidence out loud.",
         },
         {
           title: "Your company's voice",
-          body: "Describe the company once. Every AI feature sells your real products, your way.",
+          body: "Describe the company once. Every AI feature then sells your real products, in your way and tone.",
         },
       ],
     },
@@ -160,20 +160,20 @@ export const differentiators = {
       kicker: "YOUR KNOWLEDGE STAYS YOURS.",
       items: [
         {
-          title: "A separate store per company",
-          body: "Each company's knowledge lives in its own isolated store, not just filtered.",
+          title: "Separate company stores",
+          body: "Each company's knowledge lives in its own isolated store, never mixed with anyone else's.",
         },
         {
           title: "Approval gates the AI",
-          body: "Unapproved content never appears in any answer, roleplay, or score.",
+          body: "Unapproved content never appears in any answer, roleplay, or score, so reps learn only what you trust.",
         },
         {
-          title: "Guardrails, roles, and secure sign-in",
-          body: "Set what the AI must never say, combine five roles, and sign in with Google or Microsoft and two-factor authentication.",
+          title: "Roles and secure sign-in",
+          body: "Set what the AI must never say, assign five roles, and sign in with Google or Microsoft plus two-factor.",
         },
         {
           title: "Practice stays private",
-          body: "No role can listen to practice recordings, not even an admin.",
+          body: "No role can listen to practice recordings, not even an admin, so reps can practice without fear.",
         },
       ],
     },
