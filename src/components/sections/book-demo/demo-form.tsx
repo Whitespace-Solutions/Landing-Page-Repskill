@@ -176,7 +176,7 @@ export function DemoForm() {
   return (
     <div
       ref={panel}
-      className="scroll-mt-28 rounded-panel border border-line bg-white p-6 shadow-float sm:p-10"
+      className="scroll-mt-28 rounded-panel border border-line bg-white p-6 shadow-float sm:p-10 lg:p-8"
     >
       {done ? (
         <FormSuccess title={done.title} body={done.body} className="min-h-[420px]">
@@ -226,7 +226,7 @@ export function DemoForm() {
           )}
         </FormSuccess>
       ) : (
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-8 lg:gap-6">
           <StepIndicator steps={form.steps} current={step} />
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
@@ -242,7 +242,7 @@ export function DemoForm() {
                   <DemoScheduler onConfirm={onBook} onSkip={onSkip} />
                 </div>
               ) : (
-                <form onSubmit={onSubmit} noValidate className="flex flex-col gap-5">
+                <form onSubmit={onSubmit} noValidate className="flex flex-col gap-5 lg:gap-4">
                   {step === 0 ? (
                     <>
                       <StepTitle>{form.contact.title}</StepTitle>
@@ -255,7 +255,7 @@ export function DemoForm() {
                         error={errors.email}
                         onChange={(v) => set("email", v)}
                       />
-                      <div className="grid gap-5 sm:grid-cols-2">
+                      <div className="grid gap-5 sm:grid-cols-2 lg:gap-4">
                         <TextField
                           label="First Name"
                           name="firstName"
@@ -283,7 +283,7 @@ export function DemoForm() {
                       />
                       <button
                         type="submit"
-                        className="mt-2 inline-flex items-center justify-center gap-2 self-start rounded-button bg-brand-orange px-6 py-4 text-base font-semibold text-white transition-colors hover:bg-brand-orange-hover"
+                        className="mt-2 inline-flex items-center justify-center gap-2 self-start rounded-button bg-brand-orange px-6 py-4 text-base font-semibold lg:py-3.5 text-white transition-colors hover:bg-brand-orange-hover"
                       >
                         {form.contact.next}
                         <ArrowRight />
@@ -322,14 +322,14 @@ export function DemoForm() {
                         <button
                           type="button"
                           onClick={() => go(0)}
-                          className="rounded-button border-[1.5px] border-line px-6 py-4 text-base font-semibold text-brand-grey transition-colors hover:border-brand-grey"
+                          className="rounded-button border-[1.5px] border-line px-6 py-4 text-base font-semibold lg:py-3.5 text-brand-grey transition-colors hover:border-brand-grey"
                         >
                           {form.team.back}
                         </button>
                         <button
                           type="submit"
                           disabled={state === "sending"}
-                          className="inline-flex items-center justify-center gap-2 rounded-button bg-brand-orange px-6 py-4 text-base font-semibold text-white transition-colors hover:bg-brand-orange-hover disabled:opacity-60"
+                          className="inline-flex items-center justify-center gap-2 rounded-button bg-brand-orange px-6 py-4 text-base font-semibold lg:py-3.5 text-white transition-colors hover:bg-brand-orange-hover disabled:opacity-60"
                         >
                           {state === "sending" ? form.sending : form.team.submit}
                           {state !== "sending" && <ArrowRight />}

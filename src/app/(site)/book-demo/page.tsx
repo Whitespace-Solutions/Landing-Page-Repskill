@@ -12,13 +12,13 @@ export const metadata: Metadata = {
 
 export default function BookDemoPage() {
   return (
-    <section className="relative overflow-hidden bg-white">
+    <section className="relative overflow-hidden bg-white lg:flex lg:min-h-[calc(100svh-72px)] lg:items-center">
       <div
         className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/0 from-30% to-surface"
         aria-hidden
       />
-      <Container className="relative grid items-start gap-12 pt-14 pb-16 sm:pt-20 lg:grid-cols-[1fr_1.15fr] lg:gap-16 lg:pt-24 lg:pb-28">
-        <Stagger className="flex flex-col gap-6 lg:sticky lg:top-28" stagger={0.1}>
+      <Container className="relative grid items-start gap-12 pt-14 pb-16 sm:pt-20 lg:grid-cols-[1fr_1.15fr] lg:items-center lg:gap-16 lg:py-8">
+        <Stagger className="flex flex-col gap-6 lg:sticky lg:top-28 lg:gap-5" stagger={0.1}>
           <StaggerItem className="text-center lg:text-left">
             <Eyebrow>{page.eyebrow}</Eyebrow>
           </StaggerItem>
@@ -31,7 +31,7 @@ export default function BookDemoPage() {
           <StaggerItem>
             <p className="text-center text-lead text-pretty text-brand-charcoal lg:text-left">{page.lead}</p>
           </StaggerItem>
-          <StaggerItem className="mt-2 flex flex-col gap-3 border-t border-line pt-6">
+          <StaggerItem className="mt-2 flex flex-col gap-3 border-t border-line pt-6 lg:mt-1 lg:pt-5">
             <span className="text-eyebrow text-brand-orange">WHAT TO EXPECT</span>
             <ul className="flex flex-col gap-3">
               {page.expectations.map((item) => (
