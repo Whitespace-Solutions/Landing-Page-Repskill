@@ -12,11 +12,7 @@ const { shots, ...header } = solutionSection;
 
 // Urutan mengikuti alur produk di brand guideline: Capture → Learn → Practice.
 // Tiap kartu menampilkan screenshot produk yang berganti; mulainya digeser 1 dtk per kartu supaya tidak serempak.
-const ORDER: { key: FeatureKey; stage: string }[] = [
-  { key: "capture", stage: "01 · CAPTURE" },
-  { key: "learn", stage: "02 · LEARN" },
-  { key: "practice", stage: "03 · PRACTICE & REFLECT" },
-];
+const ORDER: FeatureKey[] = ["capture", "learn", "practice"];
 
 export function Solution() {
   return (
@@ -24,7 +20,7 @@ export function Solution() {
       <SectionHeader {...header} singleLineTitle centerOnMobile />
 
       <Stagger className="mt-10 grid gap-4 md:grid-cols-3 lg:mt-14" stagger={0.1}>
-        {ORDER.map(({ key, stage }, i) => {
+        {ORDER.map((key, i) => {
           const f = featureInfo[key];
           return (
             <StaggerItem key={key}>
@@ -36,9 +32,8 @@ export function Solution() {
                   <ScreenshotCarousel shots={shots[key]} offset={i * 1000} />
                 </div>
                 <div className="flex flex-1 flex-col gap-2 px-2">
-                  <span className="text-[11.5px] font-bold tracking-[0.12em] text-brand-orange">{stage}</span>
                   <span className="text-h3">{f.label}</span>
-                  <span className="text-[13px] font-semibold text-brand-charcoal">{f.tools}</span>
+                  <span className="text-[15px] leading-normal font-semibold text-balance text-brand-charcoal md:min-h-[3em]">{f.tools}</span>
                   <span className="text-[15px] leading-relaxed text-brand-charcoal">{f.description}</span>
                   <span className="mt-auto inline-flex items-center gap-1.5 pt-2 text-sm font-semibold text-brand-charcoal group-hover:text-brand-grey">
                     Explore {f.label}

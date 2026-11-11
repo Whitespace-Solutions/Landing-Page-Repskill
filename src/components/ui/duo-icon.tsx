@@ -14,7 +14,10 @@ const icons: Record<DuoIconName, { base: React.ReactNode; accent: React.ReactNod
       </>
     ),
     accent: (
-      <path d="M15 3.5h5a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-2l-2 2v-2h-1a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1Z" />
+      <path
+        className="duo-mentor-bubble"
+        d="M15 3.5h5a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-2l-2 2v-2h-1a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1Z"
+      />
     ),
   },
   // Balok bertumpuk: builder yang menyusun sistem; balok teratas (aksen) menandai skala
@@ -25,7 +28,7 @@ const icons: Record<DuoIconName, { base: React.ReactNode; accent: React.ReactNod
         <rect x="13" y="14" width="8" height="6.5" rx="1" />
       </>
     ),
-    accent: <rect x="8" y="5.5" width="8" height="6.5" rx="1" />,
+    accent: <rect className="duo-builder-block" x="8" y="5.5" width="8" height="6.5" rx="1" />,
   },
   // Jam pasir: ramp rep baru lama, pasirnya (oranye) sudah habis turun
   ramp: {
@@ -39,8 +42,9 @@ const icons: Record<DuoIconName, { base: React.ReactNode; accent: React.ReactNod
     ),
     accent: (
       <>
-        <path d="M9.5 18.5c.6-1.5 1.4-2.3 2.5-2.6 1.1.3 1.9 1.1 2.5 2.6" />
-        <path d="M12 13.5v.5" />
+        <path className="duo-ramp-pile" d="M9.5 18.5c.6-1.5 1.4-2.3 2.5-2.6 1.1.3 1.9 1.1 2.5 2.6" />
+        <path className="duo-ramp-grain" d="M12 13.5v.5" />
+        <path className="duo-ramp-grain duo-ramp-grain--late" d="M12 13.5v.5" />
       </>
     ),
   },
@@ -49,9 +53,9 @@ const icons: Record<DuoIconName, { base: React.ReactNode; accent: React.ReactNod
     base: <path d="M4 4.5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-8l-4 3v-3H4a1 1 0 0 1-1-1v-10a1 1 0 0 1 1-1Z" />,
     accent: (
       <>
-        <path d="M8 13v-2.5" />
-        <path d="M12 13V8" />
-        <path d="M16 13v-1" />
+        <path className="duo-pitch-bar" pathLength={1} d="M8 13V10" />
+        <path className="duo-pitch-bar duo-pitch-bar--2" pathLength={1} d="M12 13V8" />
+        <path className="duo-pitch-bar duo-pitch-bar--3" pathLength={1} d="M16 13v-2" />
       </>
     ),
   },
@@ -64,10 +68,10 @@ const icons: Record<DuoIconName, { base: React.ReactNode; accent: React.ReactNod
       </>
     ),
     accent: (
-      <>
+      <g className="duo-walkout-arrow">
         <path d="M13 12h8" />
         <path d="M18 9l3 3-3 3" />
-      </>
+      </g>
     ),
   },
   // Bar naik: hasil kapabilitas; bar tertinggi (aksen) = peningkatan
@@ -111,12 +115,15 @@ export function DuoIcon({
   name,
   size = 36,
   tone = "light",
+  animated = false,
   className,
 }: {
   name: DuoIconName;
   size?: number;
   /** `dark`: untuk latar gelap — garis utama putih, aksen amber */
   tone?: "light" | "dark";
+  /** Loop halus pada bagian aksen (jam pasir, chat, pintu, mentor, builder). Mati otomatis saat "reduce motion". */
+  animated?: boolean;
   className?: string;
 }) {
   const { base, accent } = icons[name];
@@ -129,7 +136,7 @@ export function DuoIcon({
       strokeWidth="1.75"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className={cn("flex-none", className)}
+      className={cn("flex-none overflow-visible", animated && "duo-animated", className)}
       aria-hidden
     >
       <g className={tone === "dark" ? "stroke-white" : "stroke-brand-grey"}>{base}</g>

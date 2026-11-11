@@ -91,25 +91,25 @@ export const aboutPage: {
     steps: [
       {
         name: "Capture",
-        message: "Extract company and top-performer knowledge.",
+        message: "Extract company and top-performer knowledge into one trusted source.",
         tag: "Extraction Studio",
         href: "/features/capture-knowledge/",
       },
       {
         name: "Learn",
-        message: "Turn knowledge into structured learning.",
+        message: "Turn that knowledge into structured learning every rep can follow.",
         tag: "Learning Path",
         href: "/features/learn-knowledge/",
       },
       {
         name: "Practice",
-        message: "Simulate realistic sales situations.",
+        message: "Simulate realistic sales situations with AI buyers before real calls.",
         tag: "Scenario Studio",
         href: "/features/practice/#scenario-studio",
       },
       {
         name: "Reflect",
-        message: "Understand what happened and why.",
+        message: "Understand what happened, why it happened, and what to try next.",
         tag: "Reflection Studio",
         href: "/features/practice/#reflection-studio",
       },

@@ -64,11 +64,23 @@ animasi khusus, misalnya visual hero.
   (`overflow-hidden` + `clip-path: inset(0.1em 0 0.1em 0)`), jadi kata tidak terlihat di atas atau di bawah baris.
   "Scalable" selalu tampil pertama (tagline brand). Saat "reduce motion" kata tetap "Scalable".
 - **Header:** garis aktif oranye bergeser antar menu (`layoutId`), dropdown fade + scale 0.98 → 1, menu mobile slide.
-- **Timeline gelap:** stage muncul berurutan dari kiri.
+- **Timeline (`StepsTimeline` → `StepsTimelineList`, mis. Our Approach di About):** tanpa nomor langkah. Saat masuk layar,
+  langkah muncul berurutan setiap 0,55 dtk: bullet "pop" (spring `320/20`) + riak sekali (skala 1 → 2,8, 0,9 dtk), garis
+  amber terisi dari kiri (`scaleX`, linear 0,55 dtk) tepat sampai bullet berikutnya, teks fade + naik 16px (jeda 0,15 dtk).
+  Setelah intro, `motion-safe:animate-step-ping` (3,6 dtk) membuat denyut cahaya berjalan dari bullet ke bullet (jeda
+  0,5 dtk per langkah). Saat "reduce motion": garis & bullet langsung tampil, denyut berhenti.
 - **CTA penutup:** teks masuk dengan `Reveal`, tanpa dekorasi bergerak.
 - **Footer:** `Wireframe` oranye (opacity 18%) di pojok kanan bawah berputar sangat pelan, 1 putaran per 150 detik
-  (`motion-safe:animate-spin-slow`). Ini satu-satunya animasi berulang di luar marquee, dan berhenti bila "reduce
+  (`motion-safe:animate-spin-slow`). Animasi berulang lain hanya marquee dan ikon `DuoIcon animated`; semuanya berhenti bila "reduce
   motion" aktif.
+- **Ikon beranimasi (`<DuoIcon animated />`, kartu The Problem di Home):** loop CSS halus hanya di bagian aksen oranye,
+  terinspirasi ikon industri web Whitespace. `ramp`: dua butir pasir jatuh bergantian (1,6 dtk) + tumpukan pasir berdenyut
+  (3,2 dtk). `pitch`: tiga bar naik-turun seperti equalizer (1,8 dtk, jeda -0,6 / -1,2 dtk, via `stroke-dashoffset` +
+  `pathLength={1}`). `walkout`: panah masuk, diam, lalu keluar sambil memudar (2,4 dtk, `ease-brand`). Juga dipakai di
+  kartu Our Philosophy (About, `tone="dark"`): `mentor`: balon chat "pop" dari ekornya, diam, lalu memudar (3,2 dtk);
+  `builder`: balok atas turun, memantul kecil saat mendarat, lalu memudar (2,8 dtk). Class & keyframes (`duo-animated`,
+  `duo-grain`, `duo-bar`, `duo-walkout`, `duo-breathe`, `duo-pop`, `duo-stack`) ada di `globals.css` dalam
+  `@media (prefers-reduced-motion: no-preference)`, jadi ikon statis bila "reduce motion" aktif.
 - **Skew + Motion:** elemen `motion.*` yang dianimasikan transform-nya (x, y, scale) tidak bisa memakai class
   `-skew-x-*`, karena transform inline dari Motion menimpanya. Pakai `style={{ skewX: -20 }}`.
 - **Our Clients (marquee):** logo berjalan dari kiri ke kanan tanpa putus (`animate-marquee-right`, kecepatan diatur

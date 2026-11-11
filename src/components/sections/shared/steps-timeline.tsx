@@ -1,16 +1,16 @@
-import Link from "next/link";
-import { Reveal, Stagger, StaggerItem } from "@/components/motion/reveal";
+import { Reveal } from "@/components/motion/reveal";
 import { Section } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
 import type { StepsData } from "@/content/types";
 import { cn } from "@/lib/cn";
+import { StepsTimelineList } from "./steps-timeline-list";
 
 type StepsTimelineProps = StepsData & {
   /** `light` dipakai bila section sebelum/sesudahnya sudah gelap (mis. tepat di atas CTA). */
   tone?: "dark" | "light";
 };
 
-/** Pola "Alur / timeline": langkah bernomor dengan garis atas; semua garis & titik amber (seragam, tanpa oranye). */
+/** Pola "Alur / timeline": langkah dengan garis atas & bullet amber (tanpa nomor), muncul berurutan, lihat `StepsTimelineList`. */
 export function StepsTimeline({ id, eyebrow, title, body, steps, note, tone = "dark" }: StepsTimelineProps) {
   const dark = tone === "dark";
 
@@ -26,55 +26,7 @@ export function StepsTimeline({ id, eyebrow, title, body, steps, note, tone = "d
         centerOnMobile
       />
 
-      <Stagger
-        as="ol"
-        stagger={0.12}
-        className={cn("mt-12 grid lg:mt-18", steps.length === 5 ? "lg:grid-cols-5" : "lg:grid-cols-4")}
-      >
-        {steps.map((step, i) => (
-          <StaggerItem
-            as="li"
-            key={step.name}
-            className={cn(
-              "relative flex flex-col gap-3.5 border-t-2 py-7 pr-6",
-              dark ? "border-brand-amber/55" : "border-brand-amber/30",
-            )}
-          >
-            <span
-              className={cn(
-                "absolute -top-[7px] left-0 size-3 rounded-full",
-                dark
-                  ? "shadow-[0_0_0_4px_var(--color-brand-grey)]"
-                  : "shadow-[0_0_0_4px_var(--color-brand-linen)]",
-                "bg-brand-amber",
-              )}
-              aria-hidden
-            />
-            <span
-              className={cn(
-                "text-[13px] font-bold tracking-[0.08em]",
-                dark ? "text-brand-amber" : "text-brand-charcoal",
-              )}
-            >
-              {String(i + 1).padStart(2, "0")}
-            </span>
-            <span className="text-h3 lg:text-2xl">{step.name}</span>
-            <span
-              className={cn(
-                "text-[15px] leading-relaxed lg:min-h-[70px]",
-                dark ? "text-line" : "text-brand-charcoal",
-              )}
-            >
-              {step.message}
-            </span>
-            {step.tag && (
-              <StepTag href={step.href} dark={dark}>
-                {step.tag}
-              </StepTag>
-            )}
-          </StaggerItem>
-        ))}
-      </Stagger>
+      <StepsTimelineList steps={steps} dark={dark} />
 
       {note && (
         <Reveal
@@ -103,20 +55,5 @@ export function StepsTimeline({ id, eyebrow, title, body, steps, note, tone = "d
         </Reveal>
       )}
     </Section>
-  );
-}
-
-function StepTag({ href, dark, children }: { href?: string; dark: boolean; children: React.ReactNode }) {
-  const className = cn(
-    "self-start rounded-lg border px-3 py-2 text-[13.5px] font-semibold transition-colors",
-    dark ? "border-white/15 bg-white/10 text-white" : "border-line bg-white text-brand-charcoal",
-    href && (dark ? "hover:bg-white/20" : "hover:border-brand-orange hover:text-brand-orange"),
-  );
-  return href ? (
-    <Link href={href} className={className}>
-      {children}
-    </Link>
-  ) : (
-    <span className={className}>{children}</span>
   );
 }

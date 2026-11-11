@@ -31,9 +31,9 @@ Aturan mockup:
   pakai `lucide-react` (gaya yang sama).
 - Ikon dua warna (`DuoIcon`, `src/components/ui/duo-icon.tsx`): garis utama `stroke-brand-grey` + satu aksen
   `stroke-brand-orange`, stroke 1,75, ukuran 40px di pojok kiri atas kartu. Dipakai di kartu The Problem (Home):
-  `ramp` (jam pasir), `pitch` (balon chat dengan bar tidak rata), `walkout` (pintu + panah keluar). Tetap garis, bukan isi.
+  `ramp` (jam pasir), `pitch` (balon chat dengan bar tidak rata), `walkout` (pintu + panah keluar), dengan `animated` (lihat 07-motion). Tetap garis, bukan isi.
   Varian `tone="dark"` untuk latar gelap: garis utama putih + aksen amber. Dipakai di kartu Our Philosophy (About):
-  `mentor` (orang + balon chat) dan `builder` (balok bertumpuk), 44px di atas eyebrow. Metrik kartu klien di
+  `mentor` (orang + balon chat) dan `builder` (balok bertumpuk), 44px di atas eyebrow, juga `animated`. Metrik kartu klien di
   /success-stories/ memakai 28px di kiri angka (kotak `bg-surface`, angka `text-h3`): `growth` (bar naik, Capability outcome), `practice` (dua orang,
   Practice activity), `business` (pie dengan potongan keluar, Business outcome). Ikon dipilih lewat field `icon` metrik.
 - Jangan pakai ikon solid/filled warna-warni atau emoji.
