@@ -23,7 +23,7 @@ export type PricingPlan = {
   note: string;
 };
 
-/** Kartu ketiga: beli token tambahan sekali bayar, pilih salah satu paket (radio). */
+/** Kartu ketiga: beli credits tambahan sekali bayar, pilih salah satu paket (radio). Field `tokens` = jumlah credits. */
 export type TokenAddOn = {
   eyebrow: string;
   title: string;
@@ -64,11 +64,11 @@ export const pricingPage: {
         eyebrow: "Subscription",
         name: "Monthly",
         currency: "Rp",
-        price: "3.000.000",
+        price: "5.000.000",
         period: "/mth",
         billing: { text: "Billed monthly" },
         features: [
-          "**100,000** tokens per month",
+          "**1,000** credits per month",
           "Up to **15** team members",
           "Knowledge Universe & Learning Path",
           "Role Play & Reflection Studio",
@@ -82,13 +82,13 @@ export const pricingPage: {
         name: "Annual",
         badge: "Recommended",
         currency: "Rp",
-        price: "2.400.000",
+        price: "4.050.000",
         period: "/mth",
-        billing: { total: "Rp 28.800.000", text: "billed yearly · save 20%" },
+        billing: { was: "Rp 60.000.000", total: "Rp 48.600.000", text: "billed yearly" },
+        savings: "You save Rp 11.400.000 a year (19%)",
         features: [
-          "**1,300,000** tokens per year **+ rollover**",
+          "**13,000** credits per year, one-twelfth to use each month",
           "Everything in Monthly, plus:",
-          "**Unlimited** team members",
           "Team Dashboard & usage analytics",
           "Priority support & onboarding call",
         ],
@@ -98,15 +98,15 @@ export const pricingPage: {
     ],
     addOn: {
       eyebrow: "Add-on",
-      title: "Need more tokens?",
-      body: "One-time top-up. Unused tokens carry over.",
-      rate: "Rp 10.000 per 1,000 tokens",
+      title: "Need more credits?",
+      body: "Credits land in your balance as soon as payment is recorded. Top-up credits do not expire monthly; they stay as long as your subscription is active.",
+      rate: "Rp 5.000 per credit",
       options: [
-        { tokens: "50,000", price: "Rp 500.000" },
-        { tokens: "100,000", price: "Rp 1.000.000" },
-        { tokens: "500,000", price: "Rp 5.000.000" },
+        { tokens: "100", price: "Rp 500.000" },
+        { tokens: "200", price: "Rp 1.000.000" },
+        { tokens: "1,000", price: "Rp 5.000.000" },
       ],
-      ctaLabel: "Buy {tokens} tokens",
+      ctaLabel: "Buy {tokens} credits",
       href: "/book-demo/",
       note: "Prices before PPN",
     },

@@ -54,7 +54,7 @@ export function TokenAddOnCard({ addOn }: { addOn: TokenAddOn }) {
               </span>
               {/* Jumlah kiri, harga kanan; di kolom sempit harga turun ke bawah, tidak keluar panel */}
               <span className="flex min-w-0 flex-1 flex-wrap items-baseline justify-between gap-x-3 text-brand-grey">
-                <span className="font-semibold whitespace-nowrap">{option.tokens} tokens</span>
+                <span className="font-semibold whitespace-nowrap">{option.tokens} credits</span>
                 <span className="whitespace-nowrap">{option.price}</span>
               </span>
             </label>
