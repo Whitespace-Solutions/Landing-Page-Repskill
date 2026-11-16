@@ -22,10 +22,11 @@
 
 	file_server
 
-	# Next static export writes 404.html; keep the 404 status.
+	# repskill.ai is the marketing site; the product lives on app.repskill.ai. Anything this site
+	# does not have (old emailed links such as /reset-password?token=..., /join/..., /login, /api/...)
+	# goes to the same path on the app. 308 keeps method, path and query.
 	handle_errors {
 		@notfound expression {err.status_code} == 404
-		rewrite @notfound /404.html
-		file_server
+		redir @notfound https://app.repskill.ai{uri} 308
 	}
 }
