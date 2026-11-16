@@ -124,3 +124,13 @@ Progress deploy bisa dilihat di tab **Actions**. Deploy manual: Actions → Depl
 
 > Hasil build adalah HTML/CSS/JS statis di `out/`, jadi bisa dipindah ke hosting lain (Cloudflare Pages, Netlify, Vercel,
 > cPanel/FTP, S3) cukup dengan mengganti job `deploy` di `.github/workflows/deploy.yml`.
+
+## Hosting di Railway
+
+Selain GitHub Pages, situs ini bisa dijalankan di Railway lewat `Dockerfile` (build Next.js static export, lalu disajikan
+Caddy memakai `Caddyfile`). Project Railway: **repskill-landing**, service **landing**.
+
+- Variable service `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_LOGIN_URL`, `NEXT_PUBLIC_FORM_ENDPOINT`, `NEXT_PUBLIC_WEB3FORMS_KEY`
+  dipakai saat build (sama dengan GitHub variable di atas). Ubah variable lalu **redeploy**, karena nilainya ditanam saat build.
+- Deploy manual dari komputer: `railway up --service landing`.
+- Jalankan container lokal: `docker build -t repskill-web . && docker run -p 8080:8080 repskill-web`.
