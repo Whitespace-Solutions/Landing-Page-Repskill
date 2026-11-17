@@ -1,5 +1,5 @@
-# Deploy otomatis: setiap push ke `main` -> build static site -> publish ke GitHub Pages.
-# Setup sekali: GitHub repo > Settings > Pages > Build and deployment > Source: "GitHub Actions".
+# Push ke main -> CI hijau -> deploy ke Railway -> cek situs live.
+# Setup sekali (lihat README, bagian "Auto deploy"): secret RAILWAY_TOKEN, variable SITE_URL.
 name: Deploy
 
 on:
@@ -9,55 +9,53 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 # Hanya satu deploy berjalan; deploy yang sedang jalan tidak dibatalkan.
 concurrency:
-  group: pages
+  group: deploy-production
   cancel-in-progress: false
 
 jobs:
-  build:
+  ci:
+    uses: ./.github/workflows/ci.yml
+
+  deploy:
+    needs: ci
     runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment:
+      name: production
+      url: ${{ vars.SITE_URL }}
+    env:
+      RAILWAY_SERVICE: landing
     steps:
       - uses: actions/checkout@v5
 
       - uses: actions/setup-node@v5
         with:
           node-version-file: .nvmrc
-          cache: npm
 
-      - id: pages
-        uses: actions/configure-pages@v5
+      - name: Install Railway CLI
+        run: npm install --global @railway/cli@5.54.1
 
-      - run: npm ci
-      - run: npm run lint
-      - run: npm run typecheck
-
-      - name: Build static site
-        run: npm run build
+      # --ci menampilkan log build dan keluar dengan error kalau build gagal. Railway baru memindahkan
+      # traffic setelah container baru sehat, jadi rilis yang rusak tidak menggantikan versi lama.
+      # Variable NEXT_PUBLIC_* diambil dari variable service di Railway (ditanam saat build).
+      - name: Deploy to Railway
+        run: railway up --ci --service "$RAILWAY_SERVICE"
         env:
-          # "/nama-repo" saat memakai URL <user>.github.io/<repo>; kosong bila memakai custom domain.
-          NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
-          NEXT_PUBLIC_SITE_URL: ${{ vars.SITE_URL || steps.pages.outputs.base_url }}
-          # Endpoint penerima formulir Book Demo (Settings → Secrets and variables → Actions → Variables)
-          NEXT_PUBLIC_FORM_ENDPOINT: ${{ vars.FORM_ENDPOINT }}
-          # Access key Web3Forms (opsional; default ada di src/lib/submit-form.ts)
-          NEXT_PUBLIC_WEB3FORMS_KEY: ${{ vars.WEB3FORMS_KEY }}
-          # Alamat login aplikasi Repskill untuk menu "Log in" di header
-          NEXT_PUBLIC_LOGIN_URL: ${{ vars.LOGIN_URL }}
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
 
-      - uses: actions/upload-pages-artifact@v4
-        with:
-          path: out
+      - name: Smoke-test the live site
+        if: vars.SITE_URL != ''
+        run: |
+          for path in / /pricing/ /about/; do
+            curl -fsS -o /dev/null --retry 5 --retry-delay 3 --retry-all-errors --max-time 20 "${SITE_URL%/}$path"
+            echo "ok $path"
+          done
+        env:
+          SITE_URL: ${{ vars.SITE_URL }}
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Skipped live smoke test
+        if: vars.SITE_URL == ''
+        run: echo "::warning::Variable SITE_URL belum diisi, jadi situs live tidak dicek."

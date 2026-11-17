@@ -111,7 +111,10 @@ Book Demo mengirim dua email: **New demo request** setelah langkah 2, dan **Demo
 
 ## Deployment (GitHub Actions)
 
-Setiap **push ke branch `main`** otomatis: lint → typecheck → build → publish ke **GitHub Pages**.
+> **Hosting utama sekarang Railway** — lihat bagian **Auto deploy ke Railway** di bawah. Alur GitHub Pages di bagian ini
+> tinggal cadangan manual (`deploy-pages.yml`, Actions → Run workflow) dan tidak jalan otomatis lagi.
+
+Alur GitHub Pages: lint → typecheck → build → publish ke **GitHub Pages**.
 
 Setup sekali:
 
@@ -134,3 +137,22 @@ Caddy memakai `Caddyfile`). Project Railway: **repskill-landing**, service **lan
   dipakai saat build (sama dengan GitHub variable di atas). Ubah variable lalu **redeploy**, karena nilainya ditanam saat build.
 - Deploy manual dari komputer: `railway up --service landing`.
 - Jalankan container lokal: `docker build -t repskill-web . && docker run -p 8080:8080 repskill-web`.
+
+## Auto deploy ke Railway
+
+Alur: **Pull Request** → `CI` (lint, typecheck, build, build image Docker + cek route) → merge ke `main` →
+`Deploy` (ulang CI → `railway up` → cek halaman live). Kalau CI merah, deploy tidak jalan. Railway hanya memindahkan
+traffic ke container baru setelah sehat, jadi rilis yang rusak tidak menggantikan versi yang sedang live.
+
+Setup sekali (perlu admin repo):
+
+1. Railway → project **repskill-landing** → **Settings → Tokens → New Token** (environment `production`) → salin.
+2. GitHub repo → **Settings → Secrets and variables → Actions** → secret **`RAILWAY_TOKEN`** = token tadi;
+   tab Variables → **`SITE_URL`** = `https://landing.repskill.ai`.
+3. Railway → service **landing → Settings → Source**: pastikan **tidak** terhubung ke repo GitHub (kalau terhubung,
+   setiap push ter-deploy dua kali dan melewati CI). Cukup *Disconnect*.
+4. Disarankan: GitHub → **Settings → Branches → Add rule** untuk `main`: *Require a pull request* dan *Require status
+   checks* (`verify`, `container`). Atau **Settings → Environments → production → Required reviewers** untuk
+   persetujuan manual sebelum deploy.
+
+Rollback cepat: Railway → service → **Deployments** → deploy sebelumnya → **Redeploy**.
