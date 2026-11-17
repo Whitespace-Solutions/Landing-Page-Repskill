@@ -1,5 +1,6 @@
 /** Konten halaman About Us (sumber: brand guideline hal. 3–8). */
 import type { DuoIconName } from "@/components/ui/duo-icon";
+import { showSuccessStories } from "@/config/visibility";
 import type { CtaData, StepsData } from "./types";
 
 export const aboutPage: {
@@ -120,6 +121,6 @@ export const aboutPage: {
     title: "Put Your Best Sales Knowledge to Work",
     highlight: "to Work",
     body: "Book a demo to see how Repskill turns what your top performers know into skills your whole team can practice.",
-    secondary: { label: "Read Success Stories", href: "/success-stories/" },
+    secondary: showSuccessStories ? { label: "Read Success Stories", href: "/success-stories/" } : undefined,
   },
 };

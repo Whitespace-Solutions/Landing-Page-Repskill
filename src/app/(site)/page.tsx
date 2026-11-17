@@ -5,6 +5,7 @@ import { HomeCta } from "@/components/sections/home/home-cta";
 import { Solution } from "@/components/sections/home/solution";
 import { Problem } from "@/components/sections/home/problem";
 import { ClientLogos } from "@/components/sections/shared/client-logos";
+import { showClients, showSuccessStories } from "@/config/visibility";
 import { clientsSection } from "@/content/home";
 
 export default function HomePage() {
@@ -14,8 +15,8 @@ export default function HomePage() {
       <Problem />
       <Solution />
       <Differentiators />
-      <CaseStudies />
-      <ClientLogos {...clientsSection} />
+      {showSuccessStories && <CaseStudies />}
+      {showClients && <ClientLogos {...clientsSection} />}
       <HomeCta singleLineTitle />
     </>
   );

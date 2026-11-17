@@ -3,6 +3,7 @@
  * Mengikuti sitemap baru (Oktober 2026).
  */
 import type { FeatureIconName } from "@/components/ui/feature-icon";
+import { showSuccessStories } from "@/config/visibility";
 import { guideRoutes } from "./guide";
 import { successStories } from "./success-stories";
 
@@ -68,8 +69,8 @@ export const loginLink: NavLink = {
 
 export const mainNav: NavItem[] = [
   { label: "Features", href: "/features/", children: features, layout: "row" },
-  // Tanpa dropdown: daftar klien tampil sebagai kartu di halaman /success-stories/.
-  { label: "Success Stories", href: "/success-stories/" },
+  // Tanpa dropdown: daftar klien tampil sebagai kartu di halaman /success-stories/. Disembunyikan lewat `showSuccessStories`.
+  ...(showSuccessStories ? [{ label: "Success Stories", href: "/success-stories/" }] : []),
   { label: "Pricing", href: "/pricing/" },
   { label: "About Us", href: "/about/" },
   { label: "Guide", href: "/guide/" },
@@ -77,10 +78,9 @@ export const mainNav: NavItem[] = [
 
 export const footerNav: { title: string; links: NavLink[] }[] = [
   { title: "FEATURES", links: features },
-  {
-    title: "SUCCESS STORIES",
-    links: [{ label: "All stories", href: "/success-stories/" }, ...stories],
-  },
+  ...(showSuccessStories
+    ? [{ title: "SUCCESS STORIES", links: [{ label: "All stories", href: "/success-stories/" }, ...stories] }]
+    : []),
   {
     title: "COMPANY",
     links: [
@@ -96,8 +96,7 @@ export const footerNav: { title: string; links: NavLink[] }[] = [
 export const allRoutes: string[] = [
   "/",
   ...features.map((f) => f.href),
-  "/success-stories/",
-  ...stories.map((s) => s.href),
+  ...(showSuccessStories ? ["/success-stories/", ...stories.map((s) => s.href)] : []),
   "/pricing/",
   "/about/",
   "/book-demo/",

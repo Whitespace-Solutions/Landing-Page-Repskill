@@ -1,6 +1,7 @@
 /** Konten halaman Pricing. */
 import type { StaticImageData } from "next/image";
 import learnPortrait from "@/assets/images/cta/learn-portrait.webp";
+import { showSuccessStories } from "@/config/visibility";
 import type { VisualCtaLayout } from "@/components/sections/shared/visual-cta";
 import type { CtaData, Link, PageHeroData } from "./types";
 
@@ -131,7 +132,7 @@ export const pricingPage: {
     highlight: "Your Organization",
     body: "Tell us about your team and goals.",
     primary: { label: "Talk to Sales", href: "/book-demo/" },
-    secondary: { label: "Read Success Stories", href: "/success-stories/" },
+    secondary: showSuccessStories ? { label: "Read Success Stories", href: "/success-stories/" } : undefined,
   },
   ctaVisual: { image: learnPortrait, layout: "learn" },
 };

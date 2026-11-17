@@ -152,3 +152,7 @@ memakai `tone="light"`.
 
 Contoh pola dari situs lama ada di `docs/legacy/pages/*.html`. Pakai sebagai referensi tata letak, lalu tulis ulang
 memakai token dan komponen di repo ini.
+
+## Menyembunyikan Success Stories & Our Clients
+
+Saklar ada di `src/config/visibility.ts` (`showSuccessStories`, `showClients`). Saat `false`: menu header/footer, section Success Stories dan Our Clients di Home, tombol "Read Success Stories" di CTA, serta sitemap hilang. Halaman `/success-stories/` disembunyikan dengan folder `src/app/(site)/_success-stories` (awalan `_` = bukan rute). Untuk menampilkan lagi: ubah saklar jadi `true` dan ganti nama folder itu jadi `success-stories`.
