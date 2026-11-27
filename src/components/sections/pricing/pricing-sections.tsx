@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { Reveal } from "@/components/motion/reveal";
 import { ButtonLink } from "@/components/ui/button";
 import { RichText } from "@/components/ui/rich-text";
@@ -5,6 +8,7 @@ import { Section } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
 import { pricingPage, type PricingPlan } from "@/content/pricing";
 import { cn } from "@/lib/cn";
+import { fetchPublicPricing, mergeLivePricing } from "@/lib/live-pricing";
 import { PlanCheck, PlanTag } from "./plan-parts";
 import { TokenAddOnCard } from "./token-addon";
 
@@ -34,7 +38,20 @@ function Check({ className }: { className?: string }) {
  * (Annual) yang oranye.
  */
 export function PricingPlans() {
-  const { plans } = pricingPage;
+  const [plans, setPlans] = useState(pricingPage.plans);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const timer = window.setTimeout(() => controller.abort(), 5000);
+    fetchPublicPricing(controller.signal).then((live) => {
+      if (live) setPlans(mergeLivePricing(pricingPage.plans, live));
+    });
+    return () => {
+      window.clearTimeout(timer);
+      controller.abort();
+    };
+  }, []);
+
   return (
     // Plans dan Feature Comparison sama-sama `surface`: padding bawah Plans saja yang jadi jarak (Comparison tanpa padding atas)
     <Section id="plans" tone="surface" containerClassName="pb-12 lg:pb-20">

@@ -13,6 +13,7 @@ COPY . .
 # for every ARG declared here; unset ones fall back to the defaults in src/.
 ARG NEXT_PUBLIC_SITE_URL
 ARG NEXT_PUBLIC_LOGIN_URL
+ARG NEXT_PUBLIC_PRICING_API_URL
 ARG NEXT_PUBLIC_FORM_ENDPOINT
 ARG NEXT_PUBLIC_WEB3FORMS_KEY
 RUN npm run build

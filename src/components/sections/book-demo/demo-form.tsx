@@ -53,6 +53,7 @@ function validateTeam(v: Values) {
 
 /** Data lead sebagai teks datar untuk email. */
 function leadPayload(v: Values) {
+  const interestedPlan = readInterestedPlan();
   return {
     name: `${v.firstName.trim()} ${v.lastName.trim()}`,
     email: v.email.trim(),
@@ -60,7 +61,19 @@ function leadPayload(v: Values) {
     businessModel: v.businessModel,
     customerFacingReps: v.reps,
     heardFrom: v.heardFrom.trim(),
+    ...(interestedPlan && { interestedPlan }),
   };
+}
+
+function readInterestedPlan(): string {
+  if (typeof window === "undefined") return "";
+  const params = new URLSearchParams(window.location.search);
+  const plan = params.get("plan")?.trim().toLowerCase();
+  const credits = params.get("credits")?.trim();
+  if (plan === "monthly") return "Monthly plan";
+  if (plan === "annual") return "Annual plan";
+  if (plan === "topup") return credits ? `Credit top-up (${credits} credits)` : "Credit top-up";
+  return "";
 }
 
 /**
@@ -134,6 +147,7 @@ export function DemoForm() {
         `Demo with ${lead.name} (${lead.email}), ${lead.company}.`,
         `Business model: ${lead.businessModel}`,
         `Sales reps: ${lead.customerFacingReps}`,
+        lead.interestedPlan && `Interested plan: ${lead.interestedPlan}`,
         lead.heardFrom && `Heard from: ${lead.heardFrom}`,
       ]
         .filter(Boolean)

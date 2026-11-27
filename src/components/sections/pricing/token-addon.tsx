@@ -12,7 +12,11 @@ import { PlanTag } from "./plan-parts";
  */
 export function TokenAddOnCard({ addOn }: { addOn: TokenAddOn }) {
   const [selected, setSelected] = useState(0);
-  const tokens = addOn.options[selected].tokens;
+  const safeSelected = Math.min(selected, Math.max(addOn.options.length - 1, 0));
+  const tokens = addOn.options[safeSelected]?.tokens ?? "";
+  const ctaHref = tokens
+    ? `${addOn.href}${addOn.href.includes("?") ? "&" : "?"}credits=${encodeURIComponent(tokens)}`
+    : addOn.href;
 
   return (
     <article className="flex min-w-0 flex-col p-6 sm:p-8 lg:p-7 xl:p-8">
@@ -26,7 +30,7 @@ export function TokenAddOnCard({ addOn }: { addOn: TokenAddOn }) {
       <fieldset className="mt-6 flex min-w-0 flex-col gap-2 border-t border-line pt-6">
         <legend className="sr-only">{addOn.title}</legend>
         {addOn.options.map((option, i) => {
-          const active = i === selected;
+          const active = i === safeSelected;
           return (
             <label
               key={option.tokens}
@@ -63,7 +67,7 @@ export function TokenAddOnCard({ addOn }: { addOn: TokenAddOn }) {
       </fieldset>
 
       <div className="mt-auto flex flex-col items-center gap-2.5 pt-8">
-        <ButtonLink href={addOn.href} variant="outline" className="w-full">
+        <ButtonLink href={ctaHref} variant="outline" className="w-full">
           {addOn.ctaLabel.replace("{tokens}", tokens)}
         </ButtonLink>
         <span className="text-caption text-brand-charcoal">{addOn.note}</span>

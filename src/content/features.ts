@@ -78,7 +78,7 @@ export const practicePage: FeaturePage = {
       },
       popups: [
         { icon: "mic", label: "Live roleplay", text: "Voice · Bahasa Indonesia", live: true },
-        { icon: "chart", label: "Scorecard ready", text: "Opening · 3 of 4 met" },
+        { icon: "chart", label: "Rubric ready", text: "Opening · 3 of 4 met" },
       ],
     },
   },
@@ -323,7 +323,7 @@ export const learnPage: FeaturePage = {
       points: [
         "Search in plain language",
         "Articles, videos, and audio by department",
-        "Powers learning paths, roleplays, and scorecards",
+        "Powers learning paths, roleplays, and rubrics",
         "Only approved content is ever visible",
       ],
       visual: {
