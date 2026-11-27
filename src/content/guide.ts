@@ -48,7 +48,7 @@ export const guides: Guide[] = [
                 items: [
                   "Accept your invite and set an admin password, or sign in with **Google** or **Microsoft**.",
                   "Name the workspace and set your default language to **Bahasa Indonesia** or English.",
-                  "Complete the **Tenant Profile**, seven short sections describing what you sell. This grounds every answer and role-play.",
+                  "Complete the **Tenant Profile**, five short sections describing what you sell. This grounds every answer and role-play.",
                 ],
               },
               {
@@ -64,31 +64,31 @@ export const guides: Guide[] = [
             blocks: [
               {
                 type: "p",
-                text: "You can invite people one at a time or in bulk from **User Management**, and give each person a role that decides what they can see and do.",
+                text: "You can invite people one at a time or in bulk from **Workspace Admin → Members**, and give each person a role that decides what they can see and do.",
               },
               { type: "h2", text: "Steps" },
               {
                 type: "steps",
                 items: [
-                  "Open **User Management** and go to the **Users** tab.",
-                  "Click **Invite users** and add work emails, individually or by pasting a list.",
-                  "Pick a role for each: Seller, Manager, or Content manager.",
+                  "Open **Workspace Admin** and go to **Members**.",
+                  "Click **Invite people** and add work emails, individually or by pasting a list.",
+                  "Pick a role for each: Employee, Contributor, Content manager, Supervisor, or Admin.",
                   "Send. Invitees set up their account and land straight in their workspace.",
                 ],
               },
               {
                 type: "shot",
-                label: "User Management → Users",
-                caption: "Invite users and assign roles",
+                label: "Workspace Admin → Members",
+                caption: "Invite members and assign roles",
                 visual: {
                   type: "checklist",
-                  title: "Users",
+                  title: "Members",
                   meta: "4 people · invite-only",
                   items: [
-                    { label: "Rina Pratama", meta: "Manager · Joined", status: "done" },
-                    { label: "Dimas Saputra", meta: "Seller · Joined", status: "done" },
+                    { label: "Rina Pratama", meta: "Supervisor · Joined", status: "done" },
+                    { label: "Dimas Saputra", meta: "Employee · Joined", status: "done" },
                     { label: "Sari Wulandari", meta: "Content manager · Invited", status: "now" },
-                    { label: "Budi Hartono", meta: "Seller · Pending", status: "todo" },
+                    { label: "Budi Hartono", meta: "Contributor · Pending", status: "todo" },
                   ],
                 },
               },
@@ -109,15 +109,16 @@ export const guides: Guide[] = [
             blocks: [
               {
                 type: "p",
-                text: "Access is role-based by design. A seller sees their own practice and private reflections; a manager sees their team's scores; a content manager owns the knowledge base. A sales user can never retrieve another department's information through chat.",
+                text: "Access is role-based by design across five roles. An employee runs their own practice and call analyses; a supervisor reviews their direct reports' ratings and progress; a content manager owns the knowledge base. A sales user can never retrieve another department's information through chat.",
               },
               {
                 type: "steps",
                 items: [
-                  "**Seller** — runs role-plays, asks chat, uploads their own calls. Reflections are private to them.",
-                  "**Manager** — sees team scores and coaching in Manager Studio.",
-                  "**Content manager** — extracts, reviews, and approves knowledge.",
-                  "**Admin** — manages users, roles, and the workspace.",
+                  "**Employee** — runs role-plays, asks chat, follows learning paths, and uploads their own calls. Practice audio stays private to them by default.",
+                  "**Contributor** — everything in Employee, plus submitting draft knowledge for review.",
+                  "**Supervisor** — assigns learning paths and reviews their direct reports' ratings, transcripts, and reflection coaching in **Team Dashboard** (every review open is audited).",
+                  "**Content manager** — extracts, reviews, and approves knowledge and shared scenarios.",
+                  "**Admin** — manages members, roles, billing, and workspace settings.",
                 ],
               },
             ],
@@ -128,7 +129,7 @@ export const guides: Guide[] = [
             blocks: [
               {
                 type: "p",
-                text: "There is no open sign-up. People join only by invitation, which keeps your workspace closed and auditable.",
+                text: "There is no open public sign-up. People join an existing workspace only by invitation or an approved company code restricted to your company's email domains, keeping your workspace closed and auditable.",
               },
               {
                 type: "p",
@@ -198,14 +199,14 @@ export const guides: Guide[] = [
             blocks: [
               {
                 type: "p",
-                text: "Nothing reaches sellers until a content manager approves it. This keeps the Knowledge Universe trustworthy.",
+                text: "Nothing reaches the team until a content manager approves it. This keeps the Knowledge Universe trustworthy.",
               },
               {
                 type: "steps",
                 items: [
-                  "Open the **Content** queue to see pending drafts.",
+                  "Open **Manage Content → Content Approval** to see pending drafts.",
                   "Review a draft, edit if needed, and check its tags and category.",
-                  "**Approve** to publish, or **Request changes** to send it back with a note.",
+                  "**Approve & publish** to make it live, or **Send back** with a note explaining what to change.",
                 ],
               },
               {
@@ -223,7 +224,7 @@ export const guides: Guide[] = [
     id: "user",
     label: "User Guide",
     audience: "For sales teams",
-    description: "Get set up, rehearse with AI role-plays, and get private coaching on your real calls.",
+    description: "Get set up, rehearse with AI role-plays, and get structured coaching on your real calls.",
     sections: [
       {
         title: "Getting started",
@@ -284,7 +285,7 @@ export const guides: Guide[] = [
                 items: [
                   "Open **Scenario Studio** and describe the situation, the meeting, the pressure, the deal stage.",
                   "The AI generates a realistic script tuned to it.",
-                  "Switch to **voice** and practice live, in Bahasa. The AI holds the persona.",
+                  "Switch to **voice** and practice live, in Bahasa Indonesia or English. The AI holds the persona.",
                   "End the session to get your review.",
                 ],
               },
@@ -321,29 +322,6 @@ export const guides: Guide[] = [
               },
             ],
           },
-          {
-            slug: "linkedin-persona",
-            title: "Practice against a LinkedIn persona",
-            blocks: [
-              {
-                type: "p",
-                text: "You can rehearse against the actual person you're about to meet.",
-              },
-              {
-                type: "steps",
-                items: [
-                  "In setup, choose **Persona from LinkedIn**.",
-                  "Paste the buyer's profile URL.",
-                  "The AI builds a persona from their role, seniority, and industry, then plays them.",
-                ],
-              },
-              {
-                type: "callout",
-                label: "Why",
-                text: "The objections a skeptical CFO raises are not the ones a friendly champion raises. Practising the right persona is the whole point.",
-              },
-            ],
-          },
         ],
       },
       {
@@ -355,7 +333,7 @@ export const guides: Guide[] = [
             blocks: [
               {
                 type: "p",
-                text: "Upload a recording of a real call and Reflection Studio coaches you on it, privately.",
+                text: "Upload a recording of a real call and Reflection Studio coaches you on it against your company rubric.",
               },
               { type: "h2", text: "Steps" },
               {
@@ -369,8 +347,8 @@ export const guides: Guide[] = [
               },
               {
                 type: "callout",
-                label: "Private",
-                text: "Reflections are private to you. Audio is processed then deleted; only the transcript and scores are kept.",
+                label: "Visibility & audit",
+                text: "Uploaded recordings and analyses stay isolated to your company workspace. Your supervisor and company admins can review them for coaching, and every manager or admin open is recorded in the audit log.",
               },
             ],
           },

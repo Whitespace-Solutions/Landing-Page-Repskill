@@ -31,12 +31,37 @@ export type TokenAddOn = {
   body: string;
   /** Harga per token, sama untuk semua paket; tampil sekali di bawah deskripsi */
   rate: string;
-  options: { tokens: string; price: string }[];
+  options: { id?: string; tokens: string; price: string }[];
   /** `{tokens}` diganti jumlah token paket yang dipilih */
   ctaLabel: string;
   href: string;
   note: string;
 };
+
+/**
+ * Kata-kata yang dipakai `src/lib/live-pricing.ts` saat membangun ulang kartu harga dari API live.
+ * Ubah teks di sini, bukan di kode penggabungnya. `{…}` diisi oleh penggabung.
+ */
+export const livePricingCopy = {
+  badge: "Recommended",
+  /** Baris tagihan Monthly tanpa harga coret */
+  billedMonthlyPlain: "Billed monthly",
+  /** Baris tagihan setelah harga coret dan total */
+  billedMonthly: "billed monthly",
+  billedYearly: "billed yearly",
+  /** `{amount}` rupiah yang dihemat, `{period}` salah satu dari dua di bawah, `{pct}` mis. " (20%)" atau kosong */
+  saving: "You save {amount} {period}{pct}",
+  savingPeriodYear: "a year",
+  savingPeriodMonth: "a month",
+  /** `{credits}` jumlah credits, `{unit}` credit atau credits */
+  creditsMonthly: "**{credits}** {unit} per month",
+  creditsYearly: "**{credits}** {unit} per year, one-twelfth to use each month",
+  creditUnitOne: "credit",
+  creditUnitMany: "credits",
+  /** `{rate}` mis. "Rp 5.000" */
+  topupRateSame: "{rate} per credit",
+  topupRateFrom: "From {rate} per credit",
+} as const;
 
 export const pricingPage: {
   hero: PageHeroData;
@@ -70,12 +95,12 @@ export const pricingPage: {
         billing: { text: "Billed monthly" },
         features: [
           "**1,000** credits per month",
-          "Up to **15** team members",
+          "**Unlimited** team members",
           "Knowledge Universe & Learning Path",
           "Role Play & Reflection Studio",
           "Standard chat and email support",
         ],
-        cta: { label: "Choose Monthly", href: "/book-demo/" },
+        cta: { label: "Choose Monthly", href: "/book-demo/?plan=monthly" },
         note: "Prices before PPN",
       },
       {
@@ -83,17 +108,17 @@ export const pricingPage: {
         name: "Annual",
         badge: "Recommended",
         currency: "Rp",
-        price: "4.050.000",
+        price: "4.000.000",
         period: "/mth",
-        billing: { was: "Rp 60.000.000", total: "Rp 48.600.000", text: "billed yearly" },
-        savings: "You save Rp 11.400.000 a year (19%)",
+        billing: { was: "Rp 60.000.000", total: "Rp 48.000.000", text: "billed yearly" },
+        savings: "You save Rp 12.000.000 a year (20%)",
         features: [
           "**13,000** credits per year, one-twelfth to use each month",
           "Everything in Monthly, plus:",
           "Team Dashboard & usage analytics",
           "Priority support & onboarding call",
         ],
-        cta: { label: "Choose Annual", href: "/book-demo/" },
+        cta: { label: "Choose Annual", href: "/book-demo/?plan=annual" },
         note: "Prices before PPN",
       },
     ],
@@ -103,12 +128,12 @@ export const pricingPage: {
       body: "Credits land in your balance as soon as payment is recorded. Top-up credits do not expire monthly; they stay as long as your subscription is active.",
       rate: "Rp 5.000 per credit",
       options: [
-        { tokens: "100", price: "Rp 500.000" },
-        { tokens: "200", price: "Rp 1.000.000" },
-        { tokens: "1,000", price: "Rp 5.000.000" },
+        { id: "topup10k", tokens: "100", price: "Rp 500.000" },
+        { id: "topup20k", tokens: "200", price: "Rp 1.000.000" },
+        { id: "topup100k", tokens: "1,000", price: "Rp 5.000.000" },
       ],
       ctaLabel: "Buy {tokens} credits",
-      href: "/book-demo/",
+      href: "/book-demo/?plan=topup",
       note: "Prices before PPN",
     },
   },

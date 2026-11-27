@@ -172,8 +172,8 @@ export const differentiators = {
           body: "Set what the AI must never say, assign five roles, and sign in with Google or Microsoft plus two-factor.",
         },
         {
-          title: "Practice stays private",
-          body: "No role can listen to practice recordings, not even an admin, so reps can practice without fear.",
+          title: "Practice audio stays private",
+          body: "Practice recordings stay private to the rep by default, and any company-enabled review access is logged so reps can practice with confidence.",
         },
       ],
     },

@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { Reveal } from "@/components/motion/reveal";
 import { ButtonLink } from "@/components/ui/button";
 import { RichText } from "@/components/ui/rich-text";
@@ -5,6 +8,7 @@ import { Section } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
 import { pricingPage, type PricingPlan } from "@/content/pricing";
 import { cn } from "@/lib/cn";
+import { fetchPublicPricing, mergeLivePricing, type MergedPricingPlans } from "@/lib/live-pricing";
 import { PlanCheck, PlanTag } from "./plan-parts";
 import { TokenAddOnCard } from "./token-addon";
 
@@ -34,17 +38,41 @@ function Check({ className }: { className?: string }) {
  * (Annual) yang oranye.
  */
 export function PricingPlans() {
-  const { plans } = pricingPage;
+  const [plans, setPlans] = useState<MergedPricingPlans>(pricingPage.plans);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const timer = window.setTimeout(() => controller.abort(), 5000);
+    fetchPublicPricing(controller.signal)
+      .then((live) => {
+        if (live && !controller.signal.aborted) {
+          setPlans(mergeLivePricing(pricingPage.plans, live));
+        }
+      })
+      .finally(() => {
+        window.clearTimeout(timer);
+      });
+    return () => {
+      window.clearTimeout(timer);
+      controller.abort();
+    };
+  }, []);
+
   return (
     // Plans dan Feature Comparison sama-sama `surface`: padding bawah Plans saja yang jadi jarak (Comparison tanpa padding atas)
     <Section id="plans" tone="surface" containerClassName="pb-12 lg:pb-20">
       {/* Judul hanya untuk pembaca layar; secara visual panel langsung tampil di bawah hero */}
       <h2 className="sr-only">{plans.title}</h2>
-      <Reveal className="grid divide-y divide-line overflow-hidden rounded-panel border border-line bg-white lg:grid-cols-3 lg:divide-x lg:divide-y-0">
+      <Reveal
+        className={cn(
+          "grid divide-y divide-line overflow-hidden rounded-panel border border-line bg-white lg:divide-x lg:divide-y-0",
+          plans.addOn ? "lg:grid-cols-3" : "lg:grid-cols-2",
+        )}
+      >
         {plans.items.map((plan) => (
           <PlanColumn key={plan.name} plan={plan} />
         ))}
-        <TokenAddOnCard addOn={plans.addOn} />
+        {plans.addOn && <TokenAddOnCard addOn={plans.addOn} />}
       </Reveal>
     </Section>
   );
@@ -76,8 +104,8 @@ function PlanColumn({ plan }: { plan: PricingPlan }) {
       </p>
 
       <ul className="mt-6 flex flex-col gap-3 border-t border-line pt-6">
-        {plan.features.map((feature) => (
-          <li key={feature} className="flex items-start gap-2.5 text-sm text-brand-charcoal">
+        {plan.features.map((feature, i) => (
+          <li key={`${plan.name}-${i}`} className="flex items-start gap-2.5 text-sm text-brand-charcoal">
             <PlanCheck />
             <span>
               <RichText text={feature} />
@@ -90,7 +118,9 @@ function PlanColumn({ plan }: { plan: PricingPlan }) {
         <ButtonLink href={plan.cta.href} variant={featured ? "primary" : "outline"} className="w-full">
           {plan.cta.label}
         </ButtonLink>
-        <span className="text-caption text-brand-charcoal">{plan.note}</span>
+        <span className="text-caption text-brand-charcoal">
+          <RichText text={plan.note} />
+        </span>
       </div>
     </article>
   );

@@ -20,6 +20,14 @@
 	@html not path /_next/static/*
 	header @html Cache-Control "public, max-age=0, must-revalidate"
 
+	# Temporary (302), not 308: browsers cache a 308 for good, and /features/ may become a real page later.
+	redir /features /features/capture-knowledge/ 302
+	redir /features/ /features/capture-knowledge/ 302
+
+	# The LinkedIn-persona guide page was removed (the feature is not live); its old, already-indexed URL
+	# goes to the User Guide instead of falling through to the app's login wall below.
+	redir /guide/user/linkedin-persona* /guide/user/ 302
+
 	file_server
 
 	# repskill.ai is the marketing site; the product lives on app.repskill.ai. Anything this site

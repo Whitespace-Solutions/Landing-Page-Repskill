@@ -46,6 +46,8 @@ jobs:
           NEXT_PUBLIC_WEB3FORMS_KEY: ${{ vars.WEB3FORMS_KEY }}
           # Alamat login aplikasi Repskill untuk menu "Log in" di header
           NEXT_PUBLIC_LOGIN_URL: ${{ vars.LOGIN_URL }}
+          # Endpoint harga live dari aplikasi Repskill (opsional; default https://app.repskill.ai/api/public/pricing)
+          NEXT_PUBLIC_PRICING_API_URL: ${{ vars.PRICING_API_URL }}
 
       - uses: actions/upload-pages-artifact@v4
         with:
