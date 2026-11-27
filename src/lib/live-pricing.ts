@@ -6,7 +6,7 @@
  * tetap dirender langsung sebagai default (SEO & tanpa kedip layout), lalu diperbarui di browser
  * bila endpoint live mengembalikan daftar harga yang valid.
  */
-import type { PricingPlan, TokenAddOn } from "@/content/pricing";
+import { livePricingCopy as copy, type PricingPlan, type TokenAddOn } from "@/content/pricing";
 
 export const DEFAULT_PRICING_API_URL = "https://app.repskill.ai/api/public/pricing";
 
@@ -71,7 +71,12 @@ export function formatCreditCount(credits: number): string {
 }
 
 export function creditUnitWord(formattedCredits: string): string {
-  return /^1$/.test(formattedCredits.trim()) ? "credit" : "credits";
+  return /^1$/.test(formattedCredits.trim()) ? copy.creditUnitOne : copy.creditUnitMany;
+}
+
+/** Mengisi `{nama}` pada teks di `livePricingCopy`. */
+function fill(template: string, values: Record<string, string>): string {
+  return template.replace(/\{(\w+)\}/g, (whole, key: string) => values[key] ?? whole);
 }
 
 function rateDecimals(rate: number, fits: (shown: number) => boolean, max = 6): number {
@@ -180,9 +185,10 @@ function buildPlanFromLive(live: PublicPricingPlan, fallback: PricingPlan, note:
   const isAnnual = live.id === "annual";
   const formattedCredits = formatCreditCount(live.credits);
   const unit = creditUnitWord(formattedCredits);
-  const creditLine = isAnnual
-    ? `**${formattedCredits}** ${unit} per year, one-twelfth to use each month`
-    : `**${formattedCredits}** ${unit} per month`;
+  const creditLine = fill(isAnnual ? copy.creditsYearly : copy.creditsMonthly, {
+    credits: formattedCredits,
+    unit,
+  });
 
   const hasDiscount = live.list_total_idr !== null && live.list_total_idr > live.period_total_idr;
 
@@ -191,29 +197,33 @@ function buildPlanFromLive(live: PublicPricingPlan, fallback: PricingPlan, note:
       ? {
           was: formatIdrCurrency(live.list_total_idr),
           total: formatIdrCurrency(live.period_total_idr),
-          text: "billed yearly",
+          text: copy.billedYearly,
         }
       : {
           total: formatIdrCurrency(live.period_total_idr),
-          text: "billed yearly",
+          text: copy.billedYearly,
         }
     : hasDiscount && live.list_total_idr !== null
       ? {
           was: formatIdrCurrency(live.list_total_idr),
           total: formatIdrCurrency(live.period_total_idr),
-          text: "billed monthly",
+          text: copy.billedMonthly,
         }
-      : { text: "Billed monthly" };
+      : { text: copy.billedMonthlyPlain };
 
   const pctSuffix = live.save_pct > 0 ? ` (${live.save_pct}%)` : "";
   const savings =
     hasDiscount && live.list_total_idr !== null
-      ? `You save ${formatIdrCurrency(live.list_total_idr - live.period_total_idr)} ${isAnnual ? "a year" : "a month"}${pctSuffix}`
+      ? fill(copy.saving, {
+          amount: formatIdrCurrency(live.list_total_idr - live.period_total_idr),
+          period: isAnnual ? copy.savingPeriodYear : copy.savingPeriodMonth,
+          pct: pctSuffix,
+        })
       : undefined;
 
   return {
     ...fallback,
-    badge: live.recommended ? "Recommended" : undefined,
+    badge: live.recommended ? copy.badge : undefined,
     price: formatIdrDigits(live.per_month_idr),
     billing,
     savings,
@@ -235,7 +245,7 @@ function buildTopupRate(topups: PublicPricingTopup[], fallbackRate: string): str
     (shown) => Math.round(shown * minEntry.pack.credits) === minEntry.pack.price_idr,
   );
   const formatted = `Rp ${formatRateIdr(minEntry.rate, decimals)}`;
-  return allSame ? `${formatted} per credit` : `From ${formatted} per credit`;
+  return fill(allSame ? copy.topupRateSame : copy.topupRateFrom, { rate: formatted });
 }
 
 export function mergeLivePricing(
@@ -269,6 +279,15 @@ export function mergeLivePricing(
   return { ...fallback, items, addOn };
 }
 
+/**
+ * Gagal tetap membiarkan harga bawaan build tampil (halaman tidak boleh rusak), tetapi tidak diam:
+ * sebab dicatat di console, satu-satunya tanda yang bisa dilihat situs statis ini.
+ */
+function warnLivePricingFallback(reason: string): null {
+  console.warn(`[live-pricing] showing the built-in prices: ${reason} (${PRICING_API_URL})`);
+  return null;
+}
+
 export async function fetchPublicPricing(signal?: AbortSignal): Promise<PublicPricingPayload | null> {
   try {
     const res = await fetch(PRICING_API_URL, {
@@ -276,10 +295,12 @@ export async function fetchPublicPricing(signal?: AbortSignal): Promise<PublicPr
       headers: { Accept: "application/json" },
       signal,
     });
-    if (!res.ok) return null;
+    if (!res.ok) return warnLivePricingFallback(`the endpoint answered HTTP ${res.status}`);
     const data: unknown = await res.json();
-    return parsePublicPricing(data);
-  } catch {
-    return null;
+    return parsePublicPricing(data) ?? warnLivePricingFallback("the response does not match the expected price list shape");
+  } catch (err) {
+    // A page that is leaving aborts its own request; that is not a fault.
+    if (signal?.aborted) return null;
+    return warnLivePricingFallback(err instanceof Error ? err.message : "the request failed");
   }
 }

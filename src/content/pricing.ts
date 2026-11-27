@@ -38,6 +38,31 @@ export type TokenAddOn = {
   note: string;
 };
 
+/**
+ * Kata-kata yang dipakai `src/lib/live-pricing.ts` saat membangun ulang kartu harga dari API live.
+ * Ubah teks di sini, bukan di kode penggabungnya. `{…}` diisi oleh penggabung.
+ */
+export const livePricingCopy = {
+  badge: "Recommended",
+  /** Baris tagihan Monthly tanpa harga coret */
+  billedMonthlyPlain: "Billed monthly",
+  /** Baris tagihan setelah harga coret dan total */
+  billedMonthly: "billed monthly",
+  billedYearly: "billed yearly",
+  /** `{amount}` rupiah yang dihemat, `{period}` salah satu dari dua di bawah, `{pct}` mis. " (20%)" atau kosong */
+  saving: "You save {amount} {period}{pct}",
+  savingPeriodYear: "a year",
+  savingPeriodMonth: "a month",
+  /** `{credits}` jumlah credits, `{unit}` credit atau credits */
+  creditsMonthly: "**{credits}** {unit} per month",
+  creditsYearly: "**{credits}** {unit} per year, one-twelfth to use each month",
+  creditUnitOne: "credit",
+  creditUnitMany: "credits",
+  /** `{rate}` mis. "Rp 5.000" */
+  topupRateSame: "{rate} per credit",
+  topupRateFrom: "From {rate} per credit",
+} as const;
+
 export const pricingPage: {
   hero: PageHeroData;
   plans: { title: string; items: PricingPlan[]; addOn: TokenAddOn };
