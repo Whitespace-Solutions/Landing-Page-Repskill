@@ -31,7 +31,7 @@ export type TokenAddOn = {
   body: string;
   /** Harga per token, sama untuk semua paket; tampil sekali di bawah deskripsi */
   rate: string;
-  options: { tokens: string; price: string }[];
+  options: { id?: string; tokens: string; price: string }[];
   /** `{tokens}` diganti jumlah token paket yang dipilih */
   ctaLabel: string;
   href: string;
@@ -103,9 +103,9 @@ export const pricingPage: {
       body: "Credits land in your balance as soon as payment is recorded. Top-up credits do not expire monthly; they stay as long as your subscription is active.",
       rate: "Rp 5.000 per credit",
       options: [
-        { tokens: "100", price: "Rp 500.000" },
-        { tokens: "200", price: "Rp 1.000.000" },
-        { tokens: "1,000", price: "Rp 5.000.000" },
+        { id: "topup10k", tokens: "100", price: "Rp 500.000" },
+        { id: "topup20k", tokens: "200", price: "Rp 1.000.000" },
+        { id: "topup100k", tokens: "1,000", price: "Rp 5.000.000" },
       ],
       ctaLabel: "Buy {tokens} credits",
       href: "/book-demo/?plan=topup",

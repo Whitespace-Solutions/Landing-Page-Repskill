@@ -65,11 +65,14 @@ function leadPayload(v: Values) {
   };
 }
 
+const VALID_CREDITS_PARAM = /^(?:\d{1,3}(?:,\d{3})+|\d{1,9})(?:\.\d{1,2})?$/;
+
 function readInterestedPlan(): string {
   if (typeof window === "undefined") return "";
   const params = new URLSearchParams(window.location.search);
   const plan = params.get("plan")?.trim().toLowerCase();
-  const credits = params.get("credits")?.trim();
+  const rawCredits = params.get("credits")?.trim() ?? "";
+  const credits = VALID_CREDITS_PARAM.test(rawCredits) ? rawCredits : "";
   if (plan === "monthly") return "Monthly plan";
   if (plan === "annual") return "Annual plan";
   if (plan === "topup") return credits ? `Credit top-up (${credits} credits)` : "Credit top-up";
@@ -297,7 +300,7 @@ export function DemoForm() {
                       />
                       <button
                         type="submit"
-                        className="mt-2 inline-flex items-center justify-center gap-2 self-start rounded-button bg-brand-orange px-6 py-4 text-base font-semibold lg:py-3.5 text-white transition-colors hover:bg-brand-orange-hover"
+                        className="mt-2 inline-flex items-center justify-center gap-2 self-start rounded-button bg-brand-orange px-6 py-4 text-base font-semibold text-white transition-colors hover:bg-brand-orange-hover lg:py-3.5"
                       >
                         {form.contact.next}
                         <ArrowRight />
@@ -336,14 +339,14 @@ export function DemoForm() {
                         <button
                           type="button"
                           onClick={() => go(0)}
-                          className="rounded-button border-[1.5px] border-line px-6 py-4 text-base font-semibold lg:py-3.5 text-brand-grey transition-colors hover:border-brand-grey"
+                          className="rounded-button border-[1.5px] border-line px-6 py-4 text-base font-semibold text-brand-grey transition-colors hover:border-brand-grey lg:py-3.5"
                         >
                           {form.team.back}
                         </button>
                         <button
                           type="submit"
                           disabled={state === "sending"}
-                          className="inline-flex items-center justify-center gap-2 rounded-button bg-brand-orange px-6 py-4 text-base font-semibold lg:py-3.5 text-white transition-colors hover:bg-brand-orange-hover disabled:opacity-60"
+                          className="inline-flex items-center justify-center gap-2 rounded-button bg-brand-orange px-6 py-4 text-base font-semibold text-white transition-colors hover:bg-brand-orange-hover disabled:opacity-60 lg:py-3.5"
                         >
                           {state === "sending" ? form.sending : form.team.submit}
                           {state !== "sending" && <ArrowRight />}

@@ -20,6 +20,9 @@
 	@html not path /_next/static/*
 	header @html Cache-Control "public, max-age=0, must-revalidate"
 
+	redir /features /features/capture-knowledge/ 308
+	redir /features/ /features/capture-knowledge/ 308
+
 	file_server
 
 	# repskill.ai is the marketing site; the product lives on app.repskill.ai. Anything this site

@@ -154,7 +154,7 @@ export const practicePage: FeaturePage = {
       points: [
         "Assign learning paths with due dates and reminders",
         "See who is improving and who has stalled",
-        "Managers see ratings, never recordings or transcripts",
+        "Supervisors see ratings, transcripts, and audited reviews; practice audio stays private by default",
       ],
       visual: {
         type: "video",
@@ -163,7 +163,7 @@ export const practicePage: FeaturePage = {
         width: 1280,
         height: 720,
         label:
-          "Screen recording of Repskill Manage my team: the direct reports a supervisor assigns work to, and the roleplays the team finished, filtered by needs coaching, slipping, or improving, with ratings only.",
+          "Screen recording of Repskill Manage my team: the direct reports a supervisor assigns work to, and the roleplays the team finished, filtered by needs coaching, slipping, or improving.",
       },
     },
   ],

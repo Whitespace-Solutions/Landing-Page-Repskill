@@ -10,8 +10,7 @@ import type { PricingPlan, TokenAddOn } from "@/content/pricing";
 
 export const DEFAULT_PRICING_API_URL = "https://app.repskill.ai/api/public/pricing";
 
-export const PRICING_API_URL =
-  process.env.NEXT_PUBLIC_PRICING_API_URL || DEFAULT_PRICING_API_URL;
+export const PRICING_API_URL = process.env.NEXT_PUBLIC_PRICING_API_URL || DEFAULT_PRICING_API_URL;
 
 type LocalText = { en: string; id?: string };
 
@@ -50,6 +49,12 @@ export type PublicPricingPayload = {
   };
 };
 
+export type MergedPricingPlans = {
+  title: string;
+  items: PricingPlan[];
+  addOn: TokenAddOn | null;
+};
+
 const idrFormat = new Intl.NumberFormat("id-ID", { maximumFractionDigits: 0 });
 const creditFormat = new Intl.NumberFormat("en-US", { maximumFractionDigits: 2 });
 
@@ -65,17 +70,52 @@ export function formatCreditCount(credits: number): string {
   return creditFormat.format(credits);
 }
 
+export function creditUnitWord(formattedCredits: string): string {
+  return /^1$/.test(formattedCredits.trim()) ? "credit" : "credits";
+}
+
+function rateDecimals(rate: number, fits: (shown: number) => boolean, max = 6): number {
+  if (!Number.isFinite(rate)) return 0;
+  for (let d = 0; d < max; d++) {
+    const scale = 10 ** d;
+    if (fits(Math.round(rate * scale) / scale)) return d;
+  }
+  return max;
+}
+
+function formatRateIdr(rate: number, decimals: number): string {
+  if (!Number.isFinite(rate)) return "—";
+  const d = decimals === 0 ? 0 : Math.max(2, decimals);
+  return new Intl.NumberFormat("id-ID", {
+    minimumFractionDigits: d,
+    maximumFractionDigits: d,
+  }).format(rate);
+}
+
 function isPositiveNumber(value: unknown): value is number {
   return typeof value === "number" && Number.isFinite(value) && value > 0;
 }
 
 function isLocalText(value: unknown): value is LocalText {
-  return (
-    typeof value === "object" &&
-    value !== null &&
-    typeof (value as Record<string, unknown>).en === "string" &&
-    ((value as Record<string, unknown>).en as string).trim().length > 0
-  );
+  if (typeof value !== "object" || value === null) return false;
+  const obj = value as Record<string, unknown>;
+  if (typeof obj.en !== "string" || obj.en.trim().length === 0) return false;
+  if (obj.id !== undefined && typeof obj.id !== "string") return false;
+  return true;
+}
+
+function isValidCopy(value: unknown): boolean {
+  if (value === undefined) return true;
+  if (typeof value !== "object" || value === null) return false;
+  const copy = value as Record<string, unknown>;
+  if (copy.subtitle !== undefined && !isLocalText(copy.subtitle)) return false;
+  if (copy.plan_note !== undefined && copy.plan_note !== null && !isLocalText(copy.plan_note)) {
+    return false;
+  }
+  if (copy.trust !== undefined && (!Array.isArray(copy.trust) || !copy.trust.every(isLocalText))) {
+    return false;
+  }
+  return true;
 }
 
 function isPublicPricingPlan(value: unknown): value is PublicPricingPlan {
@@ -113,10 +153,16 @@ export function parsePublicPricing(raw: unknown): PublicPricingPayload | null {
   const obj = raw as Record<string, unknown>;
   if (obj.currency !== "IDR") return null;
   if (obj.recommended !== "monthly" && obj.recommended !== "annual") return null;
-  if (!Array.isArray(obj.plans) || !obj.plans.every(isPublicPricingPlan)) return null;
-  if (!Array.isArray(obj.topups) || obj.topups.length === 0 || !obj.topups.every(isPublicPricingTopup)) {
+  if (
+    obj.ppn_bps !== null &&
+    (typeof obj.ppn_bps !== "number" || !Number.isInteger(obj.ppn_bps) || obj.ppn_bps < 0)
+  ) {
     return null;
   }
+  if (!Array.isArray(obj.plans) || !obj.plans.every(isPublicPricingPlan)) return null;
+  if (!Array.isArray(obj.topups) || !obj.topups.every(isPublicPricingTopup)) return null;
+  if (!isValidCopy(obj.copy)) return null;
+
   const hasMonthly = obj.plans.some((p) => p.id === "monthly");
   const hasAnnual = obj.plans.some((p) => p.id === "annual");
   if (!hasMonthly || !hasAnnual) return null;
@@ -125,26 +171,20 @@ export function parsePublicPricing(raw: unknown): PublicPricingPayload | null {
 }
 
 function resolvePlanNote(payload: PublicPricingPayload, fallbackNote: string): string {
-  const customNote = payload.copy?.plan_note?.en?.trim();
+  const customNote = typeof payload.copy?.plan_note?.en === "string" ? payload.copy.plan_note.en.trim() : "";
   if (customNote) return customNote;
-  if (payload.ppn_bps === 0) return "No PPN applied";
   return fallbackNote;
 }
 
-function buildPlanFromLive(
-  live: PublicPricingPlan,
-  fallback: PricingPlan,
-  note: string,
-): PricingPlan {
+function buildPlanFromLive(live: PublicPricingPlan, fallback: PricingPlan, note: string): PricingPlan {
   const isAnnual = live.id === "annual";
+  const formattedCredits = formatCreditCount(live.credits);
+  const unit = creditUnitWord(formattedCredits);
   const creditLine = isAnnual
-    ? `**${formatCreditCount(live.credits)}** credits per year, one-twelfth to use each month`
-    : `**${formatCreditCount(live.credits)}** credits per month`;
+    ? `**${formattedCredits}** ${unit} per year, one-twelfth to use each month`
+    : `**${formattedCredits}** ${unit} per month`;
 
-  const hasDiscount =
-    live.list_total_idr !== null &&
-    live.list_total_idr > live.period_total_idr &&
-    live.save_pct > 0;
+  const hasDiscount = live.list_total_idr !== null && live.list_total_idr > live.period_total_idr;
 
   const billing: PricingPlan["billing"] = isAnnual
     ? hasDiscount && live.list_total_idr !== null
@@ -165,9 +205,10 @@ function buildPlanFromLive(
         }
       : { text: "Billed monthly" };
 
+  const pctSuffix = live.save_pct > 0 ? ` (${live.save_pct}%)` : "";
   const savings =
     hasDiscount && live.list_total_idr !== null
-      ? `You save ${formatIdrCurrency(live.list_total_idr - live.period_total_idr)} ${isAnnual ? "a year" : "a month"} (${live.save_pct}%)`
+      ? `You save ${formatIdrCurrency(live.list_total_idr - live.period_total_idr)} ${isAnnual ? "a year" : "a month"}${pctSuffix}`
       : undefined;
 
   return {
@@ -182,36 +223,48 @@ function buildPlanFromLive(
 }
 
 function buildTopupRate(topups: PublicPricingTopup[], fallbackRate: string): string {
-  const rates = topups.map((pack) => Math.round(pack.price_idr / pack.credits));
-  if (rates.length === 0) return fallbackRate;
-  const minRate = Math.min(...rates);
-  const maxRate = Math.max(...rates);
-  if (minRate === maxRate) return `${formatIdrCurrency(minRate)} per credit`;
-  return `From ${formatIdrCurrency(minRate)} per credit`;
+  if (topups.length === 0) return fallbackRate;
+  const entries = topups.map((pack) => ({
+    pack,
+    rate: pack.price_idr / pack.credits,
+  }));
+  const minEntry = entries.reduce((best, cur) => (cur.rate < best.rate ? cur : best), entries[0]);
+  const allSame = entries.every((e) => Math.abs(e.rate - minEntry.rate) < 1e-9);
+  const decimals = rateDecimals(
+    minEntry.rate,
+    (shown) => Math.round(shown * minEntry.pack.credits) === minEntry.pack.price_idr,
+  );
+  const formatted = `Rp ${formatRateIdr(minEntry.rate, decimals)}`;
+  return allSame ? `${formatted} per credit` : `From ${formatted} per credit`;
 }
 
 export function mergeLivePricing(
   fallback: { title: string; items: PricingPlan[]; addOn: TokenAddOn },
   payload: PublicPricingPayload,
-): { title: string; items: PricingPlan[]; addOn: TokenAddOn } {
-  const note = resolvePlanNote(payload, fallback.items[0]?.note ?? "Prices before PPN");
+): MergedPricingPlans {
+  const planNote = resolvePlanNote(payload, fallback.items[0]?.note ?? "Prices before PPN");
+  const topupNote = fallback.addOn.note;
   const byId = new Map(payload.plans.map((p) => [p.id, p]));
 
   const items = fallback.items.map((plan) => {
     const id = plan.name.toLowerCase() === "annual" ? "annual" : "monthly";
     const live = byId.get(id);
-    return live ? buildPlanFromLive(live, plan, note) : plan;
+    return live ? buildPlanFromLive(live, plan, planNote) : plan;
   });
 
-  const addOn: TokenAddOn = {
-    ...fallback.addOn,
-    rate: buildTopupRate(payload.topups, fallback.addOn.rate),
-    options: payload.topups.map((pack) => ({
-      tokens: formatCreditCount(pack.credits),
-      price: formatIdrCurrency(pack.price_idr),
-    })),
-    note,
-  };
+  const addOn: TokenAddOn | null =
+    payload.topups.length === 0
+      ? null
+      : {
+          ...fallback.addOn,
+          rate: buildTopupRate(payload.topups, fallback.addOn.rate),
+          options: payload.topups.map((pack) => ({
+            id: pack.id,
+            tokens: formatCreditCount(pack.credits),
+            price: formatIdrCurrency(pack.price_idr),
+          })),
+          note: topupNote,
+        };
 
   return { ...fallback, items, addOn };
 }

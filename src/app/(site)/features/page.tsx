@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export default function FeaturesIndexPage() {
   return (
     <>
-      <meta httpEquiv="refresh" content={`0;url=${TARGET}`} />
+      <meta httpEquiv="refresh" content="0;url=capture-knowledge/" />
       <Container className="flex min-h-[50vh] flex-col items-start justify-center gap-4 py-24">
         <h1 className="text-h2 text-brand-grey">Explore Repskill Features</h1>
         <p className="text-brand-charcoal">
